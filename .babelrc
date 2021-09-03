@@ -1,0 +1,13 @@
+{
+    "comments": false,
+    "presets": [
+        ["@babel/preset-env"],
+        "@babel/preset-react",
+        "babel-preset-minify"
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators", {"legacy": true}],
+        "@babel/plugin-proposal-class-properties",
+        "add-module-exports"
+    ]
+}
