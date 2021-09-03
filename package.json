@@ -26,9 +26,11 @@
     "url": "git+https://github.com/nfqde/nfq-react-grid.git"
   },
   "keywords": [
-    "tree",
-    "decision",
-    "stateful"
+    "styled-components",
+    "react",
+    "ssr",
+    "css-grid",
+    "layout"
   ],
   "author": ".NFQ | Christoph Kruppe",
   "license": "MIT",
