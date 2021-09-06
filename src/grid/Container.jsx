@@ -20,7 +20,6 @@ class Container extends Component {
         children: PropTypes.node.isRequired,
         as: PropTypes.string,
         className: PropTypes.string,
-        /** Defines if an container is always full width */
         fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
         innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
         /** TestID for cypress testing  */
@@ -45,7 +44,9 @@ class Container extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {debug: false};
+        if (process.env.NODE_ENV !== 'production') {
+            this.state = {debug: false};
+        }
     }
 
     /**
@@ -93,11 +94,19 @@ class Container extends Component {
      * @memberof Container
      */
     render() {
-        const {debug} = this.state;
         const {as, children, className, fluid, innerRef, testId} = this.props;
+        const classNames = [className];
+
+        if (process.env.NODE_ENV !== 'production') {
+            const {debug} = this.state;
+
+            if (debug) {
+                classNames.push('debug');
+            }
+        }
 
         return (
-            <ContainerElement ref={innerRef} as={as} className={className} data-cy={testId} debug={debug} fluid={fluid}>
+            <ContainerElement ref={innerRef} as={as} className={classNames.join(' ')} data-cy={testId} fluid={fluid}>
                 {children}
             </ContainerElement>
         );
@@ -132,8 +141,10 @@ const ContainerElement = styled.div`
         `)}
     `}
 
-    ${({debug, theme}) => debug && css`
-        background-color: ${getConfig(theme).debug.container.background};
-        outline: ${getConfig(theme).debug.container.outline} solid 1px;
+    ${({theme}) => process.env.NODE_ENV !== 'production' && css`
+        &.debug {
+            background-color: ${getConfig(theme).debug.container.background};
+            outline: ${getConfig(theme).debug.container.outline} solid 1px;
+        }
     `}
 `;

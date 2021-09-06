@@ -56,7 +56,9 @@ class Row extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {debug: false};
+        if (process.env.NODE_ENV !== 'production') {
+            this.state = {debug: false};
+        }
     }
 
     /**
@@ -104,7 +106,6 @@ class Row extends Component {
      * @memberof Row
      */
     render() {
-        const {debug} = this.state;
         const {
             align,
             as,
@@ -118,15 +119,23 @@ class Row extends Component {
             reverse,
             testId
         } = this.props;
+        const classNames = [className];
+
+        if (process.env.NODE_ENV !== 'production') {
+            const {debug} = this.state;
+
+            if (debug) {
+                classNames.push('debug');
+            }
+        }
 
         return (
             <RowElement
                 ref={innerRef}
                 align={align}
                 as={as}
-                className={className}
+                className={classNames.join(' ')}
                 data-cy={testId}
-                debug={debug}
                 direction={direction}
                 justify={justify}
                 noWrap={noWrap}
@@ -178,8 +187,10 @@ const RowElement = styled.div`
         ${calcJustify(justify, theme)}
     `}
 
-    ${({debug, theme}) => debug && css`
-        background-color: ${getConfig(theme).debug.row.background};
-        outline: ${getConfig(theme).debug.row.outline} solid 1px;
+    ${({theme}) => process.env.NODE_ENV !== 'production' && css`
+        &.debug {
+            background-color: ${getConfig(theme).debug.row.background};
+            outline: ${getConfig(theme).debug.row.outline} solid 1px;
+        }
     `}
 `;
