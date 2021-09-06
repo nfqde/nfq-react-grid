@@ -1,5 +1,5 @@
 /* eslint-disable react/boolean-prop-naming */
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 import styled from 'styled-components';
 
