@@ -12,11 +12,17 @@ const configCache = new Map();
  *
  * @returns {Function} An template literal function.
  */
-export const media = (theme, screenSize) => (...args) => css`
-    @media ${generateMediaString(theme, screenSize)} {
-        ${css(...args)}
+export const media = (theme, screenSize) => {
+    if (typeof theme === 'object' && CONF_KEY in theme) {
+        return (...args) => css`
+            @media ${generateMediaString(theme, screenSize)} {
+                ${css(...args)}
+            }
+        `;
     }
-`;
+
+    throw new Error('Theme must be an grid config theme.');
+};
 
 /**
  * Gets the config merged with the defaults.
@@ -26,15 +32,19 @@ export const media = (theme, screenSize) => (...args) => css`
  * @returns {Object} The actual complete config.
  */
 export const getConfig = theme => {
-    if (configCache.has(theme[String(CONF_KEY)])) {
-        return configCache.get(theme[String(CONF_KEY)]);
+    if (typeof theme === 'object' && CONF_KEY in theme) {
+        if (configCache.has(theme[String(CONF_KEY)])) {
+            return configCache.get(theme[String(CONF_KEY)]);
+        }
+
+        const conf = mergeDeep(DEFAULT_CONF, theme[String(CONF_KEY)]);
+
+        configCache.set(theme[String(CONF_KEY)], conf);
+
+        return conf;
     }
 
-    const conf = mergeDeep(DEFAULT_CONF, theme[String(CONF_KEY)]);
-
-    configCache.set(theme[String(CONF_KEY)], conf);
-
-    return conf;
+    throw new Error('Theme must be an grid config theme.');
 };
 
 /**
@@ -52,29 +62,33 @@ export const getScreenClass = theme => {
         viewport = window.innerWidth;
     }
 
-    if (viewport) {
-        const {breakpoints} = getConfig(theme);
+    if (typeof theme === 'object' && CONF_KEY in theme) {
+        if (viewport) {
+            const {breakpoints} = getConfig(theme);
 
-        newScreenClass = 'xs';
+            newScreenClass = 'xs';
 
-        if (breakpoints.sm <= viewport) {
-            newScreenClass = 'sm';
+            if (breakpoints.sm <= viewport) {
+                newScreenClass = 'sm';
+            }
+            if (breakpoints.md <= viewport) {
+                newScreenClass = 'md';
+            }
+            if (breakpoints.lg <= viewport) {
+                newScreenClass = 'lg';
+            }
+            if (breakpoints.xl <= viewport) {
+                newScreenClass = 'xl';
+            }
+            if (breakpoints.xxl <= viewport) {
+                newScreenClass = 'xxl';
+            }
         }
-        if (breakpoints.md <= viewport) {
-            newScreenClass = 'md';
-        }
-        if (breakpoints.lg <= viewport) {
-            newScreenClass = 'lg';
-        }
-        if (breakpoints.xl <= viewport) {
-            newScreenClass = 'xl';
-        }
-        if (breakpoints.xxl <= viewport) {
-            newScreenClass = 'xxl';
-        }
+
+        return newScreenClass;
     }
 
-    return newScreenClass;
+    throw new Error('Theme must be an grid config theme.');
 };
 
 /**
