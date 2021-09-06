@@ -1,0 +1,10 @@
+{
+    "component": {
+        "componentFolder": "./cypress/components",
+        "testFiles": "**/*.spec.{js,jsx}"
+    },
+    "env": {
+        "NODE_ENV": "test"
+    },
+    "videoUploadOnPasses": false
+}
