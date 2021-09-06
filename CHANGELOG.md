@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/nfqde/nfq-react-grid/compare/v1.1.0...v1.1.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* **Config:** Add unneded files to ignores ([#9](https://github.com/nfqde/nfq-react-grid/issues/9)) ([f0c1839](https://github.com/nfqde/nfq-react-grid/commit/f0c1839ddbac842de660d34d73209727be0305d2))
+
 ## [1.1.0](https://github.com/nfqde/nfq-react-grid/compare/v1.0.2...v1.1.0) (2021-09-06)
 
 
