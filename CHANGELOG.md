@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/nfqde/nfq-react-grid/compare/v1.0.2...v1.1.0) (2021-09-06)
+
+
+### Features
+
+* **Cypress:** Add Cypress for testing ([#7](https://github.com/nfqde/nfq-react-grid/issues/7)) ([b0f5db3](https://github.com/nfqde/nfq-react-grid/commit/b0f5db32bd8f1ecf60aeffa31f84a8c1128961e9))
+
+
+### Bug Fixes
+
+* **Debug:** Better threeshaking for debug mode ([#6](https://github.com/nfqde/nfq-react-grid/issues/6)) ([fd185f7](https://github.com/nfqde/nfq-react-grid/commit/fd185f73799c2035552e97e39255d841982e484e))
+* **Lib:** Throw if theme is not the right shape ([#3](https://github.com/nfqde/nfq-react-grid/issues/3)) ([6b1ef4b](https://github.com/nfqde/nfq-react-grid/commit/6b1ef4bec5418807b13c5ddc8934be89a88da27a))
+* **Row:** Change default direction ([#5](https://github.com/nfqde/nfq-react-grid/issues/5)) ([163770c](https://github.com/nfqde/nfq-react-grid/commit/163770c20fcf9ed2d9e734cd45f24f4cf915369e))
+* **ScreenBadge:** Fix missing React import ([#4](https://github.com/nfqde/nfq-react-grid/issues/4)) ([aa4222d](https://github.com/nfqde/nfq-react-grid/commit/aa4222d05850b84d0d148263845a726297b806af))
+
 ### [1.0.2](https://github.com/nfqde/nfq-react-grid/compare/v1.0.1...v1.0.2) (2021-09-03)
 
 
