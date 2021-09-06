@@ -104,7 +104,7 @@ export const calcJustify = (justify, theme) => {
  * @returns {String} The direction to use.
  */
 const getDirection = (direction, screenSize, lastScreen = null) => {
-    const defaultDirection = 'column';
+    const defaultDirection = 'row';
 
     if (typeof direction === 'object') {
         if (direction[String(screenSize)]) {
