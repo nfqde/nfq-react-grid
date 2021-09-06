@@ -20,6 +20,8 @@ class Spacer extends Component {
         inline: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
         maxX: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
         maxY: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+        /** TestID for cypress testing  */
+        testId: PropTypes.string,
         x: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
         y: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
     }
@@ -28,6 +30,7 @@ class Spacer extends Component {
         inline: false,
         maxX: null,
         maxY: null,
+        testId: null,
         x: null,
         y: null
     }
@@ -42,7 +45,7 @@ class Spacer extends Component {
         super(props);
 
         this.state = {
-            debug: false,
+            ...(process.env.NODE_ENV === 'production' ? {} : {debug: false}),
             direction: 'X'
         };
 
@@ -139,13 +142,23 @@ class Spacer extends Component {
      * @memberof Spacer
      */
     render() {
-        const {debug, direction} = this.state;
-        const {inline, maxX, maxY, x, y} = this.props;
+        const {direction} = this.state;
+        const {inline, maxX, maxY, testId, x, y} = this.props;
+        let className = null;
+
+        if (process.env.NODE_ENV !== 'production') {
+            const {debug} = this.state;
+
+            if (debug) {
+                className = 'debug';
+            }
+        }
 
         return (
             <SpacerElement
                 ref={this.spacing}
-                debug={debug}
+                className={className}
+                data-cy={testId}
                 direction={direction}
                 inline={inline}
                 maxX={maxX}
@@ -186,8 +199,10 @@ const SpacerElement = styled.span`
         ${calcWidth(theme, x)}
     `}
 
-    ${({debug, theme}) => debug && css`
-        background-color: ${getConfig(theme).debug.spacer.background};
-        outline: ${getConfig(theme).debug.spacer.outline} solid 1px;
+    ${({theme}) => process.env.NODE_ENV !== 'production' && css`
+        &.debug {
+            background-color: ${getConfig(theme).debug.spacer.background};
+            outline: ${getConfig(theme).debug.spacer.outline} solid 1px;
+        }
     `}
 `;

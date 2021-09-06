@@ -71,7 +71,9 @@ class Col extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {debug: false};
+        if (process.env.NODE_ENV !== 'production') {
+            this.state = {debug: false};
+        }
     }
 
     /**
@@ -119,7 +121,6 @@ class Col extends Component {
      * @memberof Col
      */
     render() {
-        const {debug} = this.state;
         const {
             align,
             as,
@@ -140,15 +141,23 @@ class Col extends Component {
             xs,
             xxl
         } = this.props;
+        const classNames = [className];
+
+        if (process.env.NODE_ENV !== 'production') {
+            const {debug} = this.state;
+
+            if (debug) {
+                classNames.push('debug');
+            }
+        }
 
         return (
             <ColElement
                 ref={innerRef}
                 align={align}
                 as={as}
-                className={className}
+                className={classNames.join(' ')}
                 data-cy={testId}
-                debug={debug}
                 direction={direction}
                 justify={justify}
                 lg={lg}
@@ -215,11 +224,13 @@ const ColElement = styled.div`
         ${calcJustify(justify, theme)}
     `}
 
-    ${({debug, theme}) => debug && css`
-        background-clip: content-box, padding-box;
-        background-image:
-            linear-gradient(to bottom, ${getConfig(theme).debug.col.background} 0%, ${getConfig(theme).debug.col.background} 100%),
-            linear-gradient(to bottom, ${getConfig(theme).debug.col.padding} 0%, ${getConfig(theme).debug.col.padding} 100%);
-        outline: ${getConfig(theme).debug.col.outline} solid 1px;
+    ${({theme}) => process.env.NODE_ENV !== 'production' && css`
+        &.debug {
+            background-clip: content-box, padding-box;
+            background-image:
+                linear-gradient(to bottom, ${getConfig(theme).debug.col.background} 0%, ${getConfig(theme).debug.col.background} 100%),
+                linear-gradient(to bottom, ${getConfig(theme).debug.col.padding} 0%, ${getConfig(theme).debug.col.padding} 100%);
+            outline: ${getConfig(theme).debug.col.outline} solid 1px;
+        }
     `}
 `;
