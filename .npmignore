@@ -1,5 +1,8 @@
 .babelrc
 .eslintrc
 .gitignore
+.nyc_output
+coverage
+cypress
 jsconfig.json
 pnpm-lock.yaml
