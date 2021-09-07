@@ -20,6 +20,7 @@ specifiers:
   core-decorators: ^0.20.0
   cross-env: 7.0.3
   cypress: ^8.3.1
+  cypress-mochawesome-reporter: ^2.2.1
   cypress-real-events: ^1.5.1
   eslint: 7.30.0
   eslint-import-resolver-alias: 1.1.2
@@ -66,6 +67,7 @@ devDependencies:
   core-decorators: 0.20.0
   cross-env: 7.0.3
   cypress: 8.3.1
+  cypress-mochawesome-reporter: 2.2.1_cypress@8.3.1
   cypress-real-events: 1.5.1_cypress@8.3.1
   eslint: 7.30.0
   eslint-import-resolver-alias: 1.1.2_eslint-plugin-import@2.23.4
@@ -4222,6 +4224,21 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
+  /cypress-mochawesome-reporter/2.2.1_cypress@8.3.1:
+    resolution: {integrity: sha512-ypivk3em3PIfLIre8vOfHO89biZVtitsdQ/EhZ7mMHkdZgKyhCAGmltYdfyugE/sa+mLgD/ywdjgb5H0yXJ8eg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      cypress: '>=6.2.0'
+    dependencies:
+      cypress: 8.3.1
+      fs-extra: 9.1.0
+      mochawesome: 6.2.2
+      mochawesome-merge: 4.2.0
+      mochawesome-report-generator: 5.2.0
+    transitivePeerDependencies:
+      - mocha
+    dev: true
+
   /cypress-real-events/1.5.1_cypress@8.3.1:
     resolution: {integrity: sha512-Jwi/IJePcZrKyhdtVddaf+mqJrj3y1vpREMDgtWwz+oxvj5FbBpeU0ASu9zpB3bMbsMo7g//buopZIe4jx3iSA==}
     peerDependencies:
@@ -7023,6 +7040,17 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.5
+    dev: true
+
+  /mochawesome-merge/4.2.0:
+    resolution: {integrity: sha512-FSMzagh+8hTShhFXdBLE4/zS2WALcDruoD0bmtiwHEjfyQszR/iEGFTgbuM5ewA5At3qeSGwGsT0k2Stt64NdQ==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    dependencies:
+      fs-extra: 7.0.1
+      glob: 7.1.7
+      uuid: 3.4.0
+      yargs: 15.4.1
     dev: true
 
   /mochawesome-report-generator/5.2.0:

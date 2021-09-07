@@ -20,6 +20,8 @@
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src --out-dir dist --copy-files",
     "deploy": "standard-version && git push --follow-tags origin main && npm publish",
+    "lint": "eslint ./src --ext='.js, .jsx'",
+    "lint:report": "eslint --output-file eslint_report.json --format json --ext='.js, .jsx' ./src",
     "prepare": "pnpm run build",
     "test": "pnpx cross-env NODE_ENV=test pnpx cypress run-ct",
     "test:open": "pnpx cross-env NODE_ENV=test pnpx cypress open-ct"
@@ -67,6 +69,7 @@
     "core-decorators": "^0.20.0",
     "cross-env": "7.0.3",
     "cypress": "^8.3.1",
+    "cypress-mochawesome-reporter": "^2.2.1",
     "cypress-real-events": "^1.5.1",
     "eslint": "7.30.0",
     "eslint-import-resolver-alias": "1.1.2",
