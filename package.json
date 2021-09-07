@@ -22,7 +22,7 @@
     "deploy": "standard-version && git push --follow-tags origin main && npm publish",
     "lint": "eslint ./src --ext='.js, .jsx'",
     "lint:report": "eslint --output-file eslint_report.json --format json --ext='.js, .jsx' ./src",
-    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm run build",
     "test": "pnpx cross-env NODE_ENV=test pnpx cypress run-ct",
     "test:open": "pnpx cross-env NODE_ENV=test pnpx cypress open-ct"
   },
