@@ -7,17 +7,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Cypress.io
-      uses: cypress-io/github-action@v2.9.7
-      with:
-        config-file: cypress.json
-        browser: chrome
-        command: pnpm run test
-        install: true
-        install-command: npm -g i pnpm && pnpm i
-        headless: true
-    - name: Cypress report action
-      uses: dmitry/cypress-report-action@1.0.0
-      with:
-        token: "${{ secrets.GITHUB_TOKEN }}"
-        pathname: cypress/reports/html/index.json
+      - uses: actions/checkout@v2
+      - name: Node.JS 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+      - name: Install Pnpm
+        run: sudo npm -g i pnpm
+        env:
+          CI: TRUE
+      - name: Install Node Dependencies
+        run: pnpm install
+        env:
+          CI: TRUE
+      - name: Cypress.io
+        uses: cypress-io/github-action@v2.9.7
+        with:
+          config-file: cypress.json
+          browser: chrome
+          command: pnpm run test
+          install: false
+          headless: true
+      - name: Cypress report action
+        uses: dmitry/cypress-report-action@1.0.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          pathname: cypress/reports/html/index.json
