@@ -11,6 +11,12 @@ export default {
             dstExtension: '.js',
             extensionsToKeep: ['.json'],
             srcExtensions: ['.js', '.jsx', '.json']
+        }],
+        ['styled-components', {
+            fileName: true,
+            preprocess: false,
+            pure: true,
+            ssr: true
         }]
     ],
     presets: [
