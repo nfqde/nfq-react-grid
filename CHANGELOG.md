@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/nfqde/nfq-react-grid/compare/v1.2.0...v1.2.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* **Babel:** Add modules false ([#12](https://github.com/nfqde/nfq-react-grid/issues/12)) ([5ea3c7f](https://github.com/nfqde/nfq-react-grid/commit/5ea3c7f2339326e6d45735dfb228031474ad093c))
+
 ## [1.2.0](https://github.com/nfqde/nfq-react-grid/compare/v1.1.1...v1.2.0) (2021-09-21)
 
 
