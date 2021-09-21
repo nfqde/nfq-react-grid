@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     comments: false,
     env: {
         production: {presets: ['babel-preset-minify']},
@@ -6,8 +6,7 @@ module.exports = {
     },
     plugins: [
         ['@babel/plugin-proposal-decorators', {legacy: true}],
-        '@babel/plugin-proposal-class-properties',
-        'add-module-exports'
+        '@babel/plugin-proposal-class-properties'
     ],
     presets: [
         ['@babel/preset-env', {modules: false}],
