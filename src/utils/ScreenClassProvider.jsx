@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
-import {autobind} from 'core-decorators';
 import PropTypes from 'prop-types';
-import {withTheme} from 'styled-components';
+import {useTheme} from 'styled-components';
 
 import {getScreenClass} from './lib';
 
@@ -15,80 +14,42 @@ export const ScreenClassContext = React.createContext(defaultData);
  *
  * @component
  * @augments {Component<Props, State>}
- * @extends {Component}
+ * @returns {JSX} Component.
  */
-class ScreenClassProvider extends Component {
-    static propTypes = {
-        children: PropTypes.node.isRequired,
-        theme: PropTypes.object.isRequired
-    }
+const ScreenClassProvider = ({children}) => {
+    const [screenClass, setScreenClass] = useState('xxl');
+    const screenClassRef = useRef();
+    const theme = useTheme();
 
-    static defaultProps = {}
-
-    /**
-     * Creates an instance of ScreenClassProvider.
-     *
-     * @param {Object} props Component props.
-     * @memberof ScreenClassProvider
-     */
-    constructor(props) {
-        super(props);
-
-        this.state = {screenClass: 'xxl'};
-    }
-
-    /**
-     * Adds the resize handler to get the ScreenClass.
-     *
-     * @memberof ScreenClassProvider
-     */
-    componentDidMount() {
-        window.addEventListener('resize', this.getScreenClass);
-    }
-
-    /**
-     * Removes the resize handler to get the ScreenClass.
-     *
-     * @memberof ScreenClassProvider
-     */
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.getScreenClass);
-    }
+    screenClassRef.current = screenClass;
 
     /**
      * Calculates the ScreenClass.
-     *
-     * @memberof ScreenClassProvider
      */
-    @autobind
-    getScreenClass() {
-        const {screenClass} = this.state;
-        const {theme} = this.props;
+    const setDerivedScreenClass = () => {
         const newScreenClass = getScreenClass(theme);
 
-        if (newScreenClass !== screenClass) {
-            this.setState({screenClass: newScreenClass});
+        if (newScreenClass !== screenClassRef.current) {
+            setScreenClass(newScreenClass);
         }
-    }
+    };
 
-    /**
-     * Renders the modal provider and childs.
-     *
-     * @returns {JSX} The ScreenClassProvider.
-     * @memberof ScreenClassProvider
-     */
-    render() {
-        const {screenClass} = this.state;
-        const {children} = this.props;
+    useEffect(() => {
+        window.addEventListener('resize', setDerivedScreenClass);
 
-        return (
-            <ScreenClassContext.Provider
-                value={screenClass}
-            >
-                {children}
-            </ScreenClassContext.Provider>
-        );
-    }
-}
+        return () => window.removeEventListener('resize', setDerivedScreenClass);
+    }, []);
 
-export default withTheme(ScreenClassProvider);
+    return (
+        <ScreenClassContext.Provider
+            value={screenClass}
+        >
+            {children}
+        </ScreenClassContext.Provider>
+    );
+};
+
+ScreenClassProvider.displayName = 'ScreenClassProvider';
+ScreenClassProvider.propTypes = {children: PropTypes.node.isRequired};
+
+export default ScreenClassProvider;

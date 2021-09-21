@@ -1,11 +1,11 @@
 /* eslint-disable react/boolean-prop-naming */
-import React, {Component, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
-import {autobind} from 'core-decorators';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
+import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
 
 /**
@@ -15,106 +15,34 @@ import {getConfig, media} from '../utils/lib';
  * @augments {Component<Props, State>}
  * @extends {Component}
  */
-class Container extends Component {
-    static propTypes = {
-        children: PropTypes.node.isRequired,
-        as: PropTypes.string,
-        className: PropTypes.string,
-        fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-        innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-        /** TestID for cypress testing  */
-        testId: PropTypes.string
-    }
+const Container = forwardRef(({as, children, className, fluid, testId}, ref) => {
+    const classNames = [className, useDebug()];
 
-    static defaultProps = {
-        as: null,
-        className: null,
-        fluid: false,
-        innerRef: null,
-        testId: null
-    }
+    return (
+        <ContainerElement ref={ref} as={as} className={classNames.join(' ')} data-cy={testId} fluid={fluid}>
+            {children}
+        </ContainerElement>
+    );
+});
 
-    /**
-     * Creates an instance of Container.
-     *
-     * @param {Object} props Component props.
-     *
-     * @memberof Container
-     */
-    constructor(props) {
-        super(props);
+Container.displayName = 'Container';
+Container.propTypes = {
+    children: PropTypes.node.isRequired,
+    as: PropTypes.string,
+    className: PropTypes.string,
+    fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    /** TestID for cypress testing  */
+    testId: PropTypes.string
+};
 
-        if (process.env.NODE_ENV !== 'production') {
-            this.state = {debug: false};
-        }
-    }
+Container.defaultProps = {
+    as: null,
+    className: null,
+    fluid: false,
+    testId: null
+};
 
-    /**
-     * Sets an event listener to toggle debug mode.
-     *
-     * @memberof Container
-     */
-    componentDidMount() {
-        if (process.env.NODE_ENV !== 'production') {
-            window.addEventListener('keydown', this.toggleDebug);
-        }
-    }
-
-    /**
-     * Unsets an event listener to toggle debug mode.
-     *
-     * @memberof Container
-     */
-    componentWillUnmount() {
-        if (process.env.NODE_ENV !== 'production') {
-            window.removeEventListener('keydown', this.toggleDebug);
-        }
-    }
-
-    /**
-     * Sets the debug state.
-     *
-     * @param {KeyboardEvent} e The keyboard event.
-     *
-     * @memberof Container
-     */
-    @autobind
-    toggleDebug(e) {
-        if (e.ctrlKey && e.code === 'KeyD') {
-            e.preventDefault();
-            // eslint-disable-next-line no-invalid-this
-            this.setState(oldState => ({debug: !oldState.debug}));
-        }
-    }
-
-    /**
-     * Renders the Component.
-     *
-     * @returns {JSX} Component.
-     * @memberof Container
-     */
-    render() {
-        const {as, children, className, fluid, innerRef, testId} = this.props;
-        const classNames = [className];
-
-        if (process.env.NODE_ENV !== 'production') {
-            const {debug} = this.state;
-
-            if (debug) {
-                classNames.push('debug');
-            }
-        }
-
-        return (
-            <ContainerElement ref={innerRef} as={as} className={classNames.join(' ')} data-cy={testId} fluid={fluid}>
-                {children}
-            </ContainerElement>
-        );
-    }
-}
-
-// eslint-disable-next-line react/jsx-props-no-spreading
-export default forwardRef((props, ref) => <Container {...props} innerRef={ref} />);
+export default Container;
 
 const ContainerElement = styled.div`
     box-sizing: border-box;
