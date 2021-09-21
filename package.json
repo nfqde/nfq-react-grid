@@ -1,6 +1,6 @@
 {
   "name": "@nfq/react-grid",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "An fork of react-awesome-styled-grid with more screen classes and some features.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -46,8 +46,7 @@
   "homepage": "https://github.com/nfqde/nfq-react-grid#readme",
   "peerDependencies": {
     "prop-types": ">= 15",
-    "react": ">= 17",
-    "styled-components": ">= 5"
+    "react": ">= 17"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
