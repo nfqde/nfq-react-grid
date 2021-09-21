@@ -65,6 +65,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-add-module-exports": "1.0.4",
     "babel-plugin-istanbul": "^6.0.0",
+    "babel-plugin-module-extension-resolver": "^1.0.0-rc.2",
     "babel-preset-minify": "0.5.1",
     "clean-webpack-plugin": "^4.0.0",
     "core-decorators": "^0.20.0",
