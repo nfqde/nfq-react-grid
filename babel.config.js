@@ -6,7 +6,12 @@ export default {
     },
     plugins: [
         ['@babel/plugin-proposal-decorators', {legacy: true}],
-        '@babel/plugin-proposal-class-properties'
+        '@babel/plugin-proposal-class-properties',
+        ['module-extension-resolver', {
+            dstExtension: '.js',
+            extensionsToKeep: ['.json'],
+            srcExtensions: ['.js', '.jsx', '.json']
+        }]
     ],
     presets: [
         ['@babel/preset-env', {modules: false}],

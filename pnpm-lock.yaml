@@ -15,6 +15,7 @@ specifiers:
   babel-loader: ^8.2.2
   babel-plugin-add-module-exports: 1.0.4
   babel-plugin-istanbul: ^6.0.0
+  babel-plugin-module-extension-resolver: ^1.0.0-rc.2
   babel-preset-minify: 0.5.1
   clean-webpack-plugin: ^4.0.0
   core-decorators: ^0.20.0
@@ -62,6 +63,7 @@ devDependencies:
   babel-loader: 8.2.2_0e35175a9985e2dbf434a1fb88ccfda5
   babel-plugin-add-module-exports: 1.0.4
   babel-plugin-istanbul: 6.0.0
+  babel-plugin-module-extension-resolver: 1.0.0-rc.2
   babel-preset-minify: 0.5.1
   clean-webpack-plugin: 4.0.0_webpack@5.53.0
   core-decorators: 0.20.0
@@ -3236,6 +3238,11 @@ packages:
     resolution: {integrity: sha1-G8bxW4f3qxCF1CszC3F2V6IVZQA=}
     dependencies:
       babel-helper-is-void-0: 0.4.3
+    dev: true
+
+  /babel-plugin-module-extension-resolver/1.0.0-rc.2:
+    resolution: {integrity: sha512-nSvCi7Eq079snAYgWbq+VM8eci7OER9MAhDchuxpdimuyJr06x/Stsmc2b6zP5CDv4XR54Etkpf7jOo5NfzgVg==}
+    engines: {node: '>=6.9.0'}
     dev: true
 
   /babel-plugin-polyfill-corejs2/0.2.2_@babel+core@7.15.5:
