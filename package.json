@@ -45,7 +45,6 @@
   },
   "homepage": "https://github.com/nfqde/nfq-react-grid#readme",
   "peerDependencies": {
-    "core-decorators": ">= 0.20",
     "prop-types": ">= 15",
     "react": ">= 17",
     "styled-components": ">= 5"
@@ -68,7 +67,6 @@
     "babel-plugin-module-extension-resolver": "^1.0.0-rc.2",
     "babel-preset-minify": "0.5.1",
     "clean-webpack-plugin": "^4.0.0",
-    "core-decorators": "^0.20.0",
     "cross-env": "7.0.3",
     "cypress": "8.4.1",
     "cypress-mochawesome-reporter": "^2.2.1",
