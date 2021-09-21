@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.11](https://github.com/nfqde/nfq-react-grid/compare/v1.2.10...v1.2.11) (2021-09-21)
+
+
+### Bug Fixes
+
+* **Babel:** Add styled-components plugin ([#21](https://github.com/nfqde/nfq-react-grid/issues/21)) ([2a7924c](https://github.com/nfqde/nfq-react-grid/commit/2a7924c32f72719a49135c5f3f74beabceed0f03))
+
 ### [1.2.10](https://github.com/nfqde/nfq-react-grid/compare/v1.2.8...v1.2.10) (2021-09-21)
 
 
