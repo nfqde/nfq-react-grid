@@ -1,12 +1,12 @@
 /* eslint-disable react/boolean-prop-naming */
-import React, {Component, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
-import {autobind} from 'core-decorators';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
 import {HALF} from '../utils/constants';
+import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
 import {calcAlign, calcDirection, calcJustify} from '../utils/rowHelpers';
 
@@ -17,139 +17,65 @@ import {calcAlign, calcDirection, calcJustify} from '../utils/rowHelpers';
  * @augments {Component<Props, State>}
  * @extends {Component}
  */
-class Row extends Component {
-    static propTypes = {
-        children: PropTypes.node.isRequired,
-        align: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-        as: PropTypes.string,
-        className: PropTypes.string,
-        direction: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-        innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-        justify: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-        noWrap: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-        order: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-        reverse: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-        /** TestID for cypress testing  */
-        testId: PropTypes.string
-    }
+const Row = forwardRef(({
+    align,
+    as,
+    children,
+    className,
+    direction,
+    justify,
+    noWrap,
+    order,
+    reverse,
+    testId
+}, ref) => {
+    const classNames = [className, useDebug()];
 
-    static defaultProps = {
-        align: null,
-        as: null,
-        className: null,
-        direction: 'row',
-        innerRef: null,
-        justify: null,
-        noWrap: null,
-        order: null,
-        reverse: false,
-        testId: null
-    }
+    return (
+        <RowElement
+            ref={ref}
+            align={align}
+            as={as}
+            className={classNames.join(' ')}
+            data-cy={testId}
+            direction={direction}
+            justify={justify}
+            noWrap={noWrap}
+            order={order}
+            reverse={reverse}
+        >
+            {children}
+        </RowElement>
+    );
+});
 
-    /**
-     * Creates an instance of Row.
-     *
-     * @param {Object} props Component props.
-     *
-     * @memberof Row
-     */
-    constructor(props) {
-        super(props);
+Row.displayName = 'Row';
+Row.propTypes = {
+    children: PropTypes.node.isRequired,
+    align: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    as: PropTypes.string,
+    className: PropTypes.string,
+    direction: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    justify: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    noWrap: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    order: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+    reverse: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    /** TestID for cypress testing  */
+    testId: PropTypes.string
+};
+Row.defaultProps = {
+    align: null,
+    as: null,
+    className: null,
+    direction: 'row',
+    justify: null,
+    noWrap: null,
+    order: null,
+    reverse: false,
+    testId: null
+};
 
-        if (process.env.NODE_ENV !== 'production') {
-            this.state = {debug: false};
-        }
-    }
-
-    /**
-     * Sets an event listener to toggle debug mode.
-     *
-     * @memberof Row
-     */
-    componentDidMount() {
-        if (process.env.NODE_ENV !== 'production') {
-            window.addEventListener('keydown', this.toggleDebug);
-        }
-    }
-
-    /**
-     * Unsets an event listener to toggle debug mode.
-     *
-     * @memberof Row
-     */
-    componentWillUnmount() {
-        if (process.env.NODE_ENV !== 'production') {
-            window.removeEventListener('keydown', this.toggleDebug);
-        }
-    }
-
-    /**
-     * Sets the debug state.
-     *
-     * @param {KeyboardEvent} e The keyboard event.
-     *
-     * @memberof Row
-     */
-    @autobind
-    toggleDebug(e) {
-        if (e.ctrlKey && e.code === 'KeyD') {
-            e.preventDefault();
-            // eslint-disable-next-line no-invalid-this
-            this.setState(oldState => ({debug: !oldState.debug}));
-        }
-    }
-
-    /**
-     * Renders the Component.
-     *
-     * @returns {JSX} Component.
-     * @memberof Row
-     */
-    render() {
-        const {
-            align,
-            as,
-            children,
-            className,
-            direction,
-            innerRef,
-            justify,
-            noWrap,
-            order,
-            reverse,
-            testId
-        } = this.props;
-        const classNames = [className];
-
-        if (process.env.NODE_ENV !== 'production') {
-            const {debug} = this.state;
-
-            if (debug) {
-                classNames.push('debug');
-            }
-        }
-
-        return (
-            <RowElement
-                ref={innerRef}
-                align={align}
-                as={as}
-                className={classNames.join(' ')}
-                data-cy={testId}
-                direction={direction}
-                justify={justify}
-                noWrap={noWrap}
-                order={order}
-                reverse={reverse}
-            >
-                {children}
-            </RowElement>
-        );
-    }
-}
-
-// eslint-disable-next-line react/jsx-props-no-spreading
-export default forwardRef((props, ref) => <Row {...props} innerRef={ref} />);
+export default Row;
 
 const RowElement = styled.div`
     box-sizing: border-box;

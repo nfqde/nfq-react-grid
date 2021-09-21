@@ -1,5 +1,4 @@
-/* eslint-disable react/boolean-prop-naming */
-import React, {Component} from 'react';
+import React, {useContext} from 'react';
 
 import styled from 'styled-components';
 
@@ -10,27 +9,15 @@ import {ScreenClassContext} from './ScreenClassProvider';
  *
  * @component
  * @augments {Component<Props, State>}
- * @extends {Component}
+ * @returns {JSX} Component
  */
-class ScreenBadge extends Component {
-    static propTypes = {}
+const ScreenBadge = () => {
+    const screenClass = useContext(ScreenClassContext);
 
-    static defaultProps = {}
+    return <ScreenBadgeElement>{screenClass}</ScreenBadgeElement>;
+};
 
-    static contextType = ScreenClassContext;
-
-    /**
-     * Renders the Component.
-     *
-     * @returns {JSX} Component.
-     * @memberof ScreenBadge
-     */
-    render() {
-        const screenClass = this.context;
-
-        return <ScreenBadgeElement>{screenClass}</ScreenBadgeElement>;
-    }
-}
+ScreenBadge.displayName = 'ScreenBadge';
 
 export default ScreenBadge;
 

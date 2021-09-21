@@ -1,5 +1,5 @@
 /* eslint-disable react/boolean-prop-naming */
-import {Component} from 'react';
+import {useContext} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -10,42 +10,31 @@ import {ScreenClassContext} from './ScreenClassProvider';
  *
  * @component
  * @augments {Component<Props, State>}
- * @extends {Component}
+ * @returns {JSX} Component.
  */
-class Hidden extends Component {
-    static propTypes = {
-        children: PropTypes.node.isRequired,
-        lg: PropTypes.bool,
-        md: PropTypes.bool,
-        sm: PropTypes.bool,
-        xl: PropTypes.bool,
-        xs: PropTypes.bool,
-        xxl: PropTypes.bool
-    }
+const Hidden = ({children, ...screenClasses}) => {
+    const screenClass = useContext(ScreenClassContext);
 
-    static defaultProps = {
-        lg: false,
-        md: false,
-        sm: false,
-        xl: false,
-        xs: false,
-        xxl: false
-    }
+    return screenClasses[String(screenClass)] ? null : children;
+};
 
-    static contextType = ScreenClassContext;
-
-    /**
-     * Renders the Component.
-     *
-     * @returns {JSX} Component.
-     * @memberof Hidden
-     */
-    render() {
-        const screenClass = this.context;
-        const {children, ...screenClasses} = this.props;
-
-        return screenClasses[String(screenClass)] ? null : children;
-    }
-}
+Hidden.displayName = 'Hidden';
+Hidden.propTypes = {
+    children: PropTypes.node.isRequired,
+    lg: PropTypes.bool,
+    md: PropTypes.bool,
+    sm: PropTypes.bool,
+    xl: PropTypes.bool,
+    xs: PropTypes.bool,
+    xxl: PropTypes.bool
+};
+Hidden.defaultProps = {
+    lg: false,
+    md: false,
+    sm: false,
+    xl: false,
+    xs: false,
+    xxl: false
+};
 
 export default Hidden;
