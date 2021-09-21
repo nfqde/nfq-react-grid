@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/nfqde/nfq-react-grid/compare/v1.2.11...v1.3.0) (2021-09-21)
+
+
+### Features
+
+* **Rollup:** Change to rollup ([#22](https://github.com/nfqde/nfq-react-grid/issues/22)) ([a0f40d4](https://github.com/nfqde/nfq-react-grid/commit/a0f40d48f5df41faa757ed6f991235a6422131be))
+
 ### [1.2.11](https://github.com/nfqde/nfq-react-grid/compare/v1.2.10...v1.2.11) (2021-09-21)
 
 
