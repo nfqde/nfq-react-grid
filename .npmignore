@@ -7,4 +7,6 @@ coverage
 cypress
 jsconfig.json
 pnpm-lock.yaml
+rollup.config.js
+src
 webpack.cypress.config.js

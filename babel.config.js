@@ -1,17 +1,9 @@
-export default {
+module.exports = {
     comments: false,
-    env: {
-        production: {presets: ['babel-preset-minify']},
-        test: {plugins: ['istanbul']}
-    },
+    env: {test: {plugins: ['istanbul']}},
     plugins: [
         ['@babel/plugin-proposal-decorators', {legacy: true}],
         '@babel/plugin-proposal-class-properties',
-        ['module-extension-resolver', {
-            dstExtension: '.js',
-            extensionsToKeep: ['.json'],
-            srcExtensions: ['.js', '.jsx', '.json']
-        }],
         ['styled-components', {
             fileName: true,
             preprocess: false,
@@ -20,7 +12,7 @@ export default {
         }]
     ],
     presets: [
-        ['@babel/preset-env', {modules: false}],
+        ['@babel/preset-env'],
         '@babel/preset-react'
     ]
 };
