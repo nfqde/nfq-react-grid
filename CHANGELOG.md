@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/nfqde/nfq-react-grid/compare/v1.2.1...v1.2.2) (2021-09-21)
+
+
+### Bug Fixes
+
+* **Lib:** No silo export ([#13](https://github.com/nfqde/nfq-react-grid/issues/13)) ([3b947b5](https://github.com/nfqde/nfq-react-grid/commit/3b947b566c56df7db7b6a9e2bfb1684f13a8aaef))
+
 ### [1.2.1](https://github.com/nfqde/nfq-react-grid/compare/v1.2.0...v1.2.1) (2021-09-21)
 
 

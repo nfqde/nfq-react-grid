@@ -1,6 +1,6 @@
 {
   "name": "@nfq/react-grid",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "An fork of react-awesome-styled-grid with more screen classes and some features.",
   "main": "dist/index.js",
   "module": "dist/index.js",
