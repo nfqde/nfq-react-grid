@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/nfqde/nfq-react-grid/compare/v1.3.0...v1.3.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **Rollup:** Perform cleanup and remove browser field. ([#23](https://github.com/nfqde/nfq-react-grid/issues/23)) ([e148722](https://github.com/nfqde/nfq-react-grid/commit/e148722436867fe9ddc425f2951022fb8ff33dd7))
+
 ## [1.3.0](https://github.com/nfqde/nfq-react-grid/compare/v1.2.11...v1.3.0) (2021-09-21)
 
 
