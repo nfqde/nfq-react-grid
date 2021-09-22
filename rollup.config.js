@@ -2,7 +2,7 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import {uglify} from 'rollup-plugin-uglify';
+import cleaner from 'rollup-plugin-cleaner';
 
 // eslint-disable-next-line import/extensions
 import pkg from './package.json';
@@ -36,25 +36,10 @@ export default [
             }
         ],
         plugins: [
+            cleaner({targets: ['./dist/']}),
             resolve({extensions: ['.js', '.jsx', '.json']}),
             commonjs({include: ['node_modules/**']}),
             babel({babelHelpers: 'bundled'})
-        ]
-    },
-    {
-        external: [...Object.keys(pkg.peerDependencies || {})],
-        input: 'src/index.jsx',
-        output: {
-            file: pkg.browser,
-            format: 'umd',
-            globals,
-            name: pkg.name
-        },
-        plugins: [
-            resolve({extensions: ['.js', '.jsx', '.json']}),
-            commonjs({include: ['node_modules/**']}),
-            babel({babelHelpers: 'bundled'}),
-            uglify()
         ]
     }
 ];
