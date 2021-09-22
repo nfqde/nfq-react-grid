@@ -27,11 +27,12 @@ export default [
                 sourcemap: true
             },
             {
+                dir: './dist/esm/',
                 exports: 'named',
-                file: pkg.module,
                 format: 'es',
                 globals,
                 name: pkg.name,
+                preserveModules: true,
                 sourcemap: true
             }
         ],
