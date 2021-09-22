@@ -14,14 +14,14 @@ specifiers:
   '@nfq/eslint-plugin': 0.6.0
   '@rollup/plugin-babel': 5.3.0
   '@rollup/plugin-commonjs': 20.0.0
-  '@rollup/plugin-node-resolve': ^13.0.4
+  '@rollup/plugin-node-resolve': 13.0.5
   babel-loader: ^8.2.2
   babel-plugin-istanbul: ^6.0.0
   babel-plugin-styled-components: ^1.13.2
   clean-webpack-plugin: ^4.0.0
   cross-env: 7.0.3
   cypress: 8.4.1
-  cypress-mochawesome-reporter: ^2.2.1
+  cypress-mochawesome-reporter: 2.3.0
   cypress-real-events: ^1.5.1
   eslint: 7.32.0
   eslint-import-resolver-alias: 1.1.2
@@ -42,6 +42,7 @@ specifiers:
   prop-types: ^15.7.2
   react: 17.0.2
   react-dom: ^17.0.2
+  rollup-plugin-cleaner: 1.0.0
   rollup-plugin-uglify: 6.0.4
   script-ext-html-webpack-plugin: ^2.1.5
   styled-components: 5.3.1
@@ -63,14 +64,14 @@ devDependencies:
   '@nfq/eslint-plugin': 0.6.0
   '@rollup/plugin-babel': 5.3.0_@babel+core@7.15.5
   '@rollup/plugin-commonjs': 20.0.0
-  '@rollup/plugin-node-resolve': 13.0.4
+  '@rollup/plugin-node-resolve': 13.0.5
   babel-loader: 8.2.2_0e35175a9985e2dbf434a1fb88ccfda5
   babel-plugin-istanbul: 6.0.0
   babel-plugin-styled-components: 1.13.2_styled-components@5.3.1
   clean-webpack-plugin: 4.0.0_webpack@5.53.0
   cross-env: 7.0.3
   cypress: 8.4.1
-  cypress-mochawesome-reporter: 2.2.1_cypress@8.4.1
+  cypress-mochawesome-reporter: 2.3.0_cypress@8.4.1
   cypress-real-events: 1.5.1_cypress@8.4.1
   eslint: 7.32.0
   eslint-import-resolver-alias: 1.1.2_eslint-plugin-import@2.24.2
@@ -91,6 +92,7 @@ devDependencies:
   prop-types: 15.7.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  rollup-plugin-cleaner: 1.0.0
   rollup-plugin-uglify: 6.0.4
   script-ext-html-webpack-plugin: 2.1.5_756b024056a7e87dc8e1353ea5f096b4
   styled-components: 5.3.1_react-dom@17.0.2+react@17.0.2
@@ -2549,8 +2551,8 @@ packages:
       resolve: 1.20.0
     dev: true
 
-  /@rollup/plugin-node-resolve/13.0.4:
-    resolution: {integrity: sha512-eYq4TFy40O8hjeDs+sIxEH/jc9lyuI2k9DM557WN6rO5OpnC2qXMBNj4IKH1oHrnAazL49C5p0tgP0/VpqJ+/w==}
+  /@rollup/plugin-node-resolve/13.0.5:
+    resolution: {integrity: sha512-mVaw6uxtvuGx/XCI4qBQXsDZJUfyx5vp39iE0J/7Hd6wDhEbjHr6aES7Nr9yWbuE0BY+oKp6N7Bq6jX5NCGNmQ==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: ^2.42.0
@@ -2637,10 +2639,14 @@ packages:
     resolution: {integrity: sha512-KDazLNYAGIuJugdbULwFZULF9qQ13yNWEBFnfVpqlpgAAo6H/qnM9RjBgh0A0kmHf3XxAKLdN5mTIng9iUvVLA==}
     dev: true
 
+  /@types/node/16.9.6:
+    resolution: {integrity: sha512-YHUZhBOMTM3mjFkXVcK+WwAcYmyhe1wL4lfqNtzI0b3qAy7yuSetnM7QJazgE5PFmgVTNGiLOgRFfJMqW7XpSQ==}
+    dev: true
+
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 16.9.4
+      '@types/node': 16.9.6
     dev: true
 
   /@types/retry/0.12.1:
@@ -4151,8 +4157,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /cypress-mochawesome-reporter/2.2.1_cypress@8.4.1:
-    resolution: {integrity: sha512-ypivk3em3PIfLIre8vOfHO89biZVtitsdQ/EhZ7mMHkdZgKyhCAGmltYdfyugE/sa+mLgD/ywdjgb5H0yXJ8eg==}
+  /cypress-mochawesome-reporter/2.3.0_cypress@8.4.1:
+    resolution: {integrity: sha512-phgQ4Il8a78NZMQmhYtEEhzaI4qESmWRuuZEMOViaajI6qzpXBwcmZGKcp1uK9UYFz6XJhYwsyPAq5YK5TivXg==}
     engines: {node: '>=10'}
     peerDependencies:
       cypress: '>=6.2.0'
@@ -8200,6 +8206,15 @@ packages:
     dependencies:
       hash-base: 3.1.0
       inherits: 2.0.4
+    dev: true
+
+  /rollup-plugin-cleaner/1.0.0:
+    resolution: {integrity: sha512-q+Zf9estkFwGede9QzmbkhKeuXzlliOvcICVNzBHAs5xYPPs1XLtfin5TMU2tC2EYjmfaF97saY9MnQM6Og4eA==}
+    engines: {node: '>= 8.0'}
+    peerDependencies:
+      rollup: '> 1.0'
+    dependencies:
+      rimraf: 2.7.1
     dev: true
 
   /rollup-plugin-uglify/6.0.4:
