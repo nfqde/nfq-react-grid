@@ -292,19 +292,19 @@ describe('Test Row component', () => {
         cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
         cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap-reverse');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap-reverse');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
     });
 
     it('Changes changes flex-wrap to nowrap for all sizes', () => {
@@ -719,5 +719,26 @@ describe('Test Row component', () => {
 
         cy.getCy('RowId').should('have.class', 'debug');
         cy.getCy('RowId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+    });
+
+    it('Deactivates debug mode if Strg+D is pressed twice', () => {
+        mount(
+            <TestWrapper theme={containerSizes}>
+                <Container>
+                    <Row testId="RowId">
+                        &nbsp;
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('RowId').should('have.class', 'debug');
+        cy.getCy('RowId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('RowId').should('not.have.class', 'debug');
     });
 });

@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useReducer, useRef} from 'react';
 
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {useDebug, useObserver} from '../utils/hooks';
 import {getConfig} from '../utils/lib';
-import {calcFlex, calcHeight, calcInline, calcMaxHeight, calcMaxWidth, calcWidth} from '../utils/spacerHelpers';
+import {calcFlex, calcHeight, calcInline, calcMaxHeight, calcMaxWidth, calcWidth} from '../utils/styleHelpers';
 
 /**
  * Spacer
@@ -15,38 +15,31 @@ import {calcFlex, calcHeight, calcInline, calcMaxHeight, calcMaxWidth, calcWidth
  * @returns {JSX} Component.
  */
 const Spacer = ({inline, maxX, maxY, testId, x, y}) => {
-    const [direction, setDirection] = useState('X');
-    const directionRef = useRef();
     const spacer = useRef(null);
-    const className = useDebug();
-
-    directionRef.current = direction;
-
-    /**
-     * Calculates the actual flex direction.
-     */
-    const findFlexDirection = () => {
+    const [direction, handleFlexDirection] = useReducer(oldDirection => {
+        // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
         if (window.getComputedStyle(spacer.current.parentElement)) {
-            const oldDirection = directionRef.current;
-
             if (spacer.current) {
                 const {flexDirection} = window.getComputedStyle(spacer.current.parentElement);
                 const newDirection = ['column', 'column-reverse'].includes(flexDirection) ? 'Y' : 'X';
 
                 if (oldDirection !== newDirection) {
-                    setDirection({newDirection});
+                    return newDirection;
                 }
             }
         }
-    };
 
-    useObserver(spacer, findFlexDirection);
+        return oldDirection;
+    }, 'X');
+    const className = useDebug();
+
+    useObserver(spacer, handleFlexDirection);
 
     useEffect(() => {
-        findFlexDirection();
-        window.addEventListener('resize', findFlexDirection);
+        handleFlexDirection();
+        window.addEventListener('resize', handleFlexDirection);
 
-        return () => window.removeEventListener('resize', findFlexDirection);
+        return () => window.removeEventListener('resize', handleFlexDirection);
     }, []);
 
     return (
@@ -89,11 +82,11 @@ const SpacerElement = styled.span`
     flex: 1 1 0px;
 
     ${({inline, theme}) => css`
-        ${calcInline(inline, theme)}
+        ${calcInline(theme, inline)}
     `}
 
     ${({direction, theme, x, y}) => css`
-        ${calcFlex(direction, theme, x, y)}
+        ${calcFlex(theme, direction, x, y)}
     `}
 
     ${({theme, y}) => ((typeof y === 'number' || typeof y === 'object') && y !== null) && css`
@@ -101,11 +94,11 @@ const SpacerElement = styled.span`
     `}
 
     ${({maxY, theme}) => ((typeof maxY === 'number' || typeof maxY === 'object') && maxY !== null) && css`
-        ${calcMaxHeight(maxY, theme)}
+        ${calcMaxHeight(theme, maxY)}
     `}
 
     ${({maxX, theme}) => ((typeof maxX === 'number' || typeof maxX === 'object') && maxX !== null) && css`
-        ${calcMaxWidth(maxX, theme)}
+        ${calcMaxWidth(theme, maxX)}
     `}
 
     ${({theme, x}) => ((typeof x === 'number' || typeof x === 'object') && x !== null) && css`

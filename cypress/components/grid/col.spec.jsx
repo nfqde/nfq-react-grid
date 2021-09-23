@@ -911,4 +911,26 @@ describe('Test Col component', () => {
         cy.getCy('ColId').should('have.css', 'background-clip', 'content-box, padding-box');
         cy.getCy('ColId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
     });
+
+    it('Deactivates debug mode if Strg+D is pressed twice', () => {
+        mount(
+            <TestWrapper theme={containerSizes}>
+                <Container>
+                    <Row>
+                        <Col testId="ColId">&nbsp;</Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('ColId').should('have.class', 'debug');
+        cy.getCy('ColId').should('have.css', 'background-clip', 'content-box, padding-box');
+        cy.getCy('ColId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('ColId').should('not.have.class', 'debug');
+    });
 });

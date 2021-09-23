@@ -1,4 +1,9 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useMemo, useState} from 'react';
+
+import {useTheme} from 'styled-components';
+
+import {getConfig} from './lib';
+import {ScreenClassContext} from './ScreenClassProvider';
 
 /**
  * Returns if the component is in debug mode.
@@ -8,22 +13,24 @@ import {useEffect, useState} from 'react';
  */
 export const useDebug = () => {
     if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const [debug, setDebug] = useState(false);
 
-        /**
-         * Sets the debug state.
-         *
-         * @param {KeyboardEvent} e The keyboard event.
-         */
-        const toggleDebug = e => {
-            if (e.ctrlKey && e.code === 'KeyD') {
-                e.preventDefault();
-                // eslint-disable-next-line no-invalid-this
-                setDebug(oldDebug => ({debug: !oldDebug}));
-            }
-        };
-
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
+            /**
+             * Sets the debug state.
+             *
+             * @param {KeyboardEvent} e The keyboard event.
+             */
+            const toggleDebug = e => {
+                if (e.ctrlKey && e.code === 'KeyD') {
+                    e.preventDefault();
+                    // eslint-disable-next-line no-invalid-this
+                    setDebug(oldDebug => (!oldDebug));
+                }
+            };
+
             if (process.env.NODE_ENV !== 'production') {
                 window.addEventListener('keydown', toggleDebug);
             }
@@ -55,5 +62,23 @@ export const useObserver = (ref, observerCB) => {
         obs.observe(ref.current.parentElement, {attributes: true});
 
         return () => obs.disconnect();
-    }, [ref]);
+    }, [ref, observerCB]);
 };
+
+/**
+ * Returns the grid config.
+ *
+ * @returns {Object} The grid config.
+ */
+export const useConfig = () => {
+    const theme = useTheme();
+
+    return useMemo(() => getConfig(theme), [theme]);
+};
+
+/**
+ * Returns the viewport screenclass.
+ *
+ * @returns {String} The viewport screenclass.
+ */
+export const useScreenClass = () => useContext(ScreenClassContext);

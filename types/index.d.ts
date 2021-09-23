@@ -182,11 +182,11 @@ interface IDefaultProps {
 
 interface IConfig {
     /** The breakpoint sizes in px for the different screen classes */
-    breakpoints: Record<IGridBreakpoints, number>;
+    breakpoints: Record<tBreakpoints, number>;
     /** The the column number available for the different screen classes */
-    columns: Record<IGridBreakpoints, number>;
+    columns: Record<tBreakpoints, number>;
     /** The the container width for the different screen classes */
-    container: Record<IGridBreakpoints, number | 'fluid'>;
+    container: Record<tBreakpoints, number | 'fluid'>;
     /** Debug object to define different colors for the 3 components */
     debug: {
         /** The Debug colors for the Col component */
@@ -214,11 +214,11 @@ interface IConfig {
         }
     }
     /** The the gutter width for the different screen classes */
-    gutterWidth: Record<IGridBreakpoints, number>;
+    gutterWidth: Record<tBreakpoints, number>;
     /** The default media type all media queries should use. (Default: only screen) */
     mediaQuery: string;
     /** The outer container padding width for all screen sizes */
-    paddingWidth: Record<IGridBreakpoints, number>;
+    paddingWidth: Record<tBreakpoints, number>;
 }
 
 /** Property interfaces */
@@ -318,14 +318,15 @@ interface IRowProps extends IDefaultProps {
 
 interface IScreenClassRenderProps {
     /** The function that will be rendered receiving the current screen as a parameter */
-    render: (screen: IGridBreakpoints) => React.ReactNode;
+    render: (screen: tBreakpoints) => React.ReactNode;
 }
 
 export const ScreenClassContext: React.ContextType<tBreakpoints>;
 
 export function getConfig(theme: IConfigProps): IConfig;
-export function getScreenClass(theme: IConfigProps): tBreakpoints;
 export function media(theme: IConfigProps, screenSize: tBreakpoints): ThemedCssFunction<DefaultTheme>;
+export function useConfig(): IConfigProps;
+export function useScreenClass(): tBreakpoints;
 
 export class Col extends React.Component<IColProps, any>{};
 export class Container extends React.Component<IContainerProps, any>{};

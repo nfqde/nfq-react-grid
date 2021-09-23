@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
 
 import PropTypes from 'prop-types';
 import {useTheme} from 'styled-components';
@@ -17,27 +17,21 @@ export const ScreenClassContext = React.createContext(defaultData);
  * @returns {JSX} Component.
  */
 const ScreenClassProvider = ({children}) => {
-    const [screenClass, setScreenClass] = useState('xxl');
-    const screenClassRef = useRef();
     const theme = useTheme();
-
-    screenClassRef.current = screenClass;
-
-    /**
-     * Calculates the ScreenClass.
-     */
-    const setDerivedScreenClass = () => {
+    const [screenClass, handleScreenClass] = useReducer(oldScreenClass => {
         const newScreenClass = getScreenClass(theme);
 
-        if (newScreenClass !== screenClassRef.current) {
-            setScreenClass(newScreenClass);
+        if (newScreenClass !== oldScreenClass) {
+            return newScreenClass;
         }
-    };
+
+        return oldScreenClass;
+    }, 'xxl');
 
     useEffect(() => {
-        window.addEventListener('resize', setDerivedScreenClass);
+        window.addEventListener('resize', handleScreenClass);
 
-        return () => window.removeEventListener('resize', setDerivedScreenClass);
+        return () => window.removeEventListener('resize', handleScreenClass);
     }, []);
 
     return (

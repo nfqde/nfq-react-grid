@@ -160,4 +160,23 @@ describe('Test Container component', () => {
         cy.getCy('ContainerId').should('have.class', 'debug');
         cy.getCy('ContainerId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
     });
+
+    it('Deactivates debug mode if Strg+D is pressed twice', () => {
+        mount(
+            <TestWrapper theme={containerSizes}>
+                <Container testId="ContainerId">
+                    &nbsp;
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('ContainerId').should('have.class', 'debug');
+        cy.getCy('ContainerId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('ContainerId').should('not.have.class', 'debug');
+    });
 });

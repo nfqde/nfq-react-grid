@@ -27,6 +27,9 @@
   - [getScreenClass](#getscreenclass)
   - [media](#media)
   - [ScreenClassContext](#screenclasscontext)
+- [Hooks](#hooks)
+  - [useConfig](#useConfig)
+  - [useScreenClass](#useScreenClass)
 - [Debugging](#debugging)
 - [Custom config](#custom-config)
   - [Configuration Object](#configuration-object)
@@ -313,31 +316,6 @@ const DemoComponent = styled.div`
 ```
     The getConfig utility function derifes the active configuration from all default options and the custom defined options to use it in your own styled components.
 
-### getScreenClass:
-```javascript
-const DemoComponent = styled.div`
-    ${({theme}) => getScreenClass(theme)}
-`;
-```
-or
-```javascript
-import {withTheme} from 'styled-components';
-
-class App extends Component {
-    render() {
-        const {theme} = this.props;
-
-        getScreenClass(theme);
-
-        return null;
-    }
-}
-
-export default withTheme(App);
-```
-
-    The getScreenClass function gives the actual screen size derived from the configured breakpoints.
-
 ### media:
 ```javascript
 const DemoComponent = styled.div`
@@ -376,6 +354,24 @@ class TestComponent extends Component {
     }
 }
 ```
+---
+---
+## Hooks:
+### useConfig:
+```javascript
+const DemoComponent = () => {
+    const gridConfig = useConfig();
+}
+```
+    The useConfig hook derifes the active configuration from all default options and the custom defined options to use it in your own styled components.
+
+### useScreenClass:
+```javascript
+const DemoComponent = () => {
+    const screenSize = useScreenClass();
+}
+```
+    The useScreenClass hook gives the actual viewport size class defined in your config as string back. (xs, sm, md, lg, xl or xxl)
 ---
 ---
 ## Debugging:
