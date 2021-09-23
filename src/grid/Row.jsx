@@ -8,7 +8,7 @@ import {DIMENSIONS} from '../defaultConfig';
 import {HALF} from '../utils/constants';
 import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
-import {calcAlign, calcDirection, calcJustify} from '../utils/rowHelpers';
+import {calcAlign, calcDirection, calcJustify} from '../utils/styleHelpers';
 
 /**
  * Row
@@ -92,7 +92,7 @@ const RowElement = styled.div`
 
 
     ${({direction, noWrap, reverse, theme}) => css`
-        ${calcDirection(direction, noWrap, reverse, theme)}
+        ${calcDirection(theme, direction, reverse, 'row', noWrap)}
     `}
 
     ${({order, theme}) => order !== null && css`
@@ -106,11 +106,11 @@ const RowElement = styled.div`
     `}
 
     ${({align, theme}) => align && css`
-        ${calcAlign(align, theme)}
+        ${calcAlign(theme, align)}
     `}
 
     ${({justify, theme}) => justify && css`
-        ${calcJustify(justify, theme)}
+        ${calcJustify(theme, justify)}
     `}
 
     ${({theme}) => process.env.NODE_ENV !== 'production' && css`

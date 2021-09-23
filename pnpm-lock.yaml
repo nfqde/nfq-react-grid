@@ -10,7 +10,7 @@ specifiers:
   '@cypress/code-coverage': 3.9.11
   '@cypress/react': 5.10.0
   '@cypress/webpack-dev-server': 1.6.0
-  '@nfq/eslint-config': 1.2.3
+  '@nfq/eslint-config': 1.2.6
   '@nfq/eslint-plugin': 0.6.0
   '@rollup/plugin-babel': 5.3.0
   '@rollup/plugin-commonjs': 20.0.0
@@ -34,6 +34,8 @@ specifiers:
   eslint-plugin-perf-standard: 1.0.3
   eslint-plugin-promise: 5.1.0
   eslint-plugin-react: 7.26.0
+  eslint-plugin-react-hooks: 4.2.0
+  eslint-plugin-react-hooks-ssr: 0.1.5
   eslint-plugin-security: 1.4.0
   eslint-plugin-sort-destructure-keys: 1.3.5
   html-webpack-plugin: ^5.3.2
@@ -60,7 +62,7 @@ devDependencies:
   '@cypress/code-coverage': 3.9.11_cypress@8.4.1
   '@cypress/react': 5.10.0_91827be7d8456c07339572841da68dda
   '@cypress/webpack-dev-server': 1.6.0_188078dc195f167ea05a197db25bc074
-  '@nfq/eslint-config': 1.2.3_e8d366a6cad53a7591fbab1e47475505
+  '@nfq/eslint-config': 1.2.6_52f5d3c1ec2a1a506a26abcdcade9e6e
   '@nfq/eslint-plugin': 0.6.0
   '@rollup/plugin-babel': 5.3.0_@babel+core@7.15.5
   '@rollup/plugin-commonjs': 20.0.0
@@ -84,6 +86,8 @@ devDependencies:
   eslint-plugin-perf-standard: 1.0.3
   eslint-plugin-promise: 5.1.0_eslint@7.32.0
   eslint-plugin-react: 7.26.0_eslint@7.32.0
+  eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
+  eslint-plugin-react-hooks-ssr: 0.1.5_eslint@7.32.0
   eslint-plugin-security: 1.4.0
   eslint-plugin-sort-destructure-keys: 1.3.5_eslint@7.32.0
   html-webpack-plugin: 5.3.2_webpack@5.53.0
@@ -2453,8 +2457,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /@nfq/eslint-config/1.2.3_e8d366a6cad53a7591fbab1e47475505:
-    resolution: {integrity: sha512-GriWCSqOi/rGMBGMmWrc+sU/4ZAQma9lMRvqFOUB9Xciye4fTTnXILrI3l3HoJCvegc1imHQo+ND33GQuQ8i6w==}
+  /@nfq/eslint-config/1.2.6_52f5d3c1ec2a1a506a26abcdcade9e6e:
+    resolution: {integrity: sha512-7ovzGqk/YRu07HWJyXTimkUYy48PQw5WaFWkde7+QMBS48PFjHYc4vU/9icT02yopHBDBLT0pyXaf9/uiA8pHw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
       '@babel/eslint-parser': '>= 7'
@@ -2470,6 +2474,8 @@ packages:
       eslint-plugin-perf-standard: '>= 1'
       eslint-plugin-promise: '>= 5'
       eslint-plugin-react: '>= 7'
+      eslint-plugin-react-hooks: '>= 4'
+      eslint-plugin-react-hooks-ssr: '>= 0.1.5'
       eslint-plugin-security: '>= 1'
       eslint-plugin-sort-destructure-keys: '>= 1'
     dependencies:
@@ -2487,6 +2493,8 @@ packages:
       eslint-plugin-perf-standard: 1.0.3
       eslint-plugin-promise: 5.1.0_eslint@7.32.0
       eslint-plugin-react: 7.26.0_eslint@7.32.0
+      eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
+      eslint-plugin-react-hooks-ssr: 0.1.5_eslint@7.32.0
       eslint-plugin-security: 1.4.0
       eslint-plugin-sort-destructure-keys: 1.3.5_eslint@7.32.0
     dev: true
@@ -4875,6 +4883,23 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
       eslint: ^7.0.0
+    dependencies:
+      eslint: 7.32.0
+    dev: true
+
+  /eslint-plugin-react-hooks-ssr/0.1.5_eslint@7.32.0:
+    resolution: {integrity: sha512-7p2gOip5uSIC6kijwHkd4joXqnU+eaJDAQlPdROswjNacwBN5HIdT90Ho1fyGignRbC1s1XafzdFH5ThKLIEYw==}
+    peerDependencies:
+      eslint: '>=4.x'
+    dependencies:
+      eslint: 7.32.0
+    dev: true
+
+  /eslint-plugin-react-hooks/4.2.0_eslint@7.32.0:
+    resolution: {integrity: sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
     dependencies:
       eslint: 7.32.0
     dev: true

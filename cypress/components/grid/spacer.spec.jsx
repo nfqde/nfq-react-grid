@@ -249,4 +249,46 @@ describe('Test Spacer component', () => {
 
         cy.getCy('SpacerId').should('have.css', 'display', 'inline-block');
     });
+
+    it('Renders debug mode if Strg+D is pressed', () => {
+        mount(
+            <TestWrapper height={500} theme={containerSizes}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} inline />Spacing</div>
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('SpacerId').should('have.class', 'debug');
+        cy.getCy('SpacerId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+    });
+
+    it('Deactivates debug mode if Strg+D is pressed twice', () => {
+        mount(
+            <TestWrapper height={500} theme={containerSizes}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} inline />Spacing</div>
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('SpacerId').should('have.class', 'debug');
+        cy.getCy('SpacerId').should('have.css', 'outline', 'rgb(255, 255, 255) solid 1px');
+
+        cy.get('body').type('{ctrl}D');
+
+        cy.getCy('SpacerId').should('not.have.class', 'debug');
+    });
 });

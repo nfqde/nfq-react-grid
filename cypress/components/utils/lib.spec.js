@@ -87,12 +87,14 @@ describe('Test lib functions', () => {
 
         it('Returns the mediaQuery with the css given', () => {
             const returnVal = [
-                '\n            @media ',
+                '@media ',
                 'only screen and (min-width: 0px)',
-                ' {\n                ',
+                '{',
                 'width: 100%',
-                '\n            }\n        '
+                '}'
             ];
+
+            returnVal.isCss = true;
 
             expect(media(containerSizes, 'xs')`width: 100%`).to.be.deep.eq(returnVal);
         });

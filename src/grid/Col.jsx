@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
-import {calcAlign, calcDirection, calcJustify, calcOffset, calcSizes} from '../utils/colHelpers';
 import {HALF} from '../utils/constants';
 import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
+import {calcAlign, calcDirection, calcJustify, calcOffset, calcSizes} from '../utils/styleHelpers';
 
 /**
  * Col
@@ -120,11 +120,11 @@ const ColElement = styled.div`
     `}
 
     ${({theme, ...sizes}) => css`
-        ${calcSizes(sizes, theme)}
+        ${calcSizes(theme, sizes)}
     `}
 
     ${({offset, theme}) => offset && css`
-        ${calcOffset(offset, theme)}
+        ${calcOffset(theme, offset)}
     `}
 
     ${({order, theme}) => order !== null && css`
@@ -138,15 +138,15 @@ const ColElement = styled.div`
     `}
 
     ${({direction, reverse, theme}) => css`
-        ${calcDirection(direction, reverse, theme)}
+        ${calcDirection(theme, direction, reverse, 'column')}
     `}
 
     ${({align, theme}) => align && css`
-        ${calcAlign(align, theme)}
+        ${calcAlign(theme, align)}
     `}
 
     ${({justify, theme}) => justify && css`
-        ${calcJustify(justify, theme)}
+        ${calcJustify(theme, justify)}
     `}
 
     ${({theme}) => process.env.NODE_ENV !== 'production' && css`

@@ -58,6 +58,7 @@ export const getScreenClass = theme => {
     let viewport = null;
     let newScreenClass = 'xxl';
 
+    // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
     if (typeof window !== 'undefined' && window.innerWidth) {
         viewport = window.innerWidth;
     }
