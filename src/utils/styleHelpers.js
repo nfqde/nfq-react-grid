@@ -395,13 +395,13 @@ const getDirection = (direction, defaultDirection, screenSize, lastScreen = null
 const getNoWrap = (noWrap, screenSize) => {
     if (Array.isArray(noWrap)) {
         if (noWrap.includes(screenSize)) {
-            return 'nowrap';
+            return true;
         }
 
-        return 'wrap';
+        return false;
     }
 
-    return noWrap ? 'nowrap' : 'wrap';
+    return noWrap;
 };
 
 /**

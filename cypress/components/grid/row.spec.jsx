@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import Container from '../../../src/grid/Container';
 import Row from '../../../src/grid/Row';
-import {containerSizes, defaultTheme} from '../../fixtures/themes';
+import {defaultTheme} from '../../fixtures/themes';
 import {Viewports} from '../../fixtures/viewports';
 import TestWrapper from '../../support/TestWrapper';
 
@@ -292,19 +292,19 @@ describe('Test Row component', () => {
         cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
         cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap-reverse');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap-reverse');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'flex-wrap', 'wrap');
+        cy.getCy('RowId').should('have.css', 'flex-wrap', 'nowrap');
     });
 
     it('Changes changes flex-wrap to nowrap for all sizes', () => {
