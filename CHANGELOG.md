@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/nfqde/nfq-react-grid/compare/v1.4.0...v1.4.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* **Row:** Fix noWrap behavior ([#26](https://github.com/nfqde/nfq-react-grid/issues/26)) ([c4328a8](https://github.com/nfqde/nfq-react-grid/commit/c4328a8470bd40e8653437de63340ed3bd7d56ce))
+
 ## [1.4.0](https://github.com/nfqde/nfq-react-grid/compare/v1.3.2...v1.4.0) (2021-09-23)
 
 
