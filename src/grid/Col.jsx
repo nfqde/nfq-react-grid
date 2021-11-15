@@ -34,7 +34,8 @@ const Col = forwardRef(({
     testId,
     xl,
     xs,
-    xxl
+    xxl,
+    ...eventHandler
 }, ref) => {
     const classNames = [className, useDebug()];
 
@@ -57,6 +58,8 @@ const Col = forwardRef(({
             xl={xl}
             xs={xs}
             xxl={xxl}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...eventHandler}
         >
             {children}
         </ColElement>
