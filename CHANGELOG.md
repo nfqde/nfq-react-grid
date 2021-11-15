@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/nfqde/nfq-react-grid/compare/v1.4.1...v1.5.0) (2021-11-15)
+
+
+### Features
+
+* **EventListeners:** Allow for eventlisteners on grid elements. ([#27](https://github.com/nfqde/nfq-react-grid/issues/27)) ([92f7a85](https://github.com/nfqde/nfq-react-grid/commit/92f7a8516ee5df64ffe8aad1cc6c7c3043b6a56a))
+
 ### [1.4.1](https://github.com/nfqde/nfq-react-grid/compare/v1.4.0...v1.4.1) (2021-09-24)
 
 
