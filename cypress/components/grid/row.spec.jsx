@@ -706,7 +706,7 @@ describe('Test Row component', () => {
 
     it('Renders debug mode if Strg+D is pressed', () => {
         mount(
-            <TestWrapper theme={containerSizes}>
+            <TestWrapper theme={defaultTheme}>
                 <Container>
                     <Row testId="RowId">
                         &nbsp;
@@ -723,7 +723,7 @@ describe('Test Row component', () => {
 
     it('Deactivates debug mode if Strg+D is pressed twice', () => {
         mount(
-            <TestWrapper theme={containerSizes}>
+            <TestWrapper theme={defaultTheme}>
                 <Container>
                     <Row testId="RowId">
                         &nbsp;
