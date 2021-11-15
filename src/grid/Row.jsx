@@ -27,7 +27,8 @@ const Row = forwardRef(({
     noWrap,
     order,
     reverse,
-    testId
+    testId,
+    ...eventHandler
 }, ref) => {
     const classNames = [className, useDebug()];
 
@@ -43,6 +44,8 @@ const Row = forwardRef(({
             noWrap={noWrap}
             order={order}
             reverse={reverse}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...eventHandler}
         >
             {children}
         </RowElement>

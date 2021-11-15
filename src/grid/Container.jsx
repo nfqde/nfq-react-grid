@@ -15,11 +15,19 @@ import {getConfig, media} from '../utils/lib';
  * @augments {Component<Props, State>}
  * @extends {Component}
  */
-const Container = forwardRef(({as, children, className, fluid, testId}, ref) => {
+const Container = forwardRef(({as, children, className, fluid, testId, ...eventHandler}, ref) => {
     const classNames = [className, useDebug()];
 
     return (
-        <ContainerElement ref={ref} as={as} className={classNames.join(' ')} data-cy={testId} fluid={fluid}>
+        <ContainerElement
+            ref={ref}
+            as={as}
+            className={classNames.join(' ')}
+            data-cy={testId}
+            fluid={fluid}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...eventHandler}
+        >
             {children}
         </ContainerElement>
     );
