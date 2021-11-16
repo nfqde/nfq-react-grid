@@ -30,6 +30,7 @@ const ScreenClassProvider = ({children}) => {
 
     useEffect(() => {
         window.addEventListener('resize', handleScreenClass);
+        handleScreenClass();
 
         return () => window.removeEventListener('resize', handleScreenClass);
     }, []);
