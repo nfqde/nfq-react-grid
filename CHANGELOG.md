@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/nfqde/nfq-react-grid/compare/v1.5.0...v1.7.0) (2021-11-16)
+
+
+### Features
+
+* **HiddenCss:** Add possibility for hidden and visible to render html. ([#29](https://github.com/nfqde/nfq-react-grid/issues/29)) ([22a9a5f](https://github.com/nfqde/nfq-react-grid/commit/22a9a5fa489c93224638f1fd62fb24f0a3ddf544))
+* **ScreenClassContext:** Set right screen on load ([#28](https://github.com/nfqde/nfq-react-grid/issues/28)) ([0c178f9](https://github.com/nfqde/nfq-react-grid/commit/0c178f9228754cfe54eff15c9dfa9c76e98b491c))
+
 ## [1.5.0](https://github.com/nfqde/nfq-react-grid/compare/v1.4.1...v1.5.0) (2021-11-15)
 
 
