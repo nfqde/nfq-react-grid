@@ -1,8 +1,10 @@
 /* eslint-disable react/boolean-prop-naming */
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
+import {media} from './lib';
 import {ScreenClassContext} from './ScreenClassProvider';
 
 /**
@@ -12,15 +14,28 @@ import {ScreenClassContext} from './ScreenClassProvider';
  * @augments {Component<Props, State>}
  * @returns {JSX} Component.
  */
-const Hidden = ({children, ...screenClasses}) => {
+const Hidden = ({children, isLoadingHtml, ...screenClasses}) => {
     const screenClass = useContext(ScreenClassContext);
+
+    if (isLoadingHtml) {
+        return <HiddenWrap classes={screenClasses}>{children}</HiddenWrap>;
+    }
 
     return screenClasses[String(screenClass)] ? null : children;
 };
 
+const allClasses = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
+const HiddenWrap = styled.div`
+    ${({classes, theme}) => allClasses.map(size => media(theme, size)`
+        ${classes[String(size)] ? 'display: none' : 'display: block'};
+    `)}
+`;
+
 Hidden.displayName = 'Hidden';
 Hidden.propTypes = {
     children: PropTypes.node.isRequired,
+    isLoadingHtml: PropTypes.bool,
     lg: PropTypes.bool,
     md: PropTypes.bool,
     sm: PropTypes.bool,
@@ -29,6 +44,7 @@ Hidden.propTypes = {
     xxl: PropTypes.bool
 };
 Hidden.defaultProps = {
+    isLoadingHtml: false,
     lg: false,
     md: false,
     sm: false,

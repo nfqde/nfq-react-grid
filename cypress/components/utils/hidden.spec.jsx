@@ -36,4 +36,32 @@ describe('Test Hidden component', () => {
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
         cy.getCy('testDiv').should('exist');
     });
+
+    it('Renders only on defined screen sizes but with display prop', () => {
+        mount(
+            <TestWrapper theme={containerSizes}>
+                <Hidden isLoadingHtml lg sm xs>
+                    <div data-cy="testDiv" />
+                </Hidden>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+    });
 });

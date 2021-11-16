@@ -44,4 +44,32 @@ describe('Test Visible component', () => {
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
         cy.getCy('testDiv').should('not.exist');
     });
+
+    it('Renders only on defined screen sizes but with display prop', () => {
+        mount(
+            <TestWrapper theme={containerSizes}>
+                <Visible isLoadingHtml lg sm xs>
+                    <div data-cy="testDiv" />
+                </Visible>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+    });
 });
