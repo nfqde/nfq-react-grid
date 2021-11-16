@@ -114,10 +114,10 @@ export const calcOffset = (theme, offset) => {
             let offsetCss = null;
 
             if (typeof offset[String(screenSize)] === 'undefined' && lastScreen) {
-                offsetCss = `margin-left: ${offset[String(lastScreen)] > 0 ? (offset[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE : 0}%;`;
+                offsetCss = `margin-left: ${(offset[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;`;
             } else {
                 lastScreen = screenSize;
-                offsetCss = `margin-left: ${offset[String(screenSize)] > 0 ? (offset[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE : 0}%;`;
+                offsetCss = `margin-left: ${(offset[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;`;
             }
 
             return media(theme, screenSize)`
