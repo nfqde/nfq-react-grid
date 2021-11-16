@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/nfqde/nfq-react-grid/compare/v1.7.0...v1.7.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* **Hidden:** Display none but without extra element. ([#30](https://github.com/nfqde/nfq-react-grid/issues/30)) ([64809ff](https://github.com/nfqde/nfq-react-grid/commit/64809ff28eb4f9ef34f333a6809144b93b1c2da2))
+
 ## [1.7.0](https://github.com/nfqde/nfq-react-grid/compare/v1.5.0...v1.7.0) (2021-11-16)
 
 
