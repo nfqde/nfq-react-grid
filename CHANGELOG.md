@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/nfqde/nfq-react-grid/compare/v1.7.2...v1.8.0) (2021-11-16)
+
+
+### Features
+
+* **mediaBetween:** Introduce public media between ([#32](https://github.com/nfqde/nfq-react-grid/issues/32)) ([bf74269](https://github.com/nfqde/nfq-react-grid/commit/bf74269055caf09e819038f87bf2e32c83ded064))
+
 ### [1.7.2](https://github.com/nfqde/nfq-react-grid/compare/v1.7.1...v1.7.2) (2021-11-16)
 
 
