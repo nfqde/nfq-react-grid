@@ -3,6 +3,7 @@ import React from 'react';
 
 import {mount} from '@cypress/react';
 
+import Col from '../../../src/grid/Col';
 import Hidden from '../../../src/utils/Hidden';
 import {containerSizes} from '../../fixtures/themes';
 import {Viewports} from '../../fixtures/viewports';
@@ -41,27 +42,27 @@ describe('Test Hidden component', () => {
         mount(
             <TestWrapper theme={containerSizes}>
                 <Hidden isLoadingHtml lg sm xs>
-                    <div data-cy="testDiv" />
+                    <Col data-cy="testDiv" xs={2} />
                 </Hidden>
             </TestWrapper>
         );
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+        cy.getCy('testDiv').should('have.css', 'display', 'none');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+        cy.getCy('testDiv').should('have.css', 'display', 'none');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+        cy.getCy('testDiv').should('have.css', 'display', 'flex');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'none');
+        cy.getCy('testDiv').should('have.css', 'display', 'none');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+        cy.getCy('testDiv').should('have.css', 'display', 'flex');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('testDiv').parent().should('have.css', 'display', 'block');
+        cy.getCy('testDiv').should('have.css', 'display', 'flex');
     });
 });

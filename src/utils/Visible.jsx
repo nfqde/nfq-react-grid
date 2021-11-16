@@ -4,7 +4,7 @@ import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {media} from './lib';
+import {media, mediaBetween} from './lib';
 import {ScreenClassContext} from './ScreenClassProvider';
 
 /**
@@ -26,15 +26,27 @@ const Visible = ({children, isLoadingHtml, ...screenClasses}) => {
 
 const allClasses = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-const VisibleWrap = styled.div`
-    ${({classes, theme}) => allClasses.map(size => media(theme, size)`
-        ${classes[String(size)] ? 'display: block' : 'display: none'};
-    `)}
+const VisibleWrap = styled(
+    ({children, ...props}) => React.cloneElement(children, props)
+)`
+    ${({classes, theme}) => allClasses.map((size, index) => {
+        if (!classes[String(size)]) {
+            return (allClasses.length - 1 === index)
+                ? media(theme, size)`
+                    display: none;
+                `
+                : mediaBetween(theme, size, allClasses[index + 1])`
+                    display: none;
+                `;
+        }
+
+        return null;
+    })}
 `;
 
 Visible.displayName = 'Visible';
 Visible.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.element.isRequired,
     isLoadingHtml: PropTypes.bool,
     lg: PropTypes.bool,
     md: PropTypes.bool,

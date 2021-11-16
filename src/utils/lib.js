@@ -25,6 +25,27 @@ export const media = (theme, screenSize) => {
 };
 
 /**
+ * Creates an media query literal.
+ *
+ * @param {Object} theme         The styled-components theme.
+ * @param {String} screenSizeMin The minScreenSize for this media query.
+ * @param {String} screenSizeMax The maxScreenSize for this media query.
+ *
+ * @returns {Function} An template literal function.
+ */
+export const mediaBetween = (theme, screenSizeMin, screenSizeMax) => {
+    if (typeof theme === 'object' && CONF_KEY in theme) {
+        return (...args) => css`
+            @media ${generateMediaStringBetween(theme, screenSizeMin, screenSizeMax)} {
+                ${css(...args)}
+            }
+        `;
+    }
+
+    throw new Error('Theme must be an grid config theme.');
+};
+
+/**
  * Gets the config merged with the defaults.
  *
  * @param {Object} theme The theme provider theme.
@@ -104,6 +125,21 @@ const generateMediaString = (theme, screenSize) => {
     const conf = getConfig(theme);
 
     return `${conf.mediaQuery}${conf.breakpoints[String(screenSize)] >= 0 ? ` and (min-width: ${conf.breakpoints[String(screenSize)]}px)` : ''}`;
+};
+
+/**
+ * generates the media query string.
+ *
+ * @param {Object} theme         The styled-components theme.
+ * @param {String} screenSizeMin The minScreenSize for this media query.
+ * @param {String} screenSizeMax The maxScreenSize for this media query.
+ *
+ * @returns {String} The media query head.
+ */
+const generateMediaStringBetween = (theme, screenSizeMin, screenSizeMax) => {
+    const conf = getConfig(theme);
+
+    return `${conf.mediaQuery} and (min-width: ${conf.breakpoints[String(screenSizeMin)]}px) and (max-width: ${conf.breakpoints[String(screenSizeMax)] - 1}px)`;
 };
 
 /**
