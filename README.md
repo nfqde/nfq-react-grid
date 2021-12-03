@@ -229,76 +229,85 @@ import {
 
 ### Container:
 
-| Prop      | type             | required | Description                                                                                           |
-| --------- | ---------------- | :------: | ----------------------------------------------------------------------------------------------------- |
-| className | String           |          | Classname property to overwrite styles with styled(Container)                                         |
-| fluid     | Boolean or Array |          | Makes the container fluid. (Should always be set if the container has an container as parent already) |
-| testId    | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"               |
+| Prop          | type             | required | Description                                                                                           |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------------------------------- |
+| as            | String           |          | Any html element identifier can be used to change the rendered html element. (usefull for sections)   |
+| className     | String           |          | Classname property to overwrite styles with styled(Container)                                         |
+| fluid         | Boolean or Array |          | Makes the container fluid. (Should always be set if the container has an container as parent already) |
+| testId        | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"               |
+| EventHandlers | React Events     |          | Can get any of the react on[Event] Handlers.                                                          |
 
 ### Row:
 
-| Prop      | type             | required | Description                                                                             |
-| --------- | ---------------- | :------: | --------------------------------------------------------------------------------------- |
-| align     | String or Object |          | Content alignment (like flex alignment). Defines the vertical alignment                 |
-| className | String           |          | Classname property to overwrite styles with styled(Container)                           |
-| direction | String or Object |          | Sets the direction the column children should render.                                   |
-| justify   | String or Object |          | Content alignment (like flex alignment). Defines the horizontal alignment               |
-| order     | Number or Object |          | Sets the order this row should be in its parent container                               |
-| noWrap    | Boolean or Array |          | Defines if the row will wrap or not                                                     |
-| reverse   | Boolean or Array |          | Reverses the direction of the row                                                       |
-| testId    | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId" |
+| Prop          | type             | required | Description                                                                                                     |
+| ------------- | ---------------- | :------: | --------------------------------------------------------------------------------------------------------------- |
+| as            | String           |          | Any html element identifier can be used to change the rendered html element. (usefull for head or nav elements) |
+| align         | String or Object |          | Content alignment (like flex alignment). Defines the vertical alignment                                         |
+| className     | String           |          | Classname property to overwrite styles with styled(Container)                                                   |
+| direction     | String or Object |          | Sets the direction the column children should render.                                                           |
+| justify       | String or Object |          | Content alignment (like flex alignment). Defines the horizontal alignment                                       |
+| order         | Number or Object |          | Sets the order this row should be in its parent container                                                       |
+| noWrap        | Boolean or Array |          | Defines if the row will wrap or not                                                                             |
+| reverse       | Boolean or Array |          | Reverses the direction of the row                                                                               |
+| testId        | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                         |
+| EventHandlers | React Events     |          | Can get any of the react on[Event] Handlers.                                                                    |
 
 ### Col:
 
-| Prop      | type             | required | Description                                                                                        |
-| --------- | ---------------- | :------: | -------------------------------------------------------------------------------------------------- |
-| xs        | Number or String |          | Sets the number of columns the col gets in width on screens xs. (Can also be auto)                 |
-| sm        | Number or String |          | Sets the number of columns the col gets in width on screens sm. (Can also be auto)                 |
-| md        | Number or String |          | Sets the number of columns the col gets in width on screens md. (Can also be auto)                 |
-| lg        | Number or String |          | Sets the number of columns the col gets in width on screens lg. (Can also be auto)                 |
-| xl        | Number or String |          | Sets the number of columns the col gets in width on screens xl. (Can also be auto)                 |
-| xxl       | Number or String |          | Sets the number of columns the col gets in width on screens xxl. (Can also be auto)                |
-| align     | String or Object |          | Content alignment (like flex alignment). Its direction is dependent on the direction prop.         |
-| className | String           |          | Classname property to overwrite styles with styled(Container)                                      |
-| direction | String or Object |          | Sets the direction the column children should render.                                              |
-| justify   | String or Object |          | Content justification (like flex justification). Its direction is dependent on the direction prop. |
-| noGutter  | Boolean          |          | Removes the gutter gap in the grid.                                                                |
-| offset    | Number or Object |          | Sets the number of columns this column should offset to the left                                   |
-| order     | Number or Object |          | Sets the order this column should be in                                                            |
-| reverse   | Boolean or Array |          | Reverses the direction of the column                                                               |
-| testId    | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"            |
-
+| Prop              | type             | required | Description                                                                                                     |
+| ----------------- | ---------------- | :------: | --------------------------------------------------------------------------------------------------------------- |
+| xs                | Number or String |          | Sets the number of columns the col gets in width on screens xs. (Can also be auto)                              |
+| sm                | Number or String |          | Sets the number of columns the col gets in width on screens sm. (Can also be auto)                              |
+| md                | Number or String |          | Sets the number of columns the col gets in width on screens md. (Can also be auto)                              |
+| lg                | Number or String |          | Sets the number of columns the col gets in width on screens lg. (Can also be auto)                              |
+| xl                | Number or String |          | Sets the number of columns the col gets in width on screens xl. (Can also be auto)                              |
+| xxl               | Number or String |          | Sets the number of columns the col gets in width on screens xxl. (Can also be auto)                             |
+| align             | String or Object |          | Content alignment (like flex alignment). Its direction is dependent on the direction prop.                      |
+| className         | String           |          | Classname property to overwrite styles with styled(Container)                                                   |
+| direction         | String or Object |          | Sets the direction the column children should render.                                                           |
+| extraPadding      | String or Object |          | Sets an extra padding on both sides of the column. Precedes always over extraPaddingLeft and extraPaddingRight. |
+| extraPaddingLeft  | String or Object |          | Sets an extra padding only on the left side of the column. Gets overwritten by extraPadding.                    |
+| extraPaddingRight | String or Object |          | Sets an extra padding only on the right side of the column. Gets overwritten by extraPadding.                   |
+| justify           | String or Object |          | Content justification (like flex justification). Its direction is dependent on the direction prop.              |
+| noGutter          | Boolean          |          | Removes the gutter gap in the grid.                                                                             |
+| offset            | Number or Object |          | Sets the number of columns this column should offset to the left (Negative offsets will pull it to the right)   |
+| order             | Number or Object |          | Sets the order this column should be in                                                                         |
+| reverse           | Boolean or Array |          | Reverses the direction of the column                                                                            |
+| testId            | String           |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                         |
+| EventHandlers     | React Events     |          | Can get any of the react on[Event] Handlers.                                                                    |
 ### Spacer:
 
-| Prop   | type             | required | Description                                                                                                                           |
-| ------ | ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------- |
-| inline | Boolean or Array |          | Tells the spacer if it should behave like an inline element (Good for in text spacings)                                               |
-| maxX   | Number or Objext |          | If used in an flex container this defines the max horizontal spacing size. Wants an multiplication factor thats used with baseSpacing |
-| maxY   | Number or Object |          | If used in an flex container this defines the max vertical spacing size. Wants an multiplication factor thats used with baseSpacing   |
-| x      | Number or Object |          | Defines the horizontal spacing size. (In an flexbox it defines the base) Wants an multiplication factor thats used with baseSpacing   |
-| y      | Number or Object |          | Defines the horizontal spacing size. (In an flexbox it defines the base) Wants an multiplication factor thats used with baseSpacing   |
+| Prop     | type             | required | Description                                                                                                                           |
+| -------- | ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------- |
+| isInline | Boolean or Array |          | Tells the spacer if it should behave like an inline element (Good for in text spacings)                                               |
+| maxX     | Number or Objext |          | If used in an flex container this defines the max horizontal spacing size. Wants an multiplication factor thats used with baseSpacing |
+| maxY     | Number or Object |          | If used in an flex container this defines the max vertical spacing size. Wants an multiplication factor thats used with baseSpacing   |
+| x        | Number or Object |          | Defines the horizontal spacing size. (In an flexbox it defines the base) Wants an multiplication factor thats used with baseSpacing   |
+| y        | Number or Object |          | Defines the horizontal spacing size. (In an flexbox it defines the base) Wants an multiplication factor thats used with baseSpacing   |
 
 ### Hidden:
 
-| Prop      | type    | required | Description                                             |
-| --------- | ------- | :------: | ------------------------------------------------------- |
-| xs        | Boolean |          | Determines if the children are hidden on xs screen size |
-| sm        | Boolean |          | Determines if the children are hidden on xs screen size |
-| md        | Boolean |          | Determines if the children are hidden on xs screen size |
-| lg        | Boolean |          | Determines if the children are hidden on xs screen size |
-| xl        | Boolean |          | Determines if the children are hidden on xs screen size |
-| xxl       | Boolean |          | Determines if the children are hidden on xs screen size |
+| Prop          | type    | required | Description                                                                  |
+| ------------- | ------- | :------: | ---------------------------------------------------------------------------- |
+| xs            | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| sm            | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| md            | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| lg            | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| xl            | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| xxl           | Boolean |          | Determines if the children are hidden on xs screen size                      |
+| isLoadingHtml | Boolean |          | Tells the component to render the html but sets it to display none if hidden |
 
 ### Visible:
 
-| Prop      | type    | required | Description                                               |
-| --------- | ------- | :------: | --------------------------------------------------------- |
-| xs        | Boolean |          | Determines if the children are rendered on xs screen size |
-| sm        | Boolean |          | Determines if the children are rendered on xs screen size |
-| md        | Boolean |          | Determines if the children are rendered on xs screen size |
-| lg        | Boolean |          | Determines if the children are rendered on xs screen size |
-| xl        | Boolean |          | Determines if the children are rendered on xs screen size |
-| xxl       | Boolean |          | Determines if the children are rendered on xs screen size |
+| Prop          | type    | required | Description                                                                  |
+| ------------- | ------- | :------: | ---------------------------------------------------------------------------- |
+| xs            | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| sm            | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| md            | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| lg            | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| xl            | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| xxl           | Boolean |          | Determines if the children are rendered on xs screen size                    |
+| isLoadingHtml | Boolean |          | Tells the component to render the html but sets it to display none if hidden |
 
 ### ScreenClassRender:
 
@@ -325,6 +334,16 @@ const DemoComponent = styled.div`
 `;
 ```
     The media utility function gives an template literal function back that defines an mediaquery for the provided screen size and the provided css.
+
+### mediaBetween:
+```javascript
+const DemoComponent = styled.div`
+    ${({theme}) => mediaBetween(theme, 'xs', 'md)`
+        padding-top: 2rem;
+    `}
+`;
+```
+    The mediaBetween utility function gives an template literal function back that defines an mediaquery betweem the provided screen sizes and the provided css.
 
 ### ScreenClassContext:
 ```javascript

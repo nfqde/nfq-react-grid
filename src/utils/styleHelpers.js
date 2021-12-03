@@ -1,7 +1,94 @@
+/* eslint-disable max-lines */
 import {DIMENSIONS} from '../defaultConfig';
 
-import {PERCENTAGE} from './constants';
+import {HALF, PERCENTAGE} from './constants';
 import {getConfig, media} from './lib';
+
+/**
+ * Caclulates the Padding left css.
+ *
+ * @param {Object}        theme             The styled-components theme.
+ * @param {String|Object} extraPadding      The offset for this column.
+ * @param {String|Object} extraPaddingLeft  The offset for this column.
+ *
+ * @returns {String} The align css string.
+ */
+export const calcPaddingLeft = (theme, extraPadding, extraPaddingLeft) => {
+    if (extraPadding) {
+        // eslint-disable-next-line no-param-reassign
+        extraPaddingLeft = extraPadding;
+    }
+
+    let lastScreen;
+    const mediaQuery = DIMENSIONS.map(screenSize => {
+        let paddingLeftCss = null;
+
+        if (
+            extraPaddingLeft
+            && typeof extraPaddingLeft === 'object'
+            && typeof extraPaddingLeft[String(screenSize)] === 'undefined'
+            && lastScreen
+        ) {
+            paddingLeftCss = `padding-left: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingLeft[String(lastScreen)]});`;
+        } else if (extraPaddingLeft && typeof extraPaddingLeft === 'object') {
+            lastScreen = screenSize;
+            paddingLeftCss = `padding-left: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingLeft[String(screenSize)]});`;
+        } else if (extraPaddingLeft) {
+            paddingLeftCss = `padding-left: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingLeft});`;
+        } else {
+            paddingLeftCss = `padding-left: ${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px;`;
+        }
+
+        return media(theme, screenSize)`
+            ${paddingLeftCss}
+        `;
+    });
+
+    return mediaQuery;
+};
+
+/**
+ * Caclulates the Offset css.
+ *
+ * @param {Object}        theme             The styled-components theme.
+ * @param {String|Object} extraPadding      The offset for this column.
+ * @param {String|Object} extraPaddingRight  The offset for this column.
+ *
+ * @returns {String} The align css string.
+ */
+export const calcPaddingRight = (theme, extraPadding, extraPaddingRight) => {
+    if (extraPadding) {
+        // eslint-disable-next-line no-param-reassign
+        extraPaddingRight = extraPadding;
+    }
+
+    let lastScreen;
+    const mediaQuery = DIMENSIONS.map(screenSize => {
+        let paddingRightCss = null;
+
+        if (
+            extraPaddingRight
+            && typeof extraPaddingRight === 'object'
+            && typeof extraPaddingRight[String(screenSize)] === 'undefined'
+            && lastScreen
+        ) {
+            paddingRightCss = `padding-right: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingRight[String(lastScreen)]});`;
+        } else if (extraPaddingRight && typeof extraPaddingRight === 'object') {
+            lastScreen = screenSize;
+            paddingRightCss = `padding-right: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingRight[String(screenSize)]});`;
+        } else if (extraPaddingRight) {
+            paddingRightCss = `padding-right: calc(${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px + ${extraPaddingRight});`;
+        } else {
+            paddingRightCss = `padding-right: ${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px;`;
+        }
+
+        return media(theme, screenSize)`
+            ${paddingRightCss}
+        `;
+    });
+
+    return mediaQuery;
+};
 
 /**
  * Caclulates the Align css.

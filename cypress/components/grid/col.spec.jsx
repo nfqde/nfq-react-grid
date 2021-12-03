@@ -152,6 +152,304 @@ describe('Test Col component', () => {
         cy.getCy('ColId').should('have.css', 'padding-right', '0px');
     });
 
+    it('Defines paddings + extraPadding', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col extraPadding="20px" testId="ColId">&nbsp;</Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 20}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 20}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 20}px`);
+    });
+
+    it('Defines paddings + extraPadding in different screensizes', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col
+                            extraPadding={{
+                                lg: '40px',
+                                xs: '20px'
+                            }}
+                            testId="ColId"
+                        >
+                            &nbsp;
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+    });
+
+    it('Defines paddings + extraPadding in different screensizes and overwrites extraPaddingLeft and right', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col
+                            extraPadding={{
+                                lg: '40px',
+                                xs: '20px'
+                            }}
+                            extraPaddingLeft="10px"
+                            extraPaddingRight="15px"
+                            testId="ColId"
+                        >
+                            &nbsp;
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+    });
+
+    it('Defines paddings + extraPaddingLeft and extraPaddingRight', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col extraPaddingLeft="20px" extraPaddingRight="30px" testId="ColId">&nbsp;</Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 30}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 30}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 30}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 30}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 30}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 30}px`);
+    });
+
+    it('Defines paddings + extraPaddingLeft and extraPaddingRight in different screensizes', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col
+                            extraPaddingLeft={{
+                                lg: '40px',
+                                xs: '20px'
+                            }}
+                            extraPaddingRight={{
+                                lg: '50px',
+                                xs: '30px'
+                            }}
+                            testId="ColId"
+                        >
+                            &nbsp;
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 30}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 30}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 30}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 50}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 50}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 50}px`);
+    });
+
+    it('Defines paddings + extraPaddingLeft only', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col
+                            extraPaddingLeft={{
+                                lg: '40px',
+                                xs: '20px'
+                            }}
+                            testId="ColId"
+                        >
+                            &nbsp;
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.xs / 2}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.sm / 2}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 20}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.md / 2}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.lg / 2}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.xl / 2}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 40}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${defaultTheme.nfqgrid.gutterWidth.xxl / 2}px`);
+    });
+
+    it('Defines paddings + extraPaddingRight only', () => {
+        mount(
+            <TestWrapper theme={defaultTheme}>
+                <Container>
+                    <Row>
+                        <Col
+                            extraPaddingRight={{
+                                lg: '50px',
+                                xs: '30px'
+                            }}
+                            testId="ColId"
+                        >
+                            &nbsp;
+                        </Col>
+                    </Row>
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.xs / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xs / 2) + 30}px`);
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.sm / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.sm / 2) + 30}px`);
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.md / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.md / 2) + 30}px`);
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.lg / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.lg / 2) + 50}px`);
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.xl / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xl / 2) + 50}px`);
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ColId').should('have.css', 'padding-left', `${defaultTheme.nfqgrid.gutterWidth.xxl / 2}px`);
+        cy.getCy('ColId').should('have.css', 'padding-right', `${(defaultTheme.nfqgrid.gutterWidth.xxl / 2) + 50}px`);
+    });
+
     it('Calculates sizes for all screens', () => {
         mount(
             <TestWrapper theme={containerSizes}>

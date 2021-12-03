@@ -5,10 +5,17 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
-import {HALF} from '../utils/constants';
 import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
-import {calcAlign, calcDirection, calcJustify, calcOffset, calcSizes} from '../utils/styleHelpers';
+import {
+    calcAlign,
+    calcDirection,
+    calcJustify,
+    calcOffset,
+    calcPaddingLeft,
+    calcPaddingRight,
+    calcSizes
+} from '../utils/styleHelpers';
 
 /**
  * Col
@@ -23,6 +30,9 @@ const Col = forwardRef(({
     children,
     className,
     direction,
+    extraPadding,
+    extraPaddingLeft,
+    extraPaddingRight,
     justify,
     lg,
     md,
@@ -47,6 +57,9 @@ const Col = forwardRef(({
             className={classNames.join(' ')}
             data-cy={testId}
             direction={direction}
+            extraPadding={extraPadding}
+            extraPaddingLeft={extraPaddingLeft}
+            extraPaddingRight={extraPaddingRight}
             justify={justify}
             lg={lg}
             md={md}
@@ -73,6 +86,9 @@ Col.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     direction: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    extraPadding: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    extraPaddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    extraPaddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     justify: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     md: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -92,6 +108,9 @@ Col.defaultProps = {
     children: null,
     className: null,
     direction: 'column',
+    extraPadding: null,
+    extraPaddingLeft: null,
+    extraPaddingRight: null,
     justify: null,
     lg: null,
     md: null,
@@ -115,11 +134,9 @@ const ColElement = styled.div`
     flex-direction: column;
     max-width: 100%;
 
-    ${({noGutter, theme}) => !noGutter && css`
-        ${DIMENSIONS.map(screenSize => typeof getConfig(theme).breakpoints[String(screenSize)] === 'number' && media(theme, screenSize)`
-            padding-right: ${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px;
-            padding-left: ${getConfig(theme).gutterWidth[String(screenSize)] / HALF}px;
-        `)}
+    ${({extraPadding, extraPaddingLeft, extraPaddingRight, noGutter, theme}) => !noGutter && css`
+        ${calcPaddingLeft(theme, extraPadding, extraPaddingLeft)}
+        ${calcPaddingRight(theme, extraPadding, extraPaddingRight)}
     `}
 
     ${({theme, ...sizes}) => css`

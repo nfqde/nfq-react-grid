@@ -240,7 +240,7 @@ describe('Test Spacer component', () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} inline />Spacing</div>
+                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} isInline />Spacing</div>
                         </Col>
                     </Row>
                 </Container>
@@ -256,7 +256,7 @@ describe('Test Spacer component', () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} inline />Spacing</div>
+                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} isInline />Spacing</div>
                         </Col>
                     </Row>
                 </Container>
@@ -275,7 +275,7 @@ describe('Test Spacer component', () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} inline />Spacing</div>
+                            <div>Text<Spacer maxX={8} testId="SpacerId" x={8} isInline />Spacing</div>
                         </Col>
                     </Row>
                 </Container>
