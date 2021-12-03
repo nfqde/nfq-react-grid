@@ -14,7 +14,7 @@ import {calcFlex, calcHeight, calcInline, calcMaxHeight, calcMaxWidth, calcWidth
  *
  * @returns {JSX} Component.
  */
-const Spacer = ({inline, maxX, maxY, testId, x, y}) => {
+const Spacer = ({isInline, maxX, maxY, testId, x, y}) => {
     const spacer = useRef(null);
     const [direction, handleFlexDirection] = useReducer(oldDirection => {
         // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
@@ -48,7 +48,7 @@ const Spacer = ({inline, maxX, maxY, testId, x, y}) => {
             className={className}
             data-cy={testId}
             direction={direction}
-            inline={inline}
+            isInline={isInline}
             maxX={maxX}
             maxY={maxY}
             x={x}
@@ -59,7 +59,7 @@ const Spacer = ({inline, maxX, maxY, testId, x, y}) => {
 
 Spacer.displayName = 'Spacer';
 Spacer.propTypes = {
-    inline: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    isInline: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
     maxX: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     maxY: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     /** TestID for cypress testing  */
@@ -68,7 +68,7 @@ Spacer.propTypes = {
     y: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
 };
 Spacer.defaultProps = {
-    inline: false,
+    isInline: false,
     maxX: null,
     maxY: null,
     testId: null,
@@ -81,8 +81,8 @@ export default Spacer;
 const SpacerElement = styled.span`
     flex: 1 1 0px;
 
-    ${({inline, theme}) => css`
-        ${calcInline(theme, inline)}
+    ${({isInline, theme}) => css`
+        ${calcInline(theme, isInline)}
     `}
 
     ${({direction, theme, x, y}) => css`

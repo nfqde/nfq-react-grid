@@ -172,6 +172,21 @@ interface IWidthOptions {
     xxl?: number;
 }
 
+interface IPaddingOptions {
+    /** Extra padding width for xs screens with css unit */
+    xs?: string;
+    /** Extra padding width for sm screens with css unit */
+    sm?: string;
+    /** Extra padding width for md screens with css unit */
+    md?: string;
+    /** Extra padding width for lg screens with css unit */
+    lg?: string;
+    /** Extra padding width for xl screens with css unit */
+    xl?: string;
+    /** Extra padding width for xxl screens with css unit */
+    xxl?: string;
+}
+
 interface IDefaultProps {
     as?: string,
     /** Classname property to overwrite styles with styled() */
@@ -237,6 +252,12 @@ interface IColProps extends IDefaultProps {
     xxl?: number | tAuto;
     /** Sets the direction the column children should render ('row' or 'column') */
     direction?: tFlexDirection | IDirectionOptions;
+    /** Sets the extra padding added to both sides of the column */
+    extraPadding?: string | IPaddingOptions;
+    /** Sets the extra padding added to the left side of the column */
+    extraPaddingLeft?: string | IPaddingOptions;
+    /** Sets the extra padding added to the right side of the column */
+    extraPaddingRight?: string | IPaddingOptions;
     /** Sets the number of columns this column should offset to the left */
     offset?: number | IOffsetOptions;
     /** Sets the order this column should be in */
@@ -271,6 +292,8 @@ interface IHiddenProps {
     xl?: boolean;
     /** Indicates that past content will only be hidden on the screen xxl */
     xxl?: boolean;
+    /** Tells the component to render the html even if hidden */
+    isLoadingHtml?: boolean;
 }
 
 interface IVisibleProps {
@@ -286,6 +309,8 @@ interface IVisibleProps {
     xl?: boolean;
     /** Indicates that past content will only be visible on the screen xxl */
     xxl?: boolean;
+    /** Tells the component to render the html even if hidden */
+    isLoadingHtml?: boolean;
 }
 
 interface ISpacerProps {
