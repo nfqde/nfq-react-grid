@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/nfqde/nfq-react-grid/compare/v1.8.0...v2.0.0) (2021-12-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ExtraPadding:** Changed spacer inline prop to isInline according to eslint rules.
+
+### Features
+
+* **ExtraPadding:** Added possibility to add extra padding ([#33](https://github.com/nfqde/nfq-react-grid/issues/33)) ([fe39363](https://github.com/nfqde/nfq-react-grid/commit/fe39363eabc489db2e5bf4964d9f5cd44a02e582))
+
 ## [1.8.0](https://github.com/nfqde/nfq-react-grid/compare/v1.7.2...v1.8.0) (2021-11-16)
 
 
