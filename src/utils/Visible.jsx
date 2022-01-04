@@ -33,10 +33,10 @@ const VisibleWrap = styled(
         if (!classes[String(size)]) {
             return (allClasses.length - 1 === index)
                 ? media(theme, size)`
-                    display: none;
+                    display: none!important;
                 `
                 : mediaBetween(theme, size, allClasses[index + 1])`
-                    display: none;
+                    display: none!important;
                 `;
         }
 
