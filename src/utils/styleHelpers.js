@@ -238,7 +238,7 @@ export const calcSizes = (theme, sizes) => {
         let sizesCss = null;
 
         if (sizes[String(screenSize)] === null && lastScreen) {
-            if (sizes[String(screenSize)] === 'auto') {
+            if (sizes[String(lastScreen)] === 'auto') {
                 sizesCss = `
                     flex: 1 1 auto;
                     max-width: 100%;
