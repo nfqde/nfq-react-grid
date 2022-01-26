@@ -202,9 +202,15 @@ export const calcOffset = (theme, offset) => {
 
             if (typeof offset[String(screenSize)] === 'undefined' && lastScreen) {
                 offsetCss = `margin-left: ${(offset[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;`;
-            } else {
+            // eslint-disable-next-line no-negated-condition
+            } else if (typeof offset[String(screenSize)] !== 'undefined') {
                 lastScreen = screenSize;
                 offsetCss = `margin-left: ${(offset[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;`;
+            } else {
+                // eslint-disable-next-line no-lonely-if
+                if (process.env.NODE_ENV !== 'production') {
+                    console.warn(`This is an mobile first grid system. It seems as if you did forget to specify ${screenSize} for your offset in your Col`);
+                }
             }
 
             return media(theme, screenSize)`
@@ -232,17 +238,31 @@ export const calcSizes = (theme, sizes) => {
         let sizesCss = null;
 
         if (sizes[String(screenSize)] === null && lastScreen) {
-            sizesCss = `
-                flex: 1 1 ${(sizes[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
-                max-width: ${(sizes[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
-            `;
+            if (sizes[String(screenSize)] === 'auto') {
+                sizesCss = `
+                    flex: 1 1 auto;
+                    max-width: 100%;
+                `;
+            } else {
+                sizesCss = `
+                    flex: 1 1 ${(sizes[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
+                    max-width: ${(sizes[String(lastScreen)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
+                `;
+            }
         // eslint-disable-next-line no-negated-condition
         } else if (sizes[String(screenSize)] !== null) {
             lastScreen = screenSize;
-            sizesCss = `
-                flex: 1 1 ${(sizes[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
-                max-width: ${(sizes[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
-            `;
+            if (sizes[String(screenSize)] === 'auto') {
+                sizesCss = `
+                    flex: 1 1 auto;
+                    max-width: 100%;
+                `;
+            } else {
+                sizesCss = `
+                    flex: 1 1 ${(sizes[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
+                    max-width: ${(sizes[String(screenSize)] / getConfig(theme).columns[String(screenSize)]) * PERCENTAGE}%;
+                `;
+            }
         } else {
             sizesCss = null;
         }
