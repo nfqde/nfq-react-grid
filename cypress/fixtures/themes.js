@@ -1,6 +1,6 @@
 export const defaultTheme = {
     nfqgrid: {
-        baseSpacing: 5,
+        baseSpacing: 0.5,
         breakpoints: {
             lg: 992,
             md: 769,
@@ -78,7 +78,7 @@ export const containerSizes = {
 };
 
 export const mergedTheme = {
-    baseSpacing: 5,
+    baseSpacing: 0.5,
     breakpoints: {
         lg: 992,
         md: 769,
