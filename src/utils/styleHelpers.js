@@ -295,11 +295,11 @@ export const calcFlex = (theme, direction, x, y) => {
 
             if (typeof flexVal[String(screenSize)] !== 'undefined') {
                 lastScreen = screenSize;
-                flexCss = `flex: 1 1 ${flexVal[String(screenSize)] * getConfig(theme).baseSpacing}px;`;
+                flexCss = `flex: 1 1 ${flexVal[String(screenSize)] * getConfig(theme).baseSpacing}rem;`;
             } else if (lastScreen) {
-                flexCss = `flex: 1 1 ${flexVal[String(lastScreen)] * getConfig(theme).baseSpacing}px;`;
+                flexCss = `flex: 1 1 ${flexVal[String(lastScreen)] * getConfig(theme).baseSpacing}rem;`;
             } else {
-                flexCss = 'flex: 1 1 0px;';
+                flexCss = 'flex: 1 1 0rem;';
             }
 
             return media(theme, screenSize)`
@@ -308,7 +308,7 @@ export const calcFlex = (theme, direction, x, y) => {
         });
     }
 
-    return `flex: 1 1 ${flexVal === null ? 0 : flexVal * getConfig(theme).baseSpacing}px;`;
+    return `flex: 1 1 ${flexVal === null ? 0 : flexVal * getConfig(theme).baseSpacing}rem;`;
 };
 
 /**
@@ -326,8 +326,8 @@ export const calcHeight = (theme, y) => {
 
             if (typeof y[String(screenSize)] !== 'undefined') {
                 heightCss = `
-                    height: ${y[String(screenSize)] * getConfig(theme).baseSpacing}px;
-                    min-height: ${y[String(screenSize)] * getConfig(theme).baseSpacing}px;
+                    height: ${y[String(screenSize)] * getConfig(theme).baseSpacing}rem;
+                    min-height: ${y[String(screenSize)] * getConfig(theme).baseSpacing}rem;
                 `;
             }
 
@@ -338,8 +338,8 @@ export const calcHeight = (theme, y) => {
     }
 
     return `
-        height: ${y * getConfig(theme).baseSpacing}px;
-        min-height: ${y * getConfig(theme).baseSpacing}px;
+        height: ${y * getConfig(theme).baseSpacing}rem;
+        min-height: ${y * getConfig(theme).baseSpacing}rem;
     `;
 };
 
@@ -385,7 +385,7 @@ export const calcMaxHeight = (theme, maxY) => {
             let heightCss = null;
 
             if (typeof maxY[String(screenSize)] !== 'undefined') {
-                heightCss = `max-height: ${maxY[String(screenSize)] * getConfig(theme).baseSpacing}px;`;
+                heightCss = `max-height: ${maxY[String(screenSize)] * getConfig(theme).baseSpacing}rem;`;
             }
 
             return media(theme, screenSize)`
@@ -394,7 +394,7 @@ export const calcMaxHeight = (theme, maxY) => {
         });
     }
 
-    return `max-height: ${maxY * getConfig(theme).baseSpacing}px;`;
+    return `max-height: ${maxY * getConfig(theme).baseSpacing}rem;`;
 };
 
 /**
@@ -411,7 +411,7 @@ export const calcMaxWidth = (theme, maxX) => {
             let widthCss = null;
 
             if (typeof maxX[String(screenSize)] !== 'undefined') {
-                widthCss = `max-width: ${maxX[String(screenSize)] * getConfig(theme).baseSpacing}px;`;
+                widthCss = `max-width: ${maxX[String(screenSize)] * getConfig(theme).baseSpacing}rem;`;
             }
 
             return media(theme, screenSize)`
@@ -420,7 +420,7 @@ export const calcMaxWidth = (theme, maxX) => {
         });
     }
 
-    return `max-width: ${maxX * getConfig(theme).baseSpacing}px;`;
+    return `max-width: ${maxX * getConfig(theme).baseSpacing}rem;`;
 };
 
 /**
@@ -438,8 +438,8 @@ export const calcWidth = (theme, x) => {
 
             if (typeof x[String(screenSize)] !== 'undefined') {
                 widthCss = `
-                    min-width: ${x[String(screenSize)] * getConfig(theme).baseSpacing}px;
-                    width: ${x[String(screenSize)] * getConfig(theme).baseSpacing}px;
+                    min-width: ${x[String(screenSize)] * getConfig(theme).baseSpacing}rem;
+                    width: ${x[String(screenSize)] * getConfig(theme).baseSpacing}rem;
                 `;
             }
 
@@ -450,8 +450,8 @@ export const calcWidth = (theme, x) => {
     }
 
     return `
-        min-width: ${x * getConfig(theme).baseSpacing}px;
-        width: ${x * getConfig(theme).baseSpacing}px;
+        min-width: ${x * getConfig(theme).baseSpacing}rem;
+        width: ${x * getConfig(theme).baseSpacing}rem;
     `;
 };
 
