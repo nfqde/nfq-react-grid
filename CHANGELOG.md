@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/nfqde/nfq-react-grid/compare/v2.0.3...v2.1.0) (2022-01-31)
+
+
+### Features
+
+* **Spacer:** Spacer in rem and new default columns ([#37](https://github.com/nfqde/nfq-react-grid/issues/37)) ([4737ab6](https://github.com/nfqde/nfq-react-grid/commit/4737ab66a53c2cfc92c9a89f1869440bc5aafd58))
+
 ### [2.0.3](https://github.com/nfqde/nfq-react-grid/compare/v2.0.2...v2.0.3) (2022-01-26)
 
 
