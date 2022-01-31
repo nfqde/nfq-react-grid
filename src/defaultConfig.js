@@ -2,7 +2,7 @@ export const CONF_KEY = 'nfqgrid';
 
 export const DIMENSIONS = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 export const DEFAULT_CONF = {
-    baseSpacing: 5,
+    baseSpacing: 0.5,
     breakpoints: {
         lg: 992,
         md: 769,
@@ -13,10 +13,10 @@ export const DEFAULT_CONF = {
     },
     columns: {
         lg: 12,
-        md: 8,
-        sm: 8,
+        md: 12,
+        sm: 12,
         xl: 12,
-        xs: 4,
+        xs: 12,
         xxl: 12
     },
     container: {
