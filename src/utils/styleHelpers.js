@@ -238,9 +238,9 @@ export const calcSizes = (theme, sizes) => {
         let sizesCss = null;
 
         if (sizes[String(screenSize)] === null && lastScreen) {
-            if (sizes[String(lastScreen)] === 'auto') {
+            if (['auto', 'max-content', 'min-content'].includes(sizes[String(lastScreen)])) {
                 sizesCss = `
-                    flex: 1 1 auto;
+                    flex: 1 1 ${sizes[String(lastScreen)]};
                     max-width: 100%;
                 `;
             } else {
@@ -252,9 +252,9 @@ export const calcSizes = (theme, sizes) => {
         // eslint-disable-next-line no-negated-condition
         } else if (sizes[String(screenSize)] !== null) {
             lastScreen = screenSize;
-            if (sizes[String(screenSize)] === 'auto') {
+            if (['auto', 'max-content', 'min-content'].includes(sizes[String(screenSize)])) {
                 sizesCss = `
-                    flex: 1 1 auto;
+                    flex: 1 1 ${sizes[String(screenSize)]};
                     max-width: 100%;
                 `;
             } else {

@@ -256,12 +256,12 @@ import {
 
 | Prop              | type             | required | Description                                                                                                     |
 | ----------------- | ---------------- | :------: | --------------------------------------------------------------------------------------------------------------- |
-| xs                | Number or String |          | Sets the number of columns the col gets in width on screens xs. (Can also be auto)                              |
-| sm                | Number or String |          | Sets the number of columns the col gets in width on screens sm. (Can also be auto)                              |
-| md                | Number or String |          | Sets the number of columns the col gets in width on screens md. (Can also be auto)                              |
-| lg                | Number or String |          | Sets the number of columns the col gets in width on screens lg. (Can also be auto)                              |
-| xl                | Number or String |          | Sets the number of columns the col gets in width on screens xl. (Can also be auto)                              |
-| xxl               | Number or String |          | Sets the number of columns the col gets in width on screens xxl. (Can also be auto)                             |
+| xs                | Number or String |          | Sets the number of columns the col gets in width on screens xs. (Can also be auto, max-content or min-content)  |
+| sm                | Number or String |          | Sets the number of columns the col gets in width on screens sm. (Can also be auto, max-content or min-content)  |
+| md                | Number or String |          | Sets the number of columns the col gets in width on screens md. (Can also be auto, max-content or min-content)  |
+| lg                | Number or String |          | Sets the number of columns the col gets in width on screens lg. (Can also be auto, max-content or min-content)  |
+| xl                | Number or String |          | Sets the number of columns the col gets in width on screens xl. (Can also be auto, max-content or min-content)  |
+| xxl               | Number or String |          | Sets the number of columns the col gets in width on screens xxl. (Can also be auto, max-content or min-content) |
 | align             | String or Object |          | Content alignment (like flex alignment). Its direction is dependent on the direction prop.                      |
 | className         | String           |          | Classname property to overwrite styles with styled(Container)                                                   |
 | direction         | String or Object |          | Sets the direction the column children should render.                                                           |
