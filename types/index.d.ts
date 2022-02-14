@@ -7,6 +7,8 @@ import {
 
 /** Type constants */
 const AUTO = 'auto';
+const MAX_CONTENT = 'max-content';
+const MIN_CONTENT = 'min-content';
 const XS = 'xs';
 const SM = 'sm';
 const MD = 'md';
@@ -31,6 +33,7 @@ const FLEX_DIR_COL = 'column';
 
 /** Type definitions */
 type tAuto = typeof AUTO;
+type tStringSizes = typeof AUTO | typeof MAX_CONTENT | typeof MIN_CONTENT;
 type tBreakpoints = typeof XS | typeof SM | typeof MD | typeof LG | typeof XL | typeof XXL;
 type tAlign = typeof FLEX_START | typeof FLEX_END | typeof FLEX_CENTER | typeof FLEX_ALIGN_BASELINE | typeof FLEX_ALIGN_STRETCH | typeof FLEX_INHERIT | typeof FLEX_INITIAL | typeof FLEX_UNSET;
 type tJustify = typeof FLEX_START | typeof FLEX_END | typeof FLEX_CENTER | typeof FLEX_JUSTIFY_BETWEEN | typeof FLEX_JUSTIFY_AROUND | typeof FLEX_JUSTIFY_EVEN | typeof FLEX_INHERIT | typeof FLEX_INITIAL | typeof FLEX_UNSET;
@@ -239,17 +242,17 @@ interface IConfig {
 /** Property interfaces */
 interface IColProps extends IDefaultProps {
     /** Sets the number of columns the col gets in width on screens xs. (Can also be auto) */
-    xs?: number | tAuto;
+    xs?: number | tStringSizes;
     /** Sets the number of columns the col gets in width on screens sm. (Can also be auto) */
-    sm?: number | tAuto;
+    sm?: number | tStringSizes;
     /** Sets the number of columns the col gets in width on screens md. (Can also be auto) */
-    md?: number | tAuto;
+    md?: number | tStringSizes;
     /** Sets the number of columns the col gets in width on screens lg. (Can also be auto) */
-    lg?: number | tAuto;
+    lg?: number | tStringSizes;
     /** Sets the number of columns the col gets in width on screens xl. (Can also be auto) */
-    xl?: number | tAuto;
+    xl?: number | tStringSizes;
     /** Sets the number of columns the col gets in width on screens xxl. (Can also be auto) */
-    xxl?: number | tAuto;
+    xxl?: number | tStringSizes;
     /** Sets the direction the column children should render ('row' or 'column') */
     direction?: tFlexDirection | IDirectionOptions;
     /** Sets the extra padding added to both sides of the column */
