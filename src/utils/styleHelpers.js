@@ -241,7 +241,7 @@ export const calcSizes = (theme, sizes) => {
             if (['auto', 'max-content', 'min-content'].includes(sizes[String(lastScreen)])) {
                 sizesCss = `
                     flex: 1 1 ${sizes[String(lastScreen)]};
-                    max-width: 100%;
+                    max-width: ${sizes[String(lastScreen)] === 'auto' ? '100%' : sizes[String(lastScreen)]};
                 `;
             } else {
                 sizesCss = `
@@ -255,7 +255,7 @@ export const calcSizes = (theme, sizes) => {
             if (['auto', 'max-content', 'min-content'].includes(sizes[String(screenSize)])) {
                 sizesCss = `
                     flex: 1 1 ${sizes[String(screenSize)]};
-                    max-width: 100%;
+                    max-width: ${sizes[String(screenSize)] === 'auto' ? '100%' : sizes[String(screenSize)]};
                 `;
             } else {
                 sizesCss = `
