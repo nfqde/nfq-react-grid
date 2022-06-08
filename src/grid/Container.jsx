@@ -1,7 +1,6 @@
 /* eslint-disable react/boolean-prop-naming */
 import React, {forwardRef} from 'react';
 
-import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
@@ -9,11 +8,17 @@ import {useDebug} from '../utils/hooks';
 import {getConfig, media} from '../utils/lib';
 
 /**
- * Container
- *
- * @component
- * @augments {Component<Props, State>}
- * @extends {Component}
+ * @typedef {object} ContainerComponentProps
+ * @property {React.ReactNode}                    children    Component children.
+ * @property {React.ElementType}                  [as]        Component type.
+ * @property {string}                             [className] An styled components class name for inheritance.
+ * @property {boolean|Array<Screensizes>}         [fluid]     Row alignment.
+ * @property {string}                             [testId]    Cypress test id.
+ * @property {React.ForwardedRef<HTMLDivElement>} [ref]       Component ref.
+ */
+
+/**
+ * @type React.FC<ContainerComponentProps>
  */
 const Container = forwardRef(({as, children, className, fluid, testId, ...eventHandler}, ref) => {
     const classNames = [className, useDebug()];
@@ -34,15 +39,6 @@ const Container = forwardRef(({as, children, className, fluid, testId, ...eventH
 });
 
 Container.displayName = 'Container';
-Container.propTypes = {
-    children: PropTypes.node.isRequired,
-    as: PropTypes.string,
-    className: PropTypes.string,
-    fluid: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-    /** TestID for cypress testing  */
-    testId: PropTypes.string
-};
-
 Container.defaultProps = {
     as: null,
     className: null,
@@ -52,7 +48,16 @@ Container.defaultProps = {
 
 export default Container;
 
-const ContainerElement = styled.div`
+/**
+ * @typedef {object} ContainerProps
+ * @property {React.ElementType}          [as]    Component type.
+ * @property {boolean|Array<Screensizes>} [fluid] If the container should be fluid or not.
+ */
+
+/**
+ * @type {React.FC<StyledComponentProps<'div', ContainerProps>>}
+ */
+const ContainerElement = /** @type {StyledComponentFunction<'div', ContainerProps>} */ (styled.div)`
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;

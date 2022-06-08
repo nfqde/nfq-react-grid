@@ -1,7 +1,6 @@
 /* eslint-disable react/boolean-prop-naming */
 import React, {forwardRef} from 'react';
 
-import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
@@ -11,61 +10,61 @@ import {getConfig, media} from '../utils/lib';
 import {calcAlign, calcDirection, calcJustify} from '../utils/styleHelpers';
 
 /**
- * Row
- *
- * @component
- * @augments {Component<Props, State>}
- * @extends {Component}
+ * @typedef {object} RowComponentProps
+ * @property {React.ReactNode}                    children    Component children.
+ * @property {null|FlexAlign|Align}               [align]     Row alignment.
+ * @property {React.ElementType}                  [as]        Component type.
+ * @property {string}                             [className] An styled components class name for inheritance.
+ * @property {FlexDirection|Direction}            [direction] Row direction.
+ * @property {FlexJustify|Justify}                [justify]   Row justify.
+ * @property {boolean|Array<Screensizes>}         [noWrap]    Whether the row should wrap or not.
+ * @property {number|Sizes}                       [order]     Row order.
+ * @property {boolean|Array<Screensizes>}         [reverse]   Whether the row should be reversed or not.
+ * @property {string}                             [testId]    Cypress test id.
+ * @property {React.ForwardedRef<HTMLDivElement>} [ref]       Component ref.
  */
-const Row = forwardRef(({
-    align,
-    as,
-    children,
-    className,
-    direction,
-    justify,
-    noWrap,
-    order,
-    reverse,
-    testId,
-    ...eventHandler
-}, ref) => {
-    const classNames = [className, useDebug()];
 
-    return (
-        <RowElement
-            ref={ref}
-            align={align}
-            as={as}
-            className={classNames.join(' ')}
-            data-cy={testId}
-            direction={direction}
-            justify={justify}
-            noWrap={noWrap}
-            order={order}
-            reverse={reverse}
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...eventHandler}
-        >
-            {children}
-        </RowElement>
-    );
-});
+/**
+ * @type React.FC<RowComponentProps>
+ */
+const Row = forwardRef(
+    ({
+        align,
+        as,
+        children,
+        className,
+        direction,
+        justify,
+        noWrap,
+        order,
+        reverse,
+        testId,
+        ...eventHandler
+    }, ref) => {
+        const classNames = [className, useDebug()];
+
+        return (
+            <RowElement
+                ref={ref}
+                align={align}
+                as={as}
+                className={classNames.join(' ')}
+                data-cy={testId}
+                direction={direction}
+                justify={justify}
+                noWrap={noWrap}
+                order={order}
+                reverse={reverse}
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...eventHandler}
+            >
+                {children}
+            </RowElement>
+        );
+    }
+);
 
 Row.displayName = 'Row';
-Row.propTypes = {
-    children: PropTypes.node.isRequired,
-    align: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    as: PropTypes.string,
-    className: PropTypes.string,
-    direction: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    justify: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    noWrap: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-    order: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    reverse: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-    /** TestID for cypress testing  */
-    testId: PropTypes.string
-};
 Row.defaultProps = {
     align: null,
     as: null,
@@ -80,7 +79,21 @@ Row.defaultProps = {
 
 export default Row;
 
-const RowElement = styled.div`
+/**
+ * @typedef {object} RowProps
+ * @property {FlexAlign|Align}            [align]     One of: 'start', 'end', 'center', 'space-around', 'space-between', 'space-evenly'.
+ * @property {FlexDirection|Direction}    [direction] One of: 'row', 'column'.
+ * @property {FlexJustify|Justify}        [justify]   One of: 'start', 'end', 'center', 'space-around', 'space-between', 'space-evenly'.
+ * @property {boolean|Array<Screensizes>} [noWrap]    If true, the row will not wrap to the next line.
+ * @property {number|Sizes}               [order]     Order of the row.
+ * @property {React.ElementType}          [as]        Component type.
+ * @property {boolean|Array<Screensizes>} [reverse]   Whether the row is reversed.
+ */
+
+/**
+ * @type {React.FC<StyledComponentProps<'div', RowProps>>}
+ */
+const RowElement = /** @type {StyledComponentFunction<'div', RowProps>} */ (styled.div)`
     box-sizing: border-box;
     display: flex;
     flex: 1 1 auto;

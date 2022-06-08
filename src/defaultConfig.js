@@ -1,5 +1,8 @@
 export const CONF_KEY = 'nfqgrid';
 
+/**
+ * @type {Array<Screensizes>}
+ */
 export const DIMENSIONS = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 export const DEFAULT_CONF = {
     baseSpacing: 0.5,

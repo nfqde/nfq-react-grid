@@ -1,7 +1,6 @@
 /* eslint-disable react/boolean-prop-naming */
 import React, {forwardRef} from 'react';
 
-import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
@@ -18,11 +17,32 @@ import {
 } from '../utils/styleHelpers';
 
 /**
- * Col
- *
- * @component
- * @augments {Component<Props, State>}
- * @extends {Component}
+ * @typedef {object} ColComponentProps
+ * @property {React.ReactNode}                    children            Component children.
+ * @property {null|FlexAlign|Align}               [align]             Col alignment.
+ * @property {React.ElementType}                  [as]                Component type.
+ * @property {string}                             [className]         An styled components class name for inheritance.
+ * @property {FlexDirection|Direction}            [direction]         Col direction.
+ * @property {string|ExtraPadding}                [extraPadding]      Extra padding.
+ * @property {string|ExtraPadding}                [extraPaddingLeft]  Extra padding left.
+ * @property {string|ExtraPadding}                [extraPaddingRight] Extra padding right.
+ * @property {FlexJustify|Justify}                [justify]           Col justify.
+ * @property {number}                             [lg]                Col lg size.
+ * @property {number}                             [md]                Col md size.
+ * @property {boolean|Array<Screensizes>}         [noGutter]          Col no gutter.
+ * @property {number|Offset}                      [offset]            Col offset.
+ * @property {number|Sizes}                       [order]             Col order.
+ * @property {boolean|Array<Screensizes>}         [reverse]           Whether the Col should be reversed or not.
+ * @property {number}                             [sm]                Col sm size.
+ * @property {string}                             [testId]            Cypress test id.
+ * @property {number}                             [xl]                Col xl size.
+ * @property {number}                             [xs]                Col xs size.
+ * @property {number}                             [xxl]               Col xxl size.
+ * @property {React.ForwardedRef<HTMLDivElement>} [ref]               Component ref.
+ */
+
+/**
+ * @type React.FC<ColComponentProps>
  */
 const Col = forwardRef(({
     align,
@@ -80,28 +100,6 @@ const Col = forwardRef(({
 });
 
 Col.displayName = 'Col';
-Col.propTypes = {
-    align: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    as: PropTypes.string,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    direction: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    extraPadding: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    extraPaddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    extraPaddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    justify: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    lg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    md: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    noGutter: PropTypes.bool,
-    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
-    order: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    reverse: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-    sm: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    testId: PropTypes.string,
-    xl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    xs: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    xxl: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};
 Col.defaultProps = {
     align: null,
     as: null,
@@ -127,7 +125,33 @@ Col.defaultProps = {
 
 export default Col;
 
-const ColElement = styled.div`
+/**
+ * @typedef {object} ColProps
+ * @property {null|FlexAlign|Align}               [align]             Col alignment.
+ * @property {React.ElementType}                  [as]                Component type.
+ * @property {string}                             [className]         An styled components class name for inheritance.
+ * @property {FlexDirection|Direction}            [direction]         Col direction.
+ * @property {string|ExtraPadding}                [extraPadding]      Extra padding.
+ * @property {string|ExtraPadding}                [extraPaddingLeft]  Extra padding left.
+ * @property {string|ExtraPadding}                [extraPaddingRight] Extra padding right.
+ * @property {FlexJustify|Justify}                [justify]           Col justify.
+ * @property {number}                             [lg]                Col lg size.
+ * @property {number}                             [md]                Col md size.
+ * @property {boolean|Array<Screensizes>}         [noGutter]          Col no gutter.
+ * @property {number|Offset}                      [offset]            Col offset.
+ * @property {number|Sizes}                       [order]             Col order.
+ * @property {boolean|Array<Screensizes>}         [reverse]           Whether the Col should be reversed or not.
+ * @property {number}                             [sm]                Col sm size.
+ * @property {number}                             [xl]                Col xl size.
+ * @property {number}                             [xs]                Col xs size.
+ * @property {number}                             [xxl]               Col xxl size.
+ * @property {React.ForwardedRef<HTMLDivElement>} [ref]               Component ref.
+ */
+
+/**
+ * @type {React.FC<StyledComponentProps<'div', ColProps>>}
+ */
+const ColElement = /** @type {StyledComponentFunction<'div', ColProps>} */ (styled.div)`
     box-sizing: border-box;
     display: flex;
     flex: 1 0 auto;

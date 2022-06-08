@@ -9,7 +9,7 @@ import {ScreenClassContext} from './ScreenClassProvider';
  * Returns if the component is in debug mode.
  * Auto treeshakes in production.
  *
- * @returns {String} returns debug class.
+ * @returns {string} Returns debug class.
  */
 export const useDebug = () => {
     if (process.env.NODE_ENV !== 'production') {
@@ -52,8 +52,8 @@ export const useDebug = () => {
  * Returns if the component is in debug mode.
  * Auto treeshakes in production.
  *
- * @param {Object}   ref        The element ref to abserve.
- * @param {Function} observerCB The callback for the observer.
+ * @param {object}           ref        The element ref to abserve.
+ * @param {MutationCallback} observerCB The callback for the observer.
  */
 export const useObserver = (ref, observerCB) => {
     useEffect(() => {
@@ -68,7 +68,7 @@ export const useObserver = (ref, observerCB) => {
 /**
  * Returns the grid config.
  *
- * @returns {Object} The grid config.
+ * @returns {object} The grid config.
  */
 export const useConfig = () => {
     const theme = useTheme();
@@ -79,6 +79,6 @@ export const useConfig = () => {
 /**
  * Returns the viewport screenclass.
  *
- * @returns {String} The viewport screenclass.
+ * @returns {string} The viewport screenclass.
  */
 export const useScreenClass = () => useContext(ScreenClassContext);

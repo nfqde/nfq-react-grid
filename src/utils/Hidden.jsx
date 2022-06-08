@@ -1,18 +1,25 @@
 /* eslint-disable react/boolean-prop-naming */
 import React, {useContext} from 'react';
 
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {media, mediaBetween} from './lib';
 import {ScreenClassContext} from './ScreenClassProvider';
 
 /**
- * Hidden
+ * Hidden component.
  *
- * @component
- * @augments {Component<Props, State>}
- * @returns {JSX} Component.
+ * @param {object}          props               Component props.
+ * @param {React.ReactNode} props.children      Component children.
+ * @param {boolean}         props.isLoadingHtml Whether the HTML is loading.
+ * @param {boolean}         props.lg            Whether the component is visible on large screens.
+ * @param {boolean}         props.md            Whether the component is visible on medium screens.
+ * @param {boolean}         props.sm            Whether the component is visible on small screens.
+ * @param {boolean}         props.xl            Whether the component is visible on extra large screens.
+ * @param {boolean}         props.xs            Whether the component is visible on extra small screens.
+ * @param {boolean}         props.xxl           Whether the component is visible on extra extra large screens.
+ *
+ * @returns {React.ReactNode} Component.
  */
 const Hidden = ({children, isLoadingHtml, ...screenClasses}) => {
     const screenClass = useContext(ScreenClassContext);
@@ -24,6 +31,9 @@ const Hidden = ({children, isLoadingHtml, ...screenClasses}) => {
     return screenClasses[String(screenClass)] ? null : children;
 };
 
+/**
+ * @type {Array<Screensizes>}
+ */
 const allClasses = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const HiddenWrap = styled(
@@ -45,16 +55,6 @@ const HiddenWrap = styled(
 `;
 
 Hidden.displayName = 'Hidden';
-Hidden.propTypes = {
-    children: PropTypes.element.isRequired,
-    isLoadingHtml: PropTypes.bool,
-    lg: PropTypes.bool,
-    md: PropTypes.bool,
-    sm: PropTypes.bool,
-    xl: PropTypes.bool,
-    xs: PropTypes.bool,
-    xxl: PropTypes.bool
-};
 Hidden.defaultProps = {
     isLoadingHtml: false,
     lg: false,

@@ -5,11 +5,9 @@ import styled from 'styled-components';
 import {ScreenClassContext} from './ScreenClassProvider';
 
 /**
- * ScreenBadge
+ * ScreenBadge Component.
  *
- * @component
- * @augments {Component<Props, State>}
- * @returns {JSX} Component
+ * @returns {React.ReactNode} Component.
  */
 const ScreenBadge = () => {
     const screenClass = useContext(ScreenClassContext);
