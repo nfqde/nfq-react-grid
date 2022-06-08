@@ -1,6 +1,5 @@
 import React, {useEffect, useReducer, useRef} from 'react';
 
-import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {useDebug, useObserver} from '../utils/hooks';
@@ -8,11 +7,17 @@ import {getConfig} from '../utils/lib';
 import {calcFlex, calcHeight, calcInline, calcMaxHeight, calcMaxWidth, calcWidth} from '../utils/styleHelpers';
 
 /**
- * Spacer
+ * Spacer component.
  *
- * @augments {Component<Props, State>}
+ * @param {object}                 props          Component props.
+ * @param {boolean|Array<boolean>} props.isInline Whether the spacer is inline or not.
+ * @param {number|Sizes}           props.maxX     Maximum width.
+ * @param {number|Sizes}           props.maxY     Maximum height.
+ * @param {string}                 props.testId   Cypress test id.
+ * @param {number|Sizes}           props.x        Width.
+ * @param {number|Sizes}           props.y        Height.
  *
- * @returns {JSX} Component.
+ * @returns {React.ReactNode} Component.
  */
 const Spacer = ({isInline, maxX, maxY, testId, x, y}) => {
     const spacer = useRef(null);
@@ -58,15 +63,6 @@ const Spacer = ({isInline, maxX, maxY, testId, x, y}) => {
 };
 
 Spacer.displayName = 'Spacer';
-Spacer.propTypes = {
-    isInline: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-    maxX: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    maxY: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    /** TestID for cypress testing  */
-    testId: PropTypes.string,
-    x: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    y: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
-};
 Spacer.defaultProps = {
     isInline: false,
     maxX: null,
@@ -78,7 +74,17 @@ Spacer.defaultProps = {
 
 export default Spacer;
 
-const SpacerElement = styled.span`
+/**
+ * @typedef {object} SpacerProps
+ * @property {boolean|Array<boolean>} [isInline]  Whether the spacer is inline.
+ * @property {number|Sizes}           [maxX]      Maximum width.
+ * @property {number|Sizes}           [maxY]      Maximum height.
+ * @property {('X'|'Y')}              [direction] The cypress test id.
+ * @property {number|Sizes}           [x]         Width.
+ * @property {number|Sizes}           [y]         Height.
+ */
+
+const SpacerElement = /** @type {import('styled-components').ThemedStyledFunction<'span', SpacerProps>} */ (styled.span)`
     flex: 1 1 0px;
 
     ${({isInline, theme}) => css`

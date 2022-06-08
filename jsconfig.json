@@ -1,12 +1,15 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": false,
+        "allowSyntheticDefaultImports": true,
         "baseUrl": "./",
+        "checkJs": true,
         "experimentalDecorators": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "module": "commonjs",
+        "resolveJsonModule": true,
         "target": "ES6",
+        "lib": ["ESNext", "DOM"],
         "types": ["cypress", "cypress-real-events"]
     },
-    "exclude": ["node_modules", "dist", ".babelrc"]
+    "exclude": ["node_modules", "dist", ".babelrc", "cypress/*"]
 }

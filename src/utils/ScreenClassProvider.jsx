@@ -1,6 +1,5 @@
 import React, {useEffect, useReducer} from 'react';
 
-import PropTypes from 'prop-types';
 import {useTheme} from 'styled-components';
 
 import {getScreenClass} from './lib';
@@ -10,11 +9,12 @@ const defaultData = 'xxl';
 export const ScreenClassContext = React.createContext(defaultData);
 
 /**
- * ScreenClassProvider class.
+ * ScreenClassProvider Component.
  *
- * @component
- * @augments {Component<Props, State>}
- * @returns {JSX} Component.
+ * @param {object}          props          Component props.
+ * @param {React.ReactNode} props.children Children.
+ *
+ * @returns {React.ReactNode} Component.
  */
 const ScreenClassProvider = ({children}) => {
     const theme = useTheme();
@@ -45,6 +45,5 @@ const ScreenClassProvider = ({children}) => {
 };
 
 ScreenClassProvider.displayName = 'ScreenClassProvider';
-ScreenClassProvider.propTypes = {children: PropTypes.node.isRequired};
 
 export default ScreenClassProvider;

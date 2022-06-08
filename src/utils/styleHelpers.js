@@ -7,11 +7,11 @@ import {getConfig, media} from './lib';
 /**
  * Caclulates the Padding left css.
  *
- * @param {Object}        theme             The styled-components theme.
- * @param {String|Object} extraPadding      The offset for this column.
- * @param {String|Object} extraPaddingLeft  The offset for this column.
+ * @param {object}              theme            The styled-components theme.
+ * @param {string|ExtraPadding} extraPadding     The offset for this column.
+ * @param {string|ExtraPadding} extraPaddingLeft The offset for this column.
  *
- * @returns {String} The align css string.
+ * @returns {Array<string>} The align css string.
  */
 export const calcPaddingLeft = (theme, extraPadding, extraPaddingLeft) => {
     if (extraPadding) {
@@ -50,11 +50,11 @@ export const calcPaddingLeft = (theme, extraPadding, extraPaddingLeft) => {
 /**
  * Caclulates the Offset css.
  *
- * @param {Object}        theme             The styled-components theme.
- * @param {String|Object} extraPadding      The offset for this column.
- * @param {String|Object} extraPaddingRight  The offset for this column.
+ * @param {object}              theme             The styled-components theme.
+ * @param {string|ExtraPadding} extraPadding      The offset for this column.
+ * @param {string|ExtraPadding} extraPaddingRight The offset for this column.
  *
- * @returns {String} The align css string.
+ * @returns {Array<string>} The align css string.
  */
 export const calcPaddingRight = (theme, extraPadding, extraPaddingRight) => {
     if (extraPadding) {
@@ -93,10 +93,10 @@ export const calcPaddingRight = (theme, extraPadding, extraPaddingRight) => {
 /**
  * Caclulates the Align css.
  *
- * @param {Object}        theme The styled-components theme.
- * @param {String|Object} align The alignment for this column.
+ * @param {object}       theme The styled-components theme.
+ * @param {string|Align} align The alignment for this column.
  *
- * @returns {String} The align css string.
+ * @returns {string|Array<string>} The align css string.
  */
 export const calcAlign = (theme, align) => {
     if (typeof align === 'object') {
@@ -119,13 +119,13 @@ export const calcAlign = (theme, align) => {
 /**
  * Calculates the flex-direction value.
  *
- * @param {Object}        theme            The styled-components theme.
- * @param {String|Object} direction        The column direction.
- * @param {Boolean|Array} reverse          Reverse array or boolean.
- * @param {String}        defaultDirection The default direction to return.
- * @param {Boolean|Array} [noWrap=false]   If childs should wrap or not.
+ * @param {object}                     theme            The styled-components theme.
+ * @param {FlexDirection|Direction}    direction        The column direction.
+ * @param {boolean|Array<Screensizes>} reverse          Reverse array or boolean.
+ * @param {FlexDirection}              defaultDirection The default direction to return.
+ * @param {boolean|Array<Screensizes>} [noWrap=false]   If childs should wrap or not.
  *
- * @returns {String} The flex-direction css string.
+ * @returns {string|Array<string>} The flex-direction css string.
  */
 export const calcDirection = (theme, direction, reverse, defaultDirection, noWrap = false) => {
     if (Array.isArray(reverse) || typeof direction === 'object') {
@@ -161,10 +161,10 @@ export const calcDirection = (theme, direction, reverse, defaultDirection, noWra
 /**
  * Caclulates the Justify css.
  *
- * @param {Object}        theme   The styled-components theme.
- * @param {String|Object} justify The justification for this row.
+ * @param {object}         theme   The styled-components theme.
+ * @param {string|Justify} justify The justification for this row.
  *
- * @returns {String} The align css string.
+ * @returns {string|Array<string>} The align css string.
  */
 export const calcJustify = (theme, justify) => {
     if (typeof justify === 'object') {
@@ -189,10 +189,10 @@ export const calcJustify = (theme, justify) => {
 /**
  * Caclulates the Offset css.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {String|Object} offset The offset for this column.
+ * @param {object}        theme  The styled-components theme.
+ * @param {number|Offset} offset The offset for this column.
  *
- * @returns {String} The align css string.
+ * @returns {string|Array<string>} The align css string.
  */
 export const calcOffset = (theme, offset) => {
     if (typeof offset === 'object') {
@@ -225,12 +225,12 @@ export const calcOffset = (theme, offset) => {
 };
 
 /**
- * Caclulates the Offset css.
+ * Caclulates the sizes css.
  *
- * @param {Object} theme The styled-components theme.
- * @param {Object} sizes The sizes for this column.
+ * @param {object} theme The styled-components theme.
+ * @param {Sizes}  sizes The sizes for this column.
  *
- * @returns {String} The align css string.
+ * @returns {string|Array<string>} The align css string.
  */
 export const calcSizes = (theme, sizes) => {
     let lastScreen;
@@ -278,12 +278,12 @@ export const calcSizes = (theme, sizes) => {
 /**
  * Calculates the flex prop defined through the direction of the parent.
  *
- * @param {Object}        theme     The styled-components theme.
- * @param {String}        direction The direction the spacer should expand in.
- * @param {Number|Object} x         The y value for the height.
- * @param {Number|Object} y         The y value for the height.
+ * @param {object}       theme     The styled-components theme.
+ * @param {string}       direction The direction the spacer should expand in.
+ * @param {number|Sizes} x         The y value for the height.
+ * @param {number|Sizes} y         The y value for the height.
  *
- * @returns {String} The flex css.
+ * @returns {string|Array<string>} The flex css.
  */
 export const calcFlex = (theme, direction, x, y) => {
     const flexVal = direction === 'X' ? x : y;
@@ -308,16 +308,16 @@ export const calcFlex = (theme, direction, x, y) => {
         });
     }
 
-    return `flex: 1 1 ${flexVal === null ? 0 : flexVal * getConfig(theme).baseSpacing}rem;`;
+    return `flex: 1 1 ${flexVal === null ? 0 : /** @type {number} */ (flexVal) * getConfig(theme).baseSpacing}rem;`;
 };
 
 /**
  * Calculates the Height of the spacer.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {Number|Object} y      The y value for the height.
+ * @param {object}       theme The styled-components theme.
+ * @param {number|Sizes} y     The y value for the height.
  *
- * @returns {String} The height css.
+ * @returns {string|Array<string>} The height css.
  */
 export const calcHeight = (theme, y) => {
     if (typeof y === 'object') {
@@ -346,10 +346,10 @@ export const calcHeight = (theme, y) => {
 /**
  * Calculates the inline styles.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {Boolean|Array} inline An config info if the spacer is inline or not.
+ * @param {object}                     theme  The styled-components theme.
+ * @param {boolean|Array<Screensizes>} inline An config info if the spacer is inline or not.
  *
- * @returns {String} The display css string.
+ * @returns {string|Array<string>} The display css string.
  */
 export const calcInline = (theme, inline) => {
     if (Array.isArray(inline)) {
@@ -374,10 +374,10 @@ export const calcInline = (theme, inline) => {
 /**
  * Calculates the max Height of the spacer.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {Number|Object} maxY   The y value for the height.
+ * @param {object}       theme The styled-components theme.
+ * @param {number|Sizes} maxY  The y value for the height.
  *
- * @returns {String} The max height css.
+ * @returns {string|Array<string>} The max height css.
  */
 export const calcMaxHeight = (theme, maxY) => {
     if (typeof maxY === 'object') {
@@ -400,10 +400,10 @@ export const calcMaxHeight = (theme, maxY) => {
 /**
  * Calculates the max Width of the spacer.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {Number|Object} maxX   The x value for the width.
+ * @param {object}       theme The styled-components theme.
+ * @param {number|Sizes} maxX  The x value for the width.
  *
- * @returns {String} The max widt css.
+ * @returns {string|Array<string>} The max widt css.
  */
 export const calcMaxWidth = (theme, maxX) => {
     if (typeof maxX === 'object') {
@@ -426,10 +426,10 @@ export const calcMaxWidth = (theme, maxX) => {
 /**
  * Calculates the width of the spacer.
  *
- * @param {Object}        theme  The styled-components theme.
- * @param {Number|Object} x      The y value for the height.
+ * @param {object}       theme The styled-components theme.
+ * @param {number|Sizes} x     The y value for the height.
  *
- * @returns {String} The width css.
+ * @returns {string|Array<string>} The width css.
  */
 export const calcWidth = (theme, x) => {
     if (typeof x === 'object') {
@@ -458,12 +458,12 @@ export const calcWidth = (theme, x) => {
 /**
  * Gets the direction for this screenSize.
  *
- * @param {String|Object} direction         The direction config.
- * @param {String}        defaultDirection  The default direction.
- * @param {String}        screenSize        The screen size class.
- * @param {String}        [lastScreen=null] The last screen size that had an direction defined.
+ * @param {FlexDirection|Direction} direction         The direction config.
+ * @param {FlexDirection}           defaultDirection  The default direction.
+ * @param {string}                  screenSize        The screen size class.
+ * @param {string}                  [lastScreen=null] The last screen size that had an direction defined.
  *
- * @returns {String} The direction to use.
+ * @returns {{direction: FlexDirection, lastScreen?: string}} The direction to use.
  */
 const getDirection = (direction, defaultDirection, screenSize, lastScreen = null) => {
     if (typeof direction === 'object') {
@@ -494,10 +494,10 @@ const getDirection = (direction, defaultDirection, screenSize, lastScreen = null
 /**
  * Gets the reverse flag if needed.
  *
- * @param {Boolean|Array} noWrap     The reverse flags or flag.
- * @param {String}        screenSize The screen size class.
+ * @param {boolean|Array<Screensizes>} noWrap     The reverse flags or flag.
+ * @param {Screensizes}                screenSize The screen size class.
  *
- * @returns {String} The reverse flag string.
+ * @returns {string|boolean} The reverse flag string.
  */
 const getNoWrap = (noWrap, screenSize) => {
     if (Array.isArray(noWrap)) {
@@ -514,10 +514,10 @@ const getNoWrap = (noWrap, screenSize) => {
 /**
  * Gets the reverse flag if needed.
  *
- * @param {Boolean|Array} reverse    The reverse flags or flag.
- * @param {String}        screenSize The screen size class.
+ * @param {boolean|Array} reverse    The reverse flags or flag.
+ * @param {string}        screenSize The screen size class.
  *
- * @returns {String} The reverse flag string.
+ * @returns {string} The reverse flag string.
  */
 const getReverse = (reverse, screenSize) => {
     if (Array.isArray(reverse)) {

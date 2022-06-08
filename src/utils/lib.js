@@ -7,13 +7,21 @@ const configCache = new Map();
 /**
  * Creates an media query literal.
  *
- * @param {Object} theme      The styled-components theme.
- * @param {String} screenSize The screensize for the query.
+ * @param {object}      theme      The styled-components theme.
+ * @param {Screensizes} screenSize The screensize for the query.
  *
  * @returns {Function} An template literal function.
+ * @throws {Error} If theme is not an config object.
  */
 export const media = (theme, screenSize) => {
     if (typeof theme === 'object' && CONF_KEY in theme) {
+        /**
+         * Generates an template literal function for media queries.
+         *
+         * @param {[TemplateStringsArray]} args The arguments to pass to the template literal.
+         *
+         * @returns {import('styled-components').FlattenSimpleInterpolation} The media query string.
+         */
         return (...args) => css`
             @media ${generateMediaString(theme, screenSize)} {
                 ${css(...args)}
@@ -27,14 +35,22 @@ export const media = (theme, screenSize) => {
 /**
  * Creates an media query literal.
  *
- * @param {Object} theme         The styled-components theme.
- * @param {String} screenSizeMin The minScreenSize for this media query.
- * @param {String} screenSizeMax The maxScreenSize for this media query.
+ * @param {object}      theme         The styled-components theme.
+ * @param {Screensizes} screenSizeMin The minScreenSize for this media query.
+ * @param {Screensizes} screenSizeMax The maxScreenSize for this media query.
  *
  * @returns {Function} An template literal function.
+ * @throws {Error} If theme is not an config object.
  */
 export const mediaBetween = (theme, screenSizeMin, screenSizeMax) => {
     if (typeof theme === 'object' && CONF_KEY in theme) {
+        /**
+         * Generates an template literal function for media queries.
+         *
+         * @param {[TemplateStringsArray]} args The arguments to pass to the template literal.
+         *
+         * @returns {import('styled-components').FlattenSimpleInterpolation} The media query string.
+         */
         return (...args) => css`
             @media ${generateMediaStringBetween(theme, screenSizeMin, screenSizeMax)} {
                 ${css(...args)}
@@ -48,9 +64,10 @@ export const mediaBetween = (theme, screenSizeMin, screenSizeMax) => {
 /**
  * Gets the config merged with the defaults.
  *
- * @param {Object} theme The theme provider theme.
+ * @param {object} theme The theme provider theme.
  *
- * @returns {Object} The actual complete config.
+ * @returns {object} The actual complete config.
+ * @throws {Error} If theme is not an config object.
  */
 export const getConfig = theme => {
     if (typeof theme === 'object' && CONF_KEY in theme) {
@@ -71,9 +88,10 @@ export const getConfig = theme => {
 /**
  * Gets the actual screen class.
  *
- * @param {Object} theme The styled-components theme.
+ * @param {object} theme The styled-components theme.
  *
- * @returns {String} The actual screen class.
+ * @returns {string} The actual screen class.
+ * @throws {Error} If theme is not an config object.
  */
 export const getScreenClass = theme => {
     let viewport = null;
@@ -114,12 +132,12 @@ export const getScreenClass = theme => {
 };
 
 /**
- * generates the media query string.
+ * Generates the media query string.
  *
- * @param {Object} theme      The styled-components theme.
- * @param {String} screenSize The screensize for the query.
+ * @param {object}      theme      The styled-components theme.
+ * @param {Screensizes} screenSize The screensize for the query.
  *
- * @returns {String} The media query head.
+ * @returns {string} The media query head.
  */
 const generateMediaString = (theme, screenSize) => {
     const conf = getConfig(theme);
@@ -128,13 +146,13 @@ const generateMediaString = (theme, screenSize) => {
 };
 
 /**
- * generates the media query string.
+ * Generates the media query string.
  *
- * @param {Object} theme         The styled-components theme.
- * @param {String} screenSizeMin The minScreenSize for this media query.
- * @param {String} screenSizeMax The maxScreenSize for this media query.
+ * @param {object}      theme         The styled-components theme.
+ * @param {Screensizes} screenSizeMin The minScreenSize for this media query.
+ * @param {Screensizes} screenSizeMax The maxScreenSize for this media query.
  *
- * @returns {String} The media query head.
+ * @returns {string} The media query head.
  */
 const generateMediaStringBetween = (theme, screenSizeMin, screenSizeMax) => {
     const conf = getConfig(theme);
@@ -147,17 +165,17 @@ const generateMediaStringBetween = (theme, screenSizeMin, screenSizeMax) => {
  *
  * @param {*} item Any value to check.
  *
- * @returns {Boolean} If the item is an object.
+ * @returns {boolean} If the item is an object.
  */
 const isObject = item => (item && typeof item === 'object' && !Array.isArray(item));
 
 /**
  * Merges objects with another.
  *
- * @param {Object} target  The target object to merge everything into.
+ * @param {object} target  The target object to merge everything into.
  * @param {Array}  sources All sources to merge from.
  *
- * @returns {Object} The merged object.
+ * @returns {object} The merged object.
  */
 const mergeDeep = (target, ...sources) => {
     if (!sources.length) {
