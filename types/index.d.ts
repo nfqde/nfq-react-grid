@@ -192,6 +192,8 @@ interface IPaddingOptions {
 
 interface IDefaultProps {
     as?: string,
+    /** React children */
+    children?: React.ReactNode,
     /** Classname property to overwrite styles with styled() */
     className?: string,
     /** TestId for cypress testing. */
