@@ -201,6 +201,8 @@ interface IDefaultProps {
 }
 
 interface IConfig {
+    /** Defines the base spacing for the Spacer component */
+    baseSpacing: Record<tBreakpoints, number>;
     /** The breakpoint sizes in px for the different screen classes */
     breakpoints: Record<tBreakpoints, number>;
     /** The the column number available for the different screen classes */
