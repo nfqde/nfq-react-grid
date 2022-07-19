@@ -429,7 +429,7 @@ There are many options you can define for the Grid. To give you an overview and 
 
 ```javascript
 {
-    baseSpacing: 5,
+    baseSpacing: 0.5,
     breakpoints: {
         xs: 0,
         sm: 576,
