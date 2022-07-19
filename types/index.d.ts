@@ -202,17 +202,17 @@ interface IDefaultProps {
 
 interface IConfig {
     /** Defines the base spacing for the Spacer component */
-    baseSpacing: number;
+    baseSpacing?: number;
     /** The breakpoint sizes in px for the different screen classes */
-    breakpoints: Record<tBreakpoints, number>;
+    breakpoints?: Record<tBreakpoints, number>;
     /** The the column number available for the different screen classes */
-    columns: Record<tBreakpoints, number>;
+    columns?: Record<tBreakpoints, number>;
     /** The the container width for the different screen classes */
-    container: Record<tBreakpoints, number | 'fluid'>;
+    container?: Record<tBreakpoints, number | 'fluid'>;
     /** Debug object to define different colors for the 3 components */
-    debug: {
+    debug?: {
         /** The Debug colors for the Col component */
-        col: {
+        col?: {
             /** The background color for Col elements in debug mode. */
             background?: string,
             /** The outline color for Col elements in debug mode. */
@@ -221,14 +221,14 @@ interface IConfig {
             padding?: string
         },
         /** The Debug colors for the Container component */
-        container: {
+        container?: {
             /** The background color for Container elements in debug mode. */
             background?: string,
             /** The outline color for Container elements in debug mode. */
             outline?: string,
         },
         /** The Debug colors for the Row component */
-        row: {
+        row?: {
             /** The background color for Row elements in debug mode. */
             background?: string,
             /** The outline color for Row elements in debug mode. */
@@ -236,11 +236,11 @@ interface IConfig {
         }
     }
     /** The the gutter width for the different screen classes */
-    gutterWidth: Record<tBreakpoints, number>;
+    gutterWidth?: Record<tBreakpoints, number>;
     /** The default media type all media queries should use. (Default: only screen) */
-    mediaQuery: string;
+    mediaQuery?: string;
     /** The outer container padding width for all screen sizes */
-    paddingWidth: Record<tBreakpoints, number>;
+    paddingWidth?: Record<tBreakpoints, number>;
 }
 
 /** Property interfaces */
