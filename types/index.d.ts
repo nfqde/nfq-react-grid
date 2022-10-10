@@ -284,7 +284,9 @@ interface IContainerProps extends IDefaultProps {
     fluid?: boolean | tBreakpoints[];
 }
 
-type IConfigProps = ThemeProps<{nfqgrid: Partial<IConfig>}>;
+type IConfigProps = {
+    nfqgrid: Partial<IConfig>
+};
 
 interface IHiddenProps {
     /** Indicates that past content will only be hidden on the screen xs */
@@ -357,7 +359,7 @@ export const ScreenClassContext: React.ContextType<tBreakpoints>;
 
 export function getConfig(theme: IConfigProps): IConfig;
 export function media(theme: IConfigProps, screenSize: tBreakpoints): ThemedCssFunction<DefaultTheme>;
-export function useConfig(): IConfigProps;
+export function useConfig(): IConfig;
 export function useScreenClass(): tBreakpoints;
 
 export class Col extends React.Component<IColProps, any>{};
