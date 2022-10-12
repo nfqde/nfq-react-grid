@@ -289,6 +289,7 @@ type IConfigProps = {
 };
 
 interface IHiddenProps {
+    children: React.ReactElement;
     /** Indicates that past content will only be hidden on the screen xs */
     xs?: boolean;
     /** Indicates that past content will only be hidden on the screen sm */
@@ -306,6 +307,7 @@ interface IHiddenProps {
 }
 
 interface IVisibleProps {
+    children: React.ReactElement;
     /** Indicates that past content will only be visible on the screen xs */
     xs?: boolean;
     /** Indicates that past content will only be visible on the screen sm */
