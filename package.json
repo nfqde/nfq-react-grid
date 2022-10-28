@@ -44,7 +44,6 @@
   },
   "homepage": "https://github.com/nfqde/nfq-react-grid#readme",
   "peerDependencies": {
-    "prop-types": ">= 15",
     "react": ">= 17",
     "styled-components": ">= 5"
   },
