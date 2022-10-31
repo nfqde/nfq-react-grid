@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.9](https://github.com/nfqde/nfq-react-grid/compare/v2.2.8...v2.2.9) (2022-10-31)
+
+
+### Bug Fixes
+
+* **Aria:** Add aria-hidden to spacer ([#48](https://github.com/nfqde/nfq-react-grid/issues/48)) ([6c9e058](https://github.com/nfqde/nfq-react-grid/commit/6c9e05891103cab43051fedc6de49f5a13e955e6))
+
 ### [2.2.8](https://github.com/nfqde/nfq-react-grid/compare/v2.2.7...v2.2.8) (2022-10-28)
 
 
