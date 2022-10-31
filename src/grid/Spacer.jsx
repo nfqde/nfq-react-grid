@@ -50,6 +50,7 @@ const Spacer = ({isInline, maxX, maxY, testId, x, y}) => {
     return (
         <SpacerElement
             ref={spacer}
+            aria-hidden="true"
             className={className}
             data-cy={testId}
             direction={direction}
