@@ -24,6 +24,7 @@
             flex: 0 0 spacing($i);
             max-height: spacing($i);
             height: spacing($i);
+            width: 100%;
         }
     }
 
@@ -37,6 +38,7 @@
             flex: 0 0 spacing($value);
             max-height: spacing($value);
             height: spacing($value);
+            width: 100%;
         }
     }
 }
