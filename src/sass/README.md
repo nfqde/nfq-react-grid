@@ -48,6 +48,7 @@ The ``.col`` is a wrapper for the content. It has a padding on the left and righ
   * ``.col-auto`` for ``max-width: auto``
   * ``.col-max`` for ``max-width: max-content``
   * ``.col-min`` for ``max-width: min-content``
+  * ``.col-offset-1`` to ``.col-offset-12`` (if you set $columns to 12)
   * ``col-align`` modifiyes like in the row & ``col-align-self`` for ``align-self``
   * Same as for ``justify-content``
   * And of course the responsive versions of the above.

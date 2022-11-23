@@ -46,7 +46,7 @@ $colSizes: (
             max-width: $percentage;
         }
 
-        .col#{$dimensionString}offset-#{$i} {
+        .col-offset#{$dimensionString}#{$i} {
             margin-left: $percentage;
         }
     }
