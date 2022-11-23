@@ -8,6 +8,7 @@ import scss from 'rollup-plugin-scss';
 
 // eslint-disable-next-line import/extensions
 import pkg from './package.json';
+import yalcPublish from './yalcPublish';
 
 const globals = {
     'prop-types': 'PropTypes',
@@ -52,7 +53,10 @@ export default [
             format: 'esm'
         },
         plugins: [
-            scss({fileName: 'bundle.css'}),
+            scss({
+                fileName: 'bundle.css'
+                // outputStyle: 'compressed'
+            }),
             copy({
                 targets: [
                     {
@@ -60,7 +64,8 @@ export default [
                         src: 'src/sass/**/*'
                     }
                 ]
-            })
+            }),
+            yalcPublish()
         ]
     }
 ];
