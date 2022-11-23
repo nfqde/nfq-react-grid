@@ -1,0 +1,71 @@
+.col {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+$colSizes: (
+    'auto': 'auto',
+    'max': 'max-content',
+    'min': 'min-content'
+);
+
+@mixin colElement($dimension) {
+    $dimensionString: '-';
+
+    @if $dimension != 'xs' {
+        $dimensionString: -#{unquote($dimension)}-;
+    };
+
+    $padding: calc(#{gutterWidth(#{$dimension})} / 2);
+
+    .col {
+        padding-left: $padding;
+        padding-right: $padding;
+    }
+
+    @each $sizeName, $value in $colSizes {
+        .col#{$dimensionString}#{$sizeName} {
+            flex: 0 0 unquote($value);
+
+            @if $sizeName == 'auto' {
+                max-width: 100%;
+            } @else {
+                max-width: unquote($value);
+            }
+        }
+    }
+
+    @for $i from 1 through $columns {
+        $percentage: calc($i / $columns * 100%);
+
+        .col#{$dimensionString}#{$i} {
+            flex: 0 0 $percentage;
+            max-width: $percentage;
+        }
+
+        .col#{$dimensionString}offset-#{$i} {
+            margin-left: $percentage;
+        }
+    }
+
+    @each $align, $value in $align-items {
+        .col-align#{$dimensionString}#{unquote($align)} {
+            align-items: $value;
+        }
+        .col-align-self#{$dimensionString}#{unquote($align)} {
+            align-self: $value;
+        }
+    }
+
+    @each $justify, $value in $justify-content {
+        .col-justify#{$dimensionString}#{unquote($justify)} {
+            justify-content: $value;
+        }
+        .col-justify-self#{$dimensionString}#{unquote($justify)} {
+            justify-self: $value;
+        }
+    }
+}

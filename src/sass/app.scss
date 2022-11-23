@@ -1,0 +1,22 @@
+@import 'variables';
+@import 'css-variables';
+@import 'css-functions';
+
+@import 'grid/container';
+@import 'grid/row';
+@import 'grid/col';
+@import 'grid/spacer';
+
+@import 'grid/utils';
+
+@each $dimension in $dimensions {
+    @include exludeXSMediaUp($dimension) {
+        @include containerElement($dimension);
+        @include rowElement($dimension);
+        @include colElement($dimension);
+        @include spacerElement($dimension);
+
+        @include order($dimension);
+        @include display($dimension);
+    }
+}

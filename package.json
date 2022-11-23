@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -w -c",
+    "watch": "rollup -c -w",
     "deploy": "standard-version && git push --follow-tags origin main && npm publish",
     "lint": "eslint ./src --ext='.js, .jsx'",
     "lint:report": "eslint --output-file eslint_report.json --format json --ext='.js, .jsx' ./src",

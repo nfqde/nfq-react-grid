@@ -1,0 +1,68 @@
+@import 'config';
+
+:root {
+    --base-spacing: #{$baseSpacing}rem;
+    --media-query: #{$mediaQuery};
+    --columns: #{$columns};
+
+    @each $name, $value in $breakpoints {
+        --breakpoint-#{$name}: #{$value}px;
+    }
+
+
+    @each $name, $value in $gutterWidth {
+        --gutter-width-#{$name}: #{$value}px;
+    }
+
+    @each $name, $value in $containerPaddingWidth {
+        --container-padding-#{$name}: #{$value}px;
+    }
+
+    @each $name, $value in $container {
+        @if $value == 'fluid' {
+            --container-#{$name}: 100%;
+        } @else {
+            --container-#{$name}: #{$value}px;
+        }
+    }
+}
+
+@function breakpoint($name){
+    @if not map-get($breakpoints, $name){
+        @error "Breakpoint `#{$name}` not found.";
+    }
+
+    @return var(--breakpoint-#{unquote($name)});
+}
+
+@function columns(){
+    @return var(--columns);
+}
+
+@function container($name){
+    @if not map-get($container, $name){
+        @error "Container `#{$name}` not found.";
+    }
+
+    @return var(--container-#{unquote($name)});
+}
+
+@function gutterWidth($name){
+    @if not map-get($gutterWidth, $name){
+        @error "GutterWidth `#{$name}` not found.";
+    }
+
+    @return var(--gutter-width-#{unquote($name)});
+}
+
+@function containerPadding($name){
+    @if not map-get($containerPaddingWidth, $name){
+        @error "Container Padding `#{$name}` not found.";
+    }
+
+    @return var(--container-padding-#{unquote($name)});
+}
+
+@function baseSpacing(){
+    @return var(--base-spacing);
+}

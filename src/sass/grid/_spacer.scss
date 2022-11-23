@@ -1,0 +1,42 @@
+.spacer {
+    display: block;
+    flex: 1 1 0px;
+}
+
+@mixin spacerElement($dimension) {
+    $dimensionString: '-';
+
+    @if $dimension != 'xs' {
+        $dimensionString: -#{unquote($dimension)}-;
+    };
+
+    .spacer#{$dimensionString}inline {
+        display: inline;
+    }
+
+    @for $i from 0 through $spacerMax {
+        .spacer-w#{$dimensionString}#{$i} {
+            flex: 0 0 spacing($i);
+            max-width: spacing($i);
+            width: spacing($i);
+        }
+        .spacer-h#{$dimensionString}#{$i} {
+            flex: 0 0 spacing($i);
+            max-height: spacing($i);
+            height: spacing($i);
+        }
+    }
+
+    @each $spacer, $value in $customSpacer {
+        .spacer-w#{$dimensionString}#{$i} {
+            flex: 0 0 spacing($i);
+            max-width: spacing($i);
+            width: spacing($i);
+        }
+        .spacer-h#{$dimensionString}#{$i} {
+            flex: 0 0 spacing($i);
+            max-height: spacing($i);
+            height: spacing($i);
+        }
+    }
+}
