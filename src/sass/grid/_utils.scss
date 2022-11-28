@@ -1,0 +1,41 @@
+@mixin order($dimension) {
+    $dimensionString: '-';
+
+    @if $dimension != 'xs' {
+        $dimensionString: -#{unquote($dimension)}-;
+    };
+
+    .order#{$dimensionString}first {
+        order: -1;
+    }
+    .order#{$dimensionString}last {
+        order: 99999;
+    }
+
+    @for $i from 0 through $orderMax {
+        .order#{$dimensionString}#{$i} {
+            order: $i;
+        }
+    }
+}
+
+$displays: (
+    'flex': 'flex',
+    'block': 'block',
+    'inline': 'inline',
+    'none': 'none'
+);
+
+@mixin display($dimension) {
+    $dimensionString: '-';
+
+    @if $dimension != 'xs' {
+        $dimensionString: -#{unquote($dimension)}-;
+    };
+
+    @each $display, $value in $displays {
+        .d#{$dimensionString}#{unquote($display)} {
+            display: $value;
+        }
+    }
+}
