@@ -1,0 +1,27 @@
+@function spacing($value){
+    @return calc($value * baseSpacing());
+}
+
+@mixin mediaDown($size) {
+    @media #{$mediaQuery} and (max-width: map-get($breakpoints, $size) - 1px) { @content; }
+}
+
+@mixin mediaUp($size) {
+    @media #{$mediaQuery} and (min-width: map-get($breakpoints, $size) + 0px) { @content; }
+}
+
+@mixin mediaBetween($sizeMin, $sizeMax) {
+    @media #{$mediaQuery} and (min-width: map-get($breakpoints, $sizeMin) + 0px) and (max-width: map-get($breakpoints, $sizeMax) - 1px) {
+        @content;
+    }
+}
+
+@mixin exludeXSMediaUp($size) {
+    @if ($size == 'xs') {
+        @content;
+    } @else {
+        @include mediaUp($size) {
+            @content;
+        }
+    }
+}
