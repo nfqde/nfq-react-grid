@@ -1,0 +1,16 @@
+.container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+@mixin containerElement($dimension) {
+    .container {
+        padding-left: containerPadding($dimension);
+        padding-right: containerPadding($dimension);
+        width: container($dimension);
+    }
+}
+
+
