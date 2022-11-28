@@ -1,0 +1,51 @@
+$dimensions: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] !default;
+
+$baseSpacing: 0.5 !default;
+
+$mediaQuery: 'only screen' !default;
+
+$breakpoints: (
+    "lg": 992,
+    "md": 769,
+    "sm": 576,
+    "xl": 1200,
+    "xs": 0,
+    "xxl": 1600
+) !default;
+
+$columns: 12 !default;
+
+$container: (
+    "lg": 1440,
+    "md": 'fluid',
+    "sm": 'fluid',
+    "xl": 1440,
+    "xs": 'fluid',
+    "xxl": 1440
+) !default;
+
+$gutterWidth: (
+    "lg": 20,
+    "md": 20,
+    "sm": 20,
+    "xl": 20,
+    "xs": 20,
+    "xxl": 20
+) !default;
+
+$containerPaddingWidth: (
+    "lg": 10,
+    "md": 10,
+    "sm": 10,
+    "xl": 10,
+    "xs": 10,
+    "xxl": 10
+) !default;
+
+$orderMax: 12 !default;
+
+$spacerMax: 12 !default;
+
+$customSpacer: (
+    'half': 0.5
+) !default;
