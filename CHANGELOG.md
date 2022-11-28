@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/nfqde/nfq-react-grid/compare/v2.2.9...v2.11.0) (2022-11-28)
+
+
+### Features
+
+* **Sass:** Add column styling ([#56](https://github.com/nfqde/nfq-react-grid/issues/56)) ([a78bb6a](https://github.com/nfqde/nfq-react-grid/commit/a78bb6af396927f61b37b54fd05124ec43f4eb58))
+* **Sass:** Add configuration for sass lib ([#51](https://github.com/nfqde/nfq-react-grid/issues/51)) ([d047d74](https://github.com/nfqde/nfq-react-grid/commit/d047d741a2c9ad3b5ac677df43ea597a4e6caf42))
+* **Sass:** Add container styling ([#54](https://github.com/nfqde/nfq-react-grid/issues/54)) ([58f2c99](https://github.com/nfqde/nfq-react-grid/commit/58f2c998bd1c4a14c623ca8710e218b12612810e))
+* **Sass:** Add css and sass variables ([#52](https://github.com/nfqde/nfq-react-grid/issues/52)) ([994744c](https://github.com/nfqde/nfq-react-grid/commit/994744cb38d11b02e44b1ef6bc38a9ebdf1443cf))
+* **Sass:** Add row styling ([#55](https://github.com/nfqde/nfq-react-grid/issues/55)) ([dc49766](https://github.com/nfqde/nfq-react-grid/commit/dc4976616665367eac5126dae9a97c2c4f4d3fd0))
+* **Sass:** Add sass components ([#59](https://github.com/nfqde/nfq-react-grid/issues/59)) ([f638d24](https://github.com/nfqde/nfq-react-grid/commit/f638d24b39eb19232a13581cab03deda51b2b309))
+* **Sass:** Add sass function ([#53](https://github.com/nfqde/nfq-react-grid/issues/53)) ([13f1d4d](https://github.com/nfqde/nfq-react-grid/commit/13f1d4de32a71751740569ada02e4cef728a0754))
+* **Sass:** Add spacer styling ([#57](https://github.com/nfqde/nfq-react-grid/issues/57)) ([77e5bd1](https://github.com/nfqde/nfq-react-grid/commit/77e5bd188c4f9a922fb37c05bf6760e4a9c6aa2f))
+* **Sass:** Add utility classes for order and display ([#58](https://github.com/nfqde/nfq-react-grid/issues/58)) ([d08e0e9](https://github.com/nfqde/nfq-react-grid/commit/d08e0e9a197f7e7763d5009c9f558f76871e0d61))
+
 ### [2.2.9](https://github.com/nfqde/nfq-react-grid/compare/v2.2.8...v2.2.9) (2022-10-31)
 
 
