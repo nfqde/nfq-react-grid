@@ -9,6 +9,18 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./sass": {
+      "default": "./dist/sass/app.scss"
+    },
+    "./css": {
+      "default": "./dist/css/bundle.css"
+    }
+  },
   "standard-version": {
     "scripts": {
       "prebump": "nfqBump"
@@ -19,6 +31,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "watch": "rollup -c -w",
     "deploy": "standard-version && git push --follow-tags origin main && npm publish",
     "lint": "eslint ./src --ext='.js, .jsx'",
     "lint:report": "eslint --output-file eslint_report.json --format json --ext='.js, .jsx' ./src",
@@ -97,6 +110,9 @@
     "react-is": "^18.1.0",
     "rollup": "^2.75.3",
     "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-scss": "^4.0.0",
+    "sass": "^1.56.1",
     "script-ext-html-webpack-plugin": "^2.1.5",
     "styled-components": "^5.3.5",
     "webpack": "^5.72.1",

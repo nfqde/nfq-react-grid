@@ -3,9 +3,12 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import cleaner from 'rollup-plugin-cleaner';
+import copy from 'rollup-plugin-copy';
+import scss from 'rollup-plugin-scss';
 
 // eslint-disable-next-line import/extensions
 import pkg from './package.json';
+import yalcPublish from './yalcPublish';
 
 const globals = {
     'prop-types': 'PropTypes',
@@ -41,6 +44,28 @@ export default [
             resolve({extensions: ['.js', '.jsx', '.json']}),
             commonjs({include: ['node_modules/**']}),
             babel({babelHelpers: 'bundled'})
+        ]
+    },
+    {
+        input: 'src/sass/app.scss',
+        output: {
+            dir: './dist/css/',
+            format: 'esm'
+        },
+        plugins: [
+            scss({
+                fileName: 'bundle.css'
+                // outputStyle: 'compressed'
+            }),
+            copy({
+                targets: [
+                    {
+                        dest: 'dist/sass',
+                        src: 'src/sass/**/*'
+                    }
+                ]
+            }),
+            yalcPublish()
         ]
     }
 ];
