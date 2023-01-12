@@ -4,7 +4,7 @@
 This gird is based on scss and uses the following variables to generate the grid.
 ```
 $dimensions: Array;
-$baseSpacing: Number;
+$baseSpacing: Number|String;
 $breakpoints: Map;
 $mediaQuery: String;
 $container: Map;
