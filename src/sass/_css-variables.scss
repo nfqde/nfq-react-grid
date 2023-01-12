@@ -1,47 +1,37 @@
 @import 'config';
 
+@function numberedValue($value){
+    @if type-of($value) == 'string' {
+        @return $value;
+    } @else {
+        @return #{$value}px;
+    }
+}
+
 :root {
     --media-query: #{$mediaQuery};
     --columns: #{$columns};
 
-    @if type-of($baseSpacing) == 'string' {
-        --base-spacing: #{$baseSpacing};
-    } @else {
-        --base-spacing: #{$baseSpacing}rem;
-    }
+    --base-spacing: #{numberedValue($baseSpacing)};
 
     @each $name, $value in $breakpoints {
-        @if type-of($value) == 'string' {
-            --breakpoint-#{$name}: #{$value};
-        } @else {
-            --breakpoint-#{$name}: #{$value}px;
-        }
+        --breakpoint-#{$name}: #{numberedValue($value)};
     }
 
 
     @each $name, $value in $gutterWidth {
-        @if type-of($value) == 'string' {
-            --gutter-width-#{$name}: #{$value};
-        } @else {
-            --gutter-width-#{$name}: #{$value}px;
-        }
+        --gutter-width-#{$name}: #{numberedValue($value)};
     }
 
     @each $name, $value in $containerPaddingWidth {
-        @if type-of($value) == 'string' {
-            --container-padding-#{$name}: #{$value};
-        } @else {
-            --container-padding-#{$name}: #{$value}px;
-        }
+        --container-padding-#{$name}: #{numberedValue($value)};
     }
 
     @each $name, $value in $container {
         @if $value == 'fluid' {
             --container-#{$name}: 100%;
-        } @else if type-of($value) == 'string' {
-            --container-#{$name}: #{$value};
         } @else {
-            --container-#{$name}: #{$value}px;
+            --container-#{$name}: #{numberedValue($value)};
         }
     }
 }

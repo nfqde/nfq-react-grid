@@ -1,17 +1,17 @@
 @function spacing($value){
-    @return calc($value * baseSpacing());
+    @return calc(numberedValue($value) * baseSpacing());
 }
 
 @mixin mediaDown($size) {
-    @media #{$mediaQuery} and (max-width: calc(#{map-get($breakpoints, $size)} - 1px)) { @content; }
+    @media #{$mediaQuery} and (max-width: calc(#{numberedValue(map-get($breakpoints, $size))} - 1px)) { @content; }
 }
 
 @mixin mediaUp($size) {
-    @media #{$mediaQuery} and (min-width: map-get($breakpoints, $size)) { @content; }
+    @media #{$mediaQuery} and (min-width: numberedValue(map-get($breakpoints, $size))) { @content; }
 }
 
 @mixin mediaBetween($sizeMin, $sizeMax) {
-    @media #{$mediaQuery} and (min-width: map-get($breakpoints, $sizeMin)) and (max-width: calc(#{map-get($breakpoints, $sizeMax)} - 1px)) {
+    @media #{$mediaQuery} and (min-width: numberedValue(map-get($breakpoints, $sizeMin))) and (max-width: calc(#{numberedValue(map-get($breakpoints, $sizeMax))} - 1px)) {
         @content;
     }
 }

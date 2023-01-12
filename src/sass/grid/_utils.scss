@@ -35,7 +35,7 @@ $displays: (
 
     @each $display, $value in $displays {
         .d#{$dimensionString}#{unquote($display)} {
-            display: $value;
+            display: unquote($value);
         }
     }
 }
