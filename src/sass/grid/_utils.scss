@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @mixin order($dimension) {
     $dimensionString: '-';
 
@@ -19,23 +21,21 @@
     }
 }
 
-$displays: (
-    'flex': 'flex',
-    'block': 'block',
-    'inline': 'inline',
-    'none': 'none'
-);
-
-@mixin display($dimension) {
+@mixin utilities($dimension) {
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
         $dimensionString: -#{unquote($dimension)}-;
     };
 
-    @each $display, $value in $displays {
-        .d#{$dimensionString}#{unquote($display)} {
-            display: $value;
+    @each $utilityKey, $utility in $utilities {
+        $class: map.get($utility, 'class');
+        $classString: '#{$class}#{$dimensionString}';
+
+        @each $key, $value in map.get($utility, 'values') {
+            .#{$classString}#{$key} {
+                #{map.get($utility, 'property')}: unquote($value);
+            }
         }
     }
 }

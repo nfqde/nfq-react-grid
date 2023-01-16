@@ -49,3 +49,16 @@ $spacerMax: 12 !default;
 $customSpacer: (
     'half': 0.5
 ) !default;
+
+$utilities: (
+    "display": (
+        property: "display",
+        class: "d",
+        values: (
+            "block": "block",
+            "flex": "flex",
+            "inline": "inline",
+            "none": "none"
+        )
+    )
+) !default;

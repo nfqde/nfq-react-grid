@@ -17,6 +17,6 @@
         @include spacerElement($dimension);
 
         @include order($dimension);
-        @include display($dimension);
+        @include utilities($dimension);
     }
 }

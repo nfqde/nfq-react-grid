@@ -1,28 +1,37 @@
 @import 'config';
 
+@function numberedValue($value){
+    @if type-of($value) == 'string' {
+        @return $value;
+    } @else {
+        @return #{$value}px;
+    }
+}
+
 :root {
-    --base-spacing: #{$baseSpacing}rem;
     --media-query: #{$mediaQuery};
     --columns: #{$columns};
 
+    --base-spacing: #{numberedValue($baseSpacing)};
+
     @each $name, $value in $breakpoints {
-        --breakpoint-#{$name}: #{$value}px;
+        --breakpoint-#{$name}: #{numberedValue($value)};
     }
 
 
     @each $name, $value in $gutterWidth {
-        --gutter-width-#{$name}: #{$value}px;
+        --gutter-width-#{$name}: #{numberedValue($value)};
     }
 
     @each $name, $value in $containerPaddingWidth {
-        --container-padding-#{$name}: #{$value}px;
+        --container-padding-#{$name}: #{numberedValue($value)};
     }
 
     @each $name, $value in $container {
         @if $value == 'fluid' {
             --container-#{$name}: 100%;
         } @else {
-            --container-#{$name}: #{$value}px;
+            --container-#{$name}: #{numberedValue($value)};
         }
     }
 }
