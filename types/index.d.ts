@@ -361,6 +361,7 @@ export const ScreenClassContext: React.ContextType<tBreakpoints>;
 
 export function getConfig(theme: IConfigProps): IConfig;
 export function media(theme: IConfigProps, screenSize: tBreakpoints): ThemedCssFunction<DefaultTheme>;
+export function mediaBetween(theme: IConfigProps, screenSizeStart: tBreakpoints, screenSizeEnd: tBreakpoints): ThemedCssFunction<DefaultTheme>;
 export function useConfig(): IConfig;
 export function useScreenClass(): tBreakpoints;
 

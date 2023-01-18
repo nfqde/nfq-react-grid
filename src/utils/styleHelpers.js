@@ -128,7 +128,7 @@ export const calcAlign = (theme, align) => {
  * @returns {string|Array<string>} The flex-direction css string.
  */
 export const calcDirection = (theme, direction, reverse, defaultDirection, noWrap = false) => {
-    if (Array.isArray(reverse) || typeof direction === 'object') {
+    if (Array.isArray(noWrap) || Array.isArray(reverse) || typeof direction === 'object') {
         let lastDirectionScreen = null;
 
         return DIMENSIONS.map(screenSize => {
