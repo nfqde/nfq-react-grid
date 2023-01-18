@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.1](https://github.com/nfqde/nfq-react-grid/compare/v2.11.0...v2.12.1) (2023-01-18)
+
+
+### Features
+
+* **Sass:** Allow strings and numbers in variables ([#61](https://github.com/nfqde/nfq-react-grid/issues/61)) ([c6a4f67](https://github.com/nfqde/nfq-react-grid/commit/c6a4f67754ca697b55a9e9bb46dee8d36ddef3ad))
+
+
+### Bug Fixes
+
+* **noWrap:** fix no wrap param if array ([#64](https://github.com/nfqde/nfq-react-grid/issues/64)) ([919bac4](https://github.com/nfqde/nfq-react-grid/commit/919bac47d5623d028df3646ae49bc77881ac6815))
+
 ## [2.11.0](https://github.com/nfqde/nfq-react-grid/compare/v2.2.9...v2.11.0) (2022-11-28)
 
 
