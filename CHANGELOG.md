@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/nfqde/nfq-react-grid/compare/v2.12.1...v2.13.0) (2023-01-24)
+
+
+### Features
+
+* **getScreenClass:** Export helper function too ([#65](https://github.com/nfqde/nfq-react-grid/issues/65)) ([032cace](https://github.com/nfqde/nfq-react-grid/commit/032cace36cf1091db36cd87a9acdaa79cd342d95))
+
 ### [2.12.1](https://github.com/nfqde/nfq-react-grid/compare/v2.11.0...v2.12.1) (2023-01-18)
 
 
