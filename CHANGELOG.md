@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.13.1](https://github.com/nfqde/nfq-react-grid/compare/v2.13.0...v2.13.1) (2023-01-26)
+
+
+### Bug Fixes
+
+* **Col:** Remove flex-box declaration on col element ([#66](https://github.com/nfqde/nfq-react-grid/issues/66)) ([6be88d0](https://github.com/nfqde/nfq-react-grid/commit/6be88d0e769549d51b4476b86d443367328238b7))
+
 ## [2.13.0](https://github.com/nfqde/nfq-react-grid/compare/v2.12.1...v2.13.0) (2023-01-24)
 
 
