@@ -1,9 +1,7 @@
 .col {
     box-sizing: border-box;
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: column;
-    max-width: 100%;
+    // flex: 1 0 auto;
+    // max-width: 100%;
 }
 
 $colSizes: (
