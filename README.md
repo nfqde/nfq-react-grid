@@ -1,5 +1,15 @@
 <div id="top"></div>
 
+[![npm version](https://badge.fury.io/js/%40nfq%2Freact-grid.svg)](https://badge.fury.io/js/%40nfq%2Freact-grid)
+[![npm downloads](https://img.shields.io/npm/dm/%40nfq%2Freact-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
+[![BundlePhobia](https://img.shields.io/bundlephobia/min/@nfq/react-grid)](https://bundlephobia.com/result?p=%40nfq/react-grid)
+[![GitHub issues](https://img.shields.io/github/issues/nfqde/nfq-react-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
+[![GitHub contributors](https://img.shields.io/github/contributors/nfqde/nfq-react-grid.svg)]
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
+[![EsLint](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml)
+[![Horusec](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml)
+[![Cypress](https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml)
+
 # @nfq/react-grid
 
 ---
@@ -814,8 +824,8 @@ This defines the media type for all media queries. (In most cases the default is
 
 ## Contributions
 
-[Christoph Kruppe](https://github.com/ckruppe) - c.kruppe@nfq.de
-[Max Heuschneider](https://github.com/mheuschneider) - m.heuschneider@nfq.de
+[Christoph Kruppe](https://github.com/ckruppe) - c.kruppe@nfq.de  
+[Max Heuschneider](https://github.com/mheuschneider) - m.heuschneider@nfq.de  
 [Michael Fest](https://github.com/mfestNFQ) - m.fest@nfq.de
 
 This is inspired by [santosfrancisco/react-awesome-styled-grid](https://github.com/santosfrancisco/react-awesome-styled-grid)
@@ -826,7 +836,7 @@ This is inspired by [santosfrancisco/react-awesome-styled-grid](https://github.c
 
 ## License
 
-The licence used is:
+The licence used is: [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)  
 Click on licence badge for licence details.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
