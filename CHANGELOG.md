@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/nfqde/nfq-react-grid/compare/v2.13.1...v3.0.0) (2023-04-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Rewrite:** Many Properties got renamed for better understanding.
+Gutter is now achieved through flex gap property and not padding.
+The noGutter prop is now on the row component.
+
+### Features
+
+* **Rewrite:** Complete rewrite of the grid library. ([#67](https://github.com/nfqde/nfq-react-grid/issues/67)) ([e415042](https://github.com/nfqde/nfq-react-grid/commit/e4150423e1f826ed302400cca5713f70a3fc2dec))
+
 ### [2.13.1](https://github.com/nfqde/nfq-react-grid/compare/v2.13.0...v2.13.1) (2023-01-26)
 
 
