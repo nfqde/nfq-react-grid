@@ -824,8 +824,8 @@ This defines the media type for all media queries. (In most cases the default is
 
 ## Contributions
 
-[Christoph Kruppe](https://github.com/ckruppe) - c.kruppe@nfq.de
-[Max Heuschneider](https://github.com/mheuschneider) - m.heuschneider@nfq.de
+[Christoph Kruppe](https://github.com/ckruppe) - c.kruppe@nfq.de  
+[Max Heuschneider](https://github.com/mheuschneider) - m.heuschneider@nfq.de  
 [Michael Fest](https://github.com/mfestNFQ) - m.fest@nfq.de
 
 This is inspired by [santosfrancisco/react-awesome-styled-grid](https://github.com/santosfrancisco/react-awesome-styled-grid)
@@ -836,7 +836,7 @@ This is inspired by [santosfrancisco/react-awesome-styled-grid](https://github.c
 
 ## License
 
-The licence used is: [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
+The licence used is: [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)  
 Click on licence badge for licence details.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
