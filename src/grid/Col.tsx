@@ -47,9 +47,9 @@ interface ComponentProps {
     /** Defines the content justification of the column. It takes a `FlexJustify` or a `JustifyObject` type value. Its direction is dependent on the `direction` prop. */
     justify?: FlexJustify | JustifyObject;
     /** Sets the number of columns the col takes in width on screens lg. (Can also be auto, max-content, min-content). */
-    lg?: number | StringSizes;
+    lg?: StringSizes | number;
     /** Sets the number of columns the col takes in width on screens md. (Can also be auto, max-content, min-content). */
-    md?: number | StringSizes;
+    md?: StringSizes | number;
     /** Sets the number of columns this column should offset to the left. It takes an `OffsetObject` or a `number` value. */
     offset?: OffsetObject | number;
     /** Sets the order this column should be in. It takes an `OrderObject` or a `number` value. */
@@ -61,15 +61,15 @@ interface ComponentProps {
     /** Sets the padding added to the right side of the column (Gets overwritten by padding). It takes a `Padding` or a `PaddingObject` type value. */
     paddingRight?: Padding | PaddingObject;
     /** Sets the number of columns the col takes in width on screens sm. (Can also be auto, max-content, min-content). */
-    sm?: number | StringSizes;
+    sm?: StringSizes | number;
     /** TestId for cypress testing. */
     testId?: string;
     /** Sets the number of columns the col takes in width on screens xl. (Can also be auto, max-content, min-content). */
-    xl?: number | StringSizes;
+    xl?: StringSizes | number;
     /** Sets the number of columns the col takes in width on screens xs. (Can also be auto, max-content, min-content). */
-    xs?: number | StringSizes;
+    xs?: StringSizes | number;
     /** Sets the number of columns the col takes in width on screens xxl. (Can also be auto, max-content, min-content). */
-    xxl?: number | StringSizes;
+    xxl?: StringSizes | number;
 }
 
 /**

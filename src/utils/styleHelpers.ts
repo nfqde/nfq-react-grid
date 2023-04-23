@@ -342,7 +342,9 @@ const cssKeys = {
  *
  * @returns An array of the alignment property CSS rules for each screen size.
  */
-export const calcAlignmentProps = (prop: '$align' | '$justify' | '$order') => ({[prop]: cssProp}: CalcAlignmentProps) => {
+export const calcAlignmentProps = (
+    prop: '$align' | '$justify' | '$order'
+) => ({[prop]: cssProp}: CalcAlignmentProps) => {
     if (typeof cssProp !== 'object') {
         // eslint-disable-next-line no-param-reassign
         cssProp = {xs: cssProp};
@@ -533,11 +535,14 @@ interface CalcSpacerMeasuresProps {
     theme: Theme;
 }
 
+type PropKeys = 'max-height' | 'max-width';
+
 const spacerMaxCssKeys = {
     'max-height': ['$maxY', '$y'] as const,
     'max-width': ['$maxX', '$x'] as const
 };
 
+/* eslint-disable sort-destructure-keys/sort-destructure-keys */
 /**
  * Calculates the Measurements for the spacer based on max-height or max-width CSS properties.
  *
@@ -549,13 +554,13 @@ const spacerMaxCssKeys = {
  * @returns An array of media query strings containing the calculated measurement css for each screen size.
  */
 export const calcSpacerMaxValues = (
-    propKey: 'max-height' | 'max-width'
-) => ({
-    theme,
-    $isNotStretching,
-    [spacerMaxCssKeys[propKey][0]]: max,
-    [spacerMaxCssKeys[propKey][1]]: auto
-}: CalcSpacerMeasuresProps) => {
+    propKey: PropKeys
+) => (componentProps: CalcSpacerMeasuresProps) => {
+    const {theme} = componentProps;
+    let {$isNotStretching} = componentProps;
+    let max = componentProps[spacerMaxCssKeys[propKey][0]];
+    let auto = componentProps[spacerMaxCssKeys[propKey][1]];
+
     if (typeof auto !== 'object') {
         // eslint-disable-next-line no-param-reassign
         auto = {xs: auto};
@@ -587,8 +592,10 @@ export const calcSpacerMaxValues = (
 
         const realMax = currentMax ?? lastMax;
         const realAuto = currentAuto ?? lastAuto;
+        // eslint-disable-next-line no-nested-ternary
         const realCss = realMax
             ? `${(realMax * spacing)}rem`
+            // eslint-disable-next-line no-nested-ternary
             : currentNoStretch
                 ? realAuto
                     ? `${(realAuto * spacing)}rem`
@@ -606,6 +613,7 @@ export const calcSpacerMaxValues = (
 
     return mediaQuery;
 };
+/* eslint-enable sort-destructure-keys/sort-destructure-keys */
 
 /**
  * Calculates the Debug CSS for a given element (col, container, row, spacer).
@@ -641,16 +649,9 @@ export const debugCss = (element: 'col' | 'container' | 'row' | 'spacer') => ({t
  * The generated media queries are then merged into a single array of media query strings, using the responsive
  * breakpoints provided by the theme object. The resulting array can be used as the style for a component or element.
  *
- * @param cssFunctions An array of CSS functions to merge. Each function should take a single object argument that
- * includes a `theme` property. The `theme` property should be an object containing responsive breakpoints and any
- * other styles that are needed. Each function should return an array of strings, with one string for each responsive
- * breakpoint that should be included. Each string should be a valid CSS rule set, suitable for use within a
- * media query block. If the function returns null for any breakpoint, the corresponding index in the final array
- * will also be null.
+ * @param cssFunctions An array of CSS functions to merge. Each function should take a single object argument that includes a `theme` property. The `theme` property should be an object containing responsive breakpoints and any other styles that are needed. Each function should return an array of strings, with one string for each responsive breakpoint that should be included. Each string should be a valid CSS rule set, suitable for use within a media query block. If the function returns null for any breakpoint, the corresponding index in the final array will also be null.
  *
- * @returns An array of strings, with one string for each responsive breakpoint.
- * Each string is a valid CSS rule set wrapped in a media query block. If the function returns null for any breakpoint,
- * the corresponding index in the final array will also be null.
+ * @returns An array of strings, with one string for each responsive breakpoint. Each string is a valid CSS rule set wrapped in a media query block. If the function returns null for any breakpoint, the corresponding index in the final array will also be null.
  */
 export const mergeMediaQueries = <T extends object>(
     ...cssFunctions: ((arg: T & {theme: Theme}) => (string | null)[] | null)[]
