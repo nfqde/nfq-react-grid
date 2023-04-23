@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/%40nfq%2Freact-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
 [![BundlePhobia](https://img.shields.io/bundlephobia/min/@nfq/react-grid)](https://bundlephobia.com/result?p=%40nfq/react-grid)
 [![GitHub issues](https://img.shields.io/github/issues/nfqde/nfq-react-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
-[![GitHub contributors](https://img.shields.io/github/contributors/nfqde/nfq-react-grid.svg)]
+![GitHub contributors](https://img.shields.io/github/contributors/nfqde/nfq-react-grid.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
 [![EsLint](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml)
 [![Horusec](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml)
