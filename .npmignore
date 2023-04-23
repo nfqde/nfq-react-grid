@@ -25,6 +25,7 @@ horusec-config.json
 tsconfig.json
 tsconfig.tsbuildinfo
 rollup.config.mjs
+rollupPlugins
 
 # package src
 pnpm-lock.yaml

@@ -9,3 +9,5 @@ export {getConfig, getScreenSize, media, mediaBetween, spacing} from './utils/li
 export {default as ScreenBadge} from './grid/ScreenBadge';
 export {default as ScreenSizeProvider, ScreenSizeContext} from './grid/ScreenSizeProvider';
 export {default as Visible} from './grid/Visible';
+
+export type {Config} from './defaultConfig';
