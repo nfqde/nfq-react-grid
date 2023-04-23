@@ -8,19 +8,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Node.JS 14.x
+      - name: Node.JS 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16.x"
       - name: Cache node modules
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.OS }}-build-v1-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            ${{ runner.OS }}-build-v1-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-v1-
+      - name: Set Tokens
+        run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM }} && npm config set @gsap:registry https://npm.greensock.com/ && npm config set //npm.greensock.com/:_authToken ${{ secrets.GSAP }}
+        env:
+          CI: TRUE
       - name: Install Pnpm
         run: sudo npm -g i pnpm
         env:

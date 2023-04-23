@@ -1,12 +1,33 @@
+# babel
 .babelrc
+.babelrc.js
+babel.config.js
+
+# eslint
 .eslintrc
+.eslintrc.js
+.eslintrc.json
+
+# git
 .github
 .gitignore
+.gitattributes
+**/.gitkeep
+
+# testing
 .nyc_output
 coverage
 cypress
-jsconfig.json
+cypress.config.ts
+horusec-config.json
+
+# builds
+tsconfig.json
+tsconfig.tsbuildinfo
+rollup.config.mjs
+
+# package src
 pnpm-lock.yaml
-rollup.config.js
 src
-webpack.cypress.config.js
+
+.npmrc

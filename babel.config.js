@@ -3,7 +3,9 @@ module.exports = {
     env: {test: {plugins: ['istanbul']}},
     plugins: [
         ['@babel/plugin-proposal-decorators', {legacy: true}],
-        '@babel/plugin-proposal-class-properties',
+        ['@babel/plugin-proposal-class-properties', {loose: false}],
+        '@babel/plugin-transform-typescript',
+        '@babel/plugin-syntax-import-assertions',
         ['styled-components', {
             fileName: true,
             preprocess: false,
@@ -12,7 +14,8 @@ module.exports = {
         }]
     ],
     presets: [
-        ['@babel/preset-env'],
-        '@babel/preset-react'
+        ['@babel/preset-env', {modules: false}],
+        ['@babel/preset-react'],
+        ['@babel/preset-typescript']
     ]
 };
