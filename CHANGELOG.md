@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/nfqde/nfq-react-grid/compare/v3.0.1...v3.0.2) (2023-04-24)
+
+
+### Bug Fixes
+
+* **Build:** Fix esm module build. ([#71](https://github.com/nfqde/nfq-react-grid/issues/71)) ([6ecfbe7](https://github.com/nfqde/nfq-react-grid/commit/6ecfbe7c9bff04360ec90221b4628384fa8611b1))
+
 ### [3.0.1](https://github.com/nfqde/nfq-react-grid/compare/v3.0.0...v3.0.1) (2023-04-23)
 
 
