@@ -19,11 +19,7 @@ const globals = {
 
 export default [
     {
-        external: [...Object.keys({
-            ...pkg.devDependencies,
-            ...pkg.peerDependencies,
-            ...pkg.dependencies
-        } || {})],
+        external: [...Object.keys(pkg.peerDependencies || {})],
         input: 'src/index.tsx',
         output: [
             {
@@ -31,6 +27,7 @@ export default [
                 file: pkg.exports['.'].require,
                 format: 'cjs',
                 globals,
+                interop: 'auto',
                 name: pkg.name,
                 sourcemap: true
             },
@@ -50,8 +47,7 @@ export default [
             commonjs({include: ['node_modules/**']}),
             babel({
                 babelHelpers: 'bundled',
-                extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-                targets: {browsers: pkg.browserslist}
+                extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
             })
         ]
     },
