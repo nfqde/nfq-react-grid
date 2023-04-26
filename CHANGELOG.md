@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/nfqde/nfq-react-grid/compare/v3.0.2...v3.1.0) (2023-04-26)
+
+
+### Features
+
+* **VSCode:** Added vscode extension to the package with an auto install ([#72](https://github.com/nfqde/nfq-react-grid/issues/72)) ([e648a82](https://github.com/nfqde/nfq-react-grid/commit/e648a8284f25e2249fa0c6ebfeebab773b6309b9))
+
 ### [3.0.2](https://github.com/nfqde/nfq-react-grid/compare/v3.0.1...v3.0.2) (2023-04-24)
 
 
