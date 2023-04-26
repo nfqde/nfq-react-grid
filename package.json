@@ -53,6 +53,7 @@
     "lint:report": "pnpm eslint --output-file eslint_report.json --format json --ext='.js, .jsx, .ts, .tsx' ./src",
     "merge:files": "pnpm mochawesome-merge \"./cypress/reports/mochawesome*.json\" > \"./cypress/reports/index.json\"",
     "prepublishOnly": "pnpm run build",
+    "postinstall": "pnpm if-env CI=true && exit 0 || code --install-extension ./dist/vscode/nfq-react-grid-highlight.vsix",
     "test": "pnpm cross-env CYPRESS_INTERNAL_BROWSER_CONNECT_TIMEOUT=300000 NODE_ENV=test pnpm cypress run --component && pnpm merge:files",
     "test:open": "pnpm cross-env NODE_ENV=test pnpm cypress open --component"
   },
@@ -137,5 +138,8 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "dependencies": {
+    "if-env": "^1.0.4"
+  }
 }
