@@ -71,6 +71,10 @@ export default [
                     {
                         dest: 'dist/sass',
                         src: 'src/sass/**/*'
+                    },
+                    {
+                        dest: 'dist/vscode',
+                        src: 'src/vscode/**/*'
                     }
                 ]
             }),

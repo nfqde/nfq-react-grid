@@ -598,7 +598,7 @@ The same as media but it creates an media query between two breakpoints.
 
 ```javascript
 const DemoComponent = styled.div`
-    padding: ${spacing(2, 'px')}; /* Yields 2 * baseSpacing */
+    padding: ${spacing(2)}; /* Yields 2 * baseSpacing */
 `;
 ```
 
