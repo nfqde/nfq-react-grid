@@ -352,8 +352,8 @@ export const getScreenSize = (theme: Partial<Theme>) => {
 
     if (!confKey) throw new Error('Theme must be a grid config theme.');
 
-    // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
-    if (typeof window !== 'undefined' && window.innerWidth) {
+    // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr, @typescript-eslint/no-unnecessary-condition
+    if (window?.innerWidth) {
         viewport = window.innerWidth;
     }
 
