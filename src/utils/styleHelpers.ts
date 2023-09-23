@@ -158,14 +158,21 @@ interface CalcSizesProps {
 export const calcSizes = ({$sizes, theme}: CalcSizesProps) => {
     let lastColCount: number;
     let lastColSize: StringSizes | number = 'auto';
+    let lastGap: number;
     let lastRealSize: string;
+    let lastMaxRealSize: string;
 
     if (Object.keys($sizes).length > 0) {
         const mediaQuery = DIMENSIONS.map(screenSize => {
+            const gap = getInternalConfig(theme).columnGap[screenSize];
             const colCount = getInternalConfig(theme).columns[screenSize];
             const size = $sizes[screenSize];
             let realSize: string;
+            let maxRealSize: string;
 
+            if (gap !== undefined) {
+                lastGap = gap;
+            }
             if (colCount) {
                 lastColCount = colCount;
             }
@@ -174,20 +181,23 @@ export const calcSizes = ({$sizes, theme}: CalcSizesProps) => {
             }
 
             if (['auto', 'max-content', 'min-content'].includes((size ?? lastColSize) as StringSizes)) {
+                maxRealSize = (size ?? lastColSize) as StringSizes;
                 realSize = (size ?? lastColSize) as StringSizes;
             } else {
                 const col = colCount ?? lastColCount;
                 const cappedSize = ((size ?? lastColSize) as number > col) ? col : (size ?? lastColSize) as number;
 
-                realSize = `${String((cappedSize / col) * PERCENTAGE)}%`;
+                maxRealSize = `${String((cappedSize / col) * PERCENTAGE)}%`;
+                realSize = `calc(${String((cappedSize / col) * PERCENTAGE)}% - ${String(gap ?? lastGap)}px)`;
             }
 
-            if (lastRealSize !== realSize) {
+            if (lastRealSize !== realSize && lastMaxRealSize !== maxRealSize) {
                 lastRealSize = realSize;
+                lastMaxRealSize = maxRealSize;
 
                 return `
                     flex: ${realSize === 'auto' ? 'auto' : `1 1 ${realSize}`};
-                    max-width: ${realSize === 'auto' ? 'initial' : realSize};
+                    max-width: ${maxRealSize === 'auto' ? 'initial' : maxRealSize};
                 `;
             }
 

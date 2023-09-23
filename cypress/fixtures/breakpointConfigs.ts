@@ -13,6 +13,14 @@ export const breakPointConfigs = {
     },
     nothing: {},
     noXs: {sm: 10},
+    partlyZero: {
+        // eslint-disable-next-line no-undefined
+        lg: undefined,
+        sm: 0,
+        xl: 10,
+        xs: 0,
+        xxl: 10
+    },
     repeatingNumbers: {
         lg: 20,
         md: 20,

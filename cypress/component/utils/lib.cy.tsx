@@ -76,6 +76,15 @@ describe('Test lib functions', () => {
 
             expect(result).to.deep.equal({xs: 10});
         });
+
+        it('treats breakpoints that are set to 0 like it is 0', () => {
+            const result = mergeScreens(breakPointConfigs.partlyZero);
+
+            expect(result).to.deep.equal({
+                xl: 10,
+                xs: 0
+            });
+        });
     });
 
     context('Test getConfig function', () => {
