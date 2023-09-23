@@ -126,7 +126,10 @@ export const mergeScreens = <T extends Partial<Record<Breakpoints, unknown>>>(co
     let lastValue: number | 'fluid' = 0;
 
     return DIMENSIONS.map(screenSize => {
-        if (screenSize === 'xs' && conf[screenSize] === undefined) {
+        if (
+            (screenSize === 'xs' && conf[screenSize] === undefined)
+            || (screenSize === 'xs' && conf[screenSize] === lastValue)
+        ) {
             return {
                 key: screenSize,
                 val: lastValue
