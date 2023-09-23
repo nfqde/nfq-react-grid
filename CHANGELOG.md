@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.3](https://github.com/nfqde/nfq-react-grid/compare/v3.1.2...v3.1.3) (2023-09-23)
+
+
+### Bug Fixes
+
+* **Gaps:** fix some issues with gaps and 0 on xs breakpoints ([#78](https://github.com/nfqde/nfq-react-grid/issues/78)) ([d850ac3](https://github.com/nfqde/nfq-react-grid/commit/d850ac30a8aa9aeb4615726078c3530283c71119))
+
 ### [3.1.2](https://github.com/nfqde/nfq-react-grid/compare/v3.1.1...v3.1.2) (2023-08-22)
 
 
