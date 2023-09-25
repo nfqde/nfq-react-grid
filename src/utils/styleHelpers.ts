@@ -593,21 +593,22 @@ export const calcSpacerMaxValues = (
         const currentMax = (max as SpacerObject)[screenSize];
         const currentNoStretch = ($isNotStretching as Breakpoints[]).includes(screenSize);
 
-        if (currentAuto) {
+        if (currentAuto !== undefined) {
             lastAuto = currentAuto;
         }
-        if (currentMax) {
+        if (currentMax !== undefined) {
             lastMax = currentMax;
         }
 
         const realMax = currentMax ?? lastMax;
         const realAuto = currentAuto ?? lastAuto;
-        // eslint-disable-next-line no-nested-ternary
-        const realCss = realMax
+        // eslint-disable-next-line no-nested-ternary, no-negated-condition, @typescript-eslint/no-unnecessary-condition
+        const realCss = realMax !== undefined
             ? `${(realMax * spacing)}rem`
             // eslint-disable-next-line no-nested-ternary
             : currentNoStretch
-                ? realAuto
+                // eslint-disable-next-line no-negated-condition, @typescript-eslint/no-unnecessary-condition
+                ? realAuto !== undefined
                     ? `${(realAuto * spacing)}rem`
                     : null
                 : lastRealCss ? 'initial' : null;
