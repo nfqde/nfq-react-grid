@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.4](https://github.com/nfqde/nfq-react-grid/compare/v3.1.3...v3.1.4) (2023-09-25)
+
+
+### Bug Fixes
+
+* **Spacer:** Fix bug with falsable values ([#79](https://github.com/nfqde/nfq-react-grid/issues/79)) ([f2f94b7](https://github.com/nfqde/nfq-react-grid/commit/f2f94b713ab547c78043236eaf9944165301754a))
+
 ### [3.1.3](https://github.com/nfqde/nfq-react-grid/compare/v3.1.2...v3.1.3) (2023-09-23)
 
 
