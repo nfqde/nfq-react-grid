@@ -526,7 +526,7 @@ export const calcSpacerMeasures = (
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const currentValue = (value as SpacerObject)[screenSize];
 
-        if (currentValue) {
+        if (currentValue !== undefined) {
             return `${propKey}: ${String(currentValue * spacing)}rem;`;
         }
 
