@@ -49,6 +49,7 @@ describe('Test Spacer component', () => {
                     testId="SpacerId"
                     y={{
                         lg: 8,
+                        md: 0,
                         xs: 5,
                         xxl: 7
                     }}
@@ -63,7 +64,7 @@ describe('Test Spacer component', () => {
         cy.getCy('SpacerId').invoke('outerHeight', false).should('be.eq', 25);
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('SpacerId').invoke('outerHeight', false).should('be.eq', 25);
+        cy.getCy('SpacerId').invoke('outerHeight', false).should('be.eq', 0);
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
         cy.getCy('SpacerId').invoke('outerHeight', false).should('be.eq', 40);
@@ -92,6 +93,7 @@ describe('Test Spacer component', () => {
                     testId="SpacerId"
                     x={{
                         lg: 8,
+                        md: 0,
                         xs: 5,
                         xxl: 7
                     }}
@@ -106,7 +108,7 @@ describe('Test Spacer component', () => {
         cy.getCy('SpacerId').invoke('outerWidth', false).should('be.eq', 25);
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('SpacerId').invoke('outerWidth', false).should('be.eq', 25);
+        cy.getCy('SpacerId').invoke('outerWidth', false).should('be.eq', 0);
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
         cy.getCy('SpacerId').invoke('outerWidth', false).should('be.eq', 40);
