@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.5](https://github.com/nfqde/nfq-react-grid/compare/v3.1.4...v3.1.5) (2023-09-25)
+
+
+### Bug Fixes
+
+* **Spacer:** Fix max sizes on 0 spacing ([#80](https://github.com/nfqde/nfq-react-grid/issues/80)) ([fcb0900](https://github.com/nfqde/nfq-react-grid/commit/fcb0900d9d2ad36a89b425a2b0bc6114b2efee08))
+
 ### [3.1.4](https://github.com/nfqde/nfq-react-grid/compare/v3.1.3...v3.1.4) (2023-09-25)
 
 
