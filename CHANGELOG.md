@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/nfqde/nfq-react-grid/compare/v3.1.5...v3.2.0) (2023-10-02)
+
+
+### Features
+
+* **Spacing:** add better spacing function calling ([#81](https://github.com/nfqde/nfq-react-grid/issues/81)) ([78c5d53](https://github.com/nfqde/nfq-react-grid/commit/78c5d53bb086215cb80a329c88d389934b425794))
+
 ### [3.1.5](https://github.com/nfqde/nfq-react-grid/compare/v3.1.4...v3.1.5) (2023-09-25)
 
 
