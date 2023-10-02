@@ -213,6 +213,8 @@ export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoi
     `;
 };
 
+type SpaceReturn<T extends Theme | undefined> = T extends Theme ? string : (args: {theme: Theme}) => string;
+
 /**
  * Generates a CSS value for a given spacing value, based on the current grid configuration in the theme.
  *
@@ -220,7 +222,8 @@ export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoi
  * `space` value to rem. The base spacing value is defined in the `nfqgrid` section of the theme
  * object, and represents the base spacing unit for the grid system.
  *
- * @param space The spacing value, specified in grid units.
+ * @param space    The spacing value, specified in grid units.
+ * @param preTheme The styled-components theme. Not needed if used in the context of a styled-component.
  *
  * @returns A CSS value for the spacing value, based on the current grid configuration in the theme.
  * @throws If the `theme` object does not contain a valid grid configuration.
@@ -232,7 +235,18 @@ export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoi
  *   padding: ${spacing(2)};
  * `;
  */
-export const spacing = (space: number) => ({theme}: {theme: Theme}) => `${space * getConfig(theme).baseSpacing}rem`;
+export const spacing = <T extends Theme | undefined>(
+    space: number,
+    preTheme?: T
+): SpaceReturn<T> => {
+    if (preTheme) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return `${space * getConfig(preTheme).baseSpacing}rem` as any;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return (({theme}: {theme: Theme}) => `${space * getConfig(theme).baseSpacing}rem`) as any;
+};
 
 /**
  * Generates a media query string for a given screen size and theme.
