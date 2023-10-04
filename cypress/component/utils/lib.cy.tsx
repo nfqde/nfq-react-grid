@@ -181,13 +181,10 @@ describe('Test lib functions', () => {
         it('Returns the mediaQuery with the css given', () => {
             const returnVal = [
                 '@media ',
-                'only screen and (min-width: 0px)',
-                '{',
-                'width: 100%',
-                '}'
+                'only screen and (min-width: 0px)'
             ];
 
-            expect(media('xs', {nfqgrid: themeConfigs.differentContainers})`width: 100%`).to.be.deep.eq(returnVal);
+            expect(media('xs', {nfqgrid: themeConfigs.differentContainers})).to.be.deep.eq(returnVal);
         });
 
         it('Throws if theme is undefined', () => {
@@ -207,13 +204,10 @@ describe('Test lib functions', () => {
         it('Returns the mediaQuery with the css given', () => {
             const returnVal = [
                 '@media ',
-                'only screen and (min-width: 0px) and (max-width: 575px)',
-                '{',
-                'width: 100%',
-                '}'
+                'only screen and (min-width: 0px) and (max-width: 575px)'
             ];
 
-            expect(mediaBetween('xs', 'sm', {nfqgrid: themeConfigs.differentContainers})`width: 100%`).to.be.deep.eq(returnVal);
+            expect(mediaBetween('xs', 'sm', {nfqgrid: themeConfigs.differentContainers})).to.be.deep.eq(returnVal);
         });
 
         it('Throws if theme is undefined', () => {
@@ -233,6 +227,7 @@ describe('Test lib functions', () => {
         it('Returns the mediaQuery with the css given', () => {
             const returnVal = '1rem';
 
+            // @ts-expect-error
             expect(spacing(2)({theme: {nfqgrid: themeConfigs.differentContainers}})).to.be.deep.eq(returnVal);
         });
     });

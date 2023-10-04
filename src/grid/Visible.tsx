@@ -2,14 +2,13 @@
 import type {ReactElement} from 'react';
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
 import {useScreenSize} from '../utils/hooks/useScreenSize';
 import {media, mediaBetween} from '../utils/lib';
 
 import type {BreakpointObject, Theme} from '../sharedTypes';
-
 
 interface ComponentProps {
     /** The element that should be visible. Has to be an ReactElement. And can be only one child. */
@@ -73,12 +72,12 @@ const VisibleWrap = styled(
     ${({$classes, theme}) => DIMENSIONS.map((size, index) => {
         if (!$classes[size]) {
             return (DIMENSIONS.length - 1 === index)
-                ? media(size, theme as Theme)`
+                ? css`${media(size, theme as Theme)} {
                     display: none!important;
-                `
-                : mediaBetween(size, DIMENSIONS[index + 1], theme as Theme)`
+                }`
+                : css`${mediaBetween(size, DIMENSIONS[index + 1], theme as Theme)} {
                     display: none!important;
-                `;
+                }`;
         }
 
         return null;

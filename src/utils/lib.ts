@@ -176,6 +176,31 @@ export const mergeScreens = <T extends Partial<Record<Breakpoints, unknown>>>(co
 export const media = (screenSize: Breakpoints, theme?: Partial<Theme>) => {
     if (typeof theme === 'object' && !(CONF_KEY in theme)) throw new Error('Theme must be a grid config theme.');
 
+    return css`@media ${generateMediaString(screenSize, theme)}`;
+};
+
+/**
+ * Creates a CSS media query using the given screen size and styled-components theme.
+ *
+ * @param screenSize The screen size for which the media query should be created. The size is specified using a member of the `Breakpoints` type.
+ * @param theme      The styled-components theme. Not needed if used in the context of a styled-component.
+ *
+ * @returns A styled-components CSS template literal function that generates a media query for the given screen size.
+ * @throws If the `theme` object is not a valid grid configuration object.
+ * @example
+ * import styled from 'styled-components';
+ * import {media} from '@nfq/react-grid';
+ *
+ * const Title = styled.h1`
+ *   font-size: 2rem;
+ *   ${media('sm')`
+ *     font-size: 3rem;
+ *   `}
+ * `;
+ */
+export const mediaInternal = (screenSize: Breakpoints, theme?: Partial<Theme>) => {
+    if (typeof theme === 'object' && !(CONF_KEY in theme)) throw new Error('Theme must be a grid config theme.');
+
     return (...args: [TemplateStringsArray, ...(string | null)[]]) => css`
         @media ${generateMediaString(screenSize, theme)} {
             ${css(...args)}
@@ -206,11 +231,7 @@ export const media = (screenSize: Breakpoints, theme?: Partial<Theme>) => {
 export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoints, theme?: Partial<Theme>) => {
     if (typeof theme === 'object' && !(CONF_KEY in theme)) throw new Error('Theme must be a grid config theme.');
 
-    return (...args: [TemplateStringsArray, ...(string | null)[]]) => css`
-        @media ${generateMediaStringBetween(screenSizeMin, screenSizeMax, theme)} {
-            ${css(...args)}
-        }
-    `;
+    return css`@media ${generateMediaStringBetween(screenSizeMin, screenSizeMax, theme)}`;
 };
 
 type SpaceReturn<T extends Theme | undefined> = T extends Theme ? string : (args: {theme: Theme}) => string;
