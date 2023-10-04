@@ -4,7 +4,7 @@ import {css} from 'styled-components';
 import {DIMENSIONS} from '../defaultConfig';
 
 import {HALF, PERCENTAGE} from './constants';
-import {getConfig, getInternalConfig, media} from './lib';
+import {getConfig, getInternalConfig, mediaInternal} from './lib';
 
 import type {
     AlignObject,
@@ -672,6 +672,6 @@ export const mergeMediaQueries = <T extends object>(
         return DIMENSIONS.map((screenSize, index) => {
             const mediaQuery = mediaQueries.map(query => query?.[index]).filter(Boolean).join('');
 
-            return mediaQuery ? media(screenSize, props.theme)`${mediaQuery}` : null;
+            return mediaQuery ? mediaInternal(screenSize, props.theme)`${mediaQuery}` : null;
         });
     };

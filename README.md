@@ -574,9 +574,9 @@ The `theme` object should follow the structure of the `Theme` type. If the `them
 
 ```javascript
 const DemoComponent = styled.div`
-    ${media('xs')`
+    ${media('xs')} {
         padding-top: 2rem;
-    `}
+    }
 `;
 ```
 
@@ -586,9 +586,9 @@ Creates a CSS media query using the given breakpoint and styled-components theme
 
 ```javascript
 const DemoComponent = styled.div`
-    ${mediaBetween('xs', 'md')`
+    ${mediaBetween('xs', 'md')} {
         padding-top: 2rem;
-    `}
+    }
 `;
 ```
 
