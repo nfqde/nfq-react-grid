@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/nfqde/nfq-react-grid/compare/v3.2.0...v4.0.0) (2023-10-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Media:** The media and mediaBetween usage has been reworked and is now no tagged template literal anymore.
+
+### Features
+
+* **Media:** New media query implementation to conserve typing for media queries. ([#82](https://github.com/nfqde/nfq-react-grid/issues/82)) ([17ae97b](https://github.com/nfqde/nfq-react-grid/commit/17ae97b1c3af8e717b3c05c5e612e724ff648aa4))
+
 ## [3.2.0](https://github.com/nfqde/nfq-react-grid/compare/v3.1.5...v3.2.0) (2023-10-02)
 
 
