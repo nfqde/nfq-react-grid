@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/nfqde/nfq-react-grid/compare/v4.2.0...v4.2.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* **Types:** fixing types for color functions ([#85](https://github.com/nfqde/nfq-react-grid/issues/85)) ([fd8d9b1](https://github.com/nfqde/nfq-react-grid/commit/fd8d9b1f7b991cd992a914dee2545a0be4d47fa6))
+
 ## [4.2.0](https://github.com/nfqde/nfq-react-grid/compare/v4.1.0...v4.2.0) (2023-10-09)
 
 
