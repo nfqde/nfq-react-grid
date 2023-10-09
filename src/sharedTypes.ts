@@ -10,7 +10,7 @@ export type RecursiveRequired<T> = Required<{
 export type Breakpoints = 'lg' | 'md' | 'sm' | 'xl' | 'xs' | 'xxl';
 export type FlexAlign = 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'inherit' | 'initial' | 'stretch' | 'unset';
 export type FlexJustify = 'center' | 'flex-end' | 'flex-start' | 'inherit' | 'initial' | 'space-around'
-| 'space-between' | 'space-evenly' | 'unset';
+    | 'space-between' | 'space-evenly' | 'unset';
 export type FlexDirection = 'column' | 'row';
 export type FlexGap = boolean | 'no-column' | 'no-row';
 export type PaddingExt = 'em' | 'px' | 'rem' | 'vh' | 'vw';
@@ -31,7 +31,7 @@ export type OrderObject = CombineToObject<Breakpoints, number>;
 export type SpacerObject = CombineToObject<Breakpoints, number>;
 export type SizesObject = CombineToObject<Breakpoints, StringSizes | number>;
 
-export type Theme = DefaultTheme & {nfqgrid: Config};
+export type Theme = DefaultTheme & {colors?: unknown; nfqgrid: Config};
 export type WithChildren<T = object> = T & {
     /** The react elements children. Has to be an ReactNode. */
     children?: ReactNode;
