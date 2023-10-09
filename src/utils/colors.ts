@@ -1,4 +1,4 @@
-import type {Theme} from 'src/sharedTypes';
+import type {DefaultTheme} from 'styled-components';
 
 /**
  * The `darken` function is a utility that darkens a given color by a specified percentage.
@@ -17,10 +17,11 @@ import type {Theme} from 'src/sharedTypes';
  * const darkenedColor = darken(theme.colors.primary, 10);
  * ```
  */
-export const darken = (color: Theme['colors'][keyof Theme['colors']], percentage: number) => {
+// @ts-expect-error
+export const darken = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color as string}, black ${percentage}%)`;
+    return `color-mix(in srgb, ${color}, black ${percentage}%)`;
 };
 
 /**
@@ -40,10 +41,11 @@ export const darken = (color: Theme['colors'][keyof Theme['colors']], percentage
  * const lightenedColor = lighten(theme.colors.primary, 10);
  * ```
  */
-export const lighten = (color: Theme['colors'][keyof Theme['colors']], percentage: number) => {
+// @ts-expect-error
+export const lighten = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color as string}, white ${percentage}%)`;
+    return `color-mix(in srgb, ${color}, white ${percentage}%)`;
 };
 
 /**
@@ -63,8 +65,9 @@ export const lighten = (color: Theme['colors'][keyof Theme['colors']], percentag
  * const translucentColor = translucify(theme.colors.primary, 50);
  * ```
  */
-export const translucify = (color: Theme['colors'][keyof Theme['colors']], percentage: number) => {
+// @ts-expect-error
+export const translucify = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color as string} ${percentage}%, transparent)`;
+    return `color-mix(in srgb, ${color} ${percentage}%, transparent)`;
 };
