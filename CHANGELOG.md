@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/nfqde/nfq-react-grid/compare/v4.0.0...v4.1.0) (2023-10-09)
+
+
+### Features
+
+* **Colors:** New color functions to darken and lighten hex colors. ([#83](https://github.com/nfqde/nfq-react-grid/issues/83)) ([ebdc0a6](https://github.com/nfqde/nfq-react-grid/commit/ebdc0a6d49279f78df37e340273e6a93cd1e4fe9))
+
 ## [4.0.0](https://github.com/nfqde/nfq-react-grid/compare/v3.2.0...v4.0.0) (2023-10-04)
 
 
