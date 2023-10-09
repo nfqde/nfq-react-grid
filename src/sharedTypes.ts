@@ -31,7 +31,7 @@ export type OrderObject = CombineToObject<Breakpoints, number>;
 export type SpacerObject = CombineToObject<Breakpoints, number>;
 export type SizesObject = CombineToObject<Breakpoints, StringSizes | number>;
 
-export type Theme = DefaultTheme & {colors?: unknown; nfqgrid: Config};
+export type Theme = DefaultTheme & {nfqgrid: Config};
 export type WithChildren<T = object> = T & {
     /** The react elements children. Has to be an ReactNode. */
     children?: ReactNode;
