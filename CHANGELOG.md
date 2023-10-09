@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/nfqde/nfq-react-grid/compare/v4.1.0...v4.2.0) (2023-10-09)
+
+
+### Features
+
+* **Colors:** add translucify function to add opacity to hex colors ([#84](https://github.com/nfqde/nfq-react-grid/issues/84)) ([66b40c0](https://github.com/nfqde/nfq-react-grid/commit/66b40c013b3d85dbcdc08ff7288eeb5dde77fc98))
+
 ## [4.1.0](https://github.com/nfqde/nfq-react-grid/compare/v4.0.0...v4.1.0) (2023-10-09)
 
 
