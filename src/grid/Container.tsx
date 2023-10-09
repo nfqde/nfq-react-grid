@@ -14,6 +14,8 @@ interface ComponentProps {
     as?: ElementType;
     /** Classname property to overwrite styles with styled(Container). */
     className?: string;
+    /** Determines if the container has an padding. */
+    hasNoPadding?: Breakpoints[] | boolean;
     /** Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of `Breakpoints` or a `boolean` value. */
     isFluid?: Breakpoints[] | boolean;
     /** TestId for cypress testing. */
@@ -27,14 +29,16 @@ interface ComponentProps {
  * the container element is not fluid, meaning it has a fixed width. By setting the `isFluid` prop to `true`,
  * the container will expand to fill the available space within its parent container.
  *
- * @param props           The props for the Container component.
- * @param props.as        Sets the html element type of the container. If you overwrite its styles with styled() it has to be forwardedAs.
- * @param props.className Classname property to overwrite styles with styled().
- * @param props.isFluid   Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of `Breakpoints` or a `boolean` value.
- * @param props.testId    TestId for cypress testing.
+ * @param props              The props for the Container component.
+ * @param props.as           Sets the html element type of the container. If you overwrite its styles with styled() it has to be forwardedAs.
+ * @param props.className    Classname property to overwrite styles with styled().
+ * @param props.hasNoPadding Determines if the container has an padding.
+ * @param props.isFluid      Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of `Breakpoints` or a `boolean` value.
+ * @param props.testId       TestId for cypress testing.
  *
  * @returns The Container component.
  * @example
+ * ```tsx
  * import {Container} from '@nfq/react-grid';
  *
  * const App = () => (
@@ -42,11 +46,13 @@ interface ComponentProps {
  *         <h1>Hello, World!</h1>
  *     </Container>
  * );
+ * ```
  */
 const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventHandler>>(({
     as,
     children,
     className,
+    hasNoPadding,
     isFluid,
     testId,
     ...handler
@@ -56,6 +62,7 @@ const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & Mouse
     return (
         <ContainerElement
             ref={ref}
+            $hasNoPadding={hasNoPadding}
             $isFluid={isFluid}
             as={as}
             className={classNames.join(' ')}
@@ -73,6 +80,7 @@ Container.defaultProps = {
     as: undefined,
     children: undefined,
     className: undefined,
+    hasNoPadding: false,
     isFluid: false,
     testId: undefined
 };
@@ -80,6 +88,7 @@ Container.defaultProps = {
 export default Container;
 
 interface ContainerElementProps {
+    $hasNoPadding: Breakpoints[] | boolean;
     $isFluid: Breakpoints[] | boolean;
 }
 

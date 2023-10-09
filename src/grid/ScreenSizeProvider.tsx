@@ -2,7 +2,7 @@ import React, {useEffect, useReducer} from 'react';
 
 import {useTheme} from 'styled-components';
 
-import {getScreenSize} from '../utils/lib';
+import {getScreenSize} from '../utils/layout';
 
 import type {Breakpoints, Theme, WithChildren} from '../sharedTypes';
 
@@ -22,6 +22,7 @@ export const ScreenSizeContext = React.createContext<Breakpoints>(defaultData);
  *
  * @returns The ScreenSizeProvider component.
  * @example
+ * ```tsx
  * import {ThemeProvider} from 'styled-components';
  * import {ScreenSizeProvider} from '@nfq/react-grid';
  * import {theme} from './theme';
@@ -33,6 +34,7 @@ export const ScreenSizeContext = React.createContext<Breakpoints>(defaultData);
  *         </ScreenSizeProvider>
  *     </ThemeProvider>
  * );
+ * ```
  */
 const ScreenSizeProvider = ({children}: WithChildren) => {
     const theme = useTheme();

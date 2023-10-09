@@ -6,7 +6,7 @@ import styled, {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
 import {useScreenSize} from '../utils/hooks/useScreenSize';
-import {media, mediaBetween} from '../utils/lib';
+import {media, mediaBetween} from '../utils/layout';
 
 import type {BreakpointObject, Theme} from '../sharedTypes';
 
@@ -44,6 +44,7 @@ interface ComponentProps {
  *
  * @returns The Hidden component.
  * @example
+ * ```tsx
  * import {Hidden} from '@nfq/react-grid';
  *
  * const App = () => (
@@ -51,6 +52,7 @@ interface ComponentProps {
  *         <h1>Hello, World!</h1>
  *     </Hidden>
  * );
+ * ```
  */
 const Hidden = ({children, isLoadingHtml, ...screenSizes}: ComponentProps) => {
     const screenSize = useScreenSize();

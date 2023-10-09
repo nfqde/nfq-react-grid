@@ -53,6 +53,9 @@
   * [media](#media)
   * [mediaBetween](#mediabetween)
   * [spacing](#spacing)
+  * [lighten](#lighten)
+  * [darken](#darken)
+  * [translucify](#translucify)
   * [ScreenSizeProvider](#screensizeprovider)
 * [Hooks](#hooks)
   * [useConfig](#useConfig)
@@ -267,29 +270,30 @@ Both can get screensizes as props. The screen sizes define when the components w
 
 ### Container
 
-| Prop          | type                                       | required | Description                                                                                                                                                                    |
-| ------------- | ------------------------------------------ | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| as            | string (ElementType)                       |          | Sets the html element type of the container. If you overwrite its styles with styled() it has to be forwardedAs.                                                               |
-| className     | string                                     |          | Classname property to overwrite styles with styled(Container)                                                                                                                  |
-| isFluid       | [Breakpoints[]](#breakpoints)\|boolean     |          | Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value. |
-| testId        | string                                     |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                        |
-| onClick       | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user clicks the element with the mouse.                                                                                               |
-| onContextMenu | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user right-clicks the element with the mouse.                                                                                         |
-| onDoubleClick | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user double-clicks the element with the mouse.                                                                                        |
-| onDrag        | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user starts dragging the element with the mouse.                                                                                      |
-| onDragEnd     | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user stops dragging the element with the mouse.                                                                                       |
-| onDragEnter   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user drags another element over this element.                                                                                         |
-| onDragLeave   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user stops dragging another element over this element.                                                                                |
-| onDragOver    | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user is dragging another element over this element.                                                                                   |
-| onDrop        | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user is dropping another element on this element.                                                                                     |
-| onMouseDown   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user presses a mouse button over the element.                                                                                         |
-| onMouseEnter  | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor enters the element.                                                                                                      |
-| onMouseLeave  | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor leaves the element.                                                                                                      |
-| onMouseMove   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                  |
-| onMouseOut    | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves out of the element.                                                                                                |
-| onMouseOver   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                  |
-| onMouseUp     | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user releases a mouse button over the element.                                                                                        |
-| onScroll      | (event: UIEvent\<HTMLElement\>) => void    |          | A function that will be invoked when the user scrolls inside this element.                                                                                                     |
+| Prop          | type                                       | required | Description                                                                                                                                                                                     |
+| ------------- | ------------------------------------------ | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| as            | string (ElementType)                       |          | Sets the html element type of the container. If you overwrite its styles with styled() it has to be forwardedAs.                                                                                |
+| className     | string                                     |          | Classname property to overwrite styles with styled(Container)                                                                                                                                   |
+| hasNoPadding  | [Breakpoints[]](#breakpoints)\|boolean     |          | Determines if the container has an padding. (Should always be set if the container has an container as parent already). It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value. |
+| isFluid       | [Breakpoints[]](#breakpoints)\|boolean     |          | Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value.                  |
+| testId        | string                                     |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                                         |
+| onClick       | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user clicks the element with the mouse.                                                                                                                |
+| onContextMenu | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user right-clicks the element with the mouse.                                                                                                          |
+| onDoubleClick | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user double-clicks the element with the mouse.                                                                                                         |
+| onDrag        | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user starts dragging the element with the mouse.                                                                                                       |
+| onDragEnd     | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user stops dragging the element with the mouse.                                                                                                        |
+| onDragEnter   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user drags another element over this element.                                                                                                          |
+| onDragLeave   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user stops dragging another element over this element.                                                                                                 |
+| onDragOver    | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user is dragging another element over this element.                                                                                                    |
+| onDrop        | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user is dropping another element on this element.                                                                                                      |
+| onMouseDown   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user presses a mouse button over the element.                                                                                                          |
+| onMouseEnter  | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor enters the element.                                                                                                                       |
+| onMouseLeave  | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor leaves the element.                                                                                                                       |
+| onMouseMove   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
+| onMouseOut    | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves out of the element.                                                                                                                 |
+| onMouseOver   | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
+| onMouseUp     | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user releases a mouse button over the element.                                                                                                         |
+| onScroll      | (event: UIEvent\<HTMLElement\>) => void    |          | A function that will be invoked when the user scrolls inside this element.                                                                                                                      |
 
 ### Row
 
@@ -605,6 +609,42 @@ const DemoComponent = styled.div`
 Generates a CSS value for a given spacing value, based on the current grid configuration in the theme.
 
 This function uses the base spacing value from the grid configuration to convert the input `space` value to rem. The base spacing value is defined in the `nfqgrid` section of the theme object, and represents the base spacing unit for the grid system.
+
+### lighten
+
+```javascript
+const DemoComponent = styled.div`
+    background: ${({theme}) => lighten(theme.colors.header, 50)};
+`;
+```
+
+The `lighten` function is a utility that lightens a given color by a specified percentage.  
+It utilizes the CSS `color-mix` function to mix the provided color with white, achieving the desired lightening effect.
+This function is especially beneficial for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
+
+### darken
+
+```javascript
+const DemoComponent = styled.div`
+    background: ${({theme}) => darken(theme.colors.header, 50)};
+`;
+```
+
+The `darken` function is a utility that darkens a given color by a specified percentage.  
+It leverages the CSS `color-mix` function to mix the provided color with black, achieving the desired darkening effect.
+This function is particularly useful for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
+
+### translucify
+
+```javascript
+const DemoComponent = styled.div`
+    background: ${({theme}) => translucify(theme.colors.header, 50)};
+`;
+```
+
+The `translucify` function is a utility designed to make a given color translucent by blending it with transparency.  
+By leveraging the CSS `color-mix` function, it combines the provided color with a transparent color, resulting in a translucent version of the original color.
+This function is particularly useful for creating semi-transparent overlays, backgrounds, or other UI elements that require a touch of transparency.
 
 ### ScreenSizeProvider
 

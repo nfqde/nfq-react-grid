@@ -71,6 +71,7 @@ interface ComponentProps {
  *
  * @returns The Row component.
  * @example
+ * ```tsx
  * import {Col, Row} from '@nfq/react-grid';
  *
  * const App = () => (
@@ -83,6 +84,7 @@ interface ComponentProps {
  *         </Col>
  *     </Row>
  * );
+ * ```
  */
 const Row = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventHandler>>(({
     align,
