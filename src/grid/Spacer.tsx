@@ -45,6 +45,7 @@ interface ComponentProps {
  *
  * @returns The Spacer component.
  * @example
+ * ```tsx
  * import {Spacer} from '@nfq/react-grid';
  *
  * const MyComponent = () => (
@@ -54,6 +55,7 @@ interface ComponentProps {
  *         <div></div>
  *     </>
  * );
+ * ```
  */
 const Spacer = ({isInline, isNotStretching, maxX, maxY, testId, x, y}: ComponentProps) => {
     const className = useDebug();

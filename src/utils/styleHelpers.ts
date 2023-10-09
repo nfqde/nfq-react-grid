@@ -374,6 +374,11 @@ export const calcAlignmentProps = (
     return mediaQuery;
 };
 
+interface calcContainerPaddingProps {
+    $hasNoPadding?: Breakpoints[] | boolean;
+    theme: Theme;
+}
+
 /**
  * Calculates the container padding css based on the provided theme object.
  *
@@ -381,19 +386,33 @@ export const calcAlignmentProps = (
  * provided in the theme's `containerPadding` object. The resulting css string should be used as a CSS-in-JS style
  * to apply container padding.
  *
- * @param props       The styled-component props object.
- * @param props.theme The styled-components theme.
+ * @param props               The styled-component props object.
+ * @param props.$hasNoPadding Determines if the container has an padding.
+ * @param props.theme         The styled-components theme.
  *
  * @returns An array of css strings representing the calculated container padding.
  */
-export const calcContainerPadding = ({theme}: {theme: Theme}) => {
-    const mediaQuery = DIMENSIONS.map(screenSize => {
-        const columnGap = getInternalConfig(theme).containerPadding[screenSize];
+export const calcContainerPadding = ({$hasNoPadding, theme}: calcContainerPaddingProps) => {
+    if (!Array.isArray($hasNoPadding)) {
+        // eslint-disable-next-line no-param-reassign
+        $hasNoPadding = $hasNoPadding ? DIMENSIONS : [];
+    }
 
-        if (columnGap) {
+    let lastRealPadding = 0;
+    let lastPadding: number;
+    const mediaQuery = DIMENSIONS.map(screenSize => {
+        const containerPadding = getInternalConfig(theme).containerPadding[screenSize];
+        const hasNoPadding = ($hasNoPadding as Breakpoints[]).includes(screenSize);
+        const realPadding = containerPadding ?? lastRealPadding;
+        const padding = hasNoPadding ? 0 : realPadding;
+
+        if (padding !== lastPadding || realPadding !== lastRealPadding) {
+            lastRealPadding = realPadding;
+            lastPadding = padding;
+
             return `
-                padding-left: ${String(columnGap)}px;
-                padding-right: ${String(columnGap)}px;
+                padding-left: ${String(padding)}px;
+                padding-right: ${String(padding)}px;
             `;
         }
 

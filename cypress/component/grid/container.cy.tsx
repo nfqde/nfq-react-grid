@@ -143,6 +143,74 @@ describe('Test Container component', () => {
         cy.getCy('ContainerId').invoke('outerWidth', false).should('be.eq', Viewports.xxl[0]);
     });
 
+    it('Renders without padding if hasNoPadding is set to true', () => {
+        cy.mount(
+            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
+                <Container testId="ContainerId" hasNoPadding>
+                    &nbsp;
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+    });
+
+    it('Renders without padding if hasNoPadding is set for the breakpoint.', () => {
+        cy.mount(
+            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
+                <Container hasNoPadding={['sm', 'lg', 'xxl']} testId="ContainerId">
+                    &nbsp;
+                </Container>
+            </TestWrapper>
+        );
+
+        cy.viewport(Viewports.xs[0], Viewports.xs[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '10px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '10px');
+
+        cy.viewport(Viewports.sm[0], Viewports.sm[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.md[0], Viewports.md[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '10px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '10px');
+
+        cy.viewport(Viewports.lg[0], Viewports.lg[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+
+        cy.viewport(Viewports.xl[0], Viewports.xl[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '10px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '10px');
+
+        cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
+        cy.getCy('ContainerId').should('have.css', 'padding-left', '0px');
+        cy.getCy('ContainerId').should('have.css', 'padding-right', '0px');
+    });
+
     it('Renders debug mode if Strg+D is pressed', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>

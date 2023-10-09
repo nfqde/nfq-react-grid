@@ -20,6 +20,7 @@ interface ComponentProps {
  *
  * @returns The ScreenBadge component.
  * @example
+ * ```tsx
  * import {ScreenBadge, ScreenSizeProvider} from '@nfq/react-grid';
  *
  * const App = () => (
@@ -27,6 +28,7 @@ interface ComponentProps {
  *         <ScreenBadge />
  *     </ScreenSizeProvider>
  * );
+ * ```
  */
 const ScreenBadge = ({testId}: ComponentProps) => {
     const screenSize = useScreenSize();

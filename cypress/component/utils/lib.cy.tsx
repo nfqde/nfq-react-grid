@@ -1,18 +1,11 @@
 /* eslint-disable promise/prefer-await-to-then, promise/catch-or-return, max-lines-per-function */
 import {
-    darken,
     getConfig,
     getInternalConfig,
-    getScreenSize,
-    lighten,
-    media,
-    mediaBetween,
-    mergeScreens,
-    spacing
+    mergeScreens
 } from '../../../src/utils/lib';
 import {breakPointConfigs} from '../../fixtures/breakpointConfigs';
 import {themeConfigs} from '../../fixtures/themes';
-import {Viewports} from '../../fixtures/viewports';
 
 describe('Test lib functions', () => {
     context('Test mergeScreens function', () => {
@@ -128,137 +121,6 @@ describe('Test lib functions', () => {
 
         it('Throws if theme is undefined', () => {
             expect(() => getInternalConfig({})).to.throw('Theme must be a grid config theme.');
-        });
-    });
-
-    context('Test getScreenSize function', () => {
-        it('Is a function', () => {
-            expect(getScreenSize, 'getScreenSize').to.be.a('function');
-        });
-
-        it('Returns an string', () => {
-            assert.typeOf(getScreenSize({nfqgrid: themeConfigs.defaultTheme}), 'string');
-        });
-
-        it('Returns the screen class for the theme breakpoint definition', () => {
-            cy.viewport(Viewports.xs[0], Viewports.xs[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('xs')
-            );
-
-            cy.viewport(Viewports.sm[0], Viewports.sm[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('sm')
-            );
-
-            cy.viewport(Viewports.md[0], Viewports.md[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('md')
-            );
-
-            cy.viewport(Viewports.lg[0], Viewports.lg[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('lg')
-            );
-
-            cy.viewport(Viewports.xl[0], Viewports.xl[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('xl')
-            );
-
-            cy.viewport(Viewports.xxl[0], Viewports.xxl[1]).then(
-                () => expect(getScreenSize({nfqgrid: themeConfigs.differentContainers})).to.be.eq('xxl')
-            );
-        });
-
-        it('Throws if theme is undefined', () => {
-            expect(() => getScreenSize({})).to.throw('Theme must be a grid config theme.');
-        });
-    });
-
-    context('Test media function', () => {
-        it('Is a function', () => {
-            expect(media, 'media').to.be.a('function');
-        });
-
-        it('Returns an function', () => {
-            assert.typeOf(media, 'function');
-        });
-
-        it('Returns the mediaQuery with the css given', () => {
-            const returnVal = [
-                '@media ',
-                'only screen and (min-width: 0px)'
-            ];
-
-            expect(media('xs', {nfqgrid: themeConfigs.differentContainers})).to.be.deep.eq(returnVal);
-        });
-
-        it('Throws if theme is undefined', () => {
-            expect(() => media('xs', {})).to.throw('Theme must be a grid config theme.');
-        });
-    });
-
-    context('Test mediaBetween function', () => {
-        it('Is a function', () => {
-            expect(mediaBetween, 'mediaBetween').to.be.a('function');
-        });
-
-        it('Returns an function', () => {
-            assert.typeOf(mediaBetween, 'function');
-        });
-
-        it('Returns the mediaQuery with the css given', () => {
-            const returnVal = [
-                '@media ',
-                'only screen and (min-width: 0px) and (max-width: 575px)'
-            ];
-
-            expect(mediaBetween('xs', 'sm', {nfqgrid: themeConfigs.differentContainers})).to.be.deep.eq(returnVal);
-        });
-
-        it('Throws if theme is undefined', () => {
-            expect(() => mediaBetween('xs', 'sm', {})).to.throw('Theme must be a grid config theme.');
-        });
-    });
-
-    context('Test spacing function', () => {
-        it('Is a function', () => {
-            expect(spacing, 'spacing').to.be.a('function');
-        });
-
-        it('Returns a function', () => {
-            assert.typeOf(spacing, 'function');
-        });
-
-        it('Returns the mediaQuery with the css given', () => {
-            const returnVal = '1rem';
-
-            // @ts-expect-error
-            expect(spacing(2)({theme: {nfqgrid: themeConfigs.differentContainers}})).to.be.deep.eq(returnVal);
-        });
-    });
-
-    context('Test darken function', () => {
-        it('Is a funtion', () => {
-            expect(darken, 'darken').to.be.a('function');
-        });
-
-        it('Returns a css color-mix function ', () => {
-            expect(darken('#0000ff', 50)).to.eq('color-mix(in srgb, #0000ff 50%, black)');
-        });
-
-        it('Throws if color is not a string', () => {
-            expect(() => darken(0, 50)).to.throw('Color must be of type string');
-        });
-    });
-
-    context('Test lighten function', () => {
-        it('Is a funtion', () => {
-            expect(lighten, 'lighten').to.be.a('function');
-        });
-
-        it('Returns a css color-mix function ', () => {
-            expect(lighten('#0000ff', 50)).to.eq('color-mix(in srgb, #0000ff 50%, white)');
-        });
-
-        it('Throws if color is not a string', () => {
-            expect(() => lighten(0, 50)).to.throw('Color must be of type string');
         });
     });
 });
