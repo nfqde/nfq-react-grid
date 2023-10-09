@@ -150,7 +150,7 @@ export const mergeScreens = <T extends Partial<Record<Breakpoints, unknown>>>(co
         acc[key] = val;
 
         return acc;
-    // eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
+        // eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
     }, {} as T);
 };
 
@@ -267,6 +267,53 @@ export const spacing = <T extends Theme | undefined>(
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return (({theme}: {theme: Theme}) => `${space * getConfig(theme).baseSpacing}rem`) as any;
+};
+
+/**
+ * Generates a darker CSS variant for a given color value, based on the percentage of that color mixed with black.
+ *
+ * This function uses the oklab mode and calculates a mix of the input color with black.
+ *
+ * @param color      The color value that we need to darken.
+ * @param percentage The percentage of the original color in the result mix.
+ *
+ * @returns A CSS value for the darker color, based on the input color and its percentage.
+ * @throws An error if the color is not of type string.
+ * @example
+ * import styled from 'styled-components';
+ * import {darken} from '@nfq/react-grid';
+ *
+ * const Box = styled.div`
+ *   background-color: ${darken("00ff00", 50)};
+ * `;
+ */
+export const darken = (color: Theme['colors'], percentage: number) => {
+    if (typeof color !== 'string') throw new Error('Color must be of type string');
+
+    return `color-mix(in srgb, ${color} ${percentage}%, black)`;
+};
+/**
+ * Generates a lighter CSS variant for a given color value, based on the percentage of that color mixed with black.
+ *
+ * This function uses the oklab mode and calculates a mix of the input color with black.
+ *
+ * @param color      The color value that we need to lighten.
+ * @param percentage The percentage of the original color in the result mix.
+ *
+ * @returns A CSS value for the lighter color, based on the input color and its percentage.
+ * @throws An error if the color is not of type string.
+ * @example
+ * import styled from 'styled-components';
+ * import {lighten} from '@nfq/react-grid';
+ *
+ * const Box = styled.div`
+ *   background-color: ${lighten("00ff00", 50)};
+ * `;
+ */
+export const lighten = (color: Theme['colors'], percentage: number) => {
+    if (typeof color !== 'string') throw new Error('Color must be of type string');
+
+    return `color-mix(in srgb, ${color} ${percentage}%, white)`;
 };
 
 /**
