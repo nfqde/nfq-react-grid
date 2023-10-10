@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.3.2](https://github.com/nfqde/nfq-react-grid/compare/v4.2.1...v4.3.2) (2023-10-10)
+
+
+### Features
+
+* **Sass:** Use gap instead of paddings and margins ([#86](https://github.com/nfqde/nfq-react-grid/issues/86)) ([26b5199](https://github.com/nfqde/nfq-react-grid/commit/26b51992d77fe9051859eb63af74bd65cb4ad6cd))
+
+
+### Bug Fixes
+
+* **Gap:** Simplify offset calc ([#87](https://github.com/nfqde/nfq-react-grid/issues/87)) ([5c916cc](https://github.com/nfqde/nfq-react-grid/commit/5c916ccb054d847250439385df1a52f85b09f490))
+* **Sizes:** fix col sizes with gap and fix offsets. ([#88](https://github.com/nfqde/nfq-react-grid/issues/88)) ([10b1360](https://github.com/nfqde/nfq-react-grid/commit/10b1360e0dc1173150cffd65e4c41c192803f126))
+
 ### [4.2.1](https://github.com/nfqde/nfq-react-grid/compare/v4.2.0...v4.2.1) (2023-10-09)
 
 
