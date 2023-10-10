@@ -29,11 +29,11 @@ describe('Test calcSizes function', () => {
             xs: 1
         };
         const expectedSizeCss = [
-            '\n                    flex: 1 1 calc(8.333333333333332% - 20px);\n                    max-width: 8.333333333333332%;\n                ',
-            '\n                    flex: 1 1 min-content;\n                    max-width: min-content;\n                ',
-            '\n                    flex: 1 1 max-content;\n                    max-width: max-content;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 1 - var(--column-gap, 0px) + var(--column-gap, 0px) * 1 / 12);\n                    max-width: calc(100% / 12 * 1 - var(--column-gap, 0px) + var(--column-gap, 0px) * 1 / 12);\n                ',
+            '\n                    flex: 0 0 min-content;\n                    max-width: min-content;\n                ',
+            '\n                    flex: 0 0 max-content;\n                    max-width: max-content;\n                ',
             '\n                    flex: auto;\n                    max-width: initial;\n                ',
-            '\n                    flex: 1 1 calc(41.66666666666667% - 20px);\n                    max-width: 41.66666666666667%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                    max-width: calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                ',
             null
         ];
         // eslint-disable-next-line no-undefined, @nfq/no-magic-numbers
@@ -51,11 +51,11 @@ describe('Test calcSizes function', () => {
             xs: 1
         };
         const expectedSizeCss = [
-            '\n                    flex: 1 1 calc(8.333333333333332% - 20px);\n                    max-width: 8.333333333333332%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 1 - var(--column-gap, 0px) + var(--column-gap, 0px) * 1 / 12);\n                    max-width: calc(100% / 12 * 1 - var(--column-gap, 0px) + var(--column-gap, 0px) * 1 / 12);\n                ',
             null,
             null,
             null,
-            '\n                    flex: 1 1 calc(41.66666666666667% - 20px);\n                    max-width: 41.66666666666667%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                    max-width: calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                ',
             null
         ];
         const actualSizeCss = calcSizes({
@@ -73,7 +73,7 @@ describe('Test calcSizes function', () => {
             null,
             null,
             null,
-            '\n                    flex: 1 1 calc(41.66666666666667% - 20px);\n                    max-width: 41.66666666666667%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                    max-width: calc(100% / 12 * 5 - var(--column-gap, 0px) + var(--column-gap, 0px) * 5 / 12);\n                ',
             null
         ];
         const actualSizeCss = calcSizes({
@@ -91,7 +91,7 @@ describe('Test calcSizes function', () => {
             null,
             null,
             null,
-            '\n                    flex: 1 1 calc(100% - 20px);\n                    max-width: 100%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 12 - var(--column-gap, 0px) + var(--column-gap, 0px) * 12 / 12);\n                    max-width: calc(100% / 12 * 12 - var(--column-gap, 0px) + var(--column-gap, 0px) * 12 / 12);\n                ',
             null
         ];
         const actualSizeCss = calcSizes({
@@ -105,11 +105,11 @@ describe('Test calcSizes function', () => {
     it('should compensate different column counts', () => {
         const sizes = {xs: 2};
         const expectedSizeCss = [
-            '\n                    flex: 1 1 calc(50% - 20px);\n                    max-width: 50%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 4 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 4);\n                    max-width: calc(100% / 4 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 4);\n                ',
             null,
-            '\n                    flex: 1 1 calc(25% - 20px);\n                    max-width: 25%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 8 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 8);\n                    max-width: calc(100% / 8 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 8);\n                ',
             null,
-            '\n                    flex: 1 1 calc(16.666666666666664% - 20px);\n                    max-width: 16.666666666666664%;\n                ',
+            '\n                    flex: 0 0 calc(100% / 12 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 12);\n                    max-width: calc(100% / 12 * 2 - var(--column-gap, 0px) + var(--column-gap, 0px) * 2 / 12);\n                ',
             null
         ];
         const actualSizeCss = calcSizes({

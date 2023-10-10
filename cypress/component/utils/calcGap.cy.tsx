@@ -10,7 +10,7 @@ describe('Test calcGap function', () => {
     it('should return configured gaps.', () => {
         const theme = {nfqgrid: themeConfigs.defaultTheme};
         const expectedOffsetCss = [
-            '\n                column-gap: 20px;\n                row-gap: 20px;\n            ',
+            '\n                --column-gap: 20px;\n                column-gap: var(--column-gap);\n                row-gap: 20px;\n            ',
             null,
             null,
             null,
@@ -29,7 +29,7 @@ describe('Test calcGap function', () => {
     it('should return no gaps.', () => {
         const theme = {nfqgrid: themeConfigs.defaultTheme};
         const expectedOffsetCss = [
-            '\n                column-gap: normal;\n                row-gap: normal;\n            ',
+            '\n                --column-gap: 0px;\n                column-gap: var(--column-gap);\n                row-gap: 0px;\n            ',
             null,
             null,
             null,
@@ -48,7 +48,7 @@ describe('Test calcGap function', () => {
     it('should return no row-gaps.', () => {
         const theme = {nfqgrid: themeConfigs.defaultTheme};
         const expectedOffsetCss = [
-            '\n                column-gap: 20px;\n                row-gap: normal;\n            ',
+            '\n                --column-gap: 20px;\n                column-gap: var(--column-gap);\n                row-gap: 0px;\n            ',
             null,
             null,
             null,
@@ -67,7 +67,7 @@ describe('Test calcGap function', () => {
     it('should return no column-gaps.', () => {
         const theme = {nfqgrid: themeConfigs.defaultTheme};
         const expectedOffsetCss = [
-            '\n                column-gap: normal;\n                row-gap: 20px;\n            ',
+            '\n                --column-gap: 0px;\n                column-gap: var(--column-gap);\n                row-gap: 20px;\n            ',
             null,
             null,
             null,
@@ -86,12 +86,12 @@ describe('Test calcGap function', () => {
     it('should return media queries like configuration', () => {
         const theme = {nfqgrid: themeConfigs.defaultTheme};
         const expectedOffsetCss = [
-            '\n                column-gap: normal;\n                row-gap: 20px;\n            ',
-            '\n                column-gap: normal;\n                row-gap: normal;\n            ',
-            '\n                column-gap: 20px;\n                row-gap: 20px;\n            ',
-            '\n                column-gap: 20px;\n                row-gap: normal;\n            ',
-            '\n                column-gap: normal;\n                row-gap: normal;\n            ',
-            '\n                column-gap: 20px;\n                row-gap: 20px;\n            '
+            '\n                --column-gap: 0px;\n                column-gap: var(--column-gap);\n                row-gap: 20px;\n            ',
+            '\n                --column-gap: 0px;\n                column-gap: var(--column-gap);\n                row-gap: 0px;\n            ',
+            '\n                --column-gap: 20px;\n                column-gap: var(--column-gap);\n                row-gap: 20px;\n            ',
+            '\n                --column-gap: 20px;\n                column-gap: var(--column-gap);\n                row-gap: 0px;\n            ',
+            '\n                --column-gap: 0px;\n                column-gap: var(--column-gap);\n                row-gap: 0px;\n            ',
+            '\n                --column-gap: 20px;\n                column-gap: var(--column-gap);\n                row-gap: 20px;\n            '
         ];
         // eslint-disable-next-line @nfq/no-magic-numbers
         const actualOffsetCss = calcGap({

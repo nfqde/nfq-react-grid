@@ -118,28 +118,28 @@ describe('Test Row component', () => {
         );
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
     });
 
     it('Defines no column-gaps if hasNoGap is set to no-column', () => {
@@ -154,27 +154,27 @@ describe('Test Row component', () => {
         );
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
     });
 
@@ -191,27 +191,27 @@ describe('Test Row component', () => {
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
     });
 
     it('Defines no gaps if hasNoGap is set to an object', () => {
@@ -233,8 +233,8 @@ describe('Test Row component', () => {
         );
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
@@ -245,16 +245,16 @@ describe('Test Row component', () => {
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
     });
 
     it('Defines no gaps if hasNoGap is set to an object width no-row and no-column', () => {
@@ -277,28 +277,28 @@ describe('Test Row component', () => {
         );
 
         cy.viewport(Viewports.xs[0], Viewports.xs[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.sm[0], Viewports.sm[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.md[0], Viewports.md[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
         cy.getCy('RowId').should('have.css', 'row-gap', '20px');
 
         cy.viewport(Viewports.lg[0], Viewports.lg[1]);
         cy.getCy('RowId').should('have.css', 'column-gap', '20px');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xl[0], Viewports.xl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('RowId').should('have.css', 'column-gap', 'normal');
-        cy.getCy('RowId').should('have.css', 'row-gap', 'normal');
+        cy.getCy('RowId').should('have.css', 'column-gap', '0px');
+        cy.getCy('RowId').should('have.css', 'row-gap', '0px');
     });
 
     it('Renders with default direction', () => {
