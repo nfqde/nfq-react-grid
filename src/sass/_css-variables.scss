@@ -19,8 +19,8 @@
     }
 
 
-    @each $name, $value in $gutterWidth {
-        --gutter-width-#{$name}: #{numberedValue($value)};
+    @each $name, $value in $gapWidth {
+        --gap-width-#{$name}: #{numberedValue($value)};
     }
 
     @each $name, $value in $containerPaddingWidth {
@@ -56,12 +56,12 @@
     @return var(--container-#{unquote($name)});
 }
 
-@function gutterWidth($name){
-    @if not map-get($gutterWidth, $name){
-        @error "GutterWidth `#{$name}` not found.";
+@function gapWidth($name){
+    @if not map-get($gapWidth, $name){
+        @error "GapWidth `#{$name}` not found.";
     }
 
-    @return var(--gutter-width-#{unquote($name)});
+    @return var(--gap-width-#{unquote($name)});
 }
 
 @function containerPadding($name){

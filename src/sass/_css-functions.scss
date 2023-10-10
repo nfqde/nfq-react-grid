@@ -1,3 +1,5 @@
+@use "sass:string";
+
 @function spacing($value){
     @return calc($value * baseSpacing());
 }
@@ -24,4 +26,12 @@
             @content;
         }
     }
+}
+
+@function lighter-color($colorName, $amount) {
+    @return color-mix(in srgb, var(string.unquote($colorName)), var(--white) $amount);
+}
+
+@function darker-color($colorName, $amount) {
+    @return color-mix(in srgb, var(string.unquote($colorName)), var(--black) $amount);
 }

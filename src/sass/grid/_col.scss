@@ -1,7 +1,5 @@
 .col {
     box-sizing: border-box;
-    // flex: 1 0 auto;
-    // max-width: 100%;
 }
 
 $colSizes: (
@@ -12,17 +10,11 @@ $colSizes: (
 
 @mixin colElement($dimension) {
     $dimensionString: '-';
+    $gap: gapWidth(#{$dimension});
 
     @if $dimension != 'xs' {
         $dimensionString: -#{unquote($dimension)}-;
     };
-
-    $padding: calc(#{gutterWidth(#{$dimension})} / 2);
-
-    .col {
-        padding-left: $padding;
-        padding-right: $padding;
-    }
 
     @each $sizeName, $value in $colSizes {
         .col#{$dimensionString}#{$sizeName} {
@@ -37,15 +29,15 @@ $colSizes: (
     }
 
     @for $i from 1 through $columns {
-        $percentage: calc($i / $columns * 100%);
+        $width: calc(100% / #{$columns} * #{$i} - #{$gap} + #{$gap} * #{$i} / 12);
 
         .col#{$dimensionString}#{$i} {
-            flex: 0 0 $percentage;
-            max-width: $percentage;
+            flex: 0 0 $width;
+            max-width: $width;
         }
 
         .col-offset#{$dimensionString}#{$i} {
-            margin-left: $percentage;
+            margin-left: calc(100% / #{$columns} * #{$i} - #{$gap} + #{$gap} * #{$i} / 12 + #{$gap});
         }
     }
 
