@@ -3,7 +3,6 @@ import {css} from 'styled-components';
 
 import {DIMENSIONS} from '../defaultConfig';
 
-import {HALF, PERCENTAGE} from './constants';
 import {getConfig, getInternalConfig, mediaInternal} from './lib';
 
 import type {
@@ -109,7 +108,7 @@ export const calcGap = ({$hasNoGap = false, theme}: CalcGapProps) => {
 
     let lastGap: number;
     let lastGapConfig: FlexGap;
-    let lastColumnGap: string;
+    let lastColumnGapVar: string;
     let lastRowGap: string;
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const gap = getInternalConfig(theme).columnGap[screenSize];
@@ -122,14 +121,16 @@ export const calcGap = ({$hasNoGap = false, theme}: CalcGapProps) => {
             lastGapConfig = gapConfig;
         }
 
-        const columnGap = `column-gap: ${((gapConfig ?? lastGapConfig) === 'no-column' || (gapConfig ?? lastGapConfig) === true) ? 'normal' : `${String(gap ?? lastGap)}px`};`;
-        const rowGap = `row-gap: ${((gapConfig ?? lastGapConfig) === 'no-row' || (gapConfig ?? lastGapConfig) === true) ? 'normal' : `${String(gap ?? lastGap)}px`};`;
+        const columnGapVar = `--column-gap: ${((gapConfig ?? lastGapConfig) === 'no-column' || (gapConfig ?? lastGapConfig) === true) ? '0px' : `${String(gap ?? lastGap)}px`};`;
+        const columnGap = 'column-gap: var(--column-gap);';
+        const rowGap = `row-gap: ${((gapConfig ?? lastGapConfig) === 'no-row' || (gapConfig ?? lastGapConfig) === true) ? '0px' : `${String(gap ?? lastGap)}px`};`;
 
-        if (lastColumnGap !== columnGap || lastRowGap !== rowGap) {
-            lastColumnGap = columnGap;
+        if (lastColumnGapVar !== columnGapVar || lastRowGap !== rowGap) {
+            lastColumnGapVar = columnGapVar;
             lastRowGap = rowGap;
 
             return `
+                ${columnGapVar}
                 ${columnGap}
                 ${rowGap}
             `;
@@ -158,21 +159,14 @@ interface CalcSizesProps {
 export const calcSizes = ({$sizes, theme}: CalcSizesProps) => {
     let lastColCount: number;
     let lastColSize: StringSizes | number = 'auto';
-    let lastGap: number;
     let lastRealSize: string;
-    let lastMaxRealSize: string;
 
     if (Object.keys($sizes).length > 0) {
         const mediaQuery = DIMENSIONS.map(screenSize => {
-            const gap = getInternalConfig(theme).columnGap[screenSize];
             const colCount = getInternalConfig(theme).columns[screenSize];
             const size = $sizes[screenSize];
             let realSize: string;
-            let maxRealSize: string;
 
-            if (gap !== undefined) {
-                lastGap = gap;
-            }
             if (colCount) {
                 lastColCount = colCount;
             }
@@ -181,23 +175,20 @@ export const calcSizes = ({$sizes, theme}: CalcSizesProps) => {
             }
 
             if (['auto', 'max-content', 'min-content'].includes((size ?? lastColSize) as StringSizes)) {
-                maxRealSize = (size ?? lastColSize) as StringSizes;
                 realSize = (size ?? lastColSize) as StringSizes;
             } else {
                 const col = colCount ?? lastColCount;
                 const cappedSize = ((size ?? lastColSize) as number > col) ? col : (size ?? lastColSize) as number;
 
-                maxRealSize = `${String((cappedSize / col) * PERCENTAGE)}%`;
-                realSize = `calc(${String((cappedSize / col) * PERCENTAGE)}% - ${String(gap ?? lastGap)}px)`;
+                realSize = `calc(100% / ${col} * ${cappedSize} - var(--column-gap, 0px) + var(--column-gap, 0px) * ${cappedSize} / ${col})`;
             }
 
-            if (lastRealSize !== realSize && lastMaxRealSize !== maxRealSize) {
+            if (lastRealSize !== realSize) {
                 lastRealSize = realSize;
-                lastMaxRealSize = maxRealSize;
 
                 return `
-                    flex: ${realSize === 'auto' ? 'auto' : `1 1 ${realSize}`};
-                    max-width: ${maxRealSize === 'auto' ? 'initial' : maxRealSize};
+                    flex: ${realSize === 'auto' ? 'auto' : `0 0 ${realSize}`};
+                    max-width: ${realSize === 'auto' ? 'initial' : realSize};
                 `;
             }
 
@@ -231,19 +222,14 @@ export const calcOffset = ({$offset, theme}: CalcOffsetProps) => {
     }
 
     let lastColCount: number;
-    let lastColumnGap: number;
     let lastOffset = 0;
-    let lastRealOffset: string;
+    let lastRealOffset: string | null;
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const colCount = getInternalConfig(theme).columns[screenSize];
-        const columnGap = getInternalConfig(theme).columnGap[screenSize];
         const currentOffset = ($offset as OffsetObject)[screenSize];
 
         if (colCount) {
             lastColCount = colCount;
-        }
-        if (columnGap) {
-            lastColumnGap = columnGap;
         }
         if (currentOffset) {
             lastOffset = currentOffset;
@@ -251,8 +237,7 @@ export const calcOffset = ({$offset, theme}: CalcOffsetProps) => {
 
         const col = colCount ?? lastColCount;
         const finalOffset = currentOffset ?? lastOffset;
-        const cappedOffset = (finalOffset > col) ? col : finalOffset;
-        const realOffset = finalOffset === 0 ? '' : `calc(${String((cappedOffset / col) * PERCENTAGE)}% + ${String((columnGap ?? lastColumnGap) / HALF)}px)`;
+        const realOffset = finalOffset === 0 ? null : `calc(100% / ${col} * ${finalOffset} + var(--column-gap, 0px) * ${finalOffset} / ${col})`;
 
         if (lastRealOffset !== realOffset) {
             lastRealOffset = realOffset;

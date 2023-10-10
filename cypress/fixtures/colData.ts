@@ -17,28 +17,28 @@ export const ColSizesBig = {
 };
 
 export const MobileFirstOffsets = {
-    lg: 260,
-    md: 202.5,
-    sm: 155,
-    xl: 385,
-    xs: 110,
-    xxl: 510
+    lg: 250,
+    md: 192.5,
+    sm: 145,
+    xl: 375,
+    xs: 100,
+    xxl: 500
 };
 
 export const ScreenSizeOffsets = {
-    lg: 260,
-    md: 202.5,
-    sm: 155,
-    xl: 385,
-    xs: 110,
-    xxl: 510
+    lg: 250,
+    md: 192.5,
+    sm: 145,
+    xl: 375,
+    xs: 100,
+    xxl: 500
 };
 
 export const ConfigOffsets = {
-    lg: 510,
-    md: 202.5,
-    sm: 155,
-    xl: 760,
-    xs: 110,
-    xxl: 1010
+    lg: 500,
+    md: 192.5,
+    sm: 145,
+    xl: 750,
+    xs: 100,
+    xxl: 1000
 };
