@@ -12,11 +12,10 @@
         $dimensionString: -#{unquote($dimension)}-;
     };
 
-    $margin: calc(#{gutterWidth(#{$dimension})} / -2);
+    $gap: gapWidth(#{$dimension});
 
     .row {
-        margin-left: $margin;
-        margin-right: $margin;
+        gap: $gap;
     }
 
     .row#{$dimensionString}nowrap {
