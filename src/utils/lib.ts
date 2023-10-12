@@ -306,3 +306,48 @@ const mergeDeep = <T extends object, S extends object>(target: T, source?: S): R
 
     return target as RecursiveRequired<T & S>;
 };
+
+/**
+ * Retrieves the appropriate text based on the provided screen size.
+ * This function is designed to offer a flexible way to determine which text should be displayed based on the current screen size.
+ * It's particularly useful for responsive designs where the text content might need to change or be truncated based on the available screen real estate.
+ *
+ * @param screenTexts An object containing text values for each breakpoint. The keys represent the screen sizes, and the values are the corresponding text content. If a value for a specific breakpoint is `null`, the text from the previous breakpoint will be used.
+ * @param screenSize  The current screen size, which should match one of the keys in the `screenTexts` object.
+ * @returns The text that corresponds to the provided screen size.
+ * @throws If the `xs` breakpoint is not defined.
+ *
+ * @example
+ * ```tsx
+ * const text = getResponsiveText({
+ *     xs: 'Hello',
+ *     sm: 'Hello World',
+ *     md: 'Hello Beautiful World',
+ *     lg: null,
+ *     xl: 'Hello Gorgeous World',
+ *     xxl: null
+ * }, 'md');
+ * console.log(text); // Outputs: "Hello Beautiful World"
+ * ```
+ */
+export const getResponsiveText = (screenTexts: Record<Breakpoints, string | null>, screenSize: Breakpoints) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (screenTexts.xs === null || screenTexts.xs === undefined) {
+        throw new Error('The xs breakpoint must be defined.');
+    }
+
+    const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
+    let text = screenTexts.xs;
+
+    for (const size of breakpoints) {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (screenTexts[size] !== null && screenTexts[size] !== undefined) {
+            text = screenTexts[size]!;
+        }
+        if (size === screenSize) {
+            break;
+        }
+    }
+
+    return text;
+};

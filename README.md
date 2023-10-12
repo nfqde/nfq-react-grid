@@ -117,10 +117,13 @@ The following PeerDependencies are needed so the component does work:
 import {
     Col,
     Container,
+    darken,
     getConfig,
     getScreenSize,
     Hidden,
+    lighten,
     Row,
+    ResponsiveText,
     media,
     mediaBetween,
     ScreenBadge,
@@ -128,6 +131,7 @@ import {
     ScreenSizeProvider,
     Spacer,
     spacing,
+    translucify,
     useScreenSize,
     useConfig
     Visible
@@ -262,6 +266,33 @@ The Spacer component helps to set spacings like designers do and has some logic 
 Sometimes you want to hide something on specific screens. Or show something only on some screens. Thats the usecase for Visible and Hidden.
 Both can get screensizes as props. The screen sizes define when the components work.
 
+### Usage of ResponsiveText
+
+```javascript
+<Container>
+    <Row>
+        <Col>
+            <ResponsiveText
+                xs="Extra Small Screen Text"
+                sm="Small Screen Text"
+                md="Medium Screen Text"
+                lg="Large Screen Text"
+                xl="Extra Large Screen Text"
+                xxl="Extra Extra Large Screen Text"
+            />
+            <ResponsiveText
+                xs="Extra Small Screen Text"
+                lg="Large Screen Text"
+                xxl="Extra Extra Large Screen Text"
+            />
+        </Col>
+    </Row>
+</Container>
+```
+
+Sometimes you need to render different text snippets depending on your screensize. Thats an usecase for ResponsiveText.  
+This component can get an text for every screensize and renders it accordingly. As it works also mobile first you need to only set xs and the other screensizes will use the same text as xs or the text thats used for the next smallest given size.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ---
@@ -383,25 +414,36 @@ Both can get screensizes as props. The screen sizes define when the components w
 
 | Prop          | type    | required | Description                                                       |
 | ------------- | ------- | :------: | ----------------------------------------------------------------- |
-| xs            | Boolean |         | Set to true to hide the child only on screen size xs.             |
-| sm            | Boolean |         | Set to true to hide the child only on screen size sm.             |
-| md            | Boolean |         | Set to true to hide the child only on screen size md.             |
-| lg            | Boolean |         | Set to true to hide the child only on screen size lg.             |
-| xl            | Boolean |         | Set to true to hide the child only on screen size xl.             |
-| xxl           | Boolean |         | Set to true to hide the child only on screen size xxl.            |
-| isLoadingHtml | Boolean |         | Set to true to render the HTML even when the component is hidden. |
+| xs            | Boolean |          | Set to true to hide the child only on screen size xs.             |
+| sm            | Boolean |          | Set to true to hide the child only on screen size sm.             |
+| md            | Boolean |          | Set to true to hide the child only on screen size md.             |
+| lg            | Boolean |          | Set to true to hide the child only on screen size lg.             |
+| xl            | Boolean |          | Set to true to hide the child only on screen size xl.             |
+| xxl           | Boolean |          | Set to true to hide the child only on screen size xxl.            |
+| isLoadingHtml | Boolean |          | Set to true to render the HTML even when the component is hidden. |
 
 ### Visible
 
 | Prop          | type    | required | Description                                                       |
 | ------------- | ------- | :------: | ----------------------------------------------------------------- |
-| xs            | Boolean |         | Set to true to show the child only on screen size xs.             |
-| sm            | Boolean |         | Set to true to show the child only on screen size sm.             |
-| md            | Boolean |         | Set to true to show the child only on screen size md.             |
-| lg            | Boolean |         | Set to true to show the child only on screen size lg.             |
-| xl            | Boolean |         | Set to true to show the child only on screen size xl.             |
-| xxl           | Boolean |         | Set to true to show the child only on screen size xxl.            |
-| isLoadingHtml | Boolean |         | Set to true to render the HTML even when the component is hidden. |
+| xs            | Boolean |          | Set to true to show the child only on screen size xs.             |
+| sm            | Boolean |          | Set to true to show the child only on screen size sm.             |
+| md            | Boolean |          | Set to true to show the child only on screen size md.             |
+| lg            | Boolean |          | Set to true to show the child only on screen size lg.             |
+| xl            | Boolean |          | Set to true to show the child only on screen size xl.             |
+| xxl           | Boolean |          | Set to true to show the child only on screen size xxl.            |
+| isLoadingHtml | Boolean |          | Set to true to render the HTML even when the component is hidden. |
+
+### ResponsiveText
+
+| Prop          | type   | required           | Description                                            |
+| ------------- | ------ | :----------------: | ------------------------------------------------------ |
+| xs            | String | :white_check_mark: | Set to true to hide the child only on screen size xs.  |
+| sm            | String |                    | Set to true to hide the child only on screen size sm.  |
+| md            | String |                    | Set to true to hide the child only on screen size md.  |
+| lg            | String |                    | Set to true to hide the child only on screen size lg.  |
+| xl            | String |                    | Set to true to hide the child only on screen size xl.  |
+| xxl           | String |                    | Set to true to hide the child only on screen size xxl. |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

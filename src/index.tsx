@@ -1,6 +1,7 @@
 export {default as Col} from './grid/Col';
 export {default as Container} from './grid/Container';
 export {default as Row} from './grid/Row';
+export {default as ResponsiveText} from './grid/ResponsiveText';
 export {default as Spacer} from './grid/Spacer';
 export {default as Hidden} from './grid/Hidden';
 export {useScreenSize} from './utils/hooks/useScreenSize';
