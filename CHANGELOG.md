@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/nfqde/nfq-react-grid/compare/v4.3.2...v4.4.0) (2023-10-12)
+
+
+### Features
+
+* **ResponsiveText:** Add new ResponsiveText component ([#89](https://github.com/nfqde/nfq-react-grid/issues/89)) ([822d67e](https://github.com/nfqde/nfq-react-grid/commit/822d67e3eb7a9b158de9d06a307a29722ece70b2))
+
 ### [4.3.2](https://github.com/nfqde/nfq-react-grid/compare/v4.2.1...v4.3.2) (2023-10-10)
 
 
