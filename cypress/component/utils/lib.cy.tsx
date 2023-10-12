@@ -2,6 +2,7 @@
 import {
     getConfig,
     getInternalConfig,
+    getResponsiveText,
     mergeScreens
 } from '../../../src/utils/lib';
 import {breakPointConfigs} from '../../fixtures/breakpointConfigs';
@@ -121,6 +122,28 @@ describe('Test lib functions', () => {
 
         it('Throws if theme is undefined', () => {
             expect(() => getInternalConfig({})).to.throw('Theme must be a grid config theme.');
+        });
+    });
+
+    context('Test getResponsiveText function', () => {
+        it('Is a function', () => {
+            expect(getResponsiveText, 'getResponsiveText').to.be.a('function');
+        });
+
+        it('Returns text', () => {
+            assert.typeOf(getResponsiveText({lg: null, md: null, sm: null, xl: null, xs: 'text', xxl: null}, 'xxl'), 'string');
+        });
+
+        it('Returns always the last defined text from mobile first', () => {
+            const textConfig = {lg: null, md: 'md', sm: null, xl: null, xs: 'xs', xxl: null};
+
+            expect(getResponsiveText(textConfig, 'xxl')).to.be.deep.eq('md');
+            expect(getResponsiveText(textConfig, 'sm')).to.be.deep.eq('xs');
+        });
+
+        it('Throws if xs is not given', () => {
+            // @ts-expect-error
+            expect(() => getResponsiveText({}, 'xxl')).to.throw('The xs breakpoint must be defined.');
         });
     });
 });
