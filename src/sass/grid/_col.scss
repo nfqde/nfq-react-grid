@@ -29,7 +29,7 @@ $colSizes: (
     }
 
     @for $i from 1 through $columns {
-        $width: calc(100% / #{$columns} * #{$i} - #{$gap} + #{$gap} * #{$i} / 12);
+        $width: calc(100% / var(--columns) * #{$i} - #{$gap} + #{$gap} * #{$i} / 12);
 
         .col#{$dimensionString}#{$i} {
             flex: 0 0 $width;
@@ -37,7 +37,7 @@ $colSizes: (
         }
 
         .col-offset#{$dimensionString}#{$i} {
-            margin-left: calc(100% / #{$columns} * #{$i} + #{$gap} * #{$i} / 12);
+            margin-left: calc(100% / var(--columns) * #{$i} + #{$gap} * #{$i} / 12);
         }
     }
 
