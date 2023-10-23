@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/nfqde/nfq-react-grid/compare/v4.4.0...v4.5.0) (2023-10-23)
+
+
+### Features
+
+* **Sass:** Use columns css var ([#91](https://github.com/nfqde/nfq-react-grid/issues/91)) ([f574d0c](https://github.com/nfqde/nfq-react-grid/commit/f574d0c0869c8137fe8ac2d635c110e63aa36e57))
+
 ## [4.4.0](https://github.com/nfqde/nfq-react-grid/compare/v4.3.2...v4.4.0) (2023-10-12)
 
 
