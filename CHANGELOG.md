@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.5.1](https://github.com/nfqde/nfq-react-grid/compare/v4.5.0...v4.5.1) (2023-10-24)
+
+
+### Bug Fixes
+
+* **Sass:** Use variable instead of number ([#92](https://github.com/nfqde/nfq-react-grid/issues/92)) ([3c9266c](https://github.com/nfqde/nfq-react-grid/commit/3c9266c4839f67aa50f4f49c8cafe470afb8d4d2))
+
 ## [4.5.0](https://github.com/nfqde/nfq-react-grid/compare/v4.4.0...v4.5.0) (2023-10-23)
 
 
