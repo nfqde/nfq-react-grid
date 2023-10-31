@@ -12,10 +12,12 @@
         $dimensionString: -#{unquote($dimension)}-;
     };
 
-    $gap: gapWidth(#{$dimension});
+    :root {
+        --current-row-gap: #{gapWidth(#{$dimension})};
+    }
 
     .row {
-        gap: $gap;
+        gap: var(--current-row-gap);
     }
 
     .row#{$dimensionString}nowrap {

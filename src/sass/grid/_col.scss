@@ -10,7 +10,6 @@ $colSizes: (
 
 @mixin colElement($dimension) {
     $dimensionString: '-';
-    $gap: gapWidth(#{$dimension});
 
     @if $dimension != 'xs' {
         $dimensionString: -#{unquote($dimension)}-;
@@ -29,7 +28,7 @@ $colSizes: (
     }
 
     @for $i from 1 through $columns {
-        $width: calc(100% / var(--columns) * #{$i} - #{$gap} + #{$gap} * #{$i} / var(--columns));
+        $width: calc(100% / var(--columns) * #{$i} - var(--current-row-gap) + var(--current-row-gap) * #{$i} / var(--columns));
 
         .col#{$dimensionString}#{$i} {
             flex: 0 0 $width;
@@ -37,7 +36,7 @@ $colSizes: (
         }
 
         .col-offset#{$dimensionString}#{$i} {
-            margin-left: calc(100% / var(--columns) * #{$i} + #{$gap} * #{$i} / var(--columns));
+            margin-left: calc(100% / var(--columns) * #{$i} + var(--current-row-gap) * #{$i} / var(--columns));
         }
     }
 
