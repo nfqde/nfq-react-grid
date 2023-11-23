@@ -35,6 +35,9 @@
     "./sass": {
       "default": "./dist/sass/app.scss"
     },
+    "./sass/functions": {
+      "default": "./dist/sass/functions.scss"
+    },
     "./css": {
       "default": "./dist/css/bundle.css"
     }
