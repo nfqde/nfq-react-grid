@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.7.0](https://github.com/nfqde/nfq-react-grid/compare/v4.6.0...v4.7.0) (2023-11-24)
+
+
+### Features
+
+* **Sass:** Export sass functions ([#95](https://github.com/nfqde/nfq-react-grid/issues/95)) ([f0ee336](https://github.com/nfqde/nfq-react-grid/commit/f0ee336e0a3508d1ca24a173d8cb680b737ca3e4))
+
 ## [4.6.0](https://github.com/nfqde/nfq-react-grid/compare/v4.5.1...v4.6.0) (2023-10-31)
 
 
