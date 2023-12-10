@@ -14,3 +14,20 @@ export {default as ScreenSizeProvider, ScreenSizeContext} from './grid/ScreenSiz
 export {default as Visible} from './grid/Visible';
 
 export type {Config} from './defaultConfig';
+export type {
+    AlignObject,
+    BreakpointObject,
+    Breakpoints,
+    DirectionObject,
+    FlexAlign,
+    FlexDirection,
+    FlexGap,
+    FlexJustify,
+    GapObject,
+    JustifyObject,
+    OffsetObject,
+    OrderObject,
+    SizesObject,
+    SpacerObject,
+    StringSizes
+} from './sharedTypes';
