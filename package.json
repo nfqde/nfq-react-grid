@@ -146,5 +146,8 @@
   "dependencies": {
     "uuid": "^9.0.1",
     "which": "^3.0.1"
+  },
+  "externals": {
+    "uuid": "uuid"
   }
 }

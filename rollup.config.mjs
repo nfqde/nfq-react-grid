@@ -19,7 +19,7 @@ const globals = {
 
 export default [
     {
-        external: [...Object.keys(pkg.peerDependencies || {})],
+        external: [...Object.keys(pkg.peerDependencies || {}), ...Object.keys(pkg.externals || {})],
         input: 'src/index.tsx',
         output: [
             {
