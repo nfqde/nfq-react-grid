@@ -161,6 +161,7 @@ const SkeletonLine = styled.span<SkeletonLineProps>`
     animation-timing-function: ease-in-out;
     background-color: ${calcSkeletonBackgroundColor};
     background-image: ${calcSkeletonBackgroundImage};
+    background-position: -60vw 0;
     background-repeat: no-repeat;
     background-size: 100vw 100%;
     border-radius: ${calcSkeletonBorderRadius};

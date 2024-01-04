@@ -93,7 +93,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'rtl',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
