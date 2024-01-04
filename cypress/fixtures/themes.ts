@@ -103,7 +103,8 @@ export const themeConfigs: themesInterface = {
                     highlight: 'rgba(0, 0, 102, 0.3)'
                 }
             }
-        }
+        },
+        skeletonDefault: 'dark'
     },
     differentColumns: {
         baseSpacing: 0.5,
@@ -197,7 +198,8 @@ export const themeConfigs: themesInterface = {
                     highlight: 'rgba(0, 0, 102, 0.3)'
                 }
             }
-        }
+        },
+        skeletonDefault: 'dark'
     },
     differentContainers: {
         baseSpacing: 0.5,
@@ -291,7 +293,8 @@ export const themeConfigs: themesInterface = {
                     highlight: 'rgba(0, 0, 102, 0.3)'
                 }
             }
-        }
+        },
+        skeletonDefault: 'dark'
     },
     fullMergedTheme: {
         baseSpacing: 0.5,
@@ -385,7 +388,8 @@ export const themeConfigs: themesInterface = {
                     highlight: 'rgba(0, 0, 102, 0.3)'
                 }
             }
-        }
+        },
+        skeletonDefault: 'dark'
     },
     mergedTheme: {
         baseSpacing: 0.5,
@@ -458,7 +462,8 @@ export const themeConfigs: themesInterface = {
                     highlight: 'rgba(0, 0, 102, 0.3)'
                 }
             }
-        }
+        },
+        skeletonDefault: 'dark'
     },
     onlyContainerSet: {
         container: {

@@ -10,7 +10,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton testId="SkeletonId" />
+                    <Skeleton testId="SkeletonId" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -22,7 +22,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton testId="SkeletonId" />
+                    <Skeleton testId="SkeletonId" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -34,7 +34,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton count={3} testId="SkeletonId" />
+                    <Skeleton count={3} testId="SkeletonId" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -46,10 +46,10 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" testId="SkeletonId" />
+                    <Skeleton group="test" testId="SkeletonId" isLoading />
                 </p>
                 <p>
-                    <Skeleton group="test2" testId="SkeletonId2" />
+                    <Skeleton group="test2" testId="SkeletonId2" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -62,10 +62,10 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" testId="SkeletonId" variant="dark" />
+                    <Skeleton group="test" testId="SkeletonId" variant="dark" isLoading />
                 </p>
                 <p>
-                    <Skeleton group="test2" testId="SkeletonId2" variant="light" />
+                    <Skeleton group="test2" testId="SkeletonId2" variant="light" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -78,7 +78,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" testId="SkeletonId" width={20} />
+                    <Skeleton group="test" testId="SkeletonId" width={20} isLoading />
                 </p>
             </TestWrapper>
         );
@@ -90,7 +90,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" testId="SkeletonId" width="3rem" />
+                    <Skeleton group="test" testId="SkeletonId" width="3rem" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -102,7 +102,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" height={20} testId="SkeletonId" />
+                    <Skeleton group="test" height={20} testId="SkeletonId" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -114,7 +114,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" height="3rem" testId="SkeletonId" />
+                    <Skeleton group="test" height="3rem" testId="SkeletonId" isLoading />
                 </p>
             </TestWrapper>
         );
@@ -126,7 +126,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" height="3rem" testId="SkeletonId" width="3rem" circle />
+                    <Skeleton group="test" height="3rem" testId="SkeletonId" width="3rem" circle isLoading />
                 </p>
             </TestWrapper>
         );
@@ -140,7 +140,7 @@ describe('Test Skeleton component', () => {
         cy.mount(
             <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
                 <p>
-                    <Skeleton group="test" height="3rem" testId="SkeletonId" width="3rem" circle />
+                    <Skeleton group="test" height="3rem" testId="SkeletonId" width="3rem" circle isLoading />
                 </p>
             </TestWrapper>
         );
@@ -148,5 +148,17 @@ describe('Test Skeleton component', () => {
         cy.getCy('SkeletonId').children().eq(0).should('have.css', 'height', '30px');
         cy.getCy('SkeletonId').children().eq(0).should('have.css', 'width', '30px');
         cy.getCy('SkeletonId').children().eq(0).should('have.css', 'border-radius', '50%');
+    });
+
+    it('Renders its children if isLoading is false', () => {
+        cy.mount(
+            <TestWrapper theme={{nfqgrid: themeConfigs.defaultTheme}}>
+                <p data-cy="SkeletonId">
+                    <Skeleton group="test" height="3rem" width="3rem" circle>Test</Skeleton>
+                </p>
+            </TestWrapper>
+        );
+
+        cy.getCy('SkeletonId').should('contain', 'Test');
     });
 });
