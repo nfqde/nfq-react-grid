@@ -658,7 +658,7 @@ interface CalcSekeletonBaseProps {
 export const calcSkeletonDirection = ({$variant, theme}: CalcSekeletonBaseProps) => {
     const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
 
-    return skeletonConfig.animation.direction === 'ltr' ? 'normal' : 'reverse';
+    return skeletonConfig.animation.direction === 'rtl' ? 'reverse' : 'normal';
 };
 
 /**
