@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.8.2](https://github.com/nfqde/nfq-react-grid/compare/v4.8.1...v4.8.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* **Skeleton:** Fix external storage ([#99](https://github.com/nfqde/nfq-react-grid/issues/99)) ([88d854a](https://github.com/nfqde/nfq-react-grid/commit/88d854a8b7e422cce965cb23e61007e9f8b84ad2))
+
 ### [4.8.1](https://github.com/nfqde/nfq-react-grid/compare/v4.8.0...v4.8.1) (2024-01-04)
 
 
