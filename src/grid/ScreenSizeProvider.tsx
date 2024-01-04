@@ -1,14 +1,21 @@
-import React, {useEffect, useReducer} from 'react';
+import React from 'react';
 
-import {useTheme} from 'styled-components';
+import {useScreenContext} from '../utils/hooks/useScreenContext';
 
-import {getScreenSize} from '../utils/layout';
+import type {Breakpoints, WithChildren} from '../sharedTypes';
 
-import type {Breakpoints, Theme, WithChildren} from '../sharedTypes';
+type ContextData = ReturnType<typeof useScreenContext>;
 
-const defaultData = 'xxl';
+const defaultData = {
+    screenSize: 'xxl' as Breakpoints,
+    skeletonStore: {
+        get: () => undefined,
+        register: () => undefined,
+        subscribe: () => undefined
+    }
+} as unknown as ContextData;
 
-export const ScreenSizeContext = React.createContext<Breakpoints>(defaultData);
+export const ScreenSizeContext = React.createContext<ContextData>(defaultData);
 
 /**
  * A component that provides the current screen size to its children via context.
@@ -37,26 +44,10 @@ export const ScreenSizeContext = React.createContext<Breakpoints>(defaultData);
  * ```
  */
 const ScreenSizeProvider = ({children}: WithChildren) => {
-    const theme = useTheme();
-    const [screenSize, handleScreenSize] = useReducer((oldScreenSize: Breakpoints) => {
-        const newScreenSize = getScreenSize(theme as Theme);
-
-        if (newScreenSize !== oldScreenSize) {
-            return newScreenSize;
-        }
-
-        return oldScreenSize;
-    }, 'xxl' as const);
-
-    useEffect(() => {
-        window.addEventListener('resize', handleScreenSize);
-        handleScreenSize();
-
-        return () => window.removeEventListener('resize', handleScreenSize);
-    }, []);
+    const context = useScreenContext();
 
     return (
-        <ScreenSizeContext.Provider value={screenSize}>{children}</ScreenSizeContext.Provider>
+        <ScreenSizeContext.Provider value={context}>{children}</ScreenSizeContext.Provider>
     );
 };
 

@@ -75,7 +75,36 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen'
+        mediaQuery: 'only screen',
+        skeleton: {
+            dark: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(0, 0, 102, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            },
+            light: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(255, 255, 255, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            }
+        },
+        skeletonDefault: 'dark'
     },
     differentColumns: {
         baseSpacing: 0.5,
@@ -141,7 +170,36 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen'
+        mediaQuery: 'only screen',
+        skeleton: {
+            dark: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(0, 0, 102, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            },
+            light: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(255, 255, 255, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            }
+        },
+        skeletonDefault: 'dark'
     },
     differentContainers: {
         baseSpacing: 0.5,
@@ -207,7 +265,36 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen'
+        mediaQuery: 'only screen',
+        skeleton: {
+            dark: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(0, 0, 102, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            },
+            light: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(255, 255, 255, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            }
+        },
+        skeletonDefault: 'dark'
     },
     fullMergedTheme: {
         baseSpacing: 0.5,
@@ -273,7 +360,36 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen'
+        mediaQuery: 'only screen',
+        skeleton: {
+            dark: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(0, 0, 102, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            },
+            light: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(255, 255, 255, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            }
+        },
+        skeletonDefault: 'dark'
     },
     mergedTheme: {
         baseSpacing: 0.5,
@@ -318,7 +434,36 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen'
+        mediaQuery: 'only screen',
+        skeleton: {
+            dark: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(0, 0, 102, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            },
+            light: {
+                animation: {
+                    delay: 0.02,
+                    direction: 'ltr',
+                    duration: 1.8
+                },
+                borderRadius: 0.4,
+                colors: {
+                    base: 'rgba(255, 255, 255, 0.3)',
+                    baseHighlight: 'rgba(0, 0, 102, 0)',
+                    highlight: 'rgba(0, 0, 102, 0.3)'
+                }
+            }
+        },
+        skeletonDefault: 'dark'
     },
     onlyContainerSet: {
         container: {
