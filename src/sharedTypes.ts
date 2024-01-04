@@ -73,3 +73,14 @@ export type MouseEventHandler = {
     /** A function that will be invoked when the user scrolls inside this element. */
     onScroll?(event: UIEvent<HTMLElement>): void;
 };
+
+export type SkeletonStore = {
+    default: {
+        count: number;
+        id: string;
+    }[];
+    [key: string]: {
+        count: number;
+        id: string;
+    }[];
+};

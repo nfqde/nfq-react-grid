@@ -630,6 +630,187 @@ export const calcSpacerMaxValues = (
 };
 /* eslint-enable sort-destructure-keys/sort-destructure-keys */
 
+interface CalcSekeletonBaseProps {
+    /**
+     * The variant of the skeleton, keying into the skeleton configuration in the theme.
+     */
+    $variant: keyof Required<Theme['nfqgrid']>['skeleton'];
+    /**
+     * The theme object containing skeleton configurations.
+     */
+    theme: Theme;
+}
+
+/**
+ * Calculates the animation direction for a skeleton element.
+ * This function determines whether the skeleton's animation should run normally or in reverse based on the configuration.
+ *
+ * @param props          The base properties for skeleton calculation.
+ * @param props.$variant The variant of the skeleton, keying into the skeleton configuration in the theme.
+ * @param props.theme    The theme object containing skeleton configurations.
+ * @returns A string indicating the animation direction ('normal' or 'reverse').
+ *
+ * @example
+ * ```tsx
+ * const animationDirection = calcSkeletonDirection({ $variant: 'primary', theme });
+ * ```
+ */
+export const calcSkeletonDirection = ({$variant, theme}: CalcSekeletonBaseProps) => {
+    const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
+
+    return skeletonConfig.animation.direction === 'ltr' ? 'normal' : 'reverse';
+};
+
+/**
+ * Calculates the animation duration for a skeleton element.
+ * This function returns the duration of the skeleton's animation in seconds, based on the theme configuration.
+ *
+ * @param props          The base properties for skeleton calculation.
+ * @param props.$variant The variant of the skeleton, keying into the skeleton configuration in the theme.
+ * @param props.theme    The theme object containing skeleton configurations.
+ * @returns A string representing the animation duration in seconds (e.g., '2s').
+ *
+ * @example
+ * ```tsx
+ * const animationDuration = calcSkeletonDuration({ $variant: 'primary', theme });
+ * ```
+ */
+export const calcSkeletonDuration = ({$variant, theme}: CalcSekeletonBaseProps) => {
+    const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
+
+    return `${skeletonConfig.animation.duration}s`;
+};
+
+interface CalcSkeletonBorderRadiusProps extends CalcSekeletonBaseProps {
+    /**
+     * A boolean indicating if the skeleton should be circular.
+     */
+    $circle: boolean;
+}
+
+/**
+ * Calculates the border-radius for a skeleton element.
+ * This function returns either '50%' for a circular skeleton or the border-radius based on the theme configuration.
+ *
+ * @param props          The properties for skeleton border-radius calculation.
+ * @param props.$circle  A boolean indicating if the skeleton should be circular.
+ * @param props.$variant The variant of the skeleton, keying into the skeleton configuration in the theme.
+ * @param props.theme    The theme object containing skeleton configurations.
+ * @returns A string representing the border-radius (e.g., '50%', '0.5rem').
+ *
+ * @example
+ * ```tsx
+ * const borderRadius = calcSkeletonBorderRadius({ $circle: true, $variant: 'primary', theme });
+ * ```
+ */
+export const calcSkeletonBorderRadius = ({$circle, $variant, theme}: CalcSkeletonBorderRadiusProps) => {
+    const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
+
+    return $circle ? '50%' : `${skeletonConfig.borderRadius}rem`;
+};
+
+/**
+ * Calculates the background color for a skeleton element.
+ * This function returns the base color for the skeleton's background based on the theme configuration.
+ *
+ * @param props          The base properties for skeleton calculation.
+ * @param props.$variant The variant of the skeleton, keying into the skeleton configuration in the theme.
+ * @param props.theme    The theme object containing skeleton configurations.
+ * @returns A string representing the CSS color value.
+ *
+ * @example
+ * ```tsx
+ * const backgroundColor = calcSkeletonBackgroundColor({ $variant: 'primary', theme });
+ * ```
+ */
+export const calcSkeletonBackgroundColor = ({$variant, theme}: CalcSekeletonBaseProps) => {
+    const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
+
+    return skeletonConfig.colors.base;
+};
+
+/**
+ * Calculates the background image for a skeleton element.
+ * This function returns a CSS linear gradient string for the skeleton's background, based on the theme configuration.
+ *
+ * @param props          The base properties for skeleton calculation.
+ * @param props.$variant The variant of the skeleton, keying into the skeleton configuration in the theme.
+ * @param props.theme    The theme object containing skeleton configurations.
+ * @returns A string representing the CSS linear gradient.
+ *
+ * @example
+ * ```tsx
+ * const backgroundImage = calcSkeletonBackgroundImage({ $variant: 'primary', theme });
+ * ```
+ */
+export const calcSkeletonBackgroundImage = ({$variant, theme}: CalcSekeletonBaseProps) => {
+    const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
+
+    return `linear-gradient(90deg, ${skeletonConfig.colors.baseHighlight} 8%, ${skeletonConfig.colors.highlight} 38%, ${skeletonConfig.colors.baseHighlight} 54%);`;
+};
+
+interface CalcSkeletonWidthProps extends CalcSekeletonBaseProps {
+    /**
+     * An optional width value for the skeleton, either in pixels or as a CSS value.
+     */
+    $width?: number | string;
+}
+
+/**
+ * Calculates the width for a skeleton element.
+ * This function returns either '100%' as the default width, a specific pixel value, or any other specified CSS width value.
+ *
+ * @param props        The properties for skeleton width calculation.
+ * @param props.$width The width value for the skeleton.
+ * @returns A string representing the width (e.g., '100%', '50px').
+ *
+ * @example
+ * ```tsx
+ * const width = calcSkeletonWidth({ $width: 50 });
+ * ```
+ */
+export const calcSkeletonWidth = ({$width}: CalcSkeletonWidthProps) => {
+    if ($width === undefined) {
+        return '100%';
+    }
+    if (typeof $width === 'string') {
+        return $width;
+    }
+
+    return `${$width}px`;
+};
+
+interface CalcSkeletonHeightProps extends CalcSekeletonBaseProps {
+    /**
+     * An optional height value for the skeleton, either in pixels or as a CSS value.
+     */
+    $height?: number | string;
+}
+
+/**
+ * Calculates the height for a skeleton element.
+ * This function returns either null as the default height, a specific pixel value, or any other specified CSS height value.
+ *
+ * @param props         The properties for skeleton height calculation.
+ * @param props.$height The height value for the skeleton.
+ * @returns A string representing the height (e.g., '50px') or null.
+ *
+ * @example
+ * ```tsx
+ * const height = calcSkeletonHeight({ $height: '3rem' });
+ * ```
+ */
+export const calcSkeletonHeight = ({$height}: CalcSkeletonHeightProps) => {
+    if ($height === undefined) {
+        return null;
+    }
+    if (typeof $height === 'string') {
+        return $height;
+    }
+
+    return `${$height}px`;
+};
+
 /**
  * Calculates the Debug CSS for a given element (col, container, row, spacer).
  *

@@ -7,7 +7,25 @@ type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
 type HEX = `#${string}`;
 type Color = HEX | RGB | RGBA;
 
-export interface Config {
+type SkeletonVariant = {
+    animation: {
+        delay: number;
+        direction: 'ltr' | 'rtl';
+        duration: number;
+    };
+    borderRadius: number;
+    colors: {
+        base: Color;
+        baseHighlight: Color;
+        highlight: Color;
+    };
+};
+
+type SkeletonVariants<T extends string = 'dark' | 'light'> = {
+    [K in T]: SkeletonVariant;
+};
+
+export interface Config<T extends string = 'dark' | 'light'> {
     /** Defines the base spacing for the Spacer component. */
     baseSpacing?: number;
     /** The breakpoint sizes in px for the different screen classes. */
@@ -61,6 +79,10 @@ export interface Config {
     };
     /** The default media type all media queries should use. (Default: only screen). */
     mediaQuery?: MediaDevice | `${MediaLogic} ${MediaDevice}, ${MediaDevice}` | `${MediaLogic} ${MediaDevice}`;
+    /** The skeleton object to define the skeleton styles. */
+    skeleton?: SkeletonVariants<T>;
+    /** The default skeleton variant to use. */
+    skeletonDefault?: T;
 }
 
 export const CONF_KEY = 'nfqgrid';
@@ -129,5 +151,34 @@ export const DEFAULT_CONF: Config = {
             padding: '#c2cf8a'
         }
     },
-    mediaQuery: 'only screen'
+    mediaQuery: 'only screen',
+    skeleton: {
+        dark: {
+            animation: {
+                delay: 0.02,
+                direction: 'ltr',
+                duration: 1.8
+            },
+            borderRadius: 0.4,
+            colors: {
+                base: 'rgba(0, 0, 102, 0.3)',
+                baseHighlight: 'rgba(0, 0, 102, 0)',
+                highlight: 'rgba(0, 0, 102, 0.3)'
+            }
+        },
+        light: {
+            animation: {
+                delay: 0.02,
+                direction: 'ltr',
+                duration: 1.8
+            },
+            borderRadius: 0.4,
+            colors: {
+                base: 'rgba(255, 255, 255, 0.3)',
+                baseHighlight: 'rgba(0, 0, 102, 0)',
+                highlight: 'rgba(0, 0, 102, 0.3)'
+            }
+        }
+    },
+    skeletonDefault: 'dark'
 };

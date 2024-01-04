@@ -30,6 +30,7 @@
   * [Row](#row)
   * [Col](#col)
   * [Spacer](#spacer)
+  * [Skeleton](#skeleton)
   * [Hidden](#hidden)
   * [Visible](#visible)
 * [Types](#types)
@@ -48,6 +49,8 @@
   * [PaddingObject](#paddingobject)
   * [StringSizes](#stringsizes)
   * [SpacerObject](#spacerobject)
+  * [Height](#height)
+  * [Width](#width)
 * [Utilities](#utilities)
   * [getConfig](#getconfig)
   * [media](#media)
@@ -70,6 +73,9 @@
     * [container](#container)
     * [containerPadding](#containerpadding)
     * [debug](#debug)
+    * [mediaQuery](#mediaquery)
+    * [skeleton](#skeleton)
+    * [skeletonDefault](#skeletondefault)
 * [Contributions](#contributions)
 * [Licence](#licence)
 * [Questions](#questions)
@@ -129,6 +135,7 @@ import {
     ScreenBadge,
     ScreenSizeContext,
     ScreenSizeProvider,
+    Skeleton,
     Spacer,
     spacing,
     translucify,
@@ -243,6 +250,20 @@ Columns have also and direction prop. Its usefull if you want to render column c
 ```
 
 The Spacer component helps to set spacings like designers do and has some logic for dynamic flex spacings and so on. Its the best way to define spacings in an grid conform matter.
+
+### Skeleton usage
+
+```javascript
+<Container>
+    <Row>
+        <Col>
+            <h1><Skeleton isLoading>This is text</Skeleton></h1>
+        </Col>
+    </Row>
+</Container>
+```
+
+The Skeleton component is an easy way to render a skeleton of an component. It can be used to render an skeleton of an component while its loading. It renders its children only if isLoading is false. If it is true it renders an skeleton loader. The skeleton loader can be configured with the config object. (See [Custom config](#custom-config))
 
 ### Usage of Hidden and Visible
 
@@ -409,6 +430,19 @@ This component can get an text for every screensize and renders it accordingly. 
 | testId          | string                                 |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                                                                                                                                                                                                                                    |
 | x               | [SpacerObject](#spacerobject)\|number  |          | The horizontal spacing size. In a flex container, this defines the base horizontal spacing value and is a multiplication factor that is used with the `baseSpacing` property of the theme to calculate the horizontal spacing value. In a non-flex container, this defines the actual horizontal spacing value in pixels. It takes an [`SpacerObject`](#spacerobject) or a `number` value. |
 | y               | [SpacerObject](#spacerobject)\|number  |          | The vertical spacing size. In a flex container, this defines the base vertical spacing value and is a multiplication factor that is used with the `baseSpacing` property of the theme to calculate the vertical spacing value. In a non-flex container, this defines the actual vertical spacing value in pixels. It takes an [`SpacerObject`](#spacerobject) or a `number` value.         |
+
+### Skeleton
+
+| Prop          | type                      | required | Description                                                                             |
+| ------------- | ------------------------- | :------: | --------------------------------------------------------------------------------------- |
+| circle        | Boolean                   |          | Set to true to set the border-radius to 50% to get an circular shape.                   |
+| className     | String                    |          | To override the current styles the Skeleton does not have options for.                  |
+| count         | Number                    |          | Defines the number of skeleton lines the component should render                        |
+| group         | String                    |          | To apply the delay on your skeleton use this property to add it to an delay group       |
+| height        | [Height](#height)\|Number |          | Sets the height of the skeleton.                                                        |
+| isLoading     | Boolean                   |          | Set to true to hide the child only on screen size xxl.                                  |
+| testId        | String                    |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId" |
+| width         | [Width](#width)\|Number   |          | Sets the width of the sceleton                                                          |
 
 ### Hidden
 
@@ -596,6 +630,20 @@ interface SpacerObject {
     xl?: number;
     xxl?: number;
 }
+```
+
+### Height
+
+```typescript
+type HeightExt = 'em' | 'px' | 'rem' | 'vh' | 'vw' | '%';
+type Height = `${number}${HeightExt}`;
+```
+
+### Width
+
+```typescript
+type WidthExt = 'em' | 'px' | 'rem' | 'vh' | 'vw' | '%';
+type Width = `${number}${WidthExt}`;
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -840,7 +888,36 @@ There are many options you can define for the Grid. To give you an overview and 
             padding: '#c2cf8a'
         }
     },
-    mediaQuery: 'only screen'
+    mediaQuery: 'only screen',
+    skeleton: {
+        dark: {
+            animation: {
+                delay: 0.02,
+                direction: 'ltr',
+                duration: 1.8
+            },
+            borderRadius: 0.4,
+            colors: {
+                base: 'rgba(0, 0, 102, 0.3)',
+                baseHighlight: 'rgba(0, 0, 102, 0)',
+                highlight: 'rgba(0, 0, 102, 0.3)'
+            }
+        },
+        light: {
+            animation: {
+                delay: 0.02,
+                direction: 'ltr',
+                duration: 1.8
+            },
+            borderRadius: 0.4,
+            colors: {
+                base: 'rgba(255, 255, 255, 0.3)',
+                baseHighlight: 'rgba(0, 0, 102, 0)',
+                highlight: 'rgba(0, 0, 102, 0.3)'
+            }
+        }
+    },
+    skeletonDefault: 'dark'
 };
 ```
 
@@ -899,6 +976,14 @@ Defines the colors used for debug mode. You can define them for containers, rows
 ### mediaQuery
 
 This defines the media type for all media queries. (In most cases the default is enough).
+
+### skeleton
+
+This defines the behavior and styling of the skeleton component. Its possible to define custom variants. The default variants are an dark and light variant. You can define your own variants and use them in the skeleton component. If you change the default variants you have to define a default variant.
+
+### skeletonDefault
+
+Defines the default variant for the skeleton component.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

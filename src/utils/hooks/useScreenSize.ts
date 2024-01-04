@@ -21,4 +21,8 @@ import {ScreenSizeContext} from '../../grid/ScreenSizeProvider';
  *     );
  * };
  */
-export const useScreenSize = () => useContext(ScreenSizeContext);
+export const useScreenSize = () => {
+    const context = useContext(ScreenSizeContext);
+
+    return context.screenSize;
+};
