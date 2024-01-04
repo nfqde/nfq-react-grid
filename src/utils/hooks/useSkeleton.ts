@@ -58,6 +58,7 @@ export const useSkeleton = (count: number, group: string, variant?: keyof Requir
 
     const state = useSyncExternalStore(
         store.skeletonStore.subscribe,
+        () => selector(store.skeletonStore.get()),
         () => selector(store.skeletonStore.get())
     );
 
