@@ -15,7 +15,7 @@ import {
     calcSkeletonWidth
 } from '../utils/styleHelpers';
 
-import type {Theme, WithChildren} from 'src/sharedTypes';
+import type {Theme, WithChildren} from '../sharedTypes';
 
 /**
  * The `ComponentProps` interface defines the shape of the properties object that is expected for this component.
