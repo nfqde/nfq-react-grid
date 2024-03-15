@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.8.5](https://github.com/nfqde/nfq-react-grid/compare/v4.8.4...v4.8.5) (2024-03-15)
+
+
+### Bug Fixes
+
+* **Theme:** Export Theme type ([#103](https://github.com/nfqde/nfq-react-grid/issues/103)) ([785f370](https://github.com/nfqde/nfq-react-grid/commit/785f37002e81206571c00e83dafc1da1ca884a8c))
+
 ### [4.8.4](https://github.com/nfqde/nfq-react-grid/compare/v4.8.3...v4.8.4) (2024-01-05)
 
 

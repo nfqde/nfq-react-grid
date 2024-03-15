@@ -2,7 +2,7 @@
   "name": "@nfq/react-grid",
   "description": "An fork of react-awesome-styled-grid with more screen classes and some features.",
   "author": ".NFQ | Christoph Kruppe, .NFQ | Max Heuschneider",
-  "version": "4.8.4",
+  "version": "4.8.5",
   "keywords": [
     "styled-components",
     "react",
