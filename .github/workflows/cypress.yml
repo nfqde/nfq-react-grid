@@ -50,7 +50,7 @@ jobs:
         run: npx mochawesome-merge ./cypress/reports/mocha*.json > ./cypress/reports/index.json
 
       - name: Cypress report action
-        uses: dmitry/cypress-report-action@1
+        uses: dmitry/cypress-report-action@v1
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           pathname: cypress/reports/index.json
