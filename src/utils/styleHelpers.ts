@@ -630,7 +630,7 @@ export const calcSpacerMaxValues = (
 };
 /* eslint-enable sort-destructure-keys/sort-destructure-keys */
 
-interface CalcSekeletonBaseProps {
+interface CalcSkeletonBaseProps {
     /**
      * The variant of the skeleton, keying into the skeleton configuration in the theme.
      */
@@ -655,7 +655,7 @@ interface CalcSekeletonBaseProps {
  * const animationDirection = calcSkeletonDirection({ $variant: 'primary', theme });
  * ```
  */
-export const calcSkeletonDirection = ({$variant, theme}: CalcSekeletonBaseProps) => {
+export const calcSkeletonDirection = ({$variant, theme}: CalcSkeletonBaseProps) => {
     const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
 
     return skeletonConfig.animation.direction === 'rtl' ? 'reverse' : 'normal';
@@ -675,13 +675,13 @@ export const calcSkeletonDirection = ({$variant, theme}: CalcSekeletonBaseProps)
  * const animationDuration = calcSkeletonDuration({ $variant: 'primary', theme });
  * ```
  */
-export const calcSkeletonDuration = ({$variant, theme}: CalcSekeletonBaseProps) => {
+export const calcSkeletonDuration = ({$variant, theme}: CalcSkeletonBaseProps) => {
     const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
 
     return `${skeletonConfig.animation.duration}s`;
 };
 
-interface CalcSkeletonBorderRadiusProps extends CalcSekeletonBaseProps {
+interface CalcSkeletonBorderRadiusProps extends CalcSkeletonBaseProps {
     /**
      * A boolean indicating if the skeleton should be circular.
      */
@@ -723,7 +723,7 @@ export const calcSkeletonBorderRadius = ({$circle, $variant, theme}: CalcSkeleto
  * const backgroundColor = calcSkeletonBackgroundColor({ $variant: 'primary', theme });
  * ```
  */
-export const calcSkeletonBackgroundColor = ({$variant, theme}: CalcSekeletonBaseProps) => {
+export const calcSkeletonBackgroundColor = ({$variant, theme}: CalcSkeletonBaseProps) => {
     const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
 
     return skeletonConfig.colors.base;
@@ -743,13 +743,13 @@ export const calcSkeletonBackgroundColor = ({$variant, theme}: CalcSekeletonBase
  * const backgroundImage = calcSkeletonBackgroundImage({ $variant: 'primary', theme });
  * ```
  */
-export const calcSkeletonBackgroundImage = ({$variant, theme}: CalcSekeletonBaseProps) => {
+export const calcSkeletonBackgroundImage = ({$variant, theme}: CalcSkeletonBaseProps) => {
     const skeletonConfig = getInternalConfig(theme).skeleton[$variant];
 
     return `linear-gradient(90deg, ${skeletonConfig.colors.baseHighlight} 8%, ${skeletonConfig.colors.highlight} 38%, ${skeletonConfig.colors.baseHighlight} 54%);`;
 };
 
-interface CalcSkeletonWidthProps extends CalcSekeletonBaseProps {
+interface CalcSkeletonWidthProps extends CalcSkeletonBaseProps {
     /**
      * An optional width value for the skeleton, either in pixels or as a CSS value.
      */
@@ -780,7 +780,7 @@ export const calcSkeletonWidth = ({$width}: CalcSkeletonWidthProps) => {
     return `${$width}px`;
 };
 
-interface CalcSkeletonHeightProps extends CalcSekeletonBaseProps {
+interface CalcSkeletonHeightProps extends CalcSkeletonBaseProps {
     /**
      * An optional height value for the skeleton, either in pixels or as a CSS value.
      */

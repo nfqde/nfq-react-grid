@@ -151,7 +151,6 @@ const skeleton = keyframes`
 
 const SkeletonLine = styled.span<SkeletonLineProps>`
     --skeleton-delay: 0s;
-
     animation-delay: var(--skeleton-delay);
     animation-direction: ${calcSkeletonDirection};
     animation-duration: ${calcSkeletonDuration};
