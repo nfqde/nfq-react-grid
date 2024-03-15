@@ -30,5 +30,6 @@ export type {
     OrderObject,
     SizesObject,
     SpacerObject,
-    StringSizes
+    StringSizes,
+    Theme
 } from './sharedTypes';
