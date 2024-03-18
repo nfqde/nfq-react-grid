@@ -1,5 +1,7 @@
 import type {DefaultTheme} from 'styled-components';
 
+type ThemeColors = DefaultTheme['colors'][keyof DefaultTheme['colors']];
+
 /**
  * The `darken` function is a utility that darkens a given color by a specified percentage.
  * It leverages the CSS `color-mix` function to mix the provided color with black, achieving the desired darkening effect.
@@ -17,11 +19,10 @@ import type {DefaultTheme} from 'styled-components';
  * const darkenedColor = darken(theme.colors.primary, 10);
  * ```
  */
-// @ts-expect-error
-export const darken = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
+export const darken = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color}, black ${percentage}%)`;
+    return `color-mix(in srgb, ${color}, black ${percentage}%)` as const;
 };
 
 /**
@@ -41,11 +42,10 @@ export const darken = (color: DefaultTheme['colors'][keyof DefaultTheme['colors'
  * const lightenedColor = lighten(theme.colors.primary, 10);
  * ```
  */
-// @ts-expect-error
-export const lighten = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
+export const lighten = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color}, white ${percentage}%)`;
+    return `color-mix(in srgb, ${color}, white ${percentage}%)` as const;
 };
 
 /**
@@ -65,9 +65,8 @@ export const lighten = (color: DefaultTheme['colors'][keyof DefaultTheme['colors
  * const translucentColor = translucify(theme.colors.primary, 50);
  * ```
  */
-// @ts-expect-error
-export const translucify = (color: DefaultTheme['colors'][keyof DefaultTheme['colors']], percentage: number) => {
+export const translucify = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
-    return `color-mix(in srgb, ${color} ${percentage}%, transparent)`;
+    return `color-mix(in srgb, ${color} ${percentage}%, transparent)` as const;
 };
