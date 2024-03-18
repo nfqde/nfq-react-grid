@@ -19,7 +19,7 @@ type ThemeColors = DefaultTheme['colors'][keyof DefaultTheme['colors']];
  * const darkenedColor = darken(theme.colors.primary, 10);
  * ```
  */
-export const darken = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
+export const darken = <const T extends ThemeColors>(color: T, percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
     return `color-mix(in srgb, ${color}, black ${percentage}%)` as const;
@@ -42,7 +42,7 @@ export const darken = <const T extends ThemeColors, const P extends number>(colo
  * const lightenedColor = lighten(theme.colors.primary, 10);
  * ```
  */
-export const lighten = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
+export const lighten = <const T extends ThemeColors>(color: T, percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
     return `color-mix(in srgb, ${color}, white ${percentage}%)` as const;
@@ -65,7 +65,7 @@ export const lighten = <const T extends ThemeColors, const P extends number>(col
  * const translucentColor = translucify(theme.colors.primary, 50);
  * ```
  */
-export const translucify = <const T extends ThemeColors, const P extends number>(color: T, percentage: P) => {
+export const translucify = <const T extends ThemeColors>(color: T, percentage: number) => {
     if (typeof color !== 'string') throw new Error('Color must be of type string');
 
     return `color-mix(in srgb, ${color} ${percentage}%, transparent)` as const;
