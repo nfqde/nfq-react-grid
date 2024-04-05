@@ -11,4 +11,8 @@ declare module 'styled-components' {
         colors: Colors;
         nfqgrid: Config;
     }
+
+    export interface NFQGrid {
+        gridColors: Colors;
+    }
 }

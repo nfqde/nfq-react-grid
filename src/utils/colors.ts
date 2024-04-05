@@ -1,6 +1,6 @@
-import type {DefaultTheme} from 'styled-components';
+import type {NFQGrid} from 'styled-components';
 
-type ThemeColors = DefaultTheme['colors'][keyof DefaultTheme['colors']];
+type ThemeColors = NFQGrid['gridColors'][keyof NFQGrid['gridColors']];
 
 /**
  * The `darken` function is a utility that darkens a given color by a specified percentage.
