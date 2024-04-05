@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/nfqde/nfq-react-grid/compare/v4.8.8...v5.0.0) (2024-04-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SplitColors:** Typings differ so much it breaks old implementations
+
+### Features
+
+* **SplitColors:** Split colors between Derived colors and base colors. ([#111](https://github.com/nfqde/nfq-react-grid/issues/111)) ([40daf17](https://github.com/nfqde/nfq-react-grid/commit/40daf1756baa8d09ec1809bc98699e1ce3c11d58))
+
 ### [4.8.8](https://github.com/nfqde/nfq-react-grid/compare/v4.8.7...v4.8.8) (2024-03-18)
 
 
