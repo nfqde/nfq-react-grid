@@ -18,6 +18,8 @@ interface ComponentProps {
     hasNoPadding?: Breakpoints[] | boolean;
     /** Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of `Breakpoints` or a `boolean` value. */
     isFluid?: Breakpoints[] | boolean;
+    /** Overrides the max-width of the container defined in the grid config. It takes a `number` value and overrides only non fluid values. */
+    maxWidth?: number;
     /** TestId for cypress testing. */
     testId?: string;
 }
@@ -34,6 +36,7 @@ interface ComponentProps {
  * @param props.className    Classname property to overwrite styles with styled().
  * @param props.hasNoPadding Determines if the container has an padding.
  * @param props.isFluid      Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of `Breakpoints` or a `boolean` value.
+ * @param props.maxWidth     Overrides the max-width of the container defined in the grid config. It takes a `number` value and overrides only non fluid values.
  * @param props.testId       TestId for cypress testing.
  *
  * @returns The Container component.
@@ -54,6 +57,7 @@ const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & Mouse
     className,
     hasNoPadding,
     isFluid,
+    maxWidth,
     testId,
     ...handler
 }, ref) => {
@@ -64,6 +68,7 @@ const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & Mouse
             ref={ref}
             $hasNoPadding={hasNoPadding}
             $isFluid={isFluid}
+            $maxWidth={maxWidth}
             as={as}
             className={classNames.join(' ')}
             data-cy={testId}
@@ -90,6 +95,7 @@ export default Container;
 interface ContainerElementProps {
     $hasNoPadding: Breakpoints[] | boolean;
     $isFluid: Breakpoints[] | boolean;
+    $maxWidth: number;
 }
 
 /* eslint-disable indent */

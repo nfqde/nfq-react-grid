@@ -409,6 +409,7 @@ export const calcContainerPadding = ({$hasNoPadding, theme}: calcContainerPaddin
 
 interface calcContainerSizeProps {
     $isFluid?: Breakpoints[] | boolean;
+    $maxWidth?: number;
     theme: Theme;
 }
 
@@ -422,13 +423,14 @@ interface calcContainerSizeProps {
  * If the $isFluid prop is an empty array, the function will not make the container fluid on any breakpoint.
  * If the $isFluid prop is a boolean, it will make the container fluid on all breakpoints.
  *
- * @param props          The styled-components props object.
- * @param props.theme    The styled-components theme.
- * @param props.$isFluid If the container is fluid or not. Defaults to an empty array.
+ * @param props           The styled-components props object.
+ * @param props.theme     The styled-components theme.
+ * @param props.$isFluid  If the container is fluid or not. Defaults to an empty array.
+ * @param props.$maxWidth Overrides the max-width of the container defined in the grid config. It takes a `WidthObject` or a `number` value.
  *
  * @returns An array that contains the width css strings for each screen size for the given configuration.
  */
-export const calcContainerSize = ({$isFluid, theme}: calcContainerSizeProps) => {
+export const calcContainerSize = ({$isFluid, $maxWidth, theme}: calcContainerSizeProps) => {
     if (!Array.isArray($isFluid)) {
         // eslint-disable-next-line no-param-reassign
         $isFluid = $isFluid ? DIMENSIONS : [];
@@ -440,7 +442,7 @@ export const calcContainerSize = ({$isFluid, theme}: calcContainerSizeProps) => 
         const actualFluid = ($isFluid as Breakpoints[]).includes(screenSize);
         const containerSize = getInternalConfig(theme).container[screenSize];
         const width = (actualFluid || (containerSize ?? lastContainerSize) === 'fluid')
-            ? '100%' : `${containerSize ?? lastContainerSize}px`;
+            ? '100%' : `${$maxWidth ?? containerSize ?? lastContainerSize}px`;
 
         if (containerSize) {
             lastContainerSize = containerSize;
