@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/nfqde/nfq-react-grid/compare/v5.0.0...v5.1.0) (2024-04-09)
+
+
+### Features
+
+* **Container:** maxWidth ([#112](https://github.com/nfqde/nfq-react-grid/issues/112)) ([f02bd19](https://github.com/nfqde/nfq-react-grid/commit/f02bd19fe129cf3a221c18ec313175aba2a6047f))
+
 ## [5.0.0](https://github.com/nfqde/nfq-react-grid/compare/v4.8.8...v5.0.0) (2024-04-05)
 
 
