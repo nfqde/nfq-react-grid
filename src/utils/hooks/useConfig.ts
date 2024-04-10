@@ -4,7 +4,7 @@ import {useTheme} from 'styled-components';
 
 import {getConfig} from '../lib';
 
-import type {Theme} from 'src/sharedTypes';
+import type {Theme} from '../../sharedTypes';
 
 /**
  * Returns the complete grid configuration object based on the current theme.

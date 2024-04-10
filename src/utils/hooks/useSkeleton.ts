@@ -7,7 +7,7 @@ import {v4 as uuid} from 'uuid';
 import {ScreenSizeContext} from '../../grid/ScreenSizeProvider';
 import {getInternalConfig} from '../lib';
 
-import type {SkeletonStore, Theme} from 'src/sharedTypes';
+import type {SkeletonStore, Theme} from '../../sharedTypes';
 
 /**
  * A custom React hook for managing and applying animation styles to skeleton components within a group.

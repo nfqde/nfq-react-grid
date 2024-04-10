@@ -2,6 +2,8 @@ import {useContext} from 'react';
 
 import {ScreenSizeContext} from '../../grid/ScreenSizeProvider';
 
+import type {Breakpoints} from '../../sharedTypes';
+
 /**
  * Returns the current viewport screen size in breakpoints.
  *
@@ -24,5 +26,5 @@ import {ScreenSizeContext} from '../../grid/ScreenSizeProvider';
 export const useScreenSize = () => {
     const context = useContext(ScreenSizeContext);
 
-    return context.screenSize;
+    return context.screenSize as Breakpoints;
 };
