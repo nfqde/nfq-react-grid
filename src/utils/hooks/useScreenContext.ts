@@ -6,7 +6,7 @@ import {getScreenSize} from '../layout';
 
 import {useSkeletonStore} from './useSkeletonStore';
 
-import type {Breakpoints, Theme} from 'src/sharedTypes';
+import type {Breakpoints, Theme} from '../../sharedTypes';
 
 /**
  * A custom React hook that provides screen size context and access to the skeleton store.

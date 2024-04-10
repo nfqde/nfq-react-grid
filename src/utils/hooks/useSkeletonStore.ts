@@ -1,7 +1,7 @@
 /* eslint-disable promise/prefer-await-to-callbacks */
 import {useCallback, useRef} from 'react';
 
-import type {SkeletonStore} from 'src/sharedTypes';
+import type {SkeletonStore} from '../../sharedTypes';
 
 type callbackType = () => void;
 
