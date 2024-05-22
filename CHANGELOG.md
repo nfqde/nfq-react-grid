@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/nfqde/nfq-react-grid/compare/v5.1.1...v5.2.0) (2024-05-22)
+
+
+### Features
+
+* **React19:** prepare for react19 ([#114](https://github.com/nfqde/nfq-react-grid/issues/114)) ([f21110c](https://github.com/nfqde/nfq-react-grid/commit/f21110c55b3d3489f95cbf1f12058cd3dce2bce0))
+
 ### [5.1.1](https://github.com/nfqde/nfq-react-grid/compare/v5.1.0...v5.1.1) (2024-04-10)
 
 
