@@ -91,10 +91,10 @@ const Row = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventH
     as,
     children,
     className,
-    direction,
-    hasNoGap,
-    hasNoWrap,
-    isReverse,
+    direction = 'row',
+    hasNoGap = false,
+    hasNoWrap = false,
+    isReverse = false,
     justify,
     order,
     testId,
@@ -124,19 +124,6 @@ const Row = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventH
 });
 
 Row.displayName = 'Row';
-Row.defaultProps = {
-    align: undefined,
-    as: undefined,
-    children: undefined,
-    className: undefined,
-    direction: 'row',
-    hasNoGap: false,
-    hasNoWrap: false,
-    isReverse: false,
-    justify: undefined,
-    order: undefined,
-    testId: undefined
-};
 
 export default Row;
 

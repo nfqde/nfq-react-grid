@@ -122,7 +122,7 @@ const Col = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventH
     as,
     children,
     className,
-    direction,
+    direction = 'column',
     isReverse,
     justify,
     lg,
@@ -174,27 +174,6 @@ const Col = forwardRef<HTMLDivElement, WithChildren<ComponentProps & MouseEventH
 });
 
 Col.displayName = 'Col';
-Col.defaultProps = {
-    align: undefined,
-    as: undefined,
-    children: undefined,
-    className: undefined,
-    direction: 'column',
-    isReverse: false,
-    justify: undefined,
-    lg: undefined,
-    md: undefined,
-    offset: undefined,
-    order: undefined,
-    padding: undefined,
-    paddingLeft: undefined,
-    paddingRight: undefined,
-    sm: undefined,
-    testId: undefined,
-    xl: undefined,
-    xs: undefined,
-    xxl: undefined
-};
 
 export default Col;
 

@@ -54,7 +54,7 @@ interface ComponentProps {
  * );
  * ```
  */
-const Hidden = ({children, isLoadingHtml, ...screenSizes}: ComponentProps) => {
+const Hidden = ({children, isLoadingHtml = false, ...screenSizes}: ComponentProps) => {
     const screenSize = useScreenSize();
 
     if (isLoadingHtml) {
@@ -87,14 +87,5 @@ const HiddenWrap = styled(
 `;
 
 Hidden.displayName = 'Hidden';
-Hidden.defaultProps = {
-    isLoadingHtml: false,
-    lg: false,
-    md: false,
-    sm: false,
-    xl: false,
-    xs: false,
-    xxl: false
-};
 
 export default Hidden;

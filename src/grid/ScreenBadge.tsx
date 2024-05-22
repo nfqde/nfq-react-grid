@@ -6,7 +6,7 @@ import {useScreenSize} from '../utils/hooks/useScreenSize';
 
 interface ComponentProps {
     /** TestId for cypress testing. */
-    testId: string;
+    testId?: string;
 }
 
 /**
@@ -30,14 +30,13 @@ interface ComponentProps {
  * );
  * ```
  */
-const ScreenBadge = ({testId}: ComponentProps) => {
+const ScreenBadge = ({testId = 'ScreenBadge'}: ComponentProps) => {
     const screenSize = useScreenSize();
 
     return <ScreenBadgeElement data-cy={testId}>{screenSize}</ScreenBadgeElement>;
 };
 
 ScreenBadge.displayName = 'ScreenBadge';
-ScreenBadge.defaultProps = {testId: null};
 
 export default ScreenBadge;
 

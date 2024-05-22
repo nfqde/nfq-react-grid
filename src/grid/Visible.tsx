@@ -54,7 +54,7 @@ interface ComponentProps {
  * );
  * ```
  */
-const Visible = ({children, isLoadingHtml, ...screenSizes}: ComponentProps) => {
+const Visible = ({children, isLoadingHtml = false, ...screenSizes}: ComponentProps) => {
     const screenSize = useScreenSize();
 
     if (isLoadingHtml) {
@@ -87,14 +87,5 @@ const VisibleWrap = styled(
 `;
 
 Visible.displayName = 'Visible';
-Visible.defaultProps = {
-    isLoadingHtml: false,
-    lg: false,
-    md: false,
-    sm: false,
-    xl: false,
-    xs: false,
-    xxl: false
-};
 
 export default Visible;
