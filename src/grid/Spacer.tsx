@@ -76,15 +76,6 @@ const Spacer = ({isInline = false, isNotStretching = false, maxX, maxY, testId =
 };
 
 Spacer.displayName = 'Spacer';
-Spacer.defaultProps = {
-    isInline: false,
-    isNotStretching: false,
-    maxX: undefined,
-    maxY: undefined,
-    testId: null,
-    x: undefined,
-    y: undefined
-};
 
 export default Spacer;
 
