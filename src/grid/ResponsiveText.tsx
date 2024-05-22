@@ -11,19 +11,19 @@ interface ComponentProps {
     /**
      * The text to display on large screens.
      */
-    lg: string | null;
+    lg?: string | null;
     /**
      * The text to display on medium screens.
      */
-    md: string | null;
+    md?: string | null;
     /**
      * The text to display on small screens.
      */
-    sm: string | null;
+    sm?: string | null;
     /**
      * The text to display on extra-large screens.
      */
-    xl: string | null;
+    xl?: string | null;
     /**
      * The text to display on extra-small screens. This property is mandatory.
      */
@@ -31,7 +31,7 @@ interface ComponentProps {
     /**
      * The text to display on extra-extra-large screens.
      */
-    xxl: string | null;
+    xxl?: string | null;
 }
 
 /**
@@ -60,7 +60,7 @@ interface ComponentProps {
  * />
  * ```
  */
-const ResponsiveText = ({lg, md, sm, xl, xs, xxl}: ComponentProps) => {
+const ResponsiveText = ({lg = null, md = null, sm = null, xl = null, xs, xxl = null}: ComponentProps) => {
     const screenSize = useScreenSize();
     const text = getResponsiveText({lg, md, sm, xl, xs, xxl}, screenSize);
 
@@ -68,13 +68,5 @@ const ResponsiveText = ({lg, md, sm, xl, xs, xxl}: ComponentProps) => {
 };
 
 ResponsiveText.displayName = 'ResponsiveText';
-ResponsiveText.defaultProps = {
-    lg: null,
-    md: null,
-    sm: null,
-    testId: 'ResponsiveText',
-    xl: null,
-    xxl: null
-};
 
 export default ResponsiveText;

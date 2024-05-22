@@ -25,7 +25,7 @@ interface ComponentProps {
     /**
      * A boolean indicating if the skeleton should be circular.
      */
-    circle: boolean;
+    circle?: boolean;
     /**
      * Optional. A string specifying the CSS class for additional styling.
      */
@@ -33,11 +33,11 @@ interface ComponentProps {
     /**
      * The number of skeleton lines to be rendered.
      */
-    count: number;
+    count?: number;
     /**
      * Optional. The group of the skeleton.
      */
-    group: string;
+    group?: string;
     /**
      * Optional. The height of the skeleton, either in pixels or as a CSS value.
      */
@@ -51,7 +51,7 @@ interface ComponentProps {
      * It is a required property and must be provided when an object of type `ComponentProps` is expected.
      * This property is crucial for uniquely identifying components during testing, allowing for more accurate and reliable tests.
      */
-    testId: string;
+    testId?: string;
     /**
      * The variant of the skeleton, keying into the skeleton configuration in the theme.
      */
@@ -87,13 +87,13 @@ interface ComponentProps {
  */
 const Skeleton = ({
     children,
-    circle,
+    circle = false,
     className,
-    count,
-    group,
+    count = 1,
+    group = 'default',
     height,
     isLoading,
-    testId,
+    testId = 'Skeleton',
     variant,
     width
 }: WithChildren<ComponentProps>) => {
@@ -122,12 +122,6 @@ const Skeleton = ({
 };
 
 Skeleton.displayName = 'Skeleton';
-Skeleton.defaultProps = {
-    circle: false,
-    count: 1,
-    group: 'default',
-    testId: 'Skeleton'
-};
 
 export default Skeleton;
 

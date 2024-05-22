@@ -55,8 +55,8 @@ const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & Mouse
     as,
     children,
     className,
-    hasNoPadding,
-    isFluid,
+    hasNoPadding = false,
+    isFluid = false,
     maxWidth,
     testId,
     ...handler
@@ -81,14 +81,6 @@ const Container = forwardRef<HTMLDivElement, WithChildren<ComponentProps & Mouse
 });
 
 Container.displayName = 'Container';
-Container.defaultProps = {
-    as: undefined,
-    children: undefined,
-    className: undefined,
-    hasNoPadding: false,
-    isFluid: false,
-    testId: undefined
-};
 
 export default Container;
 
