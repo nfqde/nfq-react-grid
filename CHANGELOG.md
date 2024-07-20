@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.2](https://github.com/nfqde/nfq-react-grid/compare/v5.2.1...v5.2.2) (2024-07-20)
+
+
+### Bug Fixes
+
+* **Typescript:** fix typing exports for newer TS configs ([#118](https://github.com/nfqde/nfq-react-grid/issues/118)) ([c74dad9](https://github.com/nfqde/nfq-react-grid/commit/c74dad9c699346f099ed8cb668110b1d79fc40c9))
+
 ### [5.2.1](https://github.com/nfqde/nfq-react-grid/compare/v5.2.0...v5.2.1) (2024-05-22)
 
 
