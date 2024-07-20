@@ -59,8 +59,8 @@ export const calcPadding = ({$padding, $paddingLeft, $paddingRight}: CalcPadding
     let lastPaddingLeft: Padding;
     let lastPaddingRight: Padding;
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const paddingLeft = ($paddingLeft as PaddingObject)[screenSize];
-        const paddingRight = ($paddingRight as PaddingObject)[screenSize];
+        const paddingLeft = $paddingLeft[screenSize];
+        const paddingRight = $paddingRight[screenSize];
 
         if (paddingLeft !== undefined) {
             lastPaddingLeft = paddingLeft;
@@ -112,7 +112,7 @@ export const calcGap = ({$hasNoGap = false, theme}: CalcGapProps) => {
     let lastRowGap: string;
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const gap = getInternalConfig(theme).columnGap[screenSize];
-        const gapConfig = ($hasNoGap as GapObject)[screenSize];
+        const gapConfig = $hasNoGap[screenSize];
 
         if (gap !== undefined) {
             lastGap = gap;
@@ -226,7 +226,7 @@ export const calcOffset = ({$offset, theme}: CalcOffsetProps) => {
     let lastRealOffset: string | null;
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const colCount = getInternalConfig(theme).columns[screenSize];
-        const currentOffset = ($offset as OffsetObject)[screenSize];
+        const currentOffset = $offset[screenSize];
 
         if (colCount) {
             lastColCount = colCount;
@@ -294,11 +294,11 @@ export const calcDirection = (
     let lastDirection: FlexDirection;
     let lastDirectionString: string;
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const currentDirection = ($direction as DirectionObject)[screenSize];
+        const currentDirection = $direction[screenSize];
         const currentWrap
-            = (($hasNoWrap as Breakpoints[]).includes(screenSize) || (currentDirection ?? lastDirection) === 'column')
+            = ($hasNoWrap.includes(screenSize) || (currentDirection ?? lastDirection) === 'column')
                 ? 'nowrap' : 'wrap';
-        const currentReverse = ($isReverse as Breakpoints[]).includes(screenSize) ? '-reverse' : '';
+        const currentReverse = $isReverse.includes(screenSize) ? '-reverse' : '';
 
         const directionString = `${currentDirection ?? lastDirection}${currentReverse} ${currentWrap}${currentWrap === 'nowrap' ? '' : currentReverse}`;
 
@@ -387,7 +387,7 @@ export const calcContainerPadding = ({$hasNoPadding, theme}: calcContainerPaddin
     let lastPadding: number;
     const mediaQuery = DIMENSIONS.map(screenSize => {
         const containerPadding = getInternalConfig(theme).containerPadding[screenSize];
-        const hasNoPadding = ($hasNoPadding as Breakpoints[]).includes(screenSize);
+        const hasNoPadding = $hasNoPadding.includes(screenSize);
         const realPadding = containerPadding ?? lastRealPadding;
         const padding = hasNoPadding ? 0 : realPadding;
 
@@ -439,7 +439,7 @@ export const calcContainerSize = ({$isFluid, $maxWidth, theme}: calcContainerSiz
     let lastWidth: string;
     let lastContainerSize: number | 'fluid';
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const actualFluid = ($isFluid as Breakpoints[]).includes(screenSize);
+        const actualFluid = $isFluid.includes(screenSize);
         const containerSize = getInternalConfig(theme).container[screenSize];
         const width = (actualFluid || (containerSize ?? lastContainerSize) === 'fluid')
             ? '100%' : `${$maxWidth ?? containerSize ?? lastContainerSize}px`;
@@ -483,7 +483,7 @@ export const calcSpacerInline = ({$isInline}: CalcSpacerInlineProps) => {
 
     let lastInline: 'block' | 'inline-block';
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const inline = ($isInline as Breakpoints[]).includes(screenSize) ? 'inline-block' : 'block';
+        const inline = $isInline.includes(screenSize) ? 'inline-block' : 'block';
 
         if (inline !== lastInline) {
             lastInline = inline;
@@ -530,7 +530,7 @@ export const calcSpacerMeasures = (
     const spacing = getInternalConfig(theme).baseSpacing;
 
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const currentValue = (value as SpacerObject)[screenSize];
+        const currentValue = value[screenSize];
 
         if (currentValue !== undefined) {
             return `${propKey}: ${String(currentValue * spacing)}rem;`;
@@ -595,9 +595,9 @@ export const calcSpacerMaxValues = (
     let lastMax: number;
     let lastRealCss: string | null;
     const mediaQuery = DIMENSIONS.map(screenSize => {
-        const currentAuto = (auto as SpacerObject)[screenSize];
-        const currentMax = (max as SpacerObject)[screenSize];
-        const currentNoStretch = ($isNotStretching as Breakpoints[]).includes(screenSize);
+        const currentAuto = auto[screenSize];
+        const currentMax = max[screenSize];
+        const currentNoStretch = $isNotStretching.includes(screenSize);
 
         if (currentAuto !== undefined) {
             lastAuto = currentAuto;
