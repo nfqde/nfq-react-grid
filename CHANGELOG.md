@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.3](https://github.com/nfqde/nfq-react-grid/compare/v5.2.2...v5.2.3) (2024-08-16)
+
+
+### Bug Fixes
+
+* **ColorFunctions:** Deprecated color function in favor of @nfq/colors ([#119](https://github.com/nfqde/nfq-react-grid/issues/119)) ([b350eae](https://github.com/nfqde/nfq-react-grid/commit/b350eae115a58179cff0633b81a8d566fb18bb0f))
+
 ### [5.2.2](https://github.com/nfqde/nfq-react-grid/compare/v5.2.1...v5.2.2) (2024-07-20)
 
 
