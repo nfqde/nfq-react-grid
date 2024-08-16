@@ -8,11 +8,12 @@ type ThemeColors = NFQGrid['gridColors'][keyof NFQGrid['gridColors']];
  * This function is particularly useful for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
  * It's essential to provide a valid color string and a percentage value to get the expected result.
  *
- * @param color      The color value from the theme's color palette that needs to be darkened.
- * @param percentage The percentage by which the color should be darkened. It should be a value between 0 and 100.
+ * @param      color      The color value from the theme's color palette that needs to be darkened.
+ * @param      percentage The percentage by which the color should be darkened. It should be a value between 0 and 100.
  * @returns A string representing the darkened color.
  *
  * @throws Throws an error if the provided color is not of type string.
+ * @deprecated Please use the version from `@nfq/colors` package. Will be removed in version 6.0.0.
  *
  * @example
  * ```tsx
@@ -31,11 +32,12 @@ export const darken = <const T extends ThemeColors>(color: T, percentage: number
  * This function is especially beneficial for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
  * To achieve the desired lightening effect, it's crucial to provide a valid color string and a percentage value.
  *
- * @param color      The color value from the theme's color palette that needs to be lightened.
- * @param percentage The percentage by which the color should be lightened. It should be a value between 0 and 100.
+ * @param      color      The color value from the theme's color palette that needs to be lightened.
+ * @param      percentage The percentage by which the color should be lightened. It should be a value between 0 and 100.
  * @returns A string representing the lightened color.
  *
  * @throws Throws an error if the provided color is not of type string.
+ * @deprecated Please use the version from `@nfq/colors` package. Will be removed in version 6.0.0.
  *
  * @example
  * ```tsx
@@ -54,11 +56,12 @@ export const lighten = <const T extends ThemeColors>(color: T, percentage: numbe
  * This function is particularly useful for creating semi-transparent overlays, backgrounds, or other UI elements that require a touch of transparency.
  * To achieve the desired translucency, it's essential to provide a valid color string and a percentage value.
  *
- * @param color      The color value from the theme's color palette that needs to be made translucent.
- * @param percentage The percentage of translucency desired. It should be a value between 0 (fully transparent) and 100 (fully opaque).
+ * @param      color      The color value from the theme's color palette that needs to be made translucent.
+ * @param      percentage The percentage of translucency desired. It should be a value between 0 (fully transparent) and 100 (fully opaque).
  * @returns A string representing the translucent color.
  *
  * @throws Throws an error if the provided color is not of type string.
+ * @deprecated Please use the version from `@nfq/colors` package. Will be removed in version 6.0.0.
  *
  * @example
  * ```tsx

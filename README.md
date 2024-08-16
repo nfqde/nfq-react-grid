@@ -700,7 +700,7 @@ Generates a CSS value for a given spacing value, based on the current grid confi
 
 This function uses the base spacing value from the grid configuration to convert the input `space` value to rem. The base spacing value is defined in the `nfqgrid` section of the theme object, and represents the base spacing unit for the grid system.
 
-### lighten
+### lighten (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
 
 ```javascript
 const DemoComponent = styled.div`
@@ -712,7 +712,7 @@ The `lighten` function is a utility that lightens a given color by a specified p
 It utilizes the CSS `color-mix` function to mix the provided color with white, achieving the desired lightening effect.
 This function is especially beneficial for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
 
-### darken
+### darken (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
 
 ```javascript
 const DemoComponent = styled.div`
@@ -724,7 +724,7 @@ The `darken` function is a utility that darkens a given color by a specified per
 It leverages the CSS `color-mix` function to mix the provided color with black, achieving the desired darkening effect.
 This function is particularly useful for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
 
-### translucify
+### translucify (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
 
 ```javascript
 const DemoComponent = styled.div`
