@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/nfqde/nfq-react-grid/compare/v6.0.0...v6.0.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **SassGrid:** Fixed missing namespacing ([#127](https://github.com/nfqde/nfq-react-grid/issues/127)) ([a067eac](https://github.com/nfqde/nfq-react-grid/commit/a067eacce5dc733d2bda7976d3db4bb436d6eb04))
+
 ## [6.0.0](https://github.com/nfqde/nfq-react-grid/compare/v5.2.3...v6.0.0) (2024-10-29)
 
 
