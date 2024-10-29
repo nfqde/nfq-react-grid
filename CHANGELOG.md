@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/nfqde/nfq-react-grid/compare/v5.2.3...v6.0.0) (2024-10-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SassGrid:** Moved from @imports to @use - from now on use @forward to implement scss-grid e.g. "@forward "~@nfq/react-grid/sass";"
+
+### Features
+
+* **SassGrid:** Updated deprecated function usages and imports ([#125](https://github.com/nfqde/nfq-react-grid/issues/125)) ([338dbc3](https://github.com/nfqde/nfq-react-grid/commit/338dbc332689e270b874232b329646fb5a3c4bb3))
+
 ### [5.2.3](https://github.com/nfqde/nfq-react-grid/compare/v5.2.2...v5.2.3) (2024-08-16)
 
 
