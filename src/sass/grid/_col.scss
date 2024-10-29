@@ -12,17 +12,17 @@ $colSizes: (
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{unquote($dimension)}-;
+        $dimensionString: -#{string.unquote($dimension)}-;
     };
 
     @each $sizeName, $value in $colSizes {
         .col#{$dimensionString}#{$sizeName} {
-            flex: 0 0 unquote($value);
+            flex: 0 0 string.unquote($value);
 
             @if $sizeName == 'auto' {
                 max-width: 100%;
             } @else {
-                max-width: unquote($value);
+                max-width: string.unquote($value);
             }
         }
     }
@@ -41,19 +41,19 @@ $colSizes: (
     }
 
     @each $align, $value in $align-items {
-        .col-align#{$dimensionString}#{unquote($align)} {
+        .col-align#{$dimensionString}#{string.unquote($align)} {
             align-items: $value;
         }
-        .col-align-self#{$dimensionString}#{unquote($align)} {
+        .col-align-self#{$dimensionString}#{string.unquote($align)} {
             align-self: $value;
         }
     }
 
     @each $justify, $value in $justify-content {
-        .col-justify#{$dimensionString}#{unquote($justify)} {
+        .col-justify#{$dimensionString}#{string.unquote($justify)} {
             justify-content: $value;
         }
-        .col-justify-self#{$dimensionString}#{unquote($justify)} {
+        .col-justify-self#{$dimensionString}#{string.unquote($justify)} {
             justify-self: $value;
         }
     }
