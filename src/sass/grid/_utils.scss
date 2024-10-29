@@ -4,7 +4,7 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{unquote($dimension)}-;
+        $dimensionString: -#{string.unquote($dimension)}-;
     };
 
     .order#{$dimensionString}first {
@@ -25,7 +25,7 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{unquote($dimension)}-;
+        $dimensionString: -#{string.unquote($dimension)}-;
     };
 
     @each $utilityKey, $utility in $utilities {
@@ -34,7 +34,7 @@
 
         @each $key, $value in map.get($utility, 'values') {
             .#{$classString}#{$key} {
-                #{map.get($utility, 'property')}: unquote($value);
+                #{map.get($utility, 'property')}: string.unquote($value);
             }
         }
     }

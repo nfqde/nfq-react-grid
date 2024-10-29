@@ -1,5 +1,9 @@
 # SASS Grid
 
+## Implementation
+
+As `@import` is deprecated use `@forward "~@nfq/react-grid/sass";` to implement sass grid from now on don't use `@use '...' as ...`.
+
 ## Usage
 This gird is based on scss and uses the following variables to generate the grid.
 ```

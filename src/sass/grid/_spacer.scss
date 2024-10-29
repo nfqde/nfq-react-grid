@@ -7,7 +7,7 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{unquote($dimension)}-;
+        $dimensionString: -#{string.unquote($dimension)}-;
     };
 
     .spacer#{$dimensionString}inline {

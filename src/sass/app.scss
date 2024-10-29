@@ -1,13 +1,13 @@
-@import 'variables';
-@import 'css-variables';
-@import 'css-functions';
+@use 'variables';
+@use 'css-variables';
+@use 'css-functions';
 
-@import 'grid/container';
-@import 'grid/row';
-@import 'grid/col';
-@import 'grid/spacer';
+@use 'grid/container';
+@use 'grid/row';
+@use 'grid/col';
+@use 'grid/spacer';
 
-@import 'grid/utils';
+@use 'grid/utils';
 
 @each $dimension in $dimensions {
     @include exludeXSMediaUp($dimension) {
