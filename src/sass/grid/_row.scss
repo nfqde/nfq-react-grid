@@ -9,11 +9,11 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{unquote($dimension)}-;
+        $dimensionString: -#{string.unquote($dimension)}-;
     };
 
     :root {
-        --current-row-gap: #{gapWidth(#{$dimension})};
+        --current-row-gap: #{string.gapWidth(#{$dimension})};
     }
 
     .row {
@@ -25,13 +25,13 @@
     }
 
     @each $align, $value in $align-items {
-        .row-align#{$dimensionString}#{unquote($align)} {
+        .row-align#{$dimensionString}#{string.unquote($align)} {
             align-items: $value;
         }
     }
 
     @each $justify, $value in $justify-content {
-        .row-justify#{$dimensionString}#{unquote($justify)} {
+        .row-justify#{$dimensionString}#{string.unquote($justify)} {
             justify-content: $value;
         }
     }
