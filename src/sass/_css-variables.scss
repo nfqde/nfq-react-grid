@@ -1,4 +1,4 @@
-@import 'config';
+@use 'config';
 
 @function numberedValue($value){
     @if type-of($value) == 'string' {
