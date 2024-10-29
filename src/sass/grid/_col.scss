@@ -1,3 +1,6 @@
+@use "config" as config;
+@use "variables" as vars;
+
 .col {
     box-sizing: border-box;
 }
@@ -12,22 +15,22 @@ $colSizes: (
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{string.unquote($dimension)}-;
+        $dimensionString: -#{unquote($dimension)}-;
     };
 
     @each $sizeName, $value in $colSizes {
         .col#{$dimensionString}#{$sizeName} {
-            flex: 0 0 string.unquote($value);
+            flex: 0 0 unquote($value);
 
             @if $sizeName == 'auto' {
                 max-width: 100%;
             } @else {
-                max-width: string.unquote($value);
+                max-width: unquote($value);
             }
         }
     }
 
-    @for $i from 1 through $columns {
+    @for $i from 1 through config.$columns {
         $width: calc(100% / var(--columns) * #{$i} - var(--current-row-gap) + var(--current-row-gap) * #{$i} / var(--columns));
 
         .col#{$dimensionString}#{$i} {
@@ -40,20 +43,20 @@ $colSizes: (
         }
     }
 
-    @each $align, $value in $align-items {
-        .col-align#{$dimensionString}#{string.unquote($align)} {
+    @each $align, $value in vars.$align-items {
+        .col-align#{$dimensionString}#{unquote($align)} {
             align-items: $value;
         }
-        .col-align-self#{$dimensionString}#{string.unquote($align)} {
+        .col-align-self#{$dimensionString}#{unquote($align)} {
             align-self: $value;
         }
     }
 
-    @each $justify, $value in $justify-content {
-        .col-justify#{$dimensionString}#{string.unquote($justify)} {
+    @each $justify, $value in vars.$justify-content {
+        .col-justify#{$dimensionString}#{unquote($justify)} {
             justify-content: $value;
         }
-        .col-justify-self#{$dimensionString}#{string.unquote($justify)} {
+        .col-justify-self#{$dimensionString}#{unquote($justify)} {
             justify-self: $value;
         }
     }

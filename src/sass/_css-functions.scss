@@ -1,19 +1,20 @@
 @use "sass:string";
+@use "config" as config;
 
 @function spacing($value){
     @return calc($value * baseSpacing());
 }
 
 @mixin mediaDown($size) {
-    @media #{$mediaQuery} and (max-width: calc(#{numberedValue(map-get($breakpoints, $size))} - 1px)) { @content; }
+    @media #{config.$mediaQuery} and (max-width: calc(#{numberedValue(map-get(config.$breakpoints, $size))} - 1px)) { @content; }
 }
 
 @mixin mediaUp($size) {
-    @media #{$mediaQuery} and (min-width: numberedValue(map-get($breakpoints, $size))) { @content; }
+    @media #{config.$mediaQuery} and (min-width: numberedValue(map-get(config.$breakpoints, $size))) { @content; }
 }
 
 @mixin mediaBetween($sizeMin, $sizeMax) {
-    @media #{$mediaQuery} and (min-width: numberedValue(map-get($breakpoints, $sizeMin))) and (max-width: calc(#{numberedValue(map-get($breakpoints, $sizeMax))} - 1px)) {
+    @media #{config.$mediaQuery} and (min-width: numberedValue(map-get(config.$breakpoints, $sizeMin))) and (max-width: calc(#{numberedValue(map-get($breakpoints, $sizeMax))} - 1px)) {
         @content;
     }
 }
@@ -29,9 +30,9 @@
 }
 
 @function lighter-color($colorName, $amount) {
-    @return color-mix(in srgb, var(string.unquote($colorName)), var(--white) $amount);
+    @return color-mix(in srgb, var(unquote($colorName)), var(--white) $amount);
 }
 
 @function darker-color($colorName, $amount) {
-    @return color-mix(in srgb, var(string.unquote($colorName)), var(--black) $amount);
+    @return color-mix(in srgb, var(unquote($colorName)), var(--black) $amount);
 }

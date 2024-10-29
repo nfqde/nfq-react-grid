@@ -1,7 +1,7 @@
-@use 'config';
+@use 'config' as config;
 
 @function numberedValue($value){
-    @if meta.type-of($value) == 'string' {
+    @if type-of($value) == 'string' {
         @return $value;
     } @else {
         @return #{$value}px;
@@ -9,25 +9,25 @@
 }
 
 :root {
-    --media-query: #{$mediaQuery};
-    --columns: #{$columns};
+    --media-query: #{config.$mediaQuery};
+    --columns: #{config.$columns};
 
-    --base-spacing: #{numberedValue($baseSpacing)};
+    --base-spacing: #{numberedValue(config.$baseSpacing)};
 
-    @each $name, $value in $breakpoints {
+    @each $name, $value in config.$breakpoints {
         --breakpoint-#{$name}: #{numberedValue($value)};
     }
 
 
-    @each $name, $value in $gapWidth {
+    @each $name, $value in config.$gapWidth {
         --gap-width-#{$name}: #{numberedValue($value)};
     }
 
-    @each $name, $value in $containerPaddingWidth {
+    @each $name, $value in config.$containerPaddingWidth {
         --container-padding-#{$name}: #{numberedValue($value)};
     }
 
-    @each $name, $value in $container {
+    @each $name, $value in config.$container {
         @if $value == 'fluid' {
             --container-#{$name}: 100%;
         } @else {
@@ -37,11 +37,11 @@
 }
 
 @function breakpoint($name){
-    @if not map.get($breakpoints, $name){
+    @if not map-get(config.$breakpoints, $name){
         @error "Breakpoint `#{$name}` not found.";
     }
 
-    @return var(--breakpoint-#{string.unquote($name)});
+    @return var(--breakpoint-#{unquote($name)});
 }
 
 @function columns(){
@@ -49,27 +49,27 @@
 }
 
 @function container($name){
-    @if not map.get($container, $name){
+    @if not map-get(config.$container, $name){
         @error "Container `#{$name}` not found.";
     }
 
-    @return var(--container-#{string.unquote($name)});
+    @return var(--container-#{unquote($name)});
 }
 
 @function gapWidth($name){
-    @if not map.get($gapWidth, $name){
+    @if not map-get(config.$gapWidth, $name){
         @error "GapWidth `#{$name}` not found.";
     }
 
-    @return var(--gap-width-#{string.unquote($name)});
+    @return var(--gap-width-#{unquote($name)});
 }
 
 @function containerPadding($name){
-    @if not map.get($containerPaddingWidth, $name){
+    @if not map-get(config.$containerPaddingWidth, $name){
         @error "Container Padding `#{$name}` not found.";
     }
 
-    @return var(--container-padding-#{string.unquote($name)});
+    @return var(--container-padding-#{unquote($name)});
 }
 
 @function baseSpacing(){
