@@ -1,3 +1,5 @@
+@use "variables" as vars;
+
 .row {
     box-sizing: border-box;
     display: flex;
@@ -9,11 +11,11 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{string.unquote($dimension)}-;
+        $dimensionString: -#{unquote($dimension)}-;
     };
 
     :root {
-        --current-row-gap: #{string.gapWidth(#{$dimension})};
+        --current-row-gap: #{gapWidth(#{$dimension})};
     }
 
     .row {
@@ -24,14 +26,14 @@
         flex-wrap: nowrap;
     }
 
-    @each $align, $value in $align-items {
-        .row-align#{$dimensionString}#{string.unquote($align)} {
+    @each $align, $value in vars.$align-items {
+        .row-align#{$dimensionString}#{unquote($align)} {
             align-items: $value;
         }
     }
 
-    @each $justify, $value in $justify-content {
-        .row-justify#{$dimensionString}#{string.unquote($justify)} {
+    @each $justify, $value in vars.$justify-content {
+        .row-justify#{$dimensionString}#{unquote($justify)} {
             justify-content: $value;
         }
     }

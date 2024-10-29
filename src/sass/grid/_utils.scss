@@ -1,10 +1,11 @@
 @use "sass:map";
+@use "config" as config;
 
 @mixin order($dimension) {
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{string.unquote($dimension)}-;
+        $dimensionString: -#{unquote($dimension)}-;
     };
 
     .order#{$dimensionString}first {
@@ -14,7 +15,7 @@
         order: 99999;
     }
 
-    @for $i from 0 through $orderMax {
+    @for $i from 0 through config.$orderMax {
         .order#{$dimensionString}#{$i} {
             order: $i;
         }
@@ -25,16 +26,16 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{string.unquote($dimension)}-;
+        $dimensionString: -#{unquote($dimension)}-;
     };
 
-    @each $utilityKey, $utility in $utilities {
+    @each $utilityKey, $utility in config.$utilities {
         $class: map.get($utility, 'class');
         $classString: '#{$class}#{$dimensionString}';
 
         @each $key, $value in map.get($utility, 'values') {
             .#{$classString}#{$key} {
-                #{map.get($utility, 'property')}: string.unquote($value);
+                #{map.get($utility, 'property')}: unquote($value);
             }
         }
     }

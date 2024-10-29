@@ -1,3 +1,5 @@
+@use "config" as config;
+
 .spacer {
     display: block;
     flex: 1 1 0px;
@@ -7,14 +9,14 @@
     $dimensionString: '-';
 
     @if $dimension != 'xs' {
-        $dimensionString: -#{string.unquote($dimension)}-;
+        $dimensionString: -#{unquote($dimension)}-;
     };
 
     .spacer#{$dimensionString}inline {
         display: inline;
     }
 
-    @for $i from 0 through $spacerMax {
+    @for $i from 0 through config.$spacerMax {
         .spacer-w#{$dimensionString}#{$i} {
             flex: 0 0 spacing($i);
             max-width: spacing($i);
@@ -28,7 +30,7 @@
         }
     }
 
-    @each $spacer, $value in $customSpacer {
+    @each $spacer, $value in config.$customSpacer {
         .spacer-w#{$dimensionString}#{$spacer} {
             flex: 0 0 spacing($value);
             max-width: spacing($value);
