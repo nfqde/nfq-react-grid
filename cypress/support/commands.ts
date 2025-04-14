@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import 'cypress/react18';
+import 'cypress/react';
 import type {ReactElement} from 'react';
 
 // ***********************************************

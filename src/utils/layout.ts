@@ -1,158 +1,105 @@
-/* eslint-disable no-undefined, security/detect-object-injection */
-import {css} from 'styled-components';
+import {configCache} from './cache';
+import {generateMediaString, generateMediaStringBetween} from './helpers';
 
-import {CONF_KEY} from '../defaultConfig';
-
-import {generateMediaString, generateMediaStringBetween, getConfig} from './lib';
-
-import type {Breakpoints, Theme} from '../sharedTypes';
-
-type SpaceReturn<T extends Theme | undefined> = T extends Theme ? string : (args: {theme: Theme}) => string;
+import type {Breakpoints} from '../sharedTypes/breakpointTypes';
 
 /**
- * Generates a CSS value for a given spacing value, based on the current grid configuration in the theme.
+ * Calculates a spacing value based on the configured base spacing unit.
+ * This utility is part of the `@nfq/react-grid` system and returns a CSS `calc()` expression
+ * that multiplies the global `--nfq-grid-base-spacing` variable by a given numeric factor.
+ * It ensures consistent spacing throughout your layout using theme-defined spacing units.
+ * This function is typically used in styled-components, inline styles, or CSS-in-JS utilities
+ * to enforce consistent vertical or horizontal margins, padding, and layout gaps.
  *
- * This function uses the base spacing value from the grid configuration to convert the input
- * `space` value to rem. The base spacing value is defined in the `nfqgrid` section of the theme
- * object, and represents the base spacing unit for the grid system.
+ * @param space A numeric multiplier for the base spacing (e.g., `1`, `2.5`, `-1`).
+ * @returns A CSS `calc()` string that represents the computed spacing value.
  *
- * @param space    The spacing value, specified in grid units.
- * @param preTheme The styled-components theme. Not needed if used in the context of a styled-component.
- *
- * @returns A CSS value for the spacing value, based on the current grid configuration in the theme.
- * @throws If the `theme` object does not contain a valid grid configuration.
  * @example
- * ```tsx
- * import styled from 'styled-components';
- * import {spacing} from '@nfq/react-grid';
+ * ```ts
+ * const padding = spacing(2); // "calc(var(--nfq-grid-base-spacing) * 2)"
  *
  * const Box = styled.div`
- *   padding: ${spacing(2)};
+ *   padding: ${spacing(1.5)};
  * `;
  * ```
  */
-export const spacing = <T extends Theme | undefined>(
-    space: number,
-    preTheme?: T
-): SpaceReturn<T> => {
-    if (preTheme) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return `${space * getConfig(preTheme).baseSpacing}rem` as any;
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return (({theme}: {theme: Theme}) => `${space * getConfig(theme).baseSpacing}rem`) as any;
-};
+export const spacing = (space: number) => `calc(var(--nfq-grid-base-spacing) * ${space})`;
 
 /**
- * Returns the current screen size based on the viewport width. This function takes in a theme object
- * and uses the breakpoints defined in the `breakpoints` property of the configuration object to determine
- * the current screen size.
+ * Retrieves the current screen size based on the CSS variable set by the grid system.
+ * This function reads the `--nfq-grid-screen-size` CSS custom property from the `<body>` element
+ * to determine the active breakpoint in use. It is designed to work in conjunction with the
+ * `@nfq/react-grid` system, which injects this value as part of its layout variable output.
+ * In server-side or non-browser environments, where `window` is not defined, it falls back to returning
+ * the last breakpoint in the configured `breakpointOrder`, which typically represents the largest screen size.
  *
- * @param theme The theme object which contains the breakpoints configuration.
- * @returns The current screen size as a string, one of `xs`, `sm`, `md`, `lg`, `xl`, or `xxl`.
- *
- * @throws If the theme is not a valid config object.
+ * @returns The current breakpoint name as defined in the configuration (e.g., `'xs'`, `'md'`, `'xl'`).
  *
  * @example
- * ```tsx
- * import {getScreenSize} from '@nfq/react-grid';
- * import {theme} from './theme';
- *
- * const screenSize = getScreenSize(theme);
- * // screenSize = 'md'
+ * ```ts
+ * const size = getScreenSize();
+ * // size might be 'sm', 'md', 'lg', etc., depending on window size
  * ```
  */
-export const getScreenSize = (theme: Partial<Theme>) => {
-    let viewport = null;
-    let newScreenSize = 'xxl';
-
-    const confKey = theme[CONF_KEY];
-
-    if (!confKey) throw new Error('Theme must be a grid config theme.');
-
-    // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr, @typescript-eslint/no-unnecessary-condition
-    if (window?.innerWidth) {
-        viewport = window.innerWidth;
+export const getScreenSize = () => {
+    if (typeof window === 'undefined') {
+        // eslint-disable-next-line @nfq/no-magic-numbers
+        return configCache.get('breakpointConfig')!.breakpointOrder.at(-1)!;
     }
+    // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
+    const screenSize = window.getComputedStyle(document.body)
+        .getPropertyValue('--nfq-grid-screen-size').replaceAll('\'', '').trim();
 
-    if (viewport) {
-        const {breakpoints} = getConfig(theme as Theme);
-
-        newScreenSize = 'xs';
-
-        if (breakpoints.sm <= viewport) {
-            newScreenSize = 'sm';
-        }
-        if (breakpoints.md <= viewport) {
-            newScreenSize = 'md';
-        }
-        if (breakpoints.lg <= viewport) {
-            newScreenSize = 'lg';
-        }
-        if (breakpoints.xl <= viewport) {
-            newScreenSize = 'xl';
-        }
-        if (breakpoints.xxl <= viewport) {
-            newScreenSize = 'xxl';
-        }
-    }
-
-    return newScreenSize as Breakpoints;
+    return screenSize as Breakpoints;
 };
 
 /**
- * Creates a CSS media query using the given screen size and styled-components theme.
+ * Generates a raw CSS media query string for a given breakpoint.
+ * This utility is used within the `@nfq/react-grid` system to construct media query strings
+ * based on configured breakpoint values. It leverages `generateMediaString()` to resolve the correct
+ * `min-width` media condition for the specified screen size.
+ * Unlike `mediaInternal`, this function returns the media query string directly,
+ * allowing it to be used in manual or external styling logic.
  *
- * @param screenSize The screen size for which the media query should be created. The size is specified using a member of the `Breakpoints` type.
- * @param theme      The styled-components theme. Not needed if used in the context of a styled-component.
- *
- * @returns A styled-components CSS template literal function that generates a media query for the given screen size.
- * @throws If the `theme` object is not a valid grid configuration object.
+ * @param screenSize The name of the breakpoint to generate the media query for (e.g., `'sm'`, `'md'`, `'xl'`).
+ * @returns A string representing a complete `@media` rule for the given breakpoint.
  *
  * @example
- * ```tsx
- * import styled from 'styled-components';
- * import {media} from '@nfq/react-grid';
+ * ```ts
+ * const query = media('lg');
+ * // query = "@media screen and (min-width: 1024px)"
  *
- * const Title = styled.h1`
- *   font-size: 2rem;
- *   ${media('sm')} {
- *     font-size: 3rem;
+ * const style = `
+ *   ${query} {
+ *     display: grid;
  *   }
  * `;
  * ```
  */
-export const media = (screenSize: Breakpoints, theme?: Partial<Theme>) => {
-    if (typeof theme === 'object' && !(CONF_KEY in theme)) throw new Error('Theme must be a grid config theme.');
-
-    return css`@media ${generateMediaString(screenSize, theme)}`;
-};
+export const media = (screenSize: Breakpoints) => `@media ${generateMediaString(screenSize)}`;
 
 /**
- * Creates a CSS media query using the given screen sizes and styled-components theme.
+ * Generates a CSS media query string that targets a range between two breakpoints.
+ * This utility is used within the `@nfq/react-grid` system to create `@media` rules
+ * that apply styles only between two defined breakpoints. The resulting query uses
+ * both `min-width` and `max-width` to define an inclusive range, with the upper bound
+ * being exclusive (`max-width - 1px`) to avoid overlap.
+ * It is useful for applying styles that should only affect a specific screen size range.
  *
- * @param screenSizeMin The min screen size for which the media query should be created. The size is specified using a member of the `Breakpoints` type.
- * @param screenSizeMax The max screen size for which the media query should be created. The size is specified using a member of the `Breakpoints` type.
- * @param theme         The styled-components theme. Not needed if used in the context of a styled-component.
+ * @param screenSizeMin The lower bound breakpoint (inclusive).
+ * @param screenSizeMax The upper bound breakpoint (exclusive).
+ * @returns A full CSS `@media` rule string for the specified breakpoint range.
  *
- * @returns A styled-components CSS template literal function that generates a media query for the given screen size.
- * @throws If the `theme` object is not a valid grid configuration object.
  * @example
- * ```tsx
- * import styled from 'styled-components';
- * import {mediaBetween} from '@nfq/react-grid';
+ * ```ts
+ * const query = mediaBetween('sm', 'lg');
+ * // query = "@media screen and (min-width: 576px) and (max-width: 1023px)"
  *
- * const Title = styled.h1`
- *   font-size: 2rem;
- *   ${mediaBetween('sm', 'lg')} {
- *     font-size: 3rem;
+ * const styles = `
+ *   ${query} {
+ *     padding: 2rem;
  *   }
  * `;
  * ```
  */
-export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoints, theme?: Partial<Theme>) => {
-    if (typeof theme === 'object' && !(CONF_KEY in theme)) throw new Error('Theme must be a grid config theme.');
-
-    return css`@media ${generateMediaStringBetween(screenSizeMin, screenSizeMax, theme)}`;
-};
+export const mediaBetween = (screenSizeMin: Breakpoints, screenSizeMax: Breakpoints) => `@media ${generateMediaStringBetween(screenSizeMin, screenSizeMax)}`;

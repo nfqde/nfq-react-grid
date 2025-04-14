@@ -1,58 +1,66 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-import {useScreenSize} from '../utils/hooks/useScreenSize';
-
+/**
+ * Props for the `<ScreenBadge />` component.
+ * This interface defines optional configuration for testing purposes. It allows injecting
+ * a `data-cy` attribute using a `testId`, commonly used in end-to-end testing with Cypress.
+ */
 interface ComponentProps {
-    /** TestId for cypress testing. */
+     /**
+      * A test identifier for use with Cypress or other test frameworks.
+      * This will be applied as a `data-cy` attribute on the rendered element.
+      *
+      * @default 'ScreenBadge'
+      */
     testId?: string;
 }
 
 /**
- * A component that displays the current screen size.
+ * Displays the current active screen size as a badge element for debugging or testing purposes.
+ * The `ScreenBadge` component consumes the current breakpoint from `useScreenSize()` and renders it
+ * as text inside a styled badge element. It can be customized with a `testId` for Cypress or other
+ * test automation tools via the `data-cy` attribute.
+ * This is particularly useful during development for visually identifying which breakpoint is active.
  *
- * The ScreenBadge component uses the `useScreenSize` hook to determine the current screen size and display it in a badge.
- * For it to work it has to be wrapped in the `ScreenSizeProvider`.
+ * @param props        The component props.
+ * @param props.testId The test identifier applied as `data-cy`. Defaults to `'ScreenBadge'`.
+ * @returns A styled badge element displaying the current breakpoint name.
  *
- * @param props        The props for the ScreenBadge component.
- * @param props.testId TestId for cypress testing.
- *
- * @returns The ScreenBadge component.
  * @example
  * ```tsx
- * import {ScreenBadge, ScreenSizeProvider} from '@nfq/react-grid';
+ * <ScreenBadge />
+ * // Renders something like: <span data-cy="ScreenBadge">md</span>
  *
- * const App = () => (
- *     <ScreenSizeProvider>
- *         <ScreenBadge />
- *     </ScreenSizeProvider>
- * );
+ * <ScreenBadge testId="current-breakpoint" />
+ * // Renders: <span data-cy="current-breakpoint">md</span>
  * ```
  */
-const ScreenBadge = ({testId = 'ScreenBadge'}: ComponentProps) => {
-    const screenSize = useScreenSize();
-
-    return <ScreenBadgeElement data-cy={testId}>{screenSize}</ScreenBadgeElement>;
-};
+const ScreenBadge = ({testId = 'ScreenBadge'}: ComponentProps) => <ScreenBadgeElement data-cy={testId} />;
 
 ScreenBadge.displayName = 'ScreenBadge';
 
-export default ScreenBadge;
+export {ScreenBadge};
 
 const ScreenBadgeElement = styled.div`
     align-items: center;
-    background-color: #5901ad40;
+    background-color: color-mix(in srgb, rebeccapurple 50%, transparent);
     border-radius: 5px;
-    bottom: 10px;
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
     height: 30px;
+    inset-block-end: 10px;
+    inset-inline-end: 10px;
     justify-content: center;
+    padding-inline: calc(var(--nfq-grid-base-spacing) * 2);
     position: fixed;
-    right: 10px;
-    width: 50px;
+    width: fit-content;
     z-index: 10;
+
+    &::before {
+        content: ""var(--nfq-grid-screen-size)"";
+        font-family: system-ui, sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 `;

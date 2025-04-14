@@ -1,8 +1,9 @@
 /* eslint-disable @nfq/no-magic-numbers, max-lines-per-function */
 import React from 'react';
 
-import Col from '../../../src/grid/Col';
-import Visible from '../../../src/grid/Visible';
+import {createConfig} from '../../../src/config/config';
+import {Col} from '../../../src/grid/Col';
+import {Visible} from '../../../src/grid/Visible';
 import {themeConfigs} from '../../fixtures/themes';
 import TestWrapper from '../../support/TestWrapper';
 
@@ -17,8 +18,10 @@ const Viewports = {
 
 describe('Test Visible component', () => {
     it('Renders only on defined screen sizes', () => {
+        const {globalCss} = createConfig(['xs', 'sm', 'md', 'lg', 'xl', 'xxl'], themeConfigs.differentContainers);
+
         cy.mount(
-            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
+            <TestWrapper theme={globalCss}>
                 <Visible lg sm xs>
                     <div data-cy="testDiv" />
                 </Visible>
@@ -45,8 +48,10 @@ describe('Test Visible component', () => {
     });
 
     it('Renders only on defined screen sizes but with display prop', () => {
+        const {globalCss} = createConfig(['xs', 'sm', 'md', 'lg', 'xl', 'xxl'], themeConfigs.differentContainers);
+
         cy.mount(
-            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
+            <TestWrapper theme={globalCss}>
                 <Visible isLoadingHtml lg sm xs>
                     <Col testId="testDiv" xs={2} />
                 </Visible>
