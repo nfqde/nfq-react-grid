@@ -13,6 +13,7 @@ babel.config.js
 .gitignore
 .gitattributes
 **/.gitkeep
+.history
 
 # testing
 .nyc_output
@@ -22,6 +23,7 @@ cypress.config.ts
 horusec-config.json
 
 # builds
+globalTypes
 tsconfig.json
 tsconfig.tsbuildinfo
 rollup.config.mjs
