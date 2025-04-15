@@ -1,16 +1,19 @@
 /* eslint-disable @nfq/no-magic-numbers, max-lines-per-function */
 import React from 'react';
 
-import Col from '../../../src/grid/Col';
-import Hidden from '../../../src/grid/Hidden';
+import {createConfig} from '../../../src/config/config';
+import {Col} from '../../../src/grid/Col';
+import {Hidden} from '../../../src/grid/Hidden';
 import {themeConfigs} from '../../fixtures/themes';
 import {Viewports} from '../../fixtures/viewports';
 import TestWrapper from '../../support/TestWrapper';
 
 describe('Test Hidden component', () => {
     it('Renders only on defined screen sizes', () => {
+        const {globalCss} = createConfig(['xs', 'sm', 'md', 'lg', 'xl', 'xxl'], themeConfigs.differentContainers);
+
         cy.mount(
-            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
+            <TestWrapper theme={globalCss}>
                 <Hidden lg sm xs>
                     <div data-cy="testDiv" />
                 </Hidden>
@@ -37,9 +40,11 @@ describe('Test Hidden component', () => {
     });
 
     it('Renders only on defined screen sizes but with display prop', () => {
+        const {globalCss} = createConfig(['xs', 'sm', 'md', 'lg', 'xl', 'xxl'], themeConfigs.differentContainers);
+
         cy.mount(
-            <TestWrapper theme={{nfqgrid: themeConfigs.differentContainers}}>
-                <Hidden isLoadingHtml lg sm xs>
+            <TestWrapper theme={globalCss}>
+                <Hidden isLoadingHtml lg sm xs xxl>
                     <Col testId="testDiv" xs={2} />
                 </Hidden>
             </TestWrapper>
@@ -61,6 +66,6 @@ describe('Test Hidden component', () => {
         cy.getCy('testDiv').should('have.css', 'display', 'flex');
 
         cy.viewport(Viewports.xxl[0], Viewports.xxl[1]);
-        cy.getCy('testDiv').should('have.css', 'display', 'flex');
+        cy.getCy('testDiv').should('have.css', 'display', 'none');
     });
 });

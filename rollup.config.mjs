@@ -3,24 +3,35 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import cleaner from 'rollup-plugin-cleaner';
-import copy from 'rollup-plugin-copy';
-import del from 'rollup-plugin-delete';
-import scss from 'rollup-plugin-scss';
 
 // eslint-disable-next-line import/extensions
-import pkg from './package.json' assert { type: "json" };
+import pkg from './package.json' with { type: 'json' };
 // eslint-disable-next-line import/extensions
 import yalcPublish from './rollupPlugins/yalcPublish.mjs';
 
 const globals = {
-    react: 'React',
-    'styled-components': 'styled'
+    // react: 'React',
+    // 'styled-components': 'styled'
 };
 
 export default [
     {
-        external: [...Object.keys(pkg.peerDependencies || {}), ...Object.keys(pkg.externals || {})],
-        input: 'src/index.tsx',
+        external: [
+            '@emotion/hash',
+            '@emotion/is-prop-valid',
+            '@emotion/memoize',
+            '@emotion/styled/base',
+            '@emotion/serialize',
+            '@emotion/unitless',
+            '@emotion/use-insertion-effect-with-fallbacks',
+            '@emotion/utils',
+            ...Object.keys({
+                ...pkg.dependencies,
+                ...pkg.devDependencies,
+                ...pkg.peerDependencies
+            } || {})
+        ],
+        input: 'src/index.ts',
         output: [
             {
                 exports: 'named',
@@ -48,35 +59,6 @@ export default [
             babel({
                 babelHelpers: 'bundled',
                 extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
-            })
-        ]
-    },
-    {
-        input: 'src/sass/app.scss',
-        output: {
-            dir: './dist/css/',
-            format: 'esm'
-        },
-        plugins: [
-            del({
-                hook: 'closeBundle',
-                targets: 'dist/css/app.js'
-            }),
-            scss({
-                fileName: 'bundle.css',
-                outputStyle: 'compressed'
-            }),
-            copy({
-                targets: [
-                    {
-                        dest: 'dist/sass',
-                        src: 'src/sass/**/*'
-                    },
-                    {
-                        dest: 'dist/vscode',
-                        src: 'src/vscode/**/*'
-                    }
-                ]
             }),
             yalcPublish()
         ]

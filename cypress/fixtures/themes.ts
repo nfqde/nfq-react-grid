@@ -1,13 +1,13 @@
 /* eslint-disable max-lines */
-import type {Config} from '../../src/defaultConfig';
+import type {Config} from '../../src/config/configTypes';
 
 interface themesInterface {
-    defaultTheme: Required<Config>;
-    differentColumns: Required<Config>;
-    differentContainers: Required<Config>;
-    fullMergedTheme: Required<Config>;
-    mergedTheme: Required<Config>;
-    onlyContainerSet: Config;
+    defaultTheme: Required<Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>>;
+    differentColumns: Required<Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>>;
+    differentContainers: Required<Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>>;
+    fullMergedTheme: Required<Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>>;
+    mergedTheme: Required<Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>>;
+    onlyContainerSet: Config<'dark' | 'light', ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']>;
 }
 
 export const themeConfigs: themesInterface = {
@@ -75,12 +75,11 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen',
         skeleton: {
             dark: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -93,7 +92,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'rtl',
+                    direction: 'reverse',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -170,12 +169,11 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen',
         skeleton: {
             dark: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -188,7 +186,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -265,12 +263,11 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen',
         skeleton: {
             dark: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -283,7 +280,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -360,12 +357,11 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen',
         skeleton: {
             dark: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -378,7 +374,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'rtl',
+                    direction: 'reverse',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -434,12 +430,11 @@ export const themeConfigs: themesInterface = {
                 padding: '#c2cf8a'
             }
         },
-        mediaQuery: 'only screen',
         skeleton: {
             dark: {
                 animation: {
                     delay: 0.02,
-                    direction: 'ltr',
+                    direction: 'normal',
                     duration: 1.8
                 },
                 borderRadius: 0.4,
@@ -452,7 +447,7 @@ export const themeConfigs: themesInterface = {
             light: {
                 animation: {
                     delay: 0.02,
-                    direction: 'rtl',
+                    direction: 'reverse',
                     duration: 1.8
                 },
                 borderRadius: 0.4,

@@ -1,153 +1,234 @@
 <div id="top"></div>
 
-[![npm version](https://badge.fury.io/js/%40nfq%2Freact-grid.svg)](https://badge.fury.io/js/%40nfq%2Freact-grid)
-[![npm downloads](https://img.shields.io/npm/dm/%40nfq%2Freact-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
-[![BundlePhobia](https://img.shields.io/bundlephobia/min/@nfq/react-grid)](https://bundlephobia.com/result?p=%40nfq/react-grid)
-[![GitHub issues](https://img.shields.io/github/issues/nfqde/nfq-react-grid.svg)](https://www.npmjs.com/package/%40nfq%2Freact-grid)
-![GitHub contributors](https://img.shields.io/github/contributors/nfqde/nfq-react-grid.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
-[![EsLint](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml)
-[![Horusec](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml)
-[![Cypress](https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml/badge.svg)](https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml)
-
 # @nfq/react-grid
+
+<p align="center">
+  <a href="https://badge.fury.io/js/%40nfq%2Freact-grid"><img src="https://img.shields.io/npm/v/@nfq/react-grid.svg" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/%40nfq%2Freact-grid"><img src="https://img.shields.io/npm/dm/@nfq/react-grid.svg" alt="npm downloads" /></a>
+  <a href="https://bundlephobia.com/result?p=%40nfq/react-grid"><img src="https://img.shields.io/bundlephobia/min/@nfq/react-grid" alt="BundlePhobia size" /></a>
+  <a href="https://www.npmjs.com/package/%40nfq%2Freact-grid"><img src="https://img.shields.io/github/issues/nfqde/nfq-react-grid.svg" alt="GitHub issues" /></a>
+  <img src="https://img.shields.io/github/contributors/nfqde/nfq-react-grid.svg" alt="Contributors" />
+  <a href="https://opensource.org/license/mit/"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml"><img src="https://github.com/nfqde/nfq-react-grid/actions/workflows/eslint.yml/badge.svg" alt="ESLint" /></a>
+  <a href="https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml"><img src="https://github.com/nfqde/nfq-react-grid/actions/workflows/horusec.yml/badge.svg" alt="Horusec" /></a>
+  <a href="https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml"><img src="https://github.com/nfqde/nfq-react-grid/actions/workflows/cypress.yml/badge.svg" alt="Cypress Tests" /></a>
+</p>
+
+---
+> [!WARNING]
+>
+> This project switched over to @emotion/styled. As Styled-Components is in "Maintainance Mode".  
+> If you use styled-components you can use the version `<= 6.0.0` of this package.
 
 ---
 
-* [About the project](#about-the-project)
-  * [Installation](#installation)
-  * [PeerDependencies](#peerdependencies)
-* [Usage](#usage)
-  * [Responsive Columns](#responsive-columns)
-  * [Offset usage](#offset-usage)
-  * [Order usage](#order-usage)
-  * [Alignment](#alignment)
-  * [Changing directions](#changing-directions)
-  * [Spacer usage](#spacer-usage)
-  * [Usage of Hidden and Visible](#usage-of-hidden-and-visible)
-* [Props](#props)
-  * [Container](#container)
-  * [Row](#row)
-  * [Col](#col)
-  * [Spacer](#spacer)
-  * [Skeleton](#skeleton)
-  * [Hidden](#hidden)
-  * [Visible](#visible)
-* [Types](#types)
-  * [Breakpoints](#breakpoints)
-  * [FlexAlign](#flexalign)
-  * [AlignObject](#alignobject)
-  * [FlexDirection](#flexdirection)
-  * [DirectionObject](#directionobject)
-  * [FlexGap](#flexgap)
-  * [GapObject](#gapobject)
-  * [FlexJustify](#flexjustify)
-  * [JustifyObject](#justifyobject)
-  * [OrderObject](#orderobject)
-  * [OffsetObject](#offsetobject)
-  * [Padding](#padding)
-  * [PaddingObject](#paddingobject)
-  * [StringSizes](#stringsizes)
-  * [SpacerObject](#spacerobject)
-  * [Height](#height)
-  * [Width](#width)
-* [Utilities](#utilities)
-  * [getConfig](#getconfig)
-  * [media](#media)
-  * [mediaBetween](#mediabetween)
-  * [spacing](#spacing)
-  * [lighten](#lighten)
-  * [darken](#darken)
-  * [translucify](#translucify)
-  * [ScreenSizeProvider](#screensizeprovider)
-* [Hooks](#hooks)
-  * [useConfig](#useConfig)
-  * [useScreenSize](#useScreenSize)
-* [Debugging](#debugging)
-* [Custom config](#custom-config)
-  * [Configuration Object](#configuration-object)
-    * [baseSpacing](#basespacing)
-    * [breakpoints](#breakpoints)
-    * [columnGap](#columngap)
-    * [columns](#columns)
-    * [container](#container)
-    * [containerPadding](#containerpadding)
-    * [debug](#debug)
-    * [mediaQuery](#mediaquery)
-    * [skeleton](#skeleton)
-    * [skeletonDefault](#skeletondefault)
-* [Contributions](#contributions)
-* [Licence](#licence)
-* [Questions](#questions)
+## Table of Contents
+
+- [@nfq/react-grid](#nfqreact-grid)
+  - [Table of Contents](#table-of-contents)
+  - [About the project](#about-the-project)
+    - [🚀 Features](#-features)
+    - [📦 Installation](#-installation)
+    - [📦 PeerDependencies](#-peerdependencies)
+  - [Configuration](#configuration)
+    - [`globalGridCss` (Required)](#globalgridcss-required)
+    - [Extend Module Declarations (For typescript autocompletion for your custom breakpoints)](#extend-module-declarations-for-typescript-autocompletion-for-your-custom-breakpoints)
+  - [Usage](#usage)
+    - [Responsive Columns](#responsive-columns)
+    - [Offset usage](#offset-usage)
+    - [Order usage](#order-usage)
+    - [Alignment](#alignment)
+    - [Changing directions](#changing-directions)
+    - [Spacer usage](#spacer-usage)
+    - [Skeleton usage](#skeleton-usage)
+    - [Usage of Hidden and Visible](#usage-of-hidden-and-visible)
+    - [Usage of ResponsiveText](#usage-of-responsivetext)
+  - [Props](#props)
+    - [Container](#container)
+    - [Row](#row)
+    - [Col](#col)
+    - [Spacer](#spacer)
+    - [Skeleton](#skeleton)
+    - [Hidden](#hidden)
+    - [Visible](#visible)
+    - [ResponsiveText](#responsivetext)
+  - [Types](#types)
+    - [Breakpoints](#breakpoints)
+    - [FlexAlign](#flexalign)
+    - [AlignObject](#alignobject)
+    - [FlexDirection](#flexdirection)
+    - [DirectionObject](#directionobject)
+    - [FlexGap](#flexgap)
+    - [GapObject](#gapobject)
+    - [FlexJustify](#flexjustify)
+    - [JustifyObject](#justifyobject)
+    - [OrderObject](#orderobject)
+    - [OffsetObject](#offsetobject)
+    - [Padding](#padding)
+    - [PaddingObject](#paddingobject)
+    - [StringSizes](#stringsizes)
+    - [SpacerObject](#spacerobject)
+    - [Height](#height)
+    - [Width](#width)
+  - [Utilities](#utilities)
+    - [media](#media)
+    - [mediaBetween](#mediabetween)
+    - [spacing](#spacing)
+    - [ScreenSizeProvider](#screensizeprovider)
+  - [Hooks](#hooks)
+    - [useScreenSize](#usescreensize)
+  - [Debugging](#debugging)
+  - [Custom config](#custom-config)
+    - [Configuration Object](#configuration-object)
+    - [baseSpacing](#basespacing)
+    - [breakpoints](#breakpoints-1)
+    - [columnGap](#columngap)
+    - [columns](#columns)
+    - [container](#container-1)
+    - [containerPadding](#containerpadding)
+    - [debug](#debug)
+    - [skeleton](#skeleton-1)
+    - [skeletonDefault](#skeletondefault)
+  - [Contributions](#contributions)
+  - [License](#license)
+  - [Questions](#questions)
 
 ---
 
 ## About the project
 
-A responsive (mobile-first) grid system for React using styled-components. Inspired by [santosfrancisco/react-awesome-styled-grid](https://github.com/santosfrancisco/react-awesome-styled-grid).
+A powerful, theme-free, responsive grid system for React powered by `@emotion/react`.  
+Built on modern CSS variables, mobile-first principles, and full TypeScript support.
 
-### Installation
+Inspired by [react-awesome-styled-grid](https://github.com/santosfrancisco/react-awesome-styled-grid), re-engineered for real-world production use.
+
+### 🚀 Features
+
+- ⚛️ No dependency on theme providers – works out of the box with CSS custom properties.
+- 🧱 Responsive grid layout: `Container`, `Row`, `Col`, `Spacer`
+- 🧩 Extra helpers: `Skeleton`, `Hidden`, `Visible`, `ResponsiveText`
+- 🧠 Hooks and utilities: `useScreenSize`, `spacing`, `media()`
+- 🔍 Built-in debug layer via `Ctrl + D`
+- 🎨 Fully configurable skeleton animations and design tokens
+- 🧪 Test-friendly via `testId` props
+
+
+### 📦 Installation
 
 To install the package run
 
 ```sh
-npm install @nfq/react-grid
+npm install @nfq/react-grid @emotion/react @emotion/styled
+# or
+yarn add @nfq/react-grid @emotion/react @emotion/styled
+# or
+pnpm add @nfq/react-grid @emotion/react @emotion/styled
 ```
 
-if you are in yarn
-
-```sh
-yarn add @nfq/react-grid
-```
-
-or on pnpm
-
-```sh
-pnpm install @nfq/react-grid
-```
-
-### PeerDependencies
+### 📦 PeerDependencies
 
 The following PeerDependencies are needed so the component does work:
 
-* react >= 17
-* styled-components >= 5
+- `@emotion/react >= 10`
+- `@emotion/styled >= 10`
+- `react >= 18`
+- `react-dom >= 18`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ---
 
+## Configuration
+
+Define your grid configuration using `createConfig` somewhere in your app. This is a required step to use the grid system. Full documentation can be found [here.](#custom-config)
+
+```ts
+// grid.config.ts
+import { createConfig } from '@nfq/react-grid';
+
+export const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const; // Add your Breakpoints and its sorting smallest to biggest.
+export const { configType, globalCss: globalGridCss } = createConfig(breakpoints, {
+  baseSpacing: 0.4,
+  breakpoints: {}, // ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] are defaulted and don't need to be defined. If your breakpoints are different you can define them here.
+  container: {
+    xs: 'fluid',
+    sm: 'fluid',
+    md: 'fluid',
+    lg: 'fluid',
+    xl: 1140,
+    xxl: 1140
+  } // this is the only mandatory property. It defines the container width for every breakpoint. You can also set it to 'fluid'.
+});
+```
+
+### `globalGridCss` (Required)
+
+You must inject `globalGridCss` once at app level to enable the grid’s base variables and behavior:
+
+```tsx
+/** globals.ts */
+import { css, Global } from '@emotion/react';
+import { globalCss, globalGridCss } from './grid.config';
+
+export const globals = (
+  <Global
+    styles={css`
+      ${globalCss}
+      ${globalGridCss}
+      html {
+        font-size: 10px;
+      }
+    `}
+  />
+);
+```
+
+### Extend Module Declarations (For typescript autocompletion for your custom breakpoints)
+
+```ts
+// grid.d.ts
+import '@nfq/react-grid';
+import {breakpoints, configType} from './grid.config';
+
+declare module '@nfq/react-grid' {
+  export interface UserConfig {
+    Breakpoints: typeof breakpoints;
+    Config: typeof configType;
+  }
+}
+```
+
 ## Usage
 
-```javascript
+```ts
 import {
     Col,
     Container,
-    darken,
-    getConfig,
-    getScreenSize,
     Hidden,
-    lighten,
-    Row,
     ResponsiveText,
-    media,
-    mediaBetween,
+    Row,
     ScreenBadge,
     ScreenSizeContext,
     ScreenSizeProvider,
     Skeleton,
     Spacer,
+    Visible,
+    createConfig,
+    getScreenSize,
+    lighten,
+    media,
+    mediaBetween,
     spacing,
-    translucify,
-    useScreenSize,
-    useConfig
-    Visible
+    useScreenSize
 } from '@nfq/react-grid';
 ```
 
 ### Responsive Columns
 
-```javascript
+```tsx
 <Container>
     <Row>
         <Col xs={2} sm={6} md={2} lg={6}>Col 1</Col>
@@ -164,7 +245,7 @@ The screen params define the Col size in its respective screen class. If no size
 
 ### Offset usage
 
-```javascript
+```tsx
 <Container>
     <Row>
         <Col offset={2}>Col 1</Col>
@@ -175,14 +256,14 @@ The screen params define the Col size in its respective screen class. If no size
 </Container>
 ```
 
-An offset with an single number defines the offset for all screens. Because all screen sizes can have an different number of columns the offset will get calculated on xs basis. So if you have 4 columns on xs and an offset of 2 all screensizes will render the column with 50% width.
+An offset with an single number defines the offset for all screens. Because all screen sizes can have an different number of columns the offset will get calculated on basis of the smallest defined breakpoint. So if you have 4 columns on this breakpoint and an offset of 2 all screensizes will render the column with 50% width.
 
 If you define an object you can set the offset for every screen size. And so all offsets will calculated for the specific screen sizes. So if you want an offset of one column for all screens you can define an offset of
-{xs: 1} because we render mobile first all other screens will calculate the offset with 1 column and use its own max columns.
+your smallest breakpoint as `{[breakpoint]: 1}` because we render mobile first all other screens will calculate the offset with 1 column and use its own max columns.
 
 ### Order usage
 
-```javascript
+```tsx
 <Container>
     <Row order={{xs: 1, lg: 2}}>
         <Col order={2}>Col 1</Col>
@@ -199,7 +280,7 @@ The order can be defined for Cols and Rows and orders the components in its pare
 
 ### Alignment
 
-```javascript
+```tsx
 <Container>
     <Row align="center" justify="center">
         <Col align="flex-end" justify="space-between">Col 1</Col>
@@ -216,7 +297,7 @@ The alignment of rows and columns can be set with the align and justify props. B
 
 ### Changing directions
 
-```javascript
+```tsx
 <Container>
     <Row direction={{xs: 'column', lg: 'row'}} isReverse>
         <Col isReverse>Col 1</Col>
@@ -234,7 +315,7 @@ Columns have also and direction prop. Its usefull if you want to render column c
 
 ### Spacer usage
 
-```javascript
+```tsx
 <Container>
     <Row isReverse>
         <Col>Col 1</Col>
@@ -253,21 +334,32 @@ The Spacer component helps to set spacings like designers do and has some logic 
 
 ### Skeleton usage
 
-```javascript
+```tsx
 <Container>
     <Row>
         <Col>
             <h1><Skeleton isLoading>This is text</Skeleton></h1>
+        </Col>
+        <Col>
+            <p><Skeleton group="one" isLoading>This is text</Skeleton></p>
+        </Col>
+        <Col>
+            <p><Skeleton group="one" isCircle isLoading>This is text</Skeleton></p>
         </Col>
     </Row>
 </Container>
 ```
 
 The Skeleton component is an easy way to render a skeleton of an component. It can be used to render an skeleton of an component while its loading. It renders its children only if isLoading is false. If it is true it renders an skeleton loader. The skeleton loader can be configured with the config object. (See [Custom config](#custom-config))
+The Skeleton has some usefull properties to define its appearance and its behavior. You can group Skeletons to have an slightly delayed loading effect between different skeletons of the same group. You can also define if the skeleton should be a circle or not. The skeleton will then render an circle instead of a rectangle.
+
+> [!NOTE]
+>
+> For the skeletons to work you need to wrap your app in the ScreenSizeProvider.
 
 ### Usage of Hidden and Visible
 
-```javascript
+```tsx
 <Container>
     <Visible xs sm md>
         <Row>
@@ -285,11 +377,11 @@ The Skeleton component is an easy way to render a skeleton of an component. It c
 ```
 
 Sometimes you want to hide something on specific screens. Or show something only on some screens. Thats the usecase for Visible and Hidden.
-Both can get screensizes as props. The screen sizes define when the components work.
+Both can get screensizes as props. The screen sizes define when the components apply their logic for hiding and showing.
 
 ### Usage of ResponsiveText
 
-```javascript
+```tsx
 <Container>
     <Row>
         <Col>
@@ -312,7 +404,7 @@ Both can get screensizes as props. The screen sizes define when the components w
 ```
 
 Sometimes you need to render different text snippets depending on your screensize. Thats an usecase for ResponsiveText.  
-This component can get an text for every screensize and renders it accordingly. As it works also mobile first you need to only set xs and the other screensizes will use the same text as xs or the text thats used for the next smallest given size.
+This component can get an text for every screensize and renders it accordingly. As it works also mobile first you need to only set the smallest defined breakpoints and the other screensizes will use the same text as this breakpoint or the text thats used for the next smallest given size.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -328,6 +420,7 @@ This component can get an text for every screensize and renders it accordingly. 
 | className     | string                                     |          | Classname property to overwrite styles with styled(Container)                                                                                                                                   |
 | hasNoPadding  | [Breakpoints[]](#breakpoints)\|boolean     |          | Determines if the container has an padding. (Should always be set if the container has an container as parent already). It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value. |
 | isFluid       | [Breakpoints[]](#breakpoints)\|boolean     |          | Makes the container fluid. (Should always be set if the container has an container as parent already). It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value.                  |
+| maxWidth      | [SizesObject](#sizesobject)\|number        |          | Sets the max width of the container. It takes a[`SizesObject`](#sizesobject) or a `number` value. Its intended for usage with isFluid.                                                          |
 | testId        | string                                     |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                                         |
 | onClick       | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user clicks the element with the mouse.                                                                                                                |
 | onContextMenu | (event: MouseEvent\<HTMLElement\>) => void |          | A function that will be invoked when the user right-clicks the element with the mouse.                                                                                                          |
@@ -381,43 +474,38 @@ This component can get an text for every screensize and renders it accordingly. 
 
 ### Col
 
-| Prop          | type                                                                 | required | Description                                                                                                                                                                                     |
-| ------------- | -------------------------------------------------------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| align         | [AlignObject](#alignobject)\|[FlexAlign](#flexalign)                 |          | Defines the content alignment of the column. It takes a[`AlignObject`](#alignobject) or a [`FlexAlign`](#flexalign) type value. Its direction is dependent on the `direction` prop.             |
-| as            | String (ElementType)                                                 |          | Sets the html element type of the column. If you overwrite its styles with styled() it has to be forwardedAs.                                                                                   |
-| className     | string                                                               |          | Classname property to overwrite styles with styled(Col).                                                                                                                                        |
-| direction     | [DirectionObject](#directionobject)\|[FlexDirection](#flexdirection) |          | Sets the direction the column children should render ('row' or 'column'). It takes a[`DirectionObject`](#directionobject) or a [`FlexDirection`](#flexdirection) type value.                    |
-| isReverse     | [Breakpoints[]](#breakpoints)\|boolean                               |          | Reverses the direction of the column. It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value.                                                                                   |
-| justify       | [FlexJustify](#flexjustify)\|[JustifyObject](#justifyobject)         |          | Defines the content justification of the column. It takes a[`FlexJustify`](#flexjustify) or a [`JustifyObject`](#justifyobject) type value. Its direction is dependent on the `direction` prop. |
-| offset        | [OffsetObject](#offsetobject)\|number                                |          | Sets the number of columns this column should offset to the left. It takes an[`OffsetObject`](#offsetobject) or a `number` value.                                                               |
-| order         | [OrderObject](#orderobject)\|number                                  |          | Sets the order this column should be in. It takes an[`OrderObject`](#orderobject) or a `number` value.                                                                                          |
-| padding       | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to both sides of the column. It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                                                          |
-| paddingLeft   | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to the left side of the column (Gets overwritten by padding). It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                         |
-| paddingRight  | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to the right side of the column (Gets overwritten by padding). It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                        |
-| xs            | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens xs. (Can also be auto, max-content, min-content).                                                                                  |
-| sm            | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens sm. (Can also be auto, max-content, min-content).                                                                                  |
-| md            | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens md. (Can also be auto, max-content, min-content).                                                                                  |
-| lg            | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens lg. (Can also be auto, max-content, min-content).                                                                                  |
-| xl            | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens xl. (Can also be auto, max-content, min-content).                                                                                  |
-| xxl           | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on screens xxl. (Can also be auto, max-content, min-content).                                                                                 |
-| testId        | string                                                               |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                                         |
-| onClick       | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user clicks the element with the mouse.                                                                                                                |
-| onContextMenu | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user right-clicks the element with the mouse.                                                                                                          |
-| onDoubleClick | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user double-clicks the element with the mouse.                                                                                                         |
-| onDrag        | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user starts dragging the element with the mouse.                                                                                                       |
-| onDragEnd     | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user stops dragging the element with the mouse.                                                                                                        |
-| onDragEnter   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user drags another element over this element.                                                                                                          |
-| onDragLeave   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user stops dragging another element over this element.                                                                                                 |
-| onDragOver    | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user is dragging another element over this element.                                                                                                    |
-| onDrop        | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user is dropping another element on this element.                                                                                                      |
-| onMouseDown   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user presses a mouse button over the element.                                                                                                          |
-| onMouseEnter  | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor enters the element.                                                                                                                       |
-| onMouseLeave  | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor leaves the element.                                                                                                                       |
-| onMouseMove   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
-| onMouseOut    | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves out of the element.                                                                                                                 |
-| onMouseOver   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
-| onMouseUp     | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user releases a mouse button over the element.                                                                                                         |
-| onScroll      | (event: UIEvent\<HTMLElement\>) => void                              |          | A function that will be invoked when the user scrolls inside this element.                                                                                                                      |
+| Prop                     | type                                                                 | required | Description                                                                                                                                                                                     |
+| ------------------------ | -------------------------------------------------------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| align                    | [AlignObject](#alignobject)\|[FlexAlign](#flexalign)                 |          | Defines the content alignment of the column. It takes a[`AlignObject`](#alignobject) or a [`FlexAlign`](#flexalign) type value. Its direction is dependent on the `direction` prop.             |
+| as                       | String (ElementType)                                                 |          | Sets the html element type of the column. If you overwrite its styles with styled() it has to be forwardedAs.                                                                                   |
+| className                | string                                                               |          | Classname property to overwrite styles with styled(Col).                                                                                                                                        |
+| direction                | [DirectionObject](#directionobject)\|[FlexDirection](#flexdirection) |          | Sets the direction the column children should render ('row' or 'column'). It takes a[`DirectionObject`](#directionobject) or a [`FlexDirection`](#flexdirection) type value.                    |
+| isReverse                | [Breakpoints[]](#breakpoints)\|boolean                               |          | Reverses the direction of the column. It takes an array of[`Breakpoints`](#breakpoints) or a `boolean` value.                                                                                   |
+| justify                  | [FlexJustify](#flexjustify)\|[JustifyObject](#justifyobject)         |          | Defines the content justification of the column. It takes a[`FlexJustify`](#flexjustify) or a [`JustifyObject`](#justifyobject) type value. Its direction is dependent on the `direction` prop. |
+| offset                   | [OffsetObject](#offsetobject)\|number                                |          | Sets the number of columns this column should offset to the left. It takes an[`OffsetObject`](#offsetobject) or a `number` value.                                                               |
+| order                    | [OrderObject](#orderobject)\|number                                  |          | Sets the order this column should be in. It takes an[`OrderObject`](#orderobject) or a `number` value.                                                                                          |
+| padding                  | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to both sides of the column. It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                                                          |
+| paddingLeft              | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to the left side of the column (Gets overwritten by padding). It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                         |
+| paddingRight             | [Padding](#padding)\|[PaddingObject](#paddingobject)                 |          | Sets the padding added to the right side of the column (Gets overwritten by padding). It takes a[`Padding`](#padding) or a [`PaddingObject`](#paddingobject) type value.                        |
+| Your defined Breakpoints | number\|[StringSizes](#stringsizes)                                  |          | Sets the number of columns the col takes in width on your defined screensizes. (Can also be auto, max-content, min-content).                                                                    |
+| testId                   | string                                                               |          | TestId for cypress testing. (If applicable.) Can than be selected with data-cy="testId"                                                                                                         |
+| onClick                  | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user clicks the element with the mouse.                                                                                                                |
+| onContextMenu            | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user right-clicks the element with the mouse.                                                                                                          |
+| onDoubleClick            | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user double-clicks the element with the mouse.                                                                                                         |
+| onDrag                   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user starts dragging the element with the mouse.                                                                                                       |
+| onDragEnd                | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user stops dragging the element with the mouse.                                                                                                        |
+| onDragEnter              | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user drags another element over this element.                                                                                                          |
+| onDragLeave              | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user stops dragging another element over this element.                                                                                                 |
+| onDragOver               | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user is dragging another element over this element.                                                                                                    |
+| onDrop                   | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user is dropping another element on this element.                                                                                                      |
+| onMouseDown              | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user presses a mouse button over the element.                                                                                                          |
+| onMouseEnter             | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor enters the element.                                                                                                                       |
+| onMouseLeave             | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor leaves the element.                                                                                                                       |
+| onMouseMove              | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
+| onMouseOut               | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves out of the element.                                                                                                                 |
+| onMouseOver              | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the mouse cursor moves over the element.                                                                                                                   |
+| onMouseUp                | (event: MouseEvent\<HTMLElement\>) => void                           |          | A function that will be invoked when the user releases a mouse button over the element.                                                                                                         |
+| onScroll                 | (event: UIEvent\<HTMLElement\>) => void                              |          | A function that will be invoked when the user scrolls inside this element.                                                                                                                      |
 
 ### Spacer
 
@@ -435,7 +523,7 @@ This component can get an text for every screensize and renders it accordingly. 
 
 | Prop          | type                      | required | Description                                                                             |
 | ------------- | ------------------------- | :------: | --------------------------------------------------------------------------------------- |
-| circle        | Boolean                   |          | Set to true to set the border-radius to 50% to get an circular shape.                   |
+| isCircle      | Boolean                   |          | Set to true to set the border-radius to 50% to get an circular shape.                   |
 | className     | String                    |          | To override the current styles the Skeleton does not have options for.                  |
 | count         | Number                    |          | Defines the number of skeleton lines the component should render                        |
 | group         | String                    |          | To apply the delay on your skeleton use this property to add it to an delay group       |
@@ -446,38 +534,23 @@ This component can get an text for every screensize and renders it accordingly. 
 
 ### Hidden
 
-| Prop          | type    | required | Description                                                       |
-| ------------- | ------- | :------: | ----------------------------------------------------------------- |
-| xs            | Boolean |          | Set to true to hide the child only on screen size xs.             |
-| sm            | Boolean |          | Set to true to hide the child only on screen size sm.             |
-| md            | Boolean |          | Set to true to hide the child only on screen size md.             |
-| lg            | Boolean |          | Set to true to hide the child only on screen size lg.             |
-| xl            | Boolean |          | Set to true to hide the child only on screen size xl.             |
-| xxl           | Boolean |          | Set to true to hide the child only on screen size xxl.            |
-| isLoadingHtml | Boolean |          | Set to true to render the HTML even when the component is hidden. |
+| Prop                     | type    | required | Description                                                       |
+| ------------------------ | ------- | :------: | ----------------------------------------------------------------- |
+| Your defined Breakpoints | Boolean |          | Set to true to hide the child only on the defined screen size     |
+| isLoadingHtml            | Boolean |          | Set to true to render the HTML even when the component is hidden. |
 
 ### Visible
 
-| Prop          | type    | required | Description                                                       |
-| ------------- | ------- | :------: | ----------------------------------------------------------------- |
-| xs            | Boolean |          | Set to true to show the child only on screen size xs.             |
-| sm            | Boolean |          | Set to true to show the child only on screen size sm.             |
-| md            | Boolean |          | Set to true to show the child only on screen size md.             |
-| lg            | Boolean |          | Set to true to show the child only on screen size lg.             |
-| xl            | Boolean |          | Set to true to show the child only on screen size xl.             |
-| xxl           | Boolean |          | Set to true to show the child only on screen size xxl.            |
-| isLoadingHtml | Boolean |          | Set to true to render the HTML even when the component is hidden. |
+| Prop                     | type    | required | Description                                                       |
+| ------------------------ | ------- | :------: | ----------------------------------------------------------------- |
+| Your defined Breakpoints | Boolean |          | Set to true to show the child only on the defined screen size.    |
+| isLoadingHtml            | Boolean |          | Set to true to render the HTML even when the component is hidden. |
 
 ### ResponsiveText
 
-| Prop          | type   | required           | Description                                            |
-| ------------- | ------ | :----------------: | ------------------------------------------------------ |
-| xs            | String | :white_check_mark: | Set to true to hide the child only on screen size xs.  |
-| sm            | String |                    | Set to true to hide the child only on screen size sm.  |
-| md            | String |                    | Set to true to hide the child only on screen size md.  |
-| lg            | String |                    | Set to true to hide the child only on screen size lg.  |
-| xl            | String |                    | Set to true to hide the child only on screen size xl.  |
-| xxl           | String |                    | Set to true to hide the child only on screen size xxl. |
+| Prop                     | type   | required                                          | Description                                            |
+| ------------------------ | ------ | :-----------------------------------------------: | ------------------------------------------------------ |
+| Your defined Breakpoints | String | :white_check_mark: (only the smallest breakpoint) | Shows the given text on the appropreate screen size.   |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -487,19 +560,21 @@ This component can get an text for every screensize and renders it accordingly. 
 
 ### Breakpoints
 
-```typescript
-type Breakpoints = 'lg' | 'md' | 'sm' | 'xl' | 'xs' | 'xxl';
+Your breakpoints are defined in the config under the key `breakpoints`. This is the default.
+
+```ts
+type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 ```
 
 ### FlexAlign
 
-```typescript
+```ts
 type FlexAlign = 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'inherit' | 'initial' | 'stretch' | 'unset';
 ```
 
 ### AlignObject
 
-```typescript
+```ts
 interface AlignObject {
     xs?: FlexAlign;
     sm?: FlexAlign;
@@ -512,13 +587,13 @@ interface AlignObject {
 
 ### FlexDirection
 
-```typescript
+```ts
 type FlexDirection = 'column' | 'row';
 ```
 
 ### DirectionObject
 
-```typescript
+```ts
 interface DirectionObject {
     xs?: FlexDirection;
     sm?: FlexDirection;
@@ -531,13 +606,13 @@ interface DirectionObject {
 
 ### FlexGap
 
-```typescript
+```ts
 type FlexGap = boolean | 'no-column' | 'no-row';
 ```
 
 ### GapObject
 
-```typescript
+```ts
 interface GapObject {
     xs?: FlexGap;
     sm?: FlexGap;
@@ -550,13 +625,13 @@ interface GapObject {
 
 ### FlexJustify
 
-```typescript
+```ts
 type FlexJustify = 'center' | 'flex-end' | 'flex-start' | 'inherit' | 'initial' | 'space-around' | 'space-between' | 'space-evenly' | 'unset';
 ```
 
 ### JustifyObject
 
-```typescript
+```ts
 interface JustifyObject {
     xs?: FlexJustify;
     sm?: FlexJustify;
@@ -569,7 +644,7 @@ interface JustifyObject {
 
 ### OrderObject
 
-```typescript
+```ts
 interface OrderObject {
     xs?: number;
     sm?: number;
@@ -582,7 +657,7 @@ interface OrderObject {
 
 ### OffsetObject
 
-```typescript
+```ts
 interface OffsetObject {
     xs?: number;
     sm?: number;
@@ -595,14 +670,14 @@ interface OffsetObject {
 
 ### Padding
 
-```typescript
+```ts
 type PaddingExt = 'em' | 'px' | 'rem' | 'vh' | 'vw';
 type Padding = `${number}${PaddingExt}`;
 ```
 
 ### PaddingObject
 
-```typescript
+```ts
 interface PaddingObject {
     xs?: Padding;
     sm?: Padding;
@@ -615,13 +690,13 @@ interface PaddingObject {
 
 ### StringSizes
 
-```typescript
+```ts
 type StringSizes = 'auto' | 'max-content' | 'min-content';
 ```
 
 ### SpacerObject
 
-```typescript
+```ts
 interface SpacerObject {
     xs?: number;
     sm?: number;
@@ -634,14 +709,14 @@ interface SpacerObject {
 
 ### Height
 
-```typescript
+```ts
 type HeightExt = 'em' | 'px' | 'rem' | 'vh' | 'vw' | '%';
 type Height = `${number}${HeightExt}`;
 ```
 
 ### Width
 
-```typescript
+```ts
 type WidthExt = 'em' | 'px' | 'rem' | 'vh' | 'vw' | '%';
 type Width = `${number}${WidthExt}`;
 ```
@@ -652,21 +727,9 @@ type Width = `${number}${WidthExt}`;
 
 ## Utilities
 
-### getConfig
-
-```javascript
-const DemoComponent = styled.div`
-    ${({theme}) => getConfig(theme).breakpoints.xs /* Yields the xs breakpoint configured */}
-`;
-```
-
-Retrieves the complete configuration object by merging the user-provided configuration with the default configuration. If the provided theme is not a configuration object, an error is thrown.
-
-The `theme` object should follow the structure of the `Theme` type. If the `theme` object is incomplete, the default configuration will be used for the missing properties. This function caches the result, so if the same theme is passed multiple times, it will return the previously calculated configuration object.
-
 ### media
 
-```javascript
+```ts
 const DemoComponent = styled.div`
     ${media('xs')} {
         padding-top: 2rem;
@@ -678,7 +741,7 @@ Creates a CSS media query using the given breakpoint and styled-components theme
 
 ### mediaBetween
 
-```javascript
+```ts
 const DemoComponent = styled.div`
     ${mediaBetween('xs', 'md')} {
         padding-top: 2rem;
@@ -690,7 +753,7 @@ The same as media but it creates an media query between two breakpoints.
 
 ### spacing
 
-```javascript
+```ts
 const DemoComponent = styled.div`
     padding: ${spacing(2)}; /* Yields 2 * baseSpacing */
 `;
@@ -698,47 +761,11 @@ const DemoComponent = styled.div`
 
 Generates a CSS value for a given spacing value, based on the current grid configuration in the theme.
 
-This function uses the base spacing value from the grid configuration to convert the input `space` value to rem. The base spacing value is defined in the `nfqgrid` section of the theme object, and represents the base spacing unit for the grid system.
-
-### lighten (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
-
-```javascript
-const DemoComponent = styled.div`
-    background: ${({theme}) => lighten(theme.colors.header, 50)};
-`;
-```
-
-The `lighten` function is a utility that lightens a given color by a specified percentage.  
-It utilizes the CSS `color-mix` function to mix the provided color with white, achieving the desired lightening effect.
-This function is especially beneficial for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
-
-### darken (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
-
-```javascript
-const DemoComponent = styled.div`
-    background: ${({theme}) => darken(theme.colors.header, 50)};
-`;
-```
-
-The `darken` function is a utility that darkens a given color by a specified percentage.  
-It leverages the CSS `color-mix` function to mix the provided color with black, achieving the desired darkening effect.
-This function is particularly useful for generating hover or active states for UI elements, ensuring consistent color manipulation across the application.
-
-### translucify (Deprecated use @nfq/colors. Will be removed in version 6.0.0.)
-
-```javascript
-const DemoComponent = styled.div`
-    background: ${({theme}) => translucify(theme.colors.header, 50)};
-`;
-```
-
-The `translucify` function is a utility designed to make a given color translucent by blending it with transparency.  
-By leveraging the CSS `color-mix` function, it combines the provided color with a transparent color, resulting in a translucent version of the original color.
-This function is particularly useful for creating semi-transparent overlays, backgrounds, or other UI elements that require a touch of transparency.
+This function uses the base spacing value from the grid configuration to convert the input `space` value to rem. The base spacing value is defined in baseSpacing key of your configuration object, and represents the base spacing unit for the grid system.
 
 ### ScreenSizeProvider
 
-```javascript
+```ts
 class App extends Component {
     render() {
         return (
@@ -753,8 +780,7 @@ class App extends Component {
 ```
 
 A component that provides the current screen size to its children via context.
-
-This component uses the `useTheme` and `useReducer` hooks to determine the current screen size and update it when the window is resized. The current screen size is then provided to its child components via context. It has to be an child of the styled-components ThemeProvider.
+Its also needed to for the Skeleton component to work. It has to be used in the root of your app.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -762,25 +788,16 @@ This component uses the `useTheme` and `useReducer` hooks to determine the curre
 
 ## Hooks
 
-### useConfig
-
-```javascript
-const DemoComponent = () => {
-    const gridConfig = useConfig();
-}
-```
-
-Returns the complete grid configuration object based on the current theme merged with the default theme configuration.
-
 ### useScreenSize
 
-```javascript
+```ts
 const DemoComponent = () => {
     const screenSize = useScreenSize();
 }
 ```
 
 The useScreenSize hook gives the actual breakpoint defined in your config as string back. (xs, sm, md, lg, xl or xxl)
+The ScreenSizeProvider has to be used in the root of your app for this hook to work.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -790,7 +807,7 @@ The useScreenSize hook gives the actual breakpoint defined in your config as str
 
 For debugging there are two helpfull things. First you can see the current breakpoint anytime if you use the ScreenBadge component.
 
-```javascript
+```ts
 class App extends Component {
     render() {
         return (
@@ -823,8 +840,9 @@ This Shortcut only works if your build is in development mode. On production bui
 
 There are many options you can define for the Grid. To give you an overview and show the actual defaults here the complete object:
 
-```javascript
-{
+```ts
+const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
+createConfig(breakpoints, {
     baseSpacing: 0.5,
     breakpoints: {
         xs: 0,
@@ -888,7 +906,6 @@ There are many options you can define for the Grid. To give you an overview and 
             padding: '#c2cf8a'
         }
     },
-    mediaQuery: 'only screen',
     skeleton: {
         dark: {
             animation: {
@@ -921,37 +938,17 @@ There are many options you can define for the Grid. To give you an overview and 
 };
 ```
 
-To define your own options you only have to define an object with these keys and change any value you want. This object will get merged with the default options. You can then give your styled-component theme provider the options you defined under the `nfqgrid` key.
-
-```javascript
-import {ThemeProvider} from 'styled-components';
-
-export default class App extends Component {
-    render() {
-        const customConf = {
-            /** any of your customized options */
-        };
-
-        return (
-            <ThemeProvider theme={{nfqgrid: customConf}}>
-                <div>Content</div>
-            </ThemeProvider>
-        )
-    }
-}
-```
-
 ### Configuration Object
 
 If you dont define one or more of the screen sizes the defaults will get used for these.
 
 ### baseSpacing
 
-Defines the spacing factor to use for the spacer component.
+Defines the spacing factor to use for the spacer component. Its defined in rem. The default is 0.5 rem.
 
 ### breakpoints
 
-Defines the breakpoint values. For the different screen sizes in px.
+Defines the breakpoint values. For the different screen sizes in px. (If you use default breakpoints its completely optional. Should you define breakpoints that are not in the defaults this becomes madatory.)
 
 ### columnGap
 
@@ -963,7 +960,7 @@ Defines the number of columns for each screen size.
 
 ### container
 
-The container sizes for the different screens. If you use fluid the container will be 100% width.
+The container sizes for the different screens. If you use fluid the container will be 100% width. (This option is required for all your defined breakpoints.)
 
 ### containerPadding
 
@@ -972,10 +969,6 @@ Defines the outer padding of the container.
 ### debug
 
 Defines the colors used for debug mode. You can define them for containers, rows, columns and spacers. Columns have also an padding color to show you the gutter gap.
-
-### mediaQuery
-
-This defines the media type for all media queries. (In most cases the default is enough).
 
 ### skeleton
 

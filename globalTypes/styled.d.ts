@@ -1,13 +1,12 @@
-// import original module declarations
-import 'styled-components';
+import '@emotion/react';
 import type {Config} from '../src/defaultConfig';
 
 enum Colors {
     testColor = '#000000'
 }
 // and extend them!
-declare module 'styled-components' {
-    export interface DefaultTheme {
+declare module '@emotion/react' {
+    export interface Theme {
         colors: Colors;
         nfqgrid: Config;
     }

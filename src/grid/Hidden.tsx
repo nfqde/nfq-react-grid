@@ -1,83 +1,94 @@
-/* eslint-disable security/detect-object-injection, react/boolean-prop-naming */
+/* eslint-disable security/detect-object-injection, react/boolean-prop-naming, @typescript-eslint/consistent-indexed-object-style */
 import type {ReactElement} from 'react';
 import React from 'react';
 
-import styled, {css} from 'styled-components';
+import styled from '@emotion/styled';
 
-import {DIMENSIONS} from '../defaultConfig';
-import {useScreenSize} from '../utils/hooks/useScreenSize';
+import {useScreenSize} from '../hooks/useScreenSize';
+import {configCache} from '../utils/cache';
 import {media, mediaBetween} from '../utils/layout';
 
-import type {BreakpointObject, Theme} from '../sharedTypes';
+import type {Breakpoints} from '../sharedTypes/breakpointTypes';
+import type {BreakpointObject} from '../sharedTypes/componentTypes';
 
-interface ComponentProps {
-    /** The element that should be hidden. Has to be an ReactElement. And can be only one child. */
+type BreakpointProps = {
+    [key in Breakpoints]?: boolean;
+};
+
+/**
+ * This interface extends `BreakpointProps`, allowing breakpoint-specific visibility flags (e.g., `xs`, `md`, `lg`).
+ * It defines the content to conditionally hide (`children`) and an optional `isLoadingHtml` mode
+ * that forces the component to render its content in the DOM even when hidden—useful for SSR or static HTML.
+ */
+interface ComponentProps extends BreakpointProps {
+    /**
+     * The element that should be conditionally hidden.
+     * Must be a single `ReactElement` (e.g., a component or DOM element).
+     */
     children: ReactElement;
-    /** Set to true to render the HTML even when the component is hidden. */
+    /**
+     * Set to `true` to render the HTML element in the DOM even when it is visually hidden.
+     * This is useful for server-side rendering (SSR) or static markup where visibility
+     * is later toggled by CSS or client-side logic.
+     */
     isLoadingHtml?: boolean;
-    /** Set to true to hide the child only on screen size lg. */
-    lg?: boolean;
-    /** Set to true to hide the child only on screen size md. */
-    md?: boolean;
-    /** Set to true to hide the child only on screen size sm. */
-    sm?: boolean;
-    /** Set to true to hide the child only on screen size xl. */
-    xl?: boolean;
-    /** Set to true to hide the child only on screen size xs. */
-    xs?: boolean;
-    /** Set to true to hide the child only on screen size xxl. */
-    xxl?: boolean;
 }
 
 /**
- * A component that can hide its children based on the screen size.
+ * Conditionally hides or renders its children based on the current screen size.
+ * This component is part of the `@nfq/react-grid` system and uses the configured breakpoint map
+ * to determine whether to render or hide its `children`. It supports two modes:
+ * - **Client Mode (default):** Hides `children` on specific breakpoints using a simple runtime check.
+ * - **HTML Mode (`isLoadingHtml = true`):** Wraps the children in a `<HiddenWrap />` component to produce
+ * SSR-safe, CSS-based hidden content for static markup rendering.
+ * The component expects a set of boolean flags matching breakpoint names (`xs`, `md`, etc.),
+ * where a `true` value means the children should be hidden at that breakpoint.
  *
- * @param props               The props for the Hidden component.
- * @param props.children      The element that should be hidden. Has to be an ReactElement. And can be only one child.
- * @param props.isLoadingHtml Set to true to render the HTML even when the component is hidden.
- * @param props.lg            Set to true to hide the child only on screen size lg.
- * @param props.md            Set to true to hide the child only on screen size md.
- * @param props.sm            Set to true to hide the child only on screen size sm.
- * @param props.xl            Set to true to hide the child only on screen size xl.
- * @param props.xs            Set to true to hide the child only on screen size xs.
- * @param props.xxl           Set to true to hide the child only on screen size xxl.
+ * @param props               The component props.
+ * @param props.children      The content to conditionally render or hide.
+ * @param props.isLoadingHtml Enables SSR-friendly rendering using `<HiddenWrap />`. Defaults to `false`.
+ * @param props.[Breakpoints] Boolean flags for each breakpoint (`true` = hide, `false` = show).
+ * @returns The children or `null`, based on whether they should be visible at the current breakpoint.
  *
- * @returns The Hidden component.
  * @example
  * ```tsx
- * import {Hidden} from '@nfq/react-grid';
+ * // Hides content only on 'md' and 'lg' breakpoints
+ * <Hidden md lg>
+ *   <Sidebar />
+ * </Hidden>
  *
- * const App = () => (
- *     <Hidden xs>
- *         <h1>Hello, World!</h1>
- *     </Hidden>
- * );
+ * // SSR-safe version of the same logic
+ * <Hidden isLoadingHtml md lg>
+ *   <Sidebar />
+ * </Hidden>
  * ```
  */
 const Hidden = ({children, isLoadingHtml = false, ...screenSizes}: ComponentProps) => {
+    const {breakpointOrder} = configCache.get('breakpointConfig')!;
     const screenSize = useScreenSize();
 
     if (isLoadingHtml) {
-        return <HiddenWrap $classes={screenSizes}>{children}</HiddenWrap>;
+        return <HiddenWrap $breakpointOrder={breakpointOrder} $classes={screenSizes}>{children}</HiddenWrap>;
     }
 
     return screenSizes[screenSize] ? null : children;
 };
 
 interface HiddenWrapProps {
+    $breakpointOrder: Breakpoints[];
     $classes: BreakpointObject;
 }
 
 const HiddenWrap = styled(
     ({children, ...props}: {children: ReactElement}) => React.cloneElement(children, props)
 )<HiddenWrapProps>`
-    ${({$classes, theme}) => DIMENSIONS.map((size, index) => {
+    ${({$breakpointOrder, $classes}) => $breakpointOrder.map((size, index) => {
         if ($classes[size]) {
-            return (DIMENSIONS.length - 1 === index)
-                ? css`${media(size, theme as Theme)} {
+            return ($breakpointOrder.length - 1 === index)
+                ? `${media(size)} {
                     display: none!important;
                 }`
-                : css`${mediaBetween(size, DIMENSIONS[index + 1], theme as Theme)} {
+                : `${mediaBetween(size, $breakpointOrder[index + 1])} {
                     display: none!important;
                 }`;
         }
@@ -88,4 +99,4 @@ const HiddenWrap = styled(
 
 Hidden.displayName = 'Hidden';
 
-export default Hidden;
+export {Hidden};

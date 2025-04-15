@@ -1,40 +1,18 @@
 import React from 'react';
 
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import {css, Global, type SerializedStyles, ThemeProvider} from '@emotion/react';
+import styled from '@emotion/styled';
 
-import ScreenSizeProvider from '../../src/grid/ScreenSizeProvider';
+import {ScreenSizeProvider} from '../../src/grid/ScreenSizeProvider';
 
-import type {Theme, WithChildren} from '../../src/sharedTypes';
-
-const GlobalStyle = createGlobalStyle`
-    *,
-    &::before,
-    &::after {
-        box-sizing: border-box;
-    }
-
-    * {
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-        font-size: 10px;
-    }
-
-    html, body {
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-        height: 100%;
-    }
-`;
+import type {WithChildren} from '../../src/sharedTypes/componentTypes';
 
 interface ComponentProps {
     bgColor: string;
     height: number | string;
     /** The test id. */
     testId: string;
-    theme: Theme;
+    theme: SerializedStyles;
     width: number | string;
 }
 
@@ -50,16 +28,43 @@ interface ComponentProps {
  * @param props.width    The width.
  * @returns The component.
  */
-const Test = ({bgColor, children, height, testId, theme, width}: WithChildren<ComponentProps>) => (
-    <TestWrapperElement $bgColor={bgColor} $height={height} $width={width} data-cy={testId}>
-        <ThemeProvider theme={theme}>
-            <ScreenSizeProvider>
-                <GlobalStyle />
-                {children}
-            </ScreenSizeProvider>
-        </ThemeProvider>
-    </TestWrapperElement>
-);
+const Test = ({bgColor, children, height, testId, theme, width}: WithChildren<ComponentProps>) => {
+    const GlobalStyle = css`
+        ${theme}
+
+        *,
+        &::before,
+        &::after {
+            box-sizing: border-box;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+    `;
+
+    return (
+        <TestWrapperElement $bgColor={bgColor} $height={height} $width={width} data-cy={testId}>
+            <Global styles={GlobalStyle} />
+            <ThemeProvider theme={theme}>
+                <ScreenSizeProvider>
+                    {children}
+                </ScreenSizeProvider>
+            </ThemeProvider>
+        </TestWrapperElement>
+    );
+};
 
 Test.displayName = 'Test';
 Test.defaultProps = {
