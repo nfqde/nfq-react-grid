@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/nfqde/nfq-react-grid/compare/v6.0.1...v7.0.0) (2025-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Emotion:** uses now emotion/styled and got rebuild to use css vars under the hood
+
+### Features
+
+* **Emotion:** Rebuild to emotion ([#128](https://github.com/nfqde/nfq-react-grid/issues/128)) ([30595be](https://github.com/nfqde/nfq-react-grid/commit/30595be42927a53a887b15faf1146007336f6d82))
+
 ### [6.0.1](https://github.com/nfqde/nfq-react-grid/compare/v6.0.0...v6.0.1) (2024-10-29)
 
 
