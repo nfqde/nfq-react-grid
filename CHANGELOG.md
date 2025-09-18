@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.1](https://github.com/nfqde/nfq-react-grid/compare/v7.0.0...v7.0.1) (2025-09-18)
+
+
+### Bug Fixes
+
+* **Safari:** fix getScreenSize on safari ([#129](https://github.com/nfqde/nfq-react-grid/issues/129)) ([2042349](https://github.com/nfqde/nfq-react-grid/commit/20423492e6e7f26623a9192a9ac6b1eab1ce8ee9))
+
 ## [7.0.0](https://github.com/nfqde/nfq-react-grid/compare/v6.0.1...v7.0.0) (2025-04-16)
 
 
