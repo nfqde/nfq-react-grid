@@ -48,7 +48,10 @@ export const getScreenSize = () => {
     }
     // eslint-disable-next-line react-hooks-ssr/react-hooks-global-ssr
     const screenSize = window.getComputedStyle(document.body)
-        .getPropertyValue('--nfq-grid-screen-size').replaceAll('\'', '').trim();
+        .getPropertyValue('--nfq-grid-screen-size')
+        .replaceAll('\'', '')
+        .replaceAll('"', '')
+        .trim();
 
     return screenSize as Breakpoints;
 };
