@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.2](https://github.com/nfqde/nfq-react-grid/compare/v7.0.1...v7.0.2) (2026-06-14)
+
+
+### Bug Fixes
+
+* **Spacer:** Fix spacer not working with Hidden and Visible ([#133](https://github.com/nfqde/nfq-react-grid/issues/133)) ([9d47c0a](https://github.com/nfqde/nfq-react-grid/commit/9d47c0ac52f10cf3d602c2d0285a138247c5ca9d))
+
 ### [7.0.1](https://github.com/nfqde/nfq-react-grid/compare/v7.0.0...v7.0.1) (2025-09-18)
 
 
