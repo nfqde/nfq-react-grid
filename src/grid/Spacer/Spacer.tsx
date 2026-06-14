@@ -21,6 +21,11 @@ import type {SpacerObject} from '../../sharedTypes/componentTypes';
  */
 interface ComponentProps {
     /**
+     * Optional class name to apply custom styles to the container.
+     * Can be used in conjunction with `styled(Container)` or traditional CSS to override layout defaults.
+     */
+    className?: string;
+    /**
      * Whether the spacer should behave like an inline element.
      * If `true`, the spacer behaves like an inline element and does not create a new line.
      * If `false`, the spacer behaves like a block element and will push to a new line.
@@ -97,8 +102,8 @@ interface ComponentProps {
  * />
  * ```
  */
-const Spacer = ({isInline = false, isNotStretching = false, maxX, maxY, testId = 'Spacer', x, y}: ComponentProps) => {
-    const className = useDebug();
+const Spacer = ({className, isInline = false, isNotStretching = false, maxX, maxY, testId = 'Spacer', x, y}: ComponentProps) => {
+    const classNames = [className, useDebug()];
 
     return (
         <SpacerElement
@@ -109,7 +114,7 @@ const Spacer = ({isInline = false, isNotStretching = false, maxX, maxY, testId =
             $x={x}
             $y={y}
             aria-hidden="true"
-            className={className}
+            className={classNames.join(' ')}
             data-cy={testId}
         />
     );
